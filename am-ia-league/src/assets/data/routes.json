@@ -1,56 +1,56 @@
 [
   {
     "id": 1,
-    "name": "Fundamentos de IA",
-    "startDate": "2025-01-15",
-    "endDate": "2025-02-12",
+    "name": "Ruta Cancún",
+    "startDate": "2024-09-26",
+    "endDate": "2024-10-10",
     "status": "completed",
-    "description": "Introducción a conceptos básicos de inteligencia artificial",
+    "description": "Primera etapa de la liga - Fundamentos y preparación",
     "color": "#00AEEF"
   },
   {
     "id": 2,
-    "name": "Machine Learning Básico",
-    "startDate": "2025-02-13",
-    "endDate": "2025-03-12",
-    "status": "in-progress",
-    "description": "Algoritmos fundamentales de aprendizaje automático",
+    "name": "Ruta Bogotá",
+    "startDate": "2024-10-10",
+    "endDate": "2024-10-24",
+    "status": "completed",
+    "description": "Segunda etapa - Desarrollo de habilidades intermedias",
     "color": "#FF2D82"
   },
   {
     "id": 3,
-    "name": "Deep Learning",
-    "startDate": "2025-03-13",
-    "endDate": "2025-04-09",
-    "status": "upcoming",
-    "description": "Redes neuronales y aprendizaje profundo",
+    "name": "Ruta Michoacán",
+    "startDate": "2024-10-24",
+    "endDate": "2024-11-07",
+    "status": "completed",
+    "description": "Tercera etapa - Especialización y proyectos avanzados",
     "color": "#00AEEF"
   },
   {
     "id": 4,
-    "name": "NLP & Procesamiento",
-    "startDate": "2025-04-10",
-    "endDate": "2025-05-07",
-    "status": "upcoming",
-    "description": "Procesamiento de lenguaje natural",
+    "name": "Ruta Ámsterdam",
+    "startDate": "2024-11-07",
+    "endDate": "2024-11-21",
+    "status": "completed",
+    "description": "Cuarta etapa - Innovación y tecnologías emergentes",
     "color": "#FF2D82"
   },
   {
     "id": 5,
-    "name": "Computer Vision",
-    "startDate": "2025-05-08",
-    "endDate": "2025-06-04",
-    "status": "upcoming",
-    "description": "Visión por computadora y análisis de imágenes",
+    "name": "Ruta Tokio",
+    "startDate": "2024-11-21",
+    "endDate": "2024-12-05",
+    "status": "completed",
+    "description": "Quinta etapa - Perfeccionamiento y optimización",
     "color": "#00AEEF"
   },
   {
     "id": 6,
-    "name": "IA en Producción",
-    "startDate": "2025-06-05",
-    "endDate": "2025-07-02",
-    "status": "upcoming",
-    "description": "Implementación y despliegue de modelos IA",
-    "color": "#FF2D82"
+    "name": "Game Day Final - CDMX",
+    "startDate": "2024-12-05",
+    "endDate": "2024-12-12",
+    "status": "completed",
+    "description": "Gran final de la liga en Ciudad de México",
+    "color": "#FF9500"
   }
 ]

@@ -1,6 +1,10 @@
 .routes-timeline {
   padding: 4rem 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 174, 239, 0.05) 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 174, 239, 0.05) 100%
+  );
   position: relative;
   z-index: 2;
 }
@@ -28,31 +32,209 @@
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--aviation-blue), var(--squadron-pink));
+  width: 60px;
   transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(45, 55, 72, 0.3) 0%,
+    rgba(74, 85, 104, 0.4) 20%,
+    rgba(113, 128, 150, 0.5) 50%,
+    rgba(74, 85, 104, 0.4) 80%,
+    rgba(45, 55, 72, 0.3) 100%
+  );
+  border-radius: 30px;
+  border: 1px solid rgba(26, 32, 44, 0.3);
+  backdrop-filter: blur(5px);
+  
+  // Máscara para difuminar los extremos
+  mask: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 5%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0.3) 95%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 5%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0.3) 95%,
+    transparent 100%
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #ffffff 0px,
+      #ffffff 15px,
+      rgba(45, 55, 72, 0.1) 15px,
+      rgba(45, 55, 72, 0.1) 30px
+    );
+    transform: translateX(-50%);
+    border-radius: 1px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    
+    // Máscara para difuminar los extremos
+    mask: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 5%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0.3) 95%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 5%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0.3) 95%,
+      transparent 100%
+    );
+  }
+
+  // Luces del lado izquierdo
+  &::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #00aeef 0px,
+      #00aeef 8px,
+      rgba(45, 55, 72, 0.05) 8px,
+      rgba(45, 55, 72, 0.05) 24px,
+      #ff2d82 24px,
+      #ff2d82 32px,
+      rgba(45, 55, 72, 0.05) 32px,
+      rgba(45, 55, 72, 0.05) 48px
+    );
+    border-radius: 2px;
+    animation: runway-lights-left 2s ease-in-out infinite;
+    
+    // Máscara para difuminar los extremos
+    mask: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 5%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0.3) 95%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 5%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0.3) 95%,
+      transparent 100%
+    );
+  }
+}
+
+// Luces del lado derecho
+.timeline-line-lights-right {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #ff2d82 0px,
+    #ff2d82 8px,
+    rgba(45, 55, 72, 0.05) 8px,
+    rgba(45, 55, 72, 0.05) 24px,
+    #00aeef 24px,
+    #00aeef 32px,
+    rgba(45, 55, 72, 0.05) 32px,
+    rgba(45, 55, 72, 0.05) 48px
+  );
   border-radius: 2px;
+  animation: runway-lights-right 2s ease-in-out infinite;
+  animation-delay: 1s;
+  
+  // Máscara para difuminar los extremos
+  mask: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 5%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0.3) 95%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 5%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0.3) 95%,
+    transparent 100%
+  );
+}
+
+@keyframes runway-lights-left {
+  0%,
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 5px rgba(0, 174, 239, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(0, 174, 239, 0.6);
+  }
+}
+
+@keyframes runway-lights-right {
+  0%,
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 5px rgba(255, 45, 130, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(255, 45, 130, 0.6);
+  }
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 4rem;
-  
+
   &.left .timeline-content {
-    margin-right: 55%;
+    margin-right: 53%;
     text-align: right;
-    
+
     .timeline-marker {
-      right: -2rem;
+      right: -2.5rem;
     }
   }
-  
+
   &.right .timeline-content {
-    margin-left: 55%;
+    margin-left: 53%;
     text-align: left;
-    
+
     .timeline-marker {
-      left: -2rem;
+      left: -2.5rem;
     }
   }
 }
@@ -64,22 +246,22 @@
   border-radius: 16px;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
-  
+
   &.status-completed {
-    border-color: #10B981;
+    border-color: #10b981;
     background: rgba(16, 185, 129, 0.1);
   }
-  
+
   &.status-in-progress {
     border-color: var(--aviation-blue);
     background: rgba(0, 174, 239, 0.1);
   }
-  
+
   &.status-upcoming {
     border-color: var(--text-muted);
     background: rgba(156, 163, 175, 0.1);
@@ -89,20 +271,31 @@
 .timeline-marker {
   position: absolute;
   top: 50%;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 4px var(--deep-space-blue);
-  
+  box-shadow: 0 0 0 3px var(--deep-space-blue), 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 0 3px var(--deep-space-blue), 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
   .marker-inner {
     width: 12px;
     height: 12px;
     background: var(--text-primary);
     border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -133,17 +326,17 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
-  
+
   &.status-completed {
     background: rgba(16, 185, 129, 0.2);
-    color: #10B981;
+    color: #10b981;
   }
-  
+
   &.status-in-progress {
     background: rgba(0, 174, 239, 0.2);
     color: var(--aviation-blue);
   }
-  
+
   &.status-upcoming {
     background: rgba(156, 163, 175, 0.2);
     color: var(--text-muted);
@@ -161,27 +354,262 @@
   font-size: 0.875rem;
 }
 
+// Torre de Control Mejorada para Game Day Final
+.control-tower {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.tower-structure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+}
+
+.tower-base {
+  width: 16px;
+  height: 45px;
+  background: linear-gradient(
+    180deg,
+    rgba(74, 85, 104, 0.9) 0%,
+    rgba(45, 55, 72, 0.9) 50%,
+    rgba(26, 32, 44, 0.9) 100%
+  );
+  border-radius: 8px 8px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 5px;
+    bottom: 5px;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 8px,
+      rgba(0, 174, 239, 0.2) 8px,
+      rgba(0, 174, 239, 0.2) 10px
+    );
+    border-radius: 4px;
+  }
+}
+
+.tower-middle {
+  width: 24px;
+  height: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(74, 85, 104, 0.9) 0%,
+    rgba(45, 55, 72, 0.9) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  margin-top: -2px;
+  border-radius: 4px;
+}
+
+.tower-cabin {
+  width: 32px;
+  height: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(74, 85, 104, 0.95) 0%,
+    rgba(45, 55, 72, 0.95) 50%,
+    rgba(26, 32, 44, 0.95) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px 6px 2px 2px;
+  backdrop-filter: blur(15px);
+  position: relative;
+  margin-top: -2px;
+  box-shadow: 0 0 20px rgba(0, 174, 239, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.cabin-windows {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  height: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 174, 239, 0.4) 0%,
+    rgba(0, 174, 239, 0.6) 50%,
+    rgba(0, 174, 239, 0.3) 100%
+  );
+  border-radius: 3px;
+  border: 1px solid rgba(0, 174, 239, 0.5);
+  box-shadow: 0 0 10px rgba(0, 174, 239, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%);
+  }
+}
+
+.cabin-antenna {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 8px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(156, 163, 175, 0.6) 100%
+  );
+  border-radius: 1px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -1px;
+    width: 4px;
+    height: 2px;
+    background: rgba(255, 45, 130, 0.8);
+    border-radius: 1px;
+  }
+}
+
+.tower-beacon {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 45, 130, 1) 0%,
+    rgba(255, 45, 130, 0.8) 50%,
+    rgba(255, 45, 130, 0.4) 100%
+  );
+  border-radius: 50%;
+  margin-top: -12px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 45, 130, 0.8), 0 0 40px rgba(255, 45, 130, 0.4),
+    0 0 60px rgba(255, 45, 130, 0.2);
+  animation: tower-beacon-improved 3s ease-in-out infinite;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid rgba(255, 45, 130, 0.3);
+    border-radius: 50%;
+    animation: beacon-pulse 3s ease-in-out infinite;
+  }
+}
+
+@keyframes tower-beacon-improved {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 45, 130, 0.6),
+      0 0 30px rgba(255, 45, 130, 0.3), 0 0 45px rgba(255, 45, 130, 0.1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 45, 130, 1), 0 0 50px rgba(255, 45, 130, 0.6),
+      0 0 75px rgba(255, 45, 130, 0.3);
+  }
+}
+
+@keyframes beacon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.1;
+  }
+}
+
+// Estilos especiales para Game Day Final
+.timeline-content.game-day-final {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 149, 0, 0.1) 0%,
+    rgba(255, 45, 130, 0.1) 50%,
+    rgba(0, 174, 239, 0.1) 100%
+  );
+  border: 2px solid rgba(255, 149, 0, 0.6);
+  box-shadow: 0 0 30px rgba(255, 149, 0, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 40px rgba(255, 149, 0, 0.5), 0 15px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .route-name {
+    background: linear-gradient(45deg, #ff9500, #ff2d82, #00aeef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+}
+
 @media (max-width: 768px) {
   .timeline-line {
-    left: 2rem;
+    left: 2.5rem;
+    width: 40px;
   }
-  
+
   .timeline-item {
     &.left .timeline-content,
     &.right .timeline-content {
-      margin-left: 4rem;
+      margin-left: 5rem;
       margin-right: 0;
       text-align: left;
-      
+
       .timeline-marker {
-        left: -3rem;
+        left: -3.5rem;
         right: auto;
       }
     }
   }
-  
+
   .route-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .control-tower {
+    transform: translateX(-50%) scale(0.8);
+    top: -65px;
   }
 }

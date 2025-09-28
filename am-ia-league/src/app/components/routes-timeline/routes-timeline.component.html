@@ -3,19 +3,36 @@
     <h2 class="section-title gradient-text">Rutas de la Liga</h2>
     
     <div class="timeline">
-      <div class="timeline-line"></div>
+      <div class="timeline-line">
+        <div class="timeline-line-lights-right"></div>
+      </div>
       
       <div class="timeline-item" 
-           *ngFor="let route of routes; let i = index"
+           *ngFor="let route of routes; let i = index; let last = last"
            [class.left]="i % 2 === 0"
-           [class.right]="i % 2 === 1">
+           [class.right]="i % 2 === 1"
+           [class.final-destination]="last">
         
         <div class="timeline-content" 
              [style.border-color]="route.color"
-             [class]="'status-' + route.status">
+             [class]="'status-' + route.status"
+             [class.game-day-final]="route.name.includes('Game Day Final')">
           
           <div class="timeline-marker" [style.background-color]="route.color">
             <div class="marker-inner"></div>
+          </div>
+          
+          <!-- Torre de Control para Game Day Final -->
+          <div class="control-tower" *ngIf="route.name.includes('Game Day Final')">
+            <div class="tower-structure">
+              <div class="tower-base"></div>
+              <div class="tower-middle"></div>
+              <div class="tower-cabin">
+                <div class="cabin-windows"></div>
+                <div class="cabin-antenna"></div>
+              </div>
+              <div class="tower-beacon"></div>
+            </div>
           </div>
           
           <div class="route-card">

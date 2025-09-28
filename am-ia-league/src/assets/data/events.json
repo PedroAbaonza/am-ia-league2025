@@ -1,62 +1,72 @@
 [
   {
     "id": 1,
-    "title": "AWS Training: Fundamentos IA",
+    "title": "Inicio Ruta Cancún",
     "type": "aws-training",
-    "date": "2025-01-20",
-    "time": "10:00",
-    "description": "Introducción a servicios AWS para IA",
+    "date": "2024-09-26",
+    "time": "09:00",
+    "description": "Lanzamiento oficial de la primera ruta de la liga",
     "icon": "cloud",
-    "color": "#FF9500"
-  },
-  {
-    "id": 2,
-    "title": "Demo Session: Alpha Squadron",
-    "type": "demo",
-    "date": "2025-02-05",
-    "time": "14:00",
-    "description": "Presentación de avances del squad Alpha",
-    "icon": "presentation",
     "color": "#00AEEF"
   },
   {
-    "id": 3,
-    "title": "Working Hours: ML Básico",
-    "type": "working-hours",
-    "date": "2025-02-15",
-    "time": "09:00",
-    "description": "Sesión de trabajo colaborativo",
-    "icon": "code",
+    "id": 2,
+    "title": "Transición Ruta Bogotá",
+    "type": "demo",
+    "date": "2024-10-10",
+    "time": "10:00",
+    "description": "Inicio de la segunda etapa - Ruta Bogotá",
+    "icon": "presentation",
     "color": "#FF2D82"
   },
   {
+    "id": 3,
+    "title": "Inicio Ruta Michoacán",
+    "type": "working-hours",
+    "date": "2024-10-24",
+    "time": "09:00",
+    "description": "Comienzo de la tercera etapa especializada",
+    "icon": "code",
+    "color": "#00AEEF"
+  },
+  {
     "id": 4,
-    "title": "AWS Training: SageMaker",
+    "title": "Lanzamiento Ruta Ámsterdam",
     "type": "aws-training",
-    "date": "2025-03-01",
+    "date": "2024-11-07",
     "time": "11:00",
-    "description": "Entrenamiento en Amazon SageMaker",
+    "description": "Cuarta etapa enfocada en innovación",
     "icon": "cloud",
-    "color": "#FF9500"
+    "color": "#FF2D82"
   },
   {
     "id": 5,
-    "title": "Demo Session: Beta Flight",
+    "title": "Inicio Ruta Tokio",
     "type": "demo",
-    "date": "2025-03-10",
-    "time": "15:30",
-    "description": "Demostración de proyecto Beta Flight",
+    "date": "2024-11-21",
+    "time": "10:00",
+    "description": "Quinta y penúltima etapa de perfeccionamiento",
     "icon": "presentation",
     "color": "#00AEEF"
   },
   {
     "id": 6,
-    "title": "Working Hours: Deep Learning",
+    "title": "Game Day Final - CDMX",
     "type": "working-hours",
-    "date": "2025-03-25",
-    "time": "10:30",
-    "description": "Taller práctico de redes neuronales",
+    "date": "2024-12-05",
+    "time": "09:00",
+    "description": "Gran final de la liga en Ciudad de México",
     "icon": "code",
-    "color": "#FF2D82"
+    "color": "#FF9500"
+  },
+  {
+    "id": 7,
+    "title": "Cierre Game Day Final",
+    "type": "demo",
+    "date": "2024-12-12",
+    "time": "18:00",
+    "description": "Ceremonia de clausura y premiación",
+    "icon": "presentation",
+    "color": "#FF9500"
   }
 ]
