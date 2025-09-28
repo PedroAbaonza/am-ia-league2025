@@ -21,7 +21,7 @@ interface SpecialChallenge {
   selector: 'app-points-system',
   imports: [CommonModule],
   templateUrl: './points-system.component.html',
-  styleUrl: './points-system.component.scss'
+  styleUrls: ['./points-system.component.scss'],
 })
 export class PointsSystemComponent implements OnInit {
   missions: Mission[] = [
@@ -31,7 +31,7 @@ export class PointsSystemComponent implements OnInit {
       type: 'amazon-q',
       points: 20,
       description: 'Adoptar Amazon Q en cada ruta',
-      progress: 90
+      progress: 90,
     },
     {
       id: 2,
@@ -39,7 +39,7 @@ export class PointsSystemComponent implements OnInit {
       type: 'ai-flight-tips',
       points: 30,
       description: 'Participar en entrenamientos AWS',
-      progress: 0
+      progress: 0,
     },
     {
       id: 3,
@@ -47,7 +47,7 @@ export class PointsSystemComponent implements OnInit {
       type: 'code-increment',
       points: 50,
       description: 'Incrementar líneas de código por ruta',
-      progress: 5
+      progress: 5,
     },
     {
       id: 4,
@@ -55,32 +55,32 @@ export class PointsSystemComponent implements OnInit {
       type: 'jira',
       points: 75,
       description: 'Mantener operaciones críticas',
-      progress: 0
-    }
+      progress: 0,
+    },
   ];
 
   specialChallenges: SpecialChallenge[] = [
     {
       id: 1,
       name: 'Rules Documentation',
-      bonusPoints: 50
+      bonusPoints: 50,
     },
     {
       id: 2,
       name: 'Liderar un Demo',
-      bonusPoints: 100
+      bonusPoints: 100,
     },
     {
       id: 3,
       name: 'Construir un Use Case',
-      bonusPoints: 120
+      bonusPoints: 120,
     },
     {
       id: 4,
       name: 'Game Day Challenge',
       bonusPoints: 300,
-      highlighted: true
-    }
+      highlighted: true,
+    },
   ];
 
   constructor() {}
@@ -94,7 +94,7 @@ export class PointsSystemComponent implements OnInit {
       'amazon-q': 'Q',
       'ai-flight-tips': '✈️',
       'code-increment': '⚡',
-      'jira': 'J'
+      jira: 'J',
     };
     return iconMap[type] || '🎯';
   }
