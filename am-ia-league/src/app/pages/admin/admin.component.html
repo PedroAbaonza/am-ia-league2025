@@ -1,5 +1,4 @@
 <div class="admin-page">
-  
   <!-- Login Form -->
   <div class="login-container" *ngIf="!isAuthenticated">
     <div class="login-card">
@@ -7,24 +6,25 @@
         <h1 class="login-title gradient-text">Panel de Administración</h1>
         <p class="login-subtitle">Aeroméxico AI League 2025</p>
       </div>
-      
+
       <form (ngSubmit)="login()" class="login-form">
         <div class="form-group">
           <label for="password">Contraseña de Administrador</label>
-          <input 
-            type="password" 
+          <input
+            type="password"
             id="password"
             [(ngModel)]="password"
             name="password"
             class="form-input"
             placeholder="Ingresa la contraseña"
-            required>
+            required
+          />
         </div>
-        
+
         <div class="error-message" *ngIf="loginError">
           {{ loginError }}
         </div>
-        
+
         <button type="submit" class="login-btn glow-blue">
           <span class="btn-icon">🔐</span>
           Acceder
@@ -35,10 +35,11 @@
 
   <!-- Admin Dashboard -->
   <div class="admin-dashboard" *ngIf="isAuthenticated">
-    
     <!-- Header -->
     <div class="dashboard-header">
-      <h1 class="dashboard-title gradient-text">Panel de Administración</h1>
+      <h1 class="dashboard-title gradient-text">
+        Torre de Control - Aeroméxico AI League
+      </h1>
       <div class="header-actions">
         <div class="session-info" *ngIf="getSessionInfo() as sessionInfo">
           <div class="session-item">
@@ -48,7 +49,11 @@
           <div class="session-item">
             <span class="session-label">Fuente de datos:</span>
             <span class="status-value" [class]="config.dataSource">
-              {{ config.dataSource === 'uploaded' ? 'Datos subidos' : 'Datos estáticos' }}
+              {{
+                config.dataSource === "uploaded"
+                  ? "Datos subidos"
+                  : "Datos estáticos"
+              }}
             </span>
           </div>
         </div>
@@ -59,40 +64,218 @@
       </div>
     </div>
 
+    <!-- System Metrics Dashboard -->
+    <div class="metrics-dashboard">
+      <h2 class="section-title">Métricas del Sistema</h2>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">👥</div>
+          <div class="metric-content">
+            <div class="metric-value">{{ systemMetrics.totalUsers }}</div>
+            <div class="metric-label">Desarrolladores</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">🚁</div>
+          <div class="metric-content">
+            <div class="metric-value">{{ systemMetrics.totalSquads }}</div>
+            <div class="metric-label">Squads Activos</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">⭐</div>
+          <div class="metric-content">
+            <div class="metric-value">{{ systemMetrics.averagePoints }}</div>
+            <div class="metric-label">Promedio de Puntos</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">🏆</div>
+          <div class="metric-content">
+            <div class="metric-value">
+              {{ systemMetrics.topPerformer || "N/A" }}
+            </div>
+            <div class="metric-label">Top Performer</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">💚</div>
+          <div class="metric-content">
+            <div class="metric-value" [style.color]="getSystemHealthColor()">
+              {{ systemMetrics.systemHealth | titlecase }}
+            </div>
+            <div class="metric-label">Salud del Sistema</div>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">🔍</div>
+          <div class="metric-content">
+            <div class="metric-value" [style.color]="getDataIntegrityColor()">
+              {{ systemMetrics.dataIntegrity }}%
+            </div>
+            <div class="metric-label">Integridad de Datos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-actions">
+        <button
+          class="action-btn glow-blue"
+          (click)="refreshData()"
+          [disabled]="isLoadingMetrics"
+        >
+          <span class="btn-icon">🔄</span>
+          {{ isLoadingMetrics ? "Actualizando..." : "Actualizar Métricas" }}
+        </button>
+
+        <button
+          class="action-btn"
+          (click)="validateDataIntegrity()"
+          [disabled]="isLoadingMetrics"
+        >
+          <span class="btn-icon">🔍</span>
+          Validar Integridad
+        </button>
+
+        <button class="action-btn" (click)="toggleAdvancedOptions()">
+          <span class="btn-icon">⚙️</span>
+          {{ showAdvancedOptions ? "Ocultar" : "Mostrar" }} Opciones Avanzadas
+        </button>
+      </div>
+    </div>
+
+    <!-- Advanced Options -->
+    <div class="advanced-options" *ngIf="showAdvancedOptions">
+      <h2 class="section-title">Opciones Avanzadas</h2>
+
+      <div class="advanced-grid">
+        <div class="advanced-card">
+          <h3 class="card-title">Gestión de Backups</h3>
+          <p class="card-description">
+            Crear y restaurar copias de seguridad de los datos.
+          </p>
+
+          <div class="backup-actions">
+            <button class="backup-btn" (click)="restoreFromBackup('squads')">
+              <span class="btn-icon">📊</span>
+              Restaurar Squads
+            </button>
+            <button
+              class="backup-btn"
+              (click)="restoreFromBackup('individuals')"
+            >
+              <span class="btn-icon">👤</span>
+              Restaurar Individuales
+            </button>
+          </div>
+        </div>
+
+        <div class="advanced-card">
+          <h3 class="card-title">Logs de Auditoría</h3>
+          <p class="card-description">
+            Gestionar el historial de acciones del sistema.
+          </p>
+
+          <div class="audit-actions">
+            <button class="audit-btn glow-blue" (click)="exportAuditLogs()">
+              <span class="btn-icon">📥</span>
+              Exportar Logs
+            </button>
+            <button class="audit-btn danger" (click)="clearAuditLogs()">
+              <span class="btn-icon">🗑️</span>
+              Limpiar Logs
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audit Logs Section -->
+    <div class="audit-logs-section" *ngIf="auditLogs.length > 0">
+      <h2 class="section-title">Actividad Reciente</h2>
+
+      <div class="logs-container">
+        <div class="log-item" *ngFor="let log of auditLogs.slice(0, 10)">
+          <div class="log-timestamp">{{ formatLogDate(log.timestamp) }}</div>
+          <div class="log-action">{{ log.action }}</div>
+          <div class="log-details">{{ log.details }}</div>
+        </div>
+      </div>
+
+      <div class="logs-footer" *ngIf="auditLogs.length > 10">
+        <p class="logs-count">
+          Mostrando 10 de {{ auditLogs.length }} registros
+        </p>
+        <button class="view-all-btn" (click)="exportAuditLogs()">
+          <span class="btn-icon">📋</span>
+          Ver Todos los Logs
+        </button>
+      </div>
+    </div>
+
     <!-- Upload Section -->
     <div class="upload-section">
       <h2 class="section-title">Subir Datos del Leaderboard</h2>
-      
+
       <div class="upload-grid">
-        
         <!-- Squad Data Upload -->
         <div class="upload-card">
           <h3 class="card-title">Datos de Squads</h3>
           <p class="card-description">
             Sube un archivo CSV con los datos de los equipos y sus puntos.
           </p>
-          
+
           <div class="file-upload">
-            <input 
-              type="file" 
+            <input
+              type="file"
               #squadFileInput
               accept=".csv,.xlsx,.xls"
               (change)="onSquadFileSelected($event)"
-              class="file-input">
-            
-            <button 
+              class="file-input"
+            />
+
+            <button
               class="upload-btn primary glow-blue"
-              (click)="squadFileInput.click()">
+              (click)="squadFileInput.click()"
+            >
               <span class="btn-icon">📊</span>
               Seleccionar Archivo CSV
             </button>
           </div>
-          
+
           <div class="file-info" *ngIf="squadFileName">
             <span class="file-name">{{ squadFileName }}</span>
-            <button class="process-btn glow-pink" (click)="processSquadFile()">
+            <button
+              class="process-btn glow-pink"
+              (click)="processSquadFile()"
+              [disabled]="fileValidationErrors.length > 0"
+            >
               Procesar Datos
             </button>
+          </div>
+
+          <!-- File Validation Status -->
+          <div class="validation-status" *ngIf="isValidatingFile">
+            <div class="validation-loading">
+              <span class="loading-icon">⏳</span>
+              Validando archivo...
+            </div>
+          </div>
+
+          <div
+            class="validation-errors"
+            *ngIf="fileValidationErrors.length > 0"
+          >
+            <div class="error-item" *ngFor="let error of fileValidationErrors">
+              <span class="error-icon">❌</span>
+              {{ error }}
+            </div>
           </div>
         </div>
 
@@ -102,28 +285,52 @@
           <p class="card-description">
             Sube un archivo CSV con los datos individuales de desarrolladores.
           </p>
-          
+
           <div class="file-upload">
-            <input 
-              type="file" 
+            <input
+              type="file"
               #individualFileInput
               accept=".csv,.xlsx,.xls"
               (change)="onIndividualFileSelected($event)"
-              class="file-input">
-            
-            <button 
+              class="file-input"
+            />
+
+            <button
               class="upload-btn primary glow-blue"
-              (click)="individualFileInput.click()">
+              (click)="individualFileInput.click()"
+            >
               <span class="btn-icon">👤</span>
               Seleccionar Archivo CSV
             </button>
           </div>
-          
+
           <div class="file-info" *ngIf="individualFileName">
             <span class="file-name">{{ individualFileName }}</span>
-            <button class="process-btn glow-pink" (click)="processIndividualFile()">
+            <button
+              class="process-btn glow-pink"
+              (click)="processIndividualFile()"
+              [disabled]="fileValidationErrors.length > 0"
+            >
               Procesar Datos
             </button>
+          </div>
+
+          <!-- File Validation Status -->
+          <div class="validation-status" *ngIf="isValidatingFile">
+            <div class="validation-loading">
+              <span class="loading-icon">⏳</span>
+              Validando archivo...
+            </div>
+          </div>
+
+          <div
+            class="validation-errors"
+            *ngIf="fileValidationErrors.length > 0"
+          >
+            <div class="error-item" *ngFor="let error of fileValidationErrors">
+              <span class="error-icon">❌</span>
+              {{ error }}
+            </div>
           </div>
         </div>
       </div>
@@ -132,27 +339,27 @@
     <!-- CSV Format Guide -->
     <div class="format-guide">
       <h2 class="section-title">Formato de Archivos CSV</h2>
-      
+
       <div class="format-grid">
         <div class="format-card">
           <h3 class="format-title">Squads CSV</h3>
           <div class="format-example">
             <code>
-squadName,scrumMaster,name,points<br>
-Alpha Squadron,María González,Carlos Rodríguez,520<br>
-Alpha Squadron,María González,Ana Martínez,495<br>
-Beta Flight,Roberto Silva,Elena Vargas,485
+              squadName,scrumMaster,name,points<br />
+              Alpha Squadron,María González,Carlos Rodríguez,520<br />
+              Alpha Squadron,María González,Ana Martínez,495<br />
+              Beta Flight,Roberto Silva,Elena Vargas,485
             </code>
           </div>
         </div>
-        
+
         <div class="format-card">
           <h3 class="format-title">Individuales CSV</h3>
           <div class="format-example">
             <code>
-name,squadName,position,points,missions,challenges,level<br>
-Carlos Rodríguez,Alpha Squadron,Senior Developer,520,8,2,Expert<br>
-Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
+              name,squadName,position,points,missions,challenges,level<br />
+              Carlos Rodríguez,Alpha Squadron,Senior Developer,520,8,2,Expert<br />
+              Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
             </code>
           </div>
         </div>
@@ -163,27 +370,36 @@ Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
     <div class="download-section">
       <h2 class="section-title">Descargar Datos Actuales</h2>
       <p class="section-description">
-        Descarga los datos que están actualmente cargados en la aplicación como plantillas CSV.
+        Descarga los datos que están actualmente cargados en la aplicación como
+        plantillas CSV.
       </p>
-      
+
       <div class="download-grid">
         <div class="download-card">
           <h3 class="card-title">Datos de Squads Actuales</h3>
           <p class="card-description">
-            Descarga un CSV con todos los datos de squads que están actualmente en el leaderboard.
+            Descarga un CSV con todos los datos de squads que están actualmente
+            en el leaderboard.
           </p>
-          <button class="download-btn glow-blue" (click)="downloadCurrentSquadsData()">
+          <button
+            class="download-btn glow-blue"
+            (click)="downloadCurrentSquadsData()"
+          >
             <span class="btn-icon">📊</span>
             Descargar Squads CSV
           </button>
         </div>
-        
+
         <div class="download-card">
           <h3 class="card-title">Datos Individuales Actuales</h3>
           <p class="card-description">
-            Descarga un CSV con todos los datos individuales que están actualmente en el ranking.
+            Descarga un CSV con todos los datos individuales que están
+            actualmente en el ranking.
           </p>
-          <button class="download-btn glow-blue" (click)="downloadCurrentIndividualsData()">
+          <button
+            class="download-btn glow-blue"
+            (click)="downloadCurrentIndividualsData()"
+          >
             <span class="btn-icon">👤</span>
             Descargar Individuales CSV
           </button>
@@ -198,7 +414,11 @@ Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
         <div class="status-item">
           <span class="status-label">Fuente de datos:</span>
           <span class="status-value" [class]="config.dataSource">
-            {{ config.dataSource === 'uploaded' ? 'Datos subidos' : 'Datos estáticos' }}
+            {{
+              config.dataSource === "uploaded"
+                ? "Datos subidos"
+                : "Datos estáticos"
+            }}
           </span>
         </div>
         <div class="status-item" *ngIf="config.lastUpdate">
@@ -213,17 +433,198 @@ Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
           <span class="status-label">Desarrolladores:</span>
           <span class="status-value">{{ getIndividualsCount() }}</span>
         </div>
-        
+
         <div class="action-buttons">
-          <button class="reset-btn" (click)="resetToStatic()" *ngIf="config.dataSource === 'uploaded'">
+          <button
+            class="reset-btn"
+            (click)="resetToStatic()"
+            *ngIf="config.dataSource === 'uploaded'"
+          >
             <span class="btn-icon">🔄</span>
             Volver a Datos Estáticos
           </button>
-          
+
           <button class="refresh-btn glow-blue" (click)="refreshData()">
             <span class="btn-icon">🔄</span>
             Actualizar Vista
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Visualization Section -->
+    <div class="data-visualization">
+      <h2 class="section-title">Visualización de Datos</h2>
+      <p class="section-description">
+        Explora los datos actuales del sistema. Los detalles están ocultos por
+        defecto para mantener la privacidad.
+      </p>
+
+      <div class="visualization-grid">
+        <!-- Squads Data -->
+        <div class="visualization-card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <span class="card-icon">🚁</span>
+              Datos de Squads ({{ getSquadsCount() }})
+            </h3>
+            <button class="toggle-btn" (click)="toggleSquadsDetails()">
+              <span class="btn-icon">{{
+                showSquadsDetails ? "👁️" : "🔒"
+              }}</span>
+              {{ showSquadsDetails ? "Ocultar" : "Mostrar" }} Detalles
+            </button>
+          </div>
+
+          <div class="card-content" *ngIf="!showSquadsDetails">
+            <div class="privacy-notice">
+              <span class="privacy-icon">🔒</span>
+              <p>Los detalles de los squads están ocultos por seguridad.</p>
+              <p class="privacy-subtitle">
+                Haz clic en "Mostrar Detalles" para visualizar la información.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-content" *ngIf="showSquadsDetails">
+            <div
+              class="squads-list"
+              *ngIf="getCurrentSquads().length > 0; else noSquadsData"
+            >
+              <div class="squad-item" *ngFor="let squad of getCurrentSquads()">
+                <div class="squad-header">
+                  <div class="squad-info">
+                    <h4 class="squad-name">{{ squad.name }}</h4>
+                    <p class="squad-master" *ngIf="squad.scrumMaster">
+                      <span class="label">Scrum Master:</span>
+                      {{ squad.scrumMaster }}
+                    </p>
+                  </div>
+                  <div class="squad-points">
+                    <span class="points-value">{{
+                      formatPoints(squad.totalPoints)
+                    }}</span>
+                    <span class="points-label">puntos</span>
+                  </div>
+                </div>
+
+                <div
+                  class="squad-developers"
+                  *ngIf="squad.developers && squad.developers.length > 0"
+                >
+                  <h5 class="developers-title">
+                    Desarrolladores ({{ squad.developers.length }}):
+                  </h5>
+                  <div class="developers-list">
+                    <span
+                      class="developer-tag"
+                      *ngFor="let dev of squad.developers"
+                    >
+                      {{ dev }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ng-template #noSquadsData>
+              <div class="no-data">
+                <span class="no-data-icon">📊</span>
+                <p>No hay datos de squads disponibles</p>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Individuals Data -->
+        <div class="visualization-card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <span class="card-icon">👥</span>
+              Datos Individuales ({{ getIndividualsCount() }})
+            </h3>
+            <button class="toggle-btn" (click)="toggleIndividualsDetails()">
+              <span class="btn-icon">{{
+                showIndividualsDetails ? "👁️" : "🔒"
+              }}</span>
+              {{ showIndividualsDetails ? "Ocultar" : "Mostrar" }} Detalles
+            </button>
+          </div>
+
+          <div class="card-content" *ngIf="!showIndividualsDetails">
+            <div class="privacy-notice">
+              <span class="privacy-icon">🔒</span>
+              <p>Los detalles individuales están ocultos por privacidad.</p>
+              <p class="privacy-subtitle">
+                Haz clic en "Mostrar Detalles" para visualizar la información.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-content" *ngIf="showIndividualsDetails">
+            <div
+              class="individuals-list"
+              *ngIf="getCurrentIndividuals().length > 0; else noIndividualsData"
+            >
+              <div
+                class="individual-item"
+                *ngFor="let individual of getCurrentIndividuals()"
+              >
+                <div class="individual-header">
+                  <div class="individual-info">
+                    <h4 class="individual-name">{{ individual.name }}</h4>
+                    <p class="individual-squad">
+                      <span class="label">Squad:</span>
+                      {{ individual.squadName }}
+                    </p>
+                    <p class="individual-position" *ngIf="individual.position">
+                      <span class="label">Posición:</span>
+                      {{ individual.position }}
+                    </p>
+                  </div>
+                  <div class="individual-stats">
+                    <div class="stat-item">
+                      <span class="stat-value">{{
+                        formatPoints(individual.totalPoints)
+                      }}</span>
+                      <span class="stat-label">puntos</span>
+                    </div>
+                    <div class="stat-item" *ngIf="individual.level">
+                      <span class="stat-value">{{ individual.level }}</span>
+                      <span class="stat-label">nivel</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="individual-details"
+                  *ngIf="
+                    individual.completedMissions || individual.specialChallenges
+                  "
+                >
+                  <div class="detail-item" *ngIf="individual.completedMissions">
+                    <span class="detail-icon">🎯</span>
+                    <span class="detail-text"
+                      >{{ individual.completedMissions }} misiones</span
+                    >
+                  </div>
+                  <div class="detail-item" *ngIf="individual.specialChallenges">
+                    <span class="detail-icon">⭐</span>
+                    <span class="detail-text"
+                      >{{ individual.specialChallenges }} desafíos</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ng-template #noIndividualsData>
+              <div class="no-data">
+                <span class="no-data-icon">👤</span>
+                <p>No hay datos individuales disponibles</p>
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>
@@ -233,7 +634,7 @@ Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
       <span class="message-icon">✅</span>
       {{ successMessage }}
     </div>
-    
+
     <div class="message error" *ngIf="errorMessage">
       <span class="message-icon">❌</span>
       {{ errorMessage }}
