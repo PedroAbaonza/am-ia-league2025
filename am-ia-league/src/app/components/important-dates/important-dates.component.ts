@@ -50,6 +50,14 @@ export class ImportantDatesComponent implements OnInit {
     });
   }
 
+  formatDateShort(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', { 
+      day: '2-digit', 
+      month: 'long'
+    });
+  }
+
   getEventStatus(dateString: string): string {
     const eventDate = new Date(dateString);
     const today = new Date();

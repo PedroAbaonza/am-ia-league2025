@@ -1,72 +1,152 @@
 [
   {
     "id": 1,
-    "title": "Inicio Ruta Cancún",
-    "type": "aws-training",
-    "date": "2024-09-26",
+    "title": "Working Hour - Inicio",
+    "type": "working-hours",
+    "date": "2024-09-29",
     "time": "09:00",
-    "description": "Lanzamiento oficial de la primera ruta de la liga",
-    "icon": "cloud",
-    "color": "#00AEEF"
+    "description": "Dudas y seguimiento inicial",
+    "icon": "code",
+    "color": "#8b5cf6"
   },
   {
     "id": 2,
-    "title": "Transición Ruta Bogotá",
-    "type": "demo",
-    "date": "2024-10-10",
+    "title": "AI Flight Tips #1",
+    "type": "aws-training",
+    "date": "2024-10-09",
     "time": "10:00",
-    "description": "Inicio de la segunda etapa - Ruta Bogotá",
-    "icon": "presentation",
-    "color": "#FF2D82"
+    "description": "AWS Training - Primera sesión",
+    "icon": "cloud",
+    "color": "#3b82f6"
   },
   {
     "id": 3,
-    "title": "Inicio Ruta Michoacán",
+    "title": "Working Hour",
     "type": "working-hours",
-    "date": "2024-10-24",
+    "date": "2024-10-13",
     "time": "09:00",
-    "description": "Comienzo de la tercera etapa especializada",
+    "description": "Seguimiento Ruta Bogotá",
     "icon": "code",
-    "color": "#00AEEF"
+    "color": "#8b5cf6"
   },
   {
     "id": 4,
-    "title": "Lanzamiento Ruta Ámsterdam",
+    "title": "AI Flight Tips #2",
     "type": "aws-training",
-    "date": "2024-11-07",
-    "time": "11:00",
-    "description": "Cuarta etapa enfocada en innovación",
+    "date": "2024-10-23",
+    "time": "10:00",
+    "description": "AWS Training - Segunda sesión",
     "icon": "cloud",
-    "color": "#FF2D82"
+    "color": "#3b82f6"
   },
   {
     "id": 5,
-    "title": "Inicio Ruta Tokio",
+    "title": "Demo Session",
     "type": "demo",
-    "date": "2024-11-21",
-    "time": "10:00",
-    "description": "Quinta y penúltima etapa de perfeccionamiento",
+    "date": "2024-10-24",
+    "time": "14:00",
+    "description": "Presentación de avances",
     "icon": "presentation",
-    "color": "#00AEEF"
+    "color": "#f59e0b"
   },
   {
     "id": 6,
-    "title": "Game Day Final - CDMX",
+    "title": "Working Hour",
     "type": "working-hours",
-    "date": "2024-12-05",
+    "date": "2024-10-27",
     "time": "09:00",
-    "description": "Gran final de la liga en Ciudad de México",
+    "description": "Seguimiento Ruta Michoacán",
     "icon": "code",
-    "color": "#FF9500"
+    "color": "#8b5cf6"
   },
   {
     "id": 7,
-    "title": "Cierre Game Day Final",
+    "title": "AI Flight Tips #3",
+    "type": "aws-training",
+    "date": "2024-11-06",
+    "time": "10:00",
+    "description": "AWS Training - Tercera sesión",
+    "icon": "cloud",
+    "color": "#3b82f6"
+  },
+  {
+    "id": 8,
+    "title": "Demo Session",
     "type": "demo",
-    "date": "2024-12-12",
-    "time": "18:00",
-    "description": "Ceremonia de clausura y premiación",
+    "date": "2024-11-07",
+    "time": "14:00",
+    "description": "Presentación de avances",
     "icon": "presentation",
-    "color": "#FF9500"
+    "color": "#f59e0b"
+  },
+  {
+    "id": 9,
+    "title": "Working Hour",
+    "type": "working-hours",
+    "date": "2024-11-10",
+    "time": "09:00",
+    "description": "Seguimiento Ruta Ámsterdam",
+    "icon": "code",
+    "color": "#8b5cf6"
+  },
+  {
+    "id": 10,
+    "title": "AI Flight Tips #4",
+    "type": "aws-training",
+    "date": "2024-11-20",
+    "time": "10:00",
+    "description": "AWS Training - Cuarta sesión",
+    "icon": "cloud",
+    "color": "#3b82f6"
+  },
+  {
+    "id": 11,
+    "title": "Demo Session",
+    "type": "demo",
+    "date": "2024-11-21",
+    "time": "14:00",
+    "description": "Presentación de avances",
+    "icon": "presentation",
+    "color": "#f59e0b"
+  },
+  {
+    "id": 12,
+    "title": "Working Hour",
+    "type": "working-hours",
+    "date": "2024-11-24",
+    "time": "09:00",
+    "description": "Seguimiento Ruta Tokio",
+    "icon": "code",
+    "color": "#8b5cf6"
+  },
+  {
+    "id": 13,
+    "title": "AI Flight Tips #5",
+    "type": "aws-training",
+    "date": "2024-12-04",
+    "time": "10:00",
+    "description": "AWS Training - Sesión final",
+    "icon": "cloud",
+    "color": "#3b82f6"
+  },
+  {
+    "id": 14,
+    "title": "Demo Final",
+    "type": "demo",
+    "date": "2024-12-05",
+    "time": "14:00",
+    "description": "Presentación final",
+    "icon": "presentation",
+    "color": "#f59e0b"
+  },
+  {
+    "id": 15,
+    "title": "Working Hour Final",
+    "type": "working-hours",
+    "date": "2024-12-08",
+    "time": "09:00",
+    "description": "Preparación Game Day",
+    "icon": "code",
+    "color": "#8b5cf6"
   }
 ]

@@ -1,67 +1,78 @@
 <section class="important-dates">
   <div class="container">
-    <h2 class="section-title gradient-text">Fechas Importantes</h2>
-    
-    <div class="events-grid">
-      <div class="event-card" 
-           *ngFor="let event of events"
-           [style.border-color]="event.color"
-           [class]="'event-type-' + event.type">
-        
-        <div class="event-icon" [style.background]="event.color">
-          <span class="icon">{{ getEventIcon(event.icon) }}</span>
-        </div>
-        
-        <div class="event-content">
-          <div class="event-header">
-            <h3 class="event-title">{{ event.title }}</h3>
-            <div class="event-type-badge" [style.background]="event.color">
-              {{ getEventTypeText(event.type) }}
-            </div>
-          </div>
-          
-          <p class="event-description">{{ event.description }}</p>
-          
-          <div class="event-datetime">
-            <div class="event-date font-mono">
-              <span class="date-icon">📅</span>
-              {{ formatDate(event.date) }}
-            </div>
-            <div class="event-time font-mono">
-              <span class="time-icon">🕐</span>
-              {{ event.time }}
-            </div>
-          </div>
-        </div>
-        
-        <div class="event-status" [class]="getEventStatus(event.date)">
-          <span class="status-text">{{ getEventStatusText(event.date) }}</span>
-        </div>
-      </div>
+    <div class="section-header">
+      <h2 class="section-title">Fechas Importantes</h2>
+      <p class="section-subtitle">Mantente al día con todos los entrenamientos, demos y sesiones de seguimiento</p>
     </div>
     
-    <!-- Filtros -->
+    <!-- Filtros superiores -->
     <div class="event-filters">
       <button class="filter-btn" 
               [class.active]="selectedFilter === 'all'"
               (click)="filterEvents('all')">
-        Todos los Eventos
+        <span class="filter-icon">📅</span>
+        Todos
       </button>
       <button class="filter-btn" 
               [class.active]="selectedFilter === 'aws-training'"
               (click)="filterEvents('aws-training')">
-        AWS Trainings
+        <span class="filter-icon">☁️</span>
+        Entrenamientos
       </button>
       <button class="filter-btn" 
               [class.active]="selectedFilter === 'demo'"
               (click)="filterEvents('demo')">
-        Demo Sessions
+        <span class="filter-icon">📊</span>
+        Demos
       </button>
       <button class="filter-btn" 
               [class.active]="selectedFilter === 'working-hours'"
               (click)="filterEvents('working-hours')">
+        <span class="filter-icon">💻</span>
         Working Hours
       </button>
+    </div>
+    
+    <div class="events-grid">
+      <div class="event-card" 
+           *ngFor="let event of filteredEvents"
+           [class]="'event-status-' + getEventStatus(event.date)">
+        
+        <div class="event-header">
+          <div class="event-type-badge" [class]="'type-' + event.type">
+            <span class="type-icon">{{ getEventIcon(event.icon) }}</span>
+            <span class="type-text">{{ getEventTypeText(event.type) }}</span>
+          </div>
+          <div class="event-duration" *ngIf="event.type === 'demo'">
+            <span class="duration-text">30 minutos</span>
+          </div>
+        </div>
+        
+        <div class="event-content">
+          <h3 class="event-title">{{ event.title }}</h3>
+          <div class="event-date">
+            <span class="date-icon">📅</span>
+            <span class="date-text">{{ formatDateShort(event.date) }}</span>
+          </div>
+          <p class="event-description">{{ event.description }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Leyenda de tipos -->
+    <div class="legend">
+      <div class="legend-item">
+        <span class="legend-icon training">☁️</span>
+        <span class="legend-text">AWS Trainings</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon demo">📊</span>
+        <span class="legend-text">Demo Sessions</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-icon working">💻</span>
+        <span class="legend-text">Working Hours</span>
+      </div>
     </div>
   </div>
 </section>
