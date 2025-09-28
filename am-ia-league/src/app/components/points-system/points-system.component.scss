@@ -1,0 +1,253 @@
+.points-system {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, rgba(255, 45, 130, 0.05) 0%, transparent 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.points-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.points-column {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.column-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.missions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mission-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--aviation-blue);
+  }
+}
+
+.mission-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  
+  &.icon-amazon-q {
+    background: linear-gradient(135deg, #FF9500, #FFB84D);
+    color: white;
+  }
+  
+  &.icon-ai-flight-tips {
+    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    color: white;
+  }
+  
+  &.icon-code-increment {
+    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    color: white;
+  }
+  
+  &.icon-jira {
+    background: linear-gradient(135deg, #0052CC, #2684FF);
+    color: white;
+  }
+}
+
+.mission-info {
+  flex: 1;
+}
+
+.mission-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.mission-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.mission-points {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--aviation-blue);
+}
+
+.challenges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.challenge-card {
+  padding: 2rem;
+  background: rgba(255, 45, 130, 0.1);
+  border: 2px solid var(--squadron-pink);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.challenge-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.bonus-points {
+  background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.challenge-description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.challenge-deadline {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.deadline-label {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.deadline-date {
+  color: var(--squadron-pink);
+  font-weight: 600;
+}
+
+.calculation-example {
+  background: var(--card-bg);
+  border: 2px solid var(--aviation-blue);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.example-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.calculation-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.calc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  
+  &.total {
+    background: rgba(0, 174, 239, 0.1);
+    border: 1px solid var(--aviation-blue);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.calc-label {
+  color: var(--text-secondary);
+}
+
+.calc-value {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .points-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .mission-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .challenge-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .calc-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

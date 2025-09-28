@@ -1,0 +1,66 @@
+{
+  "missions": [
+    {
+      "id": 1,
+      "name": "Amazon Q Developer",
+      "type": "amazon-q",
+      "points": 100,
+      "routeId": 1,
+      "description": "Configurar y usar Amazon Q para desarrollo"
+    },
+    {
+      "id": 2,
+      "name": "AI Flight Tips - Básico",
+      "type": "ai-flight-tips",
+      "points": 150,
+      "routeId": 1,
+      "description": "Implementar tips de vuelo con IA básica"
+    },
+    {
+      "id": 3,
+      "name": "Incremento de Código IA",
+      "type": "code-increment",
+      "points": 200,
+      "routeId": 1,
+      "description": "Mejorar código existente con IA"
+    },
+    {
+      "id": 4,
+      "name": "Jira Integration",
+      "type": "jira",
+      "points": 120,
+      "routeId": 1,
+      "description": "Integrar IA con workflows de Jira"
+    }
+  ],
+  "specialChallenges": [
+    {
+      "id": 1,
+      "name": "Hackathon IA Aeroméxico",
+      "bonusPoints": 500,
+      "deadline": "2025-03-15",
+      "description": "Desarrollar solución IA innovadora para Aeroméxico"
+    },
+    {
+      "id": 2,
+      "name": "Optimización de Rutas",
+      "bonusPoints": 300,
+      "deadline": "2025-04-20",
+      "description": "Algoritmo IA para optimizar rutas de vuelo"
+    },
+    {
+      "id": 3,
+      "name": "Chatbot Inteligente",
+      "bonusPoints": 400,
+      "deadline": "2025-05-25",
+      "description": "Bot conversacional para atención al cliente"
+    },
+    {
+      "id": 4,
+      "name": "Predicción de Demanda",
+      "bonusPoints": 350,
+      "deadline": "2025-06-30",
+      "description": "Modelo predictivo para demanda de vuelos"
+    }
+  ]
+}

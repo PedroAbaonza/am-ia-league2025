@@ -1,0 +1,138 @@
+<div class="leaderboard-page">
+  <div class="page-header">
+    <h1 class="page-title gradient-text">Squad Leaderboard</h1>
+    <p class="page-subtitle">Ranking de equipos por puntos acumulados</p>
+  </div>
+
+  <!-- Podio Top 3 -->
+  <div class="podium-section">
+    <div class="podium">
+      <!-- Segundo Lugar -->
+      <div class="podium-place second" *ngIf="topSquads[1]">
+        <div class="podium-card glow-blue">
+          <div class="position-badge silver">2</div>
+          <h3 class="squad-name">{{ topSquads[1].name }}</h3>
+          <div class="squad-points font-mono">
+            {{ topSquads[1].totalPoints.toLocaleString() }}pts
+          </div>
+          <div class="squad-members">
+            <div class="member-count">
+              {{ topSquads[1].developers.length + 1 }} miembros
+            </div>
+          </div>
+        </div>
+        <div class="podium-base second-base"></div>
+      </div>
+
+      <!-- Primer Lugar -->
+      <div class="podium-place first" *ngIf="topSquads[0]">
+        <div class="podium-card glow-pink winner">
+          <div class="crown">👑</div>
+          <div class="position-badge gold">1</div>
+          <h3 class="squad-name">{{ topSquads[0].name }}</h3>
+          <div class="squad-points font-mono">
+            {{ topSquads[0].totalPoints.toLocaleString() }}pts
+          </div>
+          <div class="squad-members">
+            <div class="member-count">
+              {{ topSquads[0].developers.length + 1 }} miembros
+            </div>
+          </div>
+        </div>
+        <div class="podium-base first-base"></div>
+      </div>
+
+      <!-- Tercer Lugar -->
+      <div class="podium-place third" *ngIf="topSquads[2]">
+        <div class="podium-card glow-blue">
+          <div class="position-badge bronze">3</div>
+          <h3 class="squad-name">{{ topSquads[2].name }}</h3>
+          <div class="squad-points font-mono">
+            {{ topSquads[2].totalPoints.toLocaleString() }}pts
+          </div>
+          <div class="squad-members">
+            <div class="member-count">
+              {{ topSquads[2].developers.length + 1 }} miembros
+            </div>
+          </div>
+        </div>
+        <div class="podium-base third-base"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla Completa -->
+  <div class="leaderboard-table">
+    <h2 class="table-title">Ranking Completo</h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <div class="header-cell position">Pos</div>
+        <div class="header-cell squad">Squad</div>
+        <div class="header-cell members">Miembros</div>
+        <div class="header-cell points">Puntos</div>
+        <div class="header-cell progress">Progreso</div>
+      </div>
+
+      <div class="table-body">
+        <div
+          class="table-row"
+          *ngFor="let squad of squads; let i = index"
+          [class]="'position-' + (i + 1)"
+        >
+          <div class="table-cell position">
+            <div
+              class="position-number"
+              [style.background]="getPositionColor(i + 1)"
+            >
+              {{ i + 1 }}
+            </div>
+          </div>
+
+          <div class="table-cell squad">
+            <div class="squad-info">
+              <h4 class="squad-name">{{ squad.name }}</h4>
+              <div class="scrum-master">SM: {{ squad.scrumMaster }}</div>
+            </div>
+          </div>
+
+          <div class="table-cell members">
+            <div class="members-avatars">
+              <div
+                class="avatar"
+                *ngFor="let dev of squad.developers.slice(0, 3)"
+                [style.background]="squad.color"
+              >
+                {{ getInitials(dev) }}
+              </div>
+              <div class="more-members" *ngIf="squad.developers.length > 3">
+                +{{ squad.developers.length - 3 }}
+              </div>
+            </div>
+          </div>
+
+          <div class="table-cell points">
+            <div class="points-value font-mono" [style.color]="squad.color">
+              {{ squad.totalPoints.toLocaleString() }}
+            </div>
+          </div>
+
+          <div class="table-cell progress">
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  [style.width]="getProgressPercentage(squad.totalPoints) + '%'"
+                  [style.background]="squad.color"
+                ></div>
+              </div>
+              <span class="progress-text"
+                >{{ getProgressPercentage(squad.totalPoints) }}%</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

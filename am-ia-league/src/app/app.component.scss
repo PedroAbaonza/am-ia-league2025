@@ -1,0 +1,10 @@
+.main-content {
+  min-height: 100vh;
+  padding-top: 80px; // Espacio para la navbar fija
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 70px;
+  }
+}

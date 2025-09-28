@@ -1,0 +1,152 @@
+<div class="individual-page">
+  <div class="page-header">
+    <h1 class="page-title gradient-text">Ranking Individual</h1>
+    <p class="page-subtitle">Top 30 desarrolladores por puntos individuales</p>
+  </div>
+  
+  <!-- Podio Top 3 -->
+  <div class="podium-section">
+    <div class="podium">
+      <!-- Segundo Lugar -->
+      <div class="podium-place second" *ngIf="topIndividuals[1]">
+        <div class="podium-card glow-blue">
+          <div class="position-badge silver">2</div>
+          <div class="developer-avatar" [style.background]="getSquadColor(topIndividuals[1].squadId)">
+            {{ topIndividuals[1].avatar }}
+          </div>
+          <h3 class="developer-name">{{ topIndividuals[1].name }}</h3>
+          <div class="developer-points font-mono">{{ topIndividuals[1].totalPoints }}pts</div>
+          <div class="developer-info">
+            <div class="squad-name">{{ topIndividuals[1].squadName }}</div>
+            <div class="position">{{ topIndividuals[1].position }}</div>
+          </div>
+        </div>
+        <div class="podium-base second-base"></div>
+      </div>
+      
+      <!-- Primer Lugar -->
+      <div class="podium-place first" *ngIf="topIndividuals[0]">
+        <div class="podium-card glow-pink winner">
+          <div class="crown">👑</div>
+          <div class="position-badge gold">1</div>
+          <div class="developer-avatar" [style.background]="getSquadColor(topIndividuals[0].squadId)">
+            {{ topIndividuals[0].avatar }}
+          </div>
+          <h3 class="developer-name">{{ topIndividuals[0].name }}</h3>
+          <div class="developer-points font-mono">{{ topIndividuals[0].totalPoints }}pts</div>
+          <div class="developer-info">
+            <div class="squad-name">{{ topIndividuals[0].squadName }}</div>
+            <div class="position">{{ topIndividuals[0].position }}</div>
+          </div>
+        </div>
+        <div class="podium-base first-base"></div>
+      </div>
+      
+      <!-- Tercer Lugar -->
+      <div class="podium-place third" *ngIf="topIndividuals[2]">
+        <div class="podium-card glow-blue">
+          <div class="position-badge bronze">3</div>
+          <div class="developer-avatar" [style.background]="getSquadColor(topIndividuals[2].squadId)">
+            {{ topIndividuals[2].avatar }}
+          </div>
+          <h3 class="developer-name">{{ topIndividuals[2].name }}</h3>
+          <div class="developer-points font-mono">{{ topIndividuals[2].totalPoints }}pts</div>
+          <div class="developer-info">
+            <div class="squad-name">{{ topIndividuals[2].squadName }}</div>
+            <div class="position">{{ topIndividuals[2].position }}</div>
+          </div>
+        </div>
+        <div class="podium-base third-base"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Filtros -->
+  <div class="filters-section">
+    <div class="filter-buttons">
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'all'"
+              (click)="filterByLevel('all')">
+        Todos
+      </button>
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'Expert'"
+              (click)="filterByLevel('Expert')">
+        Expert
+      </button>
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'Advanced'"
+              (click)="filterByLevel('Advanced')">
+        Advanced
+      </button>
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'Intermediate'"
+              (click)="filterByLevel('Intermediate')">
+        Intermediate
+      </button>
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'Beginner'"
+              (click)="filterByLevel('Beginner')">
+        Beginner
+      </button>
+    </div>
+  </div>
+  
+  <!-- Lista de Desarrolladores -->
+  <div class="developers-grid">
+    <div class="developer-card" 
+         *ngFor="let dev of filteredIndividuals; let i = index"
+         [class]="'position-' + (getOriginalPosition(dev))">
+      
+      <div class="card-header">
+        <div class="position-number" 
+             [style.background]="getPositionColor(getOriginalPosition(dev))">
+          {{ getOriginalPosition(dev) }}
+        </div>
+        <div class="level-badge" [class]="'level-' + dev.level.toLowerCase()">
+          {{ dev.level }}
+        </div>
+      </div>
+      
+      <div class="developer-main">
+        <div class="developer-avatar large" [style.background]="getSquadColor(dev.squadId)">
+          {{ dev.avatar }}
+        </div>
+        <div class="developer-details">
+          <h3 class="developer-name">{{ dev.name }}</h3>
+          <div class="developer-position">{{ dev.position }}</div>
+          <div class="squad-info">
+            <span class="squad-badge" [style.background]="getSquadColor(dev.squadId)">
+              {{ dev.squadName }}
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="developer-stats">
+        <div class="stat-item">
+          <div class="stat-value font-mono">{{ dev.totalPoints }}</div>
+          <div class="stat-label">Puntos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value font-mono">{{ dev.completedMissions }}</div>
+          <div class="stat-label">Misiones</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value font-mono">{{ dev.specialChallenges }}</div>
+          <div class="stat-label">Retos</div>
+        </div>
+      </div>
+      
+      <div class="progress-section">
+        <div class="progress-bar">
+          <div class="progress-fill" 
+               [style.width]="getProgressPercentage(dev.totalPoints) + '%'"
+               [style.background]="getSquadColor(dev.squadId)">
+          </div>
+        </div>
+        <div class="progress-text">{{ getProgressPercentage(dev.totalPoints) }}% del líder</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<section class="squads-overview">
+  <div class="container">
+    <h2 class="section-title gradient-text">Estructura de Squads</h2>
+    
+    <!-- Stats Generales -->
+    <div class="squad-stats">
+      <div class="stat-circle glow-blue">
+        <div class="stat-number font-mono">6</div>
+        <div class="stat-label">Squads Totales</div>
+      </div>
+      <div class="stat-circle glow-pink">
+        <div class="stat-number font-mono">5</div>
+        <div class="stat-label">Desarrolladores por Squad</div>
+      </div>
+      <div class="stat-circle glow-blue">
+        <div class="stat-number font-mono">1</div>
+        <div class="stat-label">Scrum Master</div>
+      </div>
+    </div>
+    
+    <!-- Grid de Squads -->
+    <div class="squads-grid">
+      <div class="squad-card" 
+           *ngFor="let squad of squads; let i = index"
+           [style.border-color]="squad.color"
+           [class.glow-blue]="squad.color === '#00AEEF'"
+           [class.glow-pink]="squad.color === '#FF2D82'">
+        
+        <div class="squad-header">
+          <h3 class="squad-name">{{ squad.name }}</h3>
+          <div class="squad-points font-mono" [style.color]="squad.color">
+            {{ squad.totalPoints.toLocaleString() }}pts
+          </div>
+        </div>
+        
+        <div class="squad-position">
+          <span class="position-badge" 
+                [class]="'position-' + (i + 1)"
+                [style.background]="getPositionColor(i + 1)">
+            #{{ i + 1 }}
+          </span>
+        </div>
+        
+        <div class="scrum-master">
+          <div class="role-label">Scrum Master</div>
+          <div class="member-name">{{ squad.scrumMaster }}</div>
+        </div>
+        
+        <div class="developers">
+          <div class="role-label">Desarrolladores</div>
+          <div class="developers-list">
+            <div class="developer-item" *ngFor="let dev of squad.developers">
+              <div class="developer-avatar" [style.background]="squad.color">
+                {{ getInitials(dev) }}
+              </div>
+              <span class="developer-name">{{ dev }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="squad-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" 
+                 [style.width]="getProgressPercentage(squad.totalPoints) + '%'"
+                 [style.background]="squad.color">
+            </div>
+          </div>
+          <div class="progress-text">
+            {{ getProgressPercentage(squad.totalPoints) }}% del objetivo
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

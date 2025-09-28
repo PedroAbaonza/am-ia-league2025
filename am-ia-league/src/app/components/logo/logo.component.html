@@ -1,0 +1,18 @@
+<div class="logo-container" [class]="'logo-' + type + ' logo-' + size">
+  <img 
+    [src]="getLogoSrc()"
+    [alt]="getLogoAlt()"
+    [class]="'logo-image logo-' + type"
+    (error)="onImageError($event)"
+    (load)="onImageLoad()">
+  
+  <!-- Fallback content -->
+  <div class="logo-fallback" [style.display]="showFallback ? 'flex' : 'none'">
+    <span class="fallback-icon" *ngIf="type === 'aeromexico'">✈️</span>
+    <span class="fallback-icon" *ngIf="type === 'ai-league'">🚀</span>
+    <div class="fallback-text" *ngIf="showText">
+      <span class="brand-name gradient-text" *ngIf="type === 'aeromexico'">Aeroméxico</span>
+      <span class="brand-name gradient-text" *ngIf="type === 'ai-league'">AI League 2025</span>
+    </div>
+  </div>
+</div>

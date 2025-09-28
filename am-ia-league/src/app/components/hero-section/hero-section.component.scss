@@ -1,0 +1,161 @@
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.hero-logo-container {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ai-league-logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  filter: drop-shadow(0 0 20px rgba(0, 174, 239, 0.4));
+  animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  from {
+    filter: drop-shadow(0 0 20px rgba(0, 174, 239, 0.4));
+  }
+  to {
+    filter: drop-shadow(0 0 30px rgba(255, 45, 130, 0.4));
+  }
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--aviation-blue);
+  }
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  &.primary {
+    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    color: var(--text-primary);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--glow-blue);
+    }
+  }
+  
+  &.secondary {
+    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    color: var(--text-primary);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--glow-pink);
+    }
+  }
+  
+  &.tertiary {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 2px solid var(--card-border);
+    
+    &:hover {
+      border-color: var(--aviation-blue);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    
+    .cta-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}

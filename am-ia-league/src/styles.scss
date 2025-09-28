@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+// Paleta de colores Aeroméxico AI League
+:root {
+  --deep-space-blue: #0A1033;
+  --aviation-blue: #00AEEF;
+  --sky-blue-neon: #00D4FF;
+  --squadron-pink: #FF2D82;
+  --text-primary: #FFFFFF;
+  --text-secondary: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --glow-blue: 0 0 20px rgba(0, 174, 239, 0.3);
+  --glow-pink: 0 0 20px rgba(255, 45, 130, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--deep-space-blue);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-top: 0;
+}
+
+// Fondo con estrellas
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+// Tipografías
+.font-primary {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+// Utilidades
+.gradient-text {
+  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-blue {
+  box-shadow: var(--glow-blue);
+}
+
+.glow-pink {
+  box-shadow: var(--glow-pink);
+}

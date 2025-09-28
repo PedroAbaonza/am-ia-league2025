@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Alpha Squadron",
+    "scrumMaster": "María González",
+    "developers": [
+      "Carlos Rodríguez",
+      "Ana Martínez",
+      "Luis Hernández",
+      "Sofia López",
+      "Diego Ramírez"
+    ],
+    "totalPoints": 2450,
+    "color": "#00AEEF"
+  },
+  {
+    "id": 2,
+    "name": "Beta Flight",
+    "scrumMaster": "Roberto Silva",
+    "developers": [
+      "Elena Vargas",
+      "Miguel Torres",
+      "Carmen Jiménez",
+      "Andrés Morales",
+      "Lucía Castillo"
+    ],
+    "totalPoints": 2380,
+    "color": "#FF2D82"
+  },
+  {
+    "id": 3,
+    "name": "Gamma Wings",
+    "scrumMaster": "Patricia Ruiz",
+    "developers": [
+      "Fernando Ortega",
+      "Valeria Mendoza",
+      "Javier Peña",
+      "Isabella Cruz",
+      "Sebastián Vega"
+    ],
+    "totalPoints": 2320,
+    "color": "#00AEEF"
+  },
+  {
+    "id": 4,
+    "name": "Delta Force",
+    "scrumMaster": "Alejandro Núñez",
+    "developers": [
+      "Gabriela Soto",
+      "Ricardo Flores",
+      "Natalia Guerrero",
+      "Emilio Ramos",
+      "Camila Herrera"
+    ],
+    "totalPoints": 2290,
+    "color": "#FF2D82"
+  },
+  {
+    "id": 5,
+    "name": "Echo Team",
+    "scrumMaster": "Mónica Delgado",
+    "developers": [
+      "Arturo Medina",
+      "Daniela Aguilar",
+      "Óscar Romero",
+      "Paola Sandoval",
+      "Rodrigo Espinoza"
+    ],
+    "totalPoints": 2250,
+    "color": "#00AEEF"
+  },
+  {
+    "id": 6,
+    "name": "Foxtrot Squad",
+    "scrumMaster": "Héctor Campos",
+    "developers": [
+      "Alejandra Molina",
+      "Iván Contreras",
+      "Mariana Valdez",
+      "Nicolás Ibarra",
+      "Renata Fuentes"
+    ],
+    "totalPoints": 2180,
+    "color": "#FF2D82"
+  }
+]

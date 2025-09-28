@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Fundamentos de IA",
+    "startDate": "2025-01-15",
+    "endDate": "2025-02-12",
+    "status": "completed",
+    "description": "Introducción a conceptos básicos de inteligencia artificial",
+    "color": "#00AEEF"
+  },
+  {
+    "id": 2,
+    "name": "Machine Learning Básico",
+    "startDate": "2025-02-13",
+    "endDate": "2025-03-12",
+    "status": "in-progress",
+    "description": "Algoritmos fundamentales de aprendizaje automático",
+    "color": "#FF2D82"
+  },
+  {
+    "id": 3,
+    "name": "Deep Learning",
+    "startDate": "2025-03-13",
+    "endDate": "2025-04-09",
+    "status": "upcoming",
+    "description": "Redes neuronales y aprendizaje profundo",
+    "color": "#00AEEF"
+  },
+  {
+    "id": 4,
+    "name": "NLP & Procesamiento",
+    "startDate": "2025-04-10",
+    "endDate": "2025-05-07",
+    "status": "upcoming",
+    "description": "Procesamiento de lenguaje natural",
+    "color": "#FF2D82"
+  },
+  {
+    "id": 5,
+    "name": "Computer Vision",
+    "startDate": "2025-05-08",
+    "endDate": "2025-06-04",
+    "status": "upcoming",
+    "description": "Visión por computadora y análisis de imágenes",
+    "color": "#00AEEF"
+  },
+  {
+    "id": 6,
+    "name": "IA en Producción",
+    "startDate": "2025-06-05",
+    "endDate": "2025-07-02",
+    "status": "upcoming",
+    "description": "Implementación y despliegue de modelos IA",
+    "color": "#FF2D82"
+  }
+]

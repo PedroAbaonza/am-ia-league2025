@@ -1,0 +1,357 @@
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--deep-space-blue) 0%, rgba(0, 46, 109, 0.5) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.error-container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.airplane-animation {
+  position: relative;
+  height: 100px;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.airplane {
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fly 8s linear infinite;
+  filter: drop-shadow(0 0 10px var(--aviation-blue));
+}
+
+.flight-path {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--aviation-blue) 20%, 
+    var(--aviation-blue) 80%, 
+    transparent 100%);
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+@keyframes fly {
+  0% {
+    left: -100px;
+    transform: translateY(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-60%) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-40%) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-55%) rotate(-3deg);
+  }
+  100% {
+    left: calc(100% + 100px);
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+
+.error-content {
+  position: relative;
+}
+
+.error-code {
+  font-size: clamp(4rem, 15vw, 8rem);
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(0, 174, 239, 0.5);
+}
+
+.error-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.error-message {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flight-info {
+  margin-bottom: 3rem;
+}
+
+.flight-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.flight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.flight-number {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.flight-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  &.error {
+    background: rgba(239, 68, 68, 0.2);
+    color: #EF4444;
+  }
+}
+
+.flight-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.airport {
+  flex: 1;
+  text-align: center;
+}
+
+.airport-code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.airport-name {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.flight-arrow {
+  font-size: 2rem;
+  color: var(--aviation-blue);
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  
+  &.primary {
+    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    color: white;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--glow-blue);
+    }
+  }
+  
+  &.secondary {
+    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    color: white;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--glow-pink);
+    }
+  }
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+.suggested-routes {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.suggestions-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.routes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.route-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--aviation-blue);
+    transform: translateX(5px);
+  }
+}
+
+.route-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  text-align: center;
+}
+
+.route-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 150px;
+}
+
+.route-description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cloud {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+  
+  &.cloud-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  &.cloud-2 {
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+  }
+  
+  &.cloud-3 {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: 4s;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .not-found-page {
+    padding: 1rem;
+  }
+  
+  .airplane {
+    font-size: 2rem;
+  }
+  
+  .flight-route {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .flight-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+    align-items: center;
+    
+    .nav-btn {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+  }
+  
+  .route-link {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .route-name {
+    min-width: auto;
+  }
+}

@@ -1,0 +1,185 @@
+.routes-timeline {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 174, 239, 0.05) 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--aviation-blue), var(--squadron-pink));
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  
+  &.left .timeline-content {
+    margin-right: 55%;
+    text-align: right;
+    
+    .timeline-marker {
+      right: -2rem;
+    }
+  }
+  
+  &.right .timeline-content {
+    margin-left: 55%;
+    text-align: left;
+    
+    .timeline-marker {
+      left: -2rem;
+    }
+  }
+}
+
+.timeline-content {
+  position: relative;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  &.status-completed {
+    border-color: #10B981;
+    background: rgba(16, 185, 129, 0.1);
+  }
+  
+  &.status-in-progress {
+    border-color: var(--aviation-blue);
+    background: rgba(0, 174, 239, 0.1);
+  }
+  
+  &.status-upcoming {
+    border-color: var(--text-muted);
+    background: rgba(156, 163, 175, 0.1);
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--deep-space-blue);
+  
+  .marker-inner {
+    width: 12px;
+    height: 12px;
+    background: var(--text-primary);
+    border-radius: 50%;
+  }
+}
+
+.route-card {
+  padding: 2rem;
+}
+
+.route-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.route-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.route-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  &.status-completed {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+  }
+  
+  &.status-in-progress {
+    background: rgba(0, 174, 239, 0.2);
+    color: var(--aviation-blue);
+  }
+  
+  &.status-upcoming {
+    background: rgba(156, 163, 175, 0.2);
+    color: var(--text-muted);
+  }
+}
+
+.route-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.route-dates {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 2rem;
+  }
+  
+  .timeline-item {
+    &.left .timeline-content,
+    &.right .timeline-content {
+      margin-left: 4rem;
+      margin-right: 0;
+      text-align: left;
+      
+      .timeline-marker {
+        left: -3rem;
+        right: auto;
+      }
+    }
+  }
+  
+  .route-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

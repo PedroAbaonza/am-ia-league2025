@@ -1,0 +1,225 @@
+.important-dates {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, rgba(255, 45, 130, 0.03) 0%, transparent 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.event-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  &.event-type-aws-training {
+    background: rgba(255, 149, 0, 0.05);
+  }
+  
+  &.event-type-demo {
+    background: rgba(0, 174, 239, 0.05);
+  }
+  
+  &.event-type-working-hours {
+    background: rgba(255, 45, 130, 0.05);
+  }
+}
+
+.event-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  .icon {
+    font-size: 1.5rem;
+  }
+}
+
+.event-content {
+  flex: 1;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.event-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.event-type-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.event-datetime {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.event-date,
+.event-time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.date-icon,
+.time-icon {
+  font-size: 1rem;
+}
+
+.event-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  &.past {
+    background: rgba(156, 163, 175, 0.2);
+    color: var(--text-muted);
+  }
+  
+  &.today {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+    animation: pulse 2s infinite;
+  }
+  
+  &.upcoming {
+    background: rgba(255, 45, 130, 0.2);
+    color: var(--squadron-pink);
+  }
+  
+  &.future {
+    background: rgba(0, 174, 239, 0.2);
+    color: var(--aviation-blue);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.event-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    border-color: var(--aviation-blue);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    border-color: var(--aviation-blue);
+    color: white;
+    box-shadow: var(--glow-blue);
+  }
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .event-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .event-datetime {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .event-status {
+    position: static;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .filter-btn {
+    flex: 1;
+    min-width: 120px;
+  }
+}

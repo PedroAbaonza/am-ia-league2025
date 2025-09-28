@@ -1,0 +1,67 @@
+<section class="important-dates">
+  <div class="container">
+    <h2 class="section-title gradient-text">Fechas Importantes</h2>
+    
+    <div class="events-grid">
+      <div class="event-card" 
+           *ngFor="let event of events"
+           [style.border-color]="event.color"
+           [class]="'event-type-' + event.type">
+        
+        <div class="event-icon" [style.background]="event.color">
+          <span class="icon">{{ getEventIcon(event.icon) }}</span>
+        </div>
+        
+        <div class="event-content">
+          <div class="event-header">
+            <h3 class="event-title">{{ event.title }}</h3>
+            <div class="event-type-badge" [style.background]="event.color">
+              {{ getEventTypeText(event.type) }}
+            </div>
+          </div>
+          
+          <p class="event-description">{{ event.description }}</p>
+          
+          <div class="event-datetime">
+            <div class="event-date font-mono">
+              <span class="date-icon">📅</span>
+              {{ formatDate(event.date) }}
+            </div>
+            <div class="event-time font-mono">
+              <span class="time-icon">🕐</span>
+              {{ event.time }}
+            </div>
+          </div>
+        </div>
+        
+        <div class="event-status" [class]="getEventStatus(event.date)">
+          <span class="status-text">{{ getEventStatusText(event.date) }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Filtros -->
+    <div class="event-filters">
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'all'"
+              (click)="filterEvents('all')">
+        Todos los Eventos
+      </button>
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'aws-training'"
+              (click)="filterEvents('aws-training')">
+        AWS Trainings
+      </button>
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'demo'"
+              (click)="filterEvents('demo')">
+        Demo Sessions
+      </button>
+      <button class="filter-btn" 
+              [class.active]="selectedFilter === 'working-hours'"
+              (click)="filterEvents('working-hours')">
+        Working Hours
+      </button>
+    </div>
+  </div>
+</section>

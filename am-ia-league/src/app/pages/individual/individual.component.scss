@@ -1,0 +1,424 @@
+.individual-page {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(180deg, var(--deep-space-blue) 0%, rgba(0, 46, 109, 0.3) 100%);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.podium-section {
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+}
+
+.podium {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 2rem;
+  height: 450px;
+}
+
+.podium-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &.first {
+    order: 2;
+    z-index: 3;
+  }
+  
+  &.second {
+    order: 1;
+    z-index: 2;
+  }
+  
+  &.third {
+    order: 3;
+    z-index: 1;
+  }
+}
+
+.podium-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  margin-bottom: 1rem;
+  min-width: 220px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  &.winner {
+    border-color: var(--squadron-pink);
+    background: rgba(255, 45, 130, 0.1);
+  }
+}
+
+.crown {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px #FFD700);
+}
+
+.position-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 auto 1rem;
+  color: white;
+  
+  &.gold {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  
+  &.silver {
+    background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+  }
+  
+  &.bronze {
+    background: linear-gradient(135deg, #CD7F32, #B8860B);
+    box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
+  }
+}
+
+.developer-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.developer-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.developer-points {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--aviation-blue);
+  margin-bottom: 1rem;
+}
+
+.developer-info {
+  .squad-name {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .position {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+}
+
+.podium-base {
+  border-radius: 8px 8px 0 0;
+  
+  &.first-base {
+    width: 120px;
+    height: 100px;
+    background: linear-gradient(180deg, var(--squadron-pink), #FF6B9D);
+  }
+  
+  &.second-base {
+    width: 100px;
+    height: 70px;
+    background: linear-gradient(180deg, var(--aviation-blue), var(--sky-blue-neon));
+  }
+  
+  &.third-base {
+    width: 80px;
+    height: 50px;
+    background: linear-gradient(180deg, #CD7F32, #B8860B);
+  }
+}
+
+.filters-section {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    border-color: var(--aviation-blue);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    border-color: var(--aviation-blue);
+    color: white;
+    box-shadow: var(--glow-blue);
+  }
+}
+
+.developers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.developer-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--aviation-blue);
+  }
+  
+  &.position-1,
+  &.position-2,
+  &.position-3 {
+    border-color: var(--squadron-pink);
+    background: rgba(255, 45, 130, 0.05);
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.position-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.875rem;
+}
+
+.level-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  &.level-expert {
+    background: rgba(255, 45, 130, 0.2);
+    color: var(--squadron-pink);
+  }
+  
+  &.level-advanced {
+    background: rgba(0, 174, 239, 0.2);
+    color: var(--aviation-blue);
+  }
+  
+  &.level-intermediate {
+    background: rgba(255, 149, 0, 0.2);
+    color: #FF9500;
+  }
+  
+  &.level-beginner {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+  }
+}
+
+.developer-main {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.developer-avatar.large {
+  width: 60px;
+  height: 60px;
+  font-size: 1.2rem;
+}
+
+.developer-details {
+  flex: 1;
+}
+
+.developer-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.developer-position {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.squad-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.developer-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.progress-section {
+  .progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.8s ease;
+  }
+  
+  .progress-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .individual-page {
+    padding: 5rem 1rem 2rem;
+  }
+  
+  .podium {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+    
+    .podium-place {
+      order: initial !important;
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  .podium-card {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .developers-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .developer-main {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .developer-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .stat-item {
+    padding: 0.75rem 0.5rem;
+  }
+}

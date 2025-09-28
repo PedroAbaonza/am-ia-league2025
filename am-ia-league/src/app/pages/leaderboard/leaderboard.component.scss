@@ -1,0 +1,354 @@
+.leaderboard-page {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(180deg, var(--deep-space-blue) 0%, rgba(0, 46, 109, 0.3) 100%);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.podium-section {
+  max-width: 1000px;
+  margin: 0 auto 6rem;
+}
+
+.podium {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 2rem;
+  height: 400px;
+}
+
+.podium-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &.first {
+    order: 2;
+    z-index: 3;
+  }
+  
+  &.second {
+    order: 1;
+    z-index: 2;
+  }
+  
+  &.third {
+    order: 3;
+    z-index: 1;
+  }
+}
+
+.podium-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  margin-bottom: 1rem;
+  min-width: 200px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  &.winner {
+    border-color: var(--squadron-pink);
+    background: rgba(255, 45, 130, 0.1);
+  }
+}
+
+.crown {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px #FFD700);
+}
+
+.position-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 auto 1rem;
+  color: white;
+  
+  &.gold {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  
+  &.silver {
+    background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+  }
+  
+  &.bronze {
+    background: linear-gradient(135deg, #CD7F32, #B8860B);
+    box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
+  }
+}
+
+.squad-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.squad-points {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--aviation-blue);
+  margin-bottom: 1rem;
+}
+
+.member-count {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.podium-base {
+  border-radius: 8px 8px 0 0;
+  
+  &.first-base {
+    width: 120px;
+    height: 100px;
+    background: linear-gradient(180deg, var(--squadron-pink), #FF6B9D);
+  }
+  
+  &.second-base {
+    width: 100px;
+    height: 70px;
+    background: linear-gradient(180deg, var(--aviation-blue), var(--sky-blue-neon));
+  }
+  
+  &.third-base {
+    width: 80px;
+    height: 50px;
+    background: linear-gradient(180deg, #CD7F32, #B8860B);
+  }
+}
+
+.leaderboard-table {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.table-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.table-container {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 200px 120px 150px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.header-cell {
+  padding: 1.5rem 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+}
+
+.table-body {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 200px 120px 150px;
+  border-bottom: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &.position-1,
+  &.position-2,
+  &.position-3 {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.table-cell {
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.position-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.875rem;
+}
+
+.squad-info {
+  .squad-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .scrum-master {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+}
+
+.members-avatars {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.more-members {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.points-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  min-width: 40px;
+}
+
+@media (max-width: 768px) {
+  .leaderboard-page {
+    padding: 5rem 1rem 2rem;
+  }
+  
+  .podium {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+    
+    .podium-place {
+      order: initial !important;
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  .podium-card {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 60px 1fr 100px;
+  }
+  
+  .header-cell.members,
+  .header-cell.progress,
+  .table-cell.members,
+  .table-cell.progress {
+    display: none;
+  }
+  
+  .table-cell {
+    padding: 1rem 0.5rem;
+  }
+}

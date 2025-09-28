@@ -1,0 +1,41 @@
+<section class="routes-timeline">
+  <div class="container">
+    <h2 class="section-title gradient-text">Rutas de la Liga</h2>
+    
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      
+      <div class="timeline-item" 
+           *ngFor="let route of routes; let i = index"
+           [class.left]="i % 2 === 0"
+           [class.right]="i % 2 === 1">
+        
+        <div class="timeline-content" 
+             [style.border-color]="route.color"
+             [class]="'status-' + route.status">
+          
+          <div class="timeline-marker" [style.background-color]="route.color">
+            <div class="marker-inner"></div>
+          </div>
+          
+          <div class="route-card">
+            <div class="route-header">
+              <h3 class="route-name">{{ route.name }}</h3>
+              <span class="route-status" [class]="'status-' + route.status">
+                {{ getStatusText(route.status) }}
+              </span>
+            </div>
+            
+            <p class="route-description">{{ route.description }}</p>
+            
+            <div class="route-dates font-mono">
+              <span class="date-range">
+                {{ formatDate(route.startDate) }} - {{ formatDate(route.endDate) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
