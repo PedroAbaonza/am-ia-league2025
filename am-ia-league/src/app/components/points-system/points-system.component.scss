@@ -10,11 +10,28 @@
   margin: 0 auto;
 }
 
+.header-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
 .section-title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 4rem;
+  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .points-grid {
@@ -30,14 +47,55 @@
   border-radius: 16px;
   padding: 2rem;
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.column-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  
+  &.missions-icon {
+    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+  }
+  
+  &.challenges-icon {
+    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
+  }
 }
 
 .column-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 2rem;
-  text-align: center;
+  margin: 0;
+}
+
+.column-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0 0 2rem 0;
+  line-height: 1.5;
 }
 
 .missions-list {
@@ -59,6 +117,7 @@
   &:hover {
     transform: translateY(-2px);
     border-color: var(--aviation-blue);
+    box-shadow: 0 5px 20px rgba(0, 174, 239, 0.2);
   }
 }
 
@@ -75,21 +134,25 @@
   &.icon-amazon-q {
     background: linear-gradient(135deg, #FF9500, #FFB84D);
     color: white;
+    box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
   }
   
   &.icon-ai-flight-tips {
     background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
   }
   
   &.icon-code-increment {
     background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
     color: white;
+    box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
   }
   
   &.icon-jira {
     background: linear-gradient(135deg, #0052CC, #2684FF);
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);
   }
 }
 
@@ -111,9 +174,25 @@
 }
 
 .mission-points {
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.points-badge {
+  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
   font-weight: 700;
-  color: var(--aviation-blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+  
+  &.bonus {
+    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
+  }
 }
 
 .challenges-list {
@@ -123,64 +202,97 @@
 }
 
 .challenge-card {
-  padding: 2rem;
-  background: rgba(255, 45, 130, 0.1);
-  border: 2px solid var(--squadron-pink);
-  border-radius: 16px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
   transition: all 0.3s ease;
   
   &:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
+    border-color: var(--squadron-pink);
+    box-shadow: 0 5px 20px rgba(255, 45, 130, 0.2);
+  }
+  
+  &.highlighted {
+    background: rgba(255, 45, 130, 0.1);
+    border: 2px solid var(--squadron-pink);
+    box-shadow: 0 0 20px rgba(255, 45, 130, 0.3);
   }
 }
 
-.challenge-header {
+.challenge-content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 1rem;
 }
 
+.challenge-bullet {
+  color: var(--squadron-pink);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.challenge-info {
+  flex: 1;
+}
+
 .challenge-name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
 }
 
-.bonus-points {
-  background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.challenge-description {
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.challenge-deadline {
+.challenge-points {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
 }
 
-.deadline-label {
-  color: var(--text-muted);
-  font-size: 0.875rem;
+.squad-example {
+  background: var(--card-bg);
+  border: 2px solid var(--squadron-pink);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255, 45, 130, 0.2);
 }
 
-.deadline-date {
+.squad-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.squad-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
+}
+
+.squad-info {
+  flex: 1;
+}
+
+.squad-title {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--squadron-pink);
-  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.squad-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .calculation-example {
@@ -189,50 +301,94 @@
   border-radius: 16px;
   padding: 2rem;
   backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0, 174, 239, 0.2);
 }
 
-.example-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.calculation-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.calc-item {
+.calc-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  
-  &.total {
-    background: rgba(0, 174, 239, 0.1);
-    border: 1px solid var(--aviation-blue);
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
+  margin-bottom: 2rem;
 }
 
-.calc-label {
+.calc-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.calc-members {
+  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+}
+
+.calc-content {
+  margin-bottom: 1.5rem;
+}
+
+.calc-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+}
+
+.calc-formula {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+.calc-points {
+  font-size: 1.25rem;
+  color: var(--aviation-blue);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.calc-multiply {
+  font-size: 1rem;
   color: var(--text-secondary);
 }
 
-.calc-value {
+.calc-equals {
+  font-size: 1.25rem;
   color: var(--text-primary);
-  font-weight: 600;
+}
+
+.calc-total {
+  font-size: 1.25rem;
+  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-family: 'Roboto Mono', monospace;
 }
 
 @media (max-width: 768px) {
+  .points-system {
+    padding: 2rem 1rem;
+  }
+  
   .points-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
   }
   
   .mission-card {
@@ -241,15 +397,19 @@
     gap: 1rem;
   }
   
-  .challenge-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .challenge-card {
+    padding: 1rem;
   }
   
-  .calc-item {
+  .calc-formula {
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.5rem;
-    text-align: center;
+  }
+  
+  .calc-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }

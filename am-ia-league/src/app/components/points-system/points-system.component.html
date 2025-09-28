@@ -1,22 +1,30 @@
 <section class="points-system">
   <div class="container">
-    <h2 class="section-title gradient-text">Sistema de Puntos</h2>
+    <div class="header-section">
+      <h2 class="section-title">Sistema de Puntos</h2>
+      <p class="section-subtitle">Acumula puntos completando misiones y participando en retos especiales</p>
+    </div>
     
     <div class="points-grid">
       <!-- Misiones por Ruta -->
       <div class="points-column">
-        <h3 class="column-title">Misiones por Ruta</h3>
+        <div class="column-header">
+          <div class="column-icon missions-icon">🎯</div>
+          <h3 class="column-title">Misiones por Ruta</h3>
+        </div>
+        <p class="column-subtitle">4 misiones disponibles en cada ruta (2 semanas)</p>
+        
         <div class="missions-list">
           <div class="mission-card" *ngFor="let mission of missions">
             <div class="mission-icon" [class]="'icon-' + mission.type">
               <span class="icon-text">{{ getMissionIcon(mission.type) }}</span>
             </div>
             <div class="mission-info">
-              <h4 class="mission-name">{{ mission.name }}</h4>
+              <h4 class="mission-name">{{ mission.name }} ({{ mission.progress }}%)</h4>
               <p class="mission-description">{{ mission.description }}</p>
             </div>
-            <div class="mission-points font-mono">
-              +{{ mission.points }}
+            <div class="mission-points">
+              <span class="points-badge">+{{ mission.points }} pts</span>
             </div>
           </div>
         </div>
@@ -24,40 +32,52 @@
       
       <!-- Retos Especiales -->
       <div class="points-column">
-        <h3 class="column-title">Retos Especiales</h3>
+        <div class="column-header">
+          <div class="column-icon challenges-icon">⚡</div>
+          <h3 class="column-title">Retos Especiales</h3>
+        </div>
+        <p class="column-subtitle">Acciones de alto impacto durante las 14 semanas</p>
+        
         <div class="challenges-list">
-          <div class="challenge-card glow-pink" *ngFor="let challenge of specialChallenges">
-            <div class="challenge-header">
-              <h4 class="challenge-name">{{ challenge.name }}</h4>
-              <div class="bonus-points font-mono">
-                +{{ challenge.bonusPoints }} BONUS
+          <div class="challenge-card" *ngFor="let challenge of specialChallenges" [class.highlighted]="challenge.highlighted">
+            <div class="challenge-content">
+              <div class="challenge-bullet">●</div>
+              <div class="challenge-info">
+                <h4 class="challenge-name">{{ challenge.name }}</h4>
               </div>
-            </div>
-            <p class="challenge-description">{{ challenge.description }}</p>
-            <div class="challenge-deadline">
-              <span class="deadline-label">Deadline:</span>
-              <span class="deadline-date font-mono">{{ formatDate(challenge.deadline) }}</span>
+              <div class="challenge-points">
+                <span class="points-badge" [class.bonus]="challenge.bonusPoints > 200">+{{ challenge.bonusPoints }} pts</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     
+    <!-- Ejemplo de Squad -->
+    <div class="squad-example">
+      <div class="squad-header">
+        <div class="squad-icon">⭐</div>
+        <div class="squad-info">
+          <h3 class="squad-title">Game Day Challenge</h3>
+          <p class="squad-subtitle">El reto de mayor puntuación en la etapa final</p>
+        </div>
+      </div>
+    </div>
+    
     <!-- Ejemplo de Cálculo -->
-    <div class="calculation-example glow-blue">
-      <h3 class="example-title">Ejemplo de Cálculo por Squad</h3>
-      <div class="calculation-grid">
-        <div class="calc-item">
-          <span class="calc-label">Misiones Completadas:</span>
-          <span class="calc-value font-mono">12 × 150pts = 1,800pts</span>
-        </div>
-        <div class="calc-item">
-          <span class="calc-label">Retos Especiales:</span>
-          <span class="calc-value font-mono">2 × 400pts = 800pts</span>
-        </div>
-        <div class="calc-item total">
-          <span class="calc-label">Total Squad:</span>
-          <span class="calc-value font-mono gradient-text">2,600pts</span>
+    <div class="calculation-example">
+      <div class="calc-header">
+        <h3 class="calc-title">Ejemplo de Squad</h3>
+        <div class="calc-members">5 miembros</div>
+      </div>
+      <div class="calc-content">
+        <p class="calc-description">Si los 5 integrantes completan Amazon Q Adoption:</p>
+        <div class="calc-formula">
+          <span class="calc-points">20 pts</span>
+          <span class="calc-multiply">× 5 participantes</span>
+          <span class="calc-equals">=</span>
+          <span class="calc-total">100 puntos para el squad</span>
         </div>
       </div>
     </div>

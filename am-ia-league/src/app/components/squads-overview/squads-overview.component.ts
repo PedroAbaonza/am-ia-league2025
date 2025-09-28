@@ -2,6 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeaderboardService, Squad } from '../../services/leaderboard.service';
 
+interface Route {
+  name: string;
+  averagePoints: number;
+  status: 'completed' | 'in-progress' | 'pending';
+}
+
+interface SpecialChallenge {
+  name: string;
+  points: number;
+  status: 'Aceptado' | 'Pendiente';
+}
+
 @Component({
   selector: 'app-squads-overview',
   imports: [CommonModule],
@@ -14,6 +26,33 @@ export class SquadsOverviewComponent implements OnInit {
   
   // Control de visibilidad de detalles
   showSquadsDetails = false;
+
+  // Datos para Progreso por Ruta
+  completedRoutes: Route[] = [
+    { name: 'Cancún', averagePoints: 143, status: 'completed' },
+    { name: 'Bogotá', averagePoints: 118, status: 'completed' }
+  ];
+
+  inProgressRoutes: Route[] = [
+    { name: 'Michoacán', averagePoints: 0, status: 'in-progress' }
+  ];
+
+  pendingRoutes: Route[] = [
+    { name: 'Amsterdam', averagePoints: 0, status: 'pending' },
+    { name: 'Tokio', averagePoints: 0, status: 'pending' },
+    { name: 'CDMX', averagePoints: 0, status: 'pending' }
+  ];
+
+  // Datos para Retos Especiales
+  totalDocumentations = 8;
+  totalDemos = 3;
+
+  specialChallenges: SpecialChallenge[] = [
+    { name: 'Rules Documentation', points: 50, status: 'Aceptado' },
+    { name: 'Liderar Demo', points: 100, status: 'Aceptado' },
+    { name: 'Use Case', points: 120, status: 'Aceptado' },
+    { name: 'Game Day Challenge', points: 0, status: 'Aceptado' }
+  ];
 
   constructor(private leaderboardService: LeaderboardService) {}
 

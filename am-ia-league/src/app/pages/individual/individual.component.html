@@ -92,60 +92,88 @@
     </div>
   </div>
   
-  <!-- Lista de Desarrolladores -->
-  <div class="developers-grid">
-    <div class="developer-card" 
+  <!-- Lista Compacta de Desarrolladores -->
+  <div class="developers-list">
+    <div class="list-header">
+      <div class="header-position">#</div>
+      <div class="header-developer">Desarrollador</div>
+      <div class="header-squad">Squad</div>
+      <div class="header-level">Nivel</div>
+      <div class="header-stats">Puntos</div>
+      <div class="header-stats">Misiones</div>
+      <div class="header-stats">Retos</div>
+      <div class="header-progress">Progreso</div>
+    </div>
+    
+    <div class="developer-row" 
          *ngFor="let dev of filteredIndividuals; let i = index"
          [class]="'position-' + (getOriginalPosition(dev))">
       
-      <div class="card-header">
+      <div class="row-position">
         <div class="position-number" 
              [style.background]="getPositionColor(getOriginalPosition(dev))">
           {{ getOriginalPosition(dev) }}
         </div>
-        <div class="level-badge" [class]="'level-' + dev.level.toLowerCase()">
+      </div>
+      
+      <div class="row-developer">
+        <div class="developer-avatar compact" [style.background]="getSquadColor(dev.squadId)">
+          {{ dev.avatar }}
+        </div>
+        <div class="developer-info">
+          <div class="developer-name">{{ dev.name }}</div>
+          <div class="developer-position">{{ dev.position }}</div>
+        </div>
+      </div>
+      
+      <div class="row-squad">
+        <span class="squad-badge compact" [style.background]="getSquadColor(dev.squadId)">
+          {{ dev.squadName }}
+        </span>
+      </div>
+      
+      <div class="row-level">
+        <div class="level-badge compact" [class]="'level-' + dev.level.toLowerCase()">
           {{ dev.level }}
         </div>
       </div>
       
-      <div class="developer-main">
-        <div class="developer-avatar large" [style.background]="getSquadColor(dev.squadId)">
-          {{ dev.avatar }}
-        </div>
-        <div class="developer-details">
-          <h3 class="developer-name">{{ dev.name }}</h3>
-          <div class="developer-position">{{ dev.position }}</div>
-          <div class="squad-info">
-            <span class="squad-badge" [style.background]="getSquadColor(dev.squadId)">
-              {{ dev.squadName }}
-            </span>
-          </div>
-        </div>
+      <div class="row-stat">
+        <div class="stat-value font-mono">{{ dev.totalPoints }}</div>
       </div>
       
-      <div class="developer-stats">
-        <div class="stat-item">
-          <div class="stat-value font-mono">{{ dev.totalPoints }}</div>
-          <div class="stat-label">Puntos</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value font-mono">{{ dev.completedMissions }}</div>
-          <div class="stat-label">Misiones</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value font-mono">{{ dev.specialChallenges }}</div>
-          <div class="stat-label">Retos</div>
-        </div>
+      <div class="row-stat">
+        <div class="stat-value font-mono">{{ dev.completedMissions }}</div>
       </div>
       
-      <div class="progress-section">
-        <div class="progress-bar">
+      <div class="row-stat">
+        <div class="stat-value font-mono">{{ dev.specialChallenges }}</div>
+      </div>
+      
+      <div class="row-progress">
+        <div class="progress-bar compact">
           <div class="progress-fill" 
                [style.width]="getProgressPercentage(dev.totalPoints) + '%'"
                [style.background]="getSquadColor(dev.squadId)">
           </div>
         </div>
-        <div class="progress-text">{{ getProgressPercentage(dev.totalPoints) }}% del líder</div>
+        <div class="progress-text">{{ getProgressPercentage(dev.totalPoints) }}%</div>
+      </div>
+      
+      <!-- Versión móvil con stats agrupadas -->
+      <div class="mobile-stats" style="display: none;">
+        <div class="mobile-stat">
+          <div class="stat-value font-mono">{{ dev.totalPoints }}</div>
+          <div class="stat-label">Puntos</div>
+        </div>
+        <div class="mobile-stat">
+          <div class="stat-value font-mono">{{ dev.completedMissions }}</div>
+          <div class="stat-label">Misiones</div>
+        </div>
+        <div class="mobile-stat">
+          <div class="stat-value font-mono">{{ dev.specialChallenges }}</div>
+          <div class="stat-label">Retos</div>
+        </div>
       </div>
     </div>
   </div>
