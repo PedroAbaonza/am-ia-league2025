@@ -1,0 +1,242 @@
+<div class="admin-page">
+  
+  <!-- Login Form -->
+  <div class="login-container" *ngIf="!isAuthenticated">
+    <div class="login-card">
+      <div class="login-header">
+        <h1 class="login-title gradient-text">Panel de Administración</h1>
+        <p class="login-subtitle">Aeroméxico AI League 2025</p>
+      </div>
+      
+      <form (ngSubmit)="login()" class="login-form">
+        <div class="form-group">
+          <label for="password">Contraseña de Administrador</label>
+          <input 
+            type="password" 
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            class="form-input"
+            placeholder="Ingresa la contraseña"
+            required>
+        </div>
+        
+        <div class="error-message" *ngIf="loginError">
+          {{ loginError }}
+        </div>
+        
+        <button type="submit" class="login-btn glow-blue">
+          <span class="btn-icon">🔐</span>
+          Acceder
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div class="admin-dashboard" *ngIf="isAuthenticated">
+    
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1 class="dashboard-title gradient-text">Panel de Administración</h1>
+      <div class="header-actions">
+        <div class="session-info" *ngIf="getSessionInfo() as sessionInfo">
+          <div class="session-item">
+            <span class="session-label">Sesión expira en:</span>
+            <span class="session-value">{{ sessionInfo.timeRemaining }}</span>
+          </div>
+          <div class="session-item">
+            <span class="session-label">Fuente de datos:</span>
+            <span class="status-value" [class]="config.dataSource">
+              {{ config.dataSource === 'uploaded' ? 'Datos subidos' : 'Datos estáticos' }}
+            </span>
+          </div>
+        </div>
+        <button class="logout-btn" (click)="logout()">
+          <span class="btn-icon">🚪</span>
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-section">
+      <h2 class="section-title">Subir Datos del Leaderboard</h2>
+      
+      <div class="upload-grid">
+        
+        <!-- Squad Data Upload -->
+        <div class="upload-card">
+          <h3 class="card-title">Datos de Squads</h3>
+          <p class="card-description">
+            Sube un archivo CSV con los datos de los equipos y sus puntos.
+          </p>
+          
+          <div class="file-upload">
+            <input 
+              type="file" 
+              #squadFileInput
+              accept=".csv,.xlsx,.xls"
+              (change)="onSquadFileSelected($event)"
+              class="file-input">
+            
+            <button 
+              class="upload-btn primary glow-blue"
+              (click)="squadFileInput.click()">
+              <span class="btn-icon">📊</span>
+              Seleccionar Archivo CSV
+            </button>
+          </div>
+          
+          <div class="file-info" *ngIf="squadFileName">
+            <span class="file-name">{{ squadFileName }}</span>
+            <button class="process-btn glow-pink" (click)="processSquadFile()">
+              Procesar Datos
+            </button>
+          </div>
+        </div>
+
+        <!-- Individual Data Upload -->
+        <div class="upload-card">
+          <h3 class="card-title">Datos Individuales</h3>
+          <p class="card-description">
+            Sube un archivo CSV con los datos individuales de desarrolladores.
+          </p>
+          
+          <div class="file-upload">
+            <input 
+              type="file" 
+              #individualFileInput
+              accept=".csv,.xlsx,.xls"
+              (change)="onIndividualFileSelected($event)"
+              class="file-input">
+            
+            <button 
+              class="upload-btn primary glow-blue"
+              (click)="individualFileInput.click()">
+              <span class="btn-icon">👤</span>
+              Seleccionar Archivo CSV
+            </button>
+          </div>
+          
+          <div class="file-info" *ngIf="individualFileName">
+            <span class="file-name">{{ individualFileName }}</span>
+            <button class="process-btn glow-pink" (click)="processIndividualFile()">
+              Procesar Datos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSV Format Guide -->
+    <div class="format-guide">
+      <h2 class="section-title">Formato de Archivos CSV</h2>
+      
+      <div class="format-grid">
+        <div class="format-card">
+          <h3 class="format-title">Squads CSV</h3>
+          <div class="format-example">
+            <code>
+squadName,scrumMaster,name,points<br>
+Alpha Squadron,María González,Carlos Rodríguez,520<br>
+Alpha Squadron,María González,Ana Martínez,495<br>
+Beta Flight,Roberto Silva,Elena Vargas,485
+            </code>
+          </div>
+        </div>
+        
+        <div class="format-card">
+          <h3 class="format-title">Individuales CSV</h3>
+          <div class="format-example">
+            <code>
+name,squadName,position,points,missions,challenges,level<br>
+Carlos Rodríguez,Alpha Squadron,Senior Developer,520,8,2,Expert<br>
+Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download Current Data Templates -->
+    <div class="download-section">
+      <h2 class="section-title">Descargar Datos Actuales</h2>
+      <p class="section-description">
+        Descarga los datos que están actualmente cargados en la aplicación como plantillas CSV.
+      </p>
+      
+      <div class="download-grid">
+        <div class="download-card">
+          <h3 class="card-title">Datos de Squads Actuales</h3>
+          <p class="card-description">
+            Descarga un CSV con todos los datos de squads que están actualmente en el leaderboard.
+          </p>
+          <button class="download-btn glow-blue" (click)="downloadCurrentSquadsData()">
+            <span class="btn-icon">📊</span>
+            Descargar Squads CSV
+          </button>
+        </div>
+        
+        <div class="download-card">
+          <h3 class="card-title">Datos Individuales Actuales</h3>
+          <p class="card-description">
+            Descarga un CSV con todos los datos individuales que están actualmente en el ranking.
+          </p>
+          <button class="download-btn glow-blue" (click)="downloadCurrentIndividualsData()">
+            <span class="btn-icon">👤</span>
+            Descargar Individuales CSV
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current Data Status -->
+    <div class="data-status">
+      <h2 class="section-title">Estado Actual</h2>
+      <div class="status-card">
+        <div class="status-item">
+          <span class="status-label">Fuente de datos:</span>
+          <span class="status-value" [class]="config.dataSource">
+            {{ config.dataSource === 'uploaded' ? 'Datos subidos' : 'Datos estáticos' }}
+          </span>
+        </div>
+        <div class="status-item" *ngIf="config.lastUpdate">
+          <span class="status-label">Última actualización:</span>
+          <span class="status-value">{{ formatDate(config.lastUpdate) }}</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Squads cargados:</span>
+          <span class="status-value">{{ getSquadsCount() }}</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Desarrolladores:</span>
+          <span class="status-value">{{ getIndividualsCount() }}</span>
+        </div>
+        
+        <div class="action-buttons">
+          <button class="reset-btn" (click)="resetToStatic()" *ngIf="config.dataSource === 'uploaded'">
+            <span class="btn-icon">🔄</span>
+            Volver a Datos Estáticos
+          </button>
+          
+          <button class="refresh-btn glow-blue" (click)="refreshData()">
+            <span class="btn-icon">🔄</span>
+            Actualizar Vista
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="message success" *ngIf="successMessage">
+      <span class="message-icon">✅</span>
+      {{ successMessage }}
+    </div>
+    
+    <div class="message error" *ngIf="errorMessage">
+      <span class="message-icon">❌</span>
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

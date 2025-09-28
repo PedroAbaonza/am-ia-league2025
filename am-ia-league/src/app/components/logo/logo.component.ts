@@ -14,7 +14,7 @@ export class LogoComponent implements OnInit {
   @Input() showText: boolean = false;
   @Input() animated: boolean = false;
 
-  showFallback = false;
+  showFallback = true; // Mostrar fallback por defecto hasta que tengas las imágenes reales
 
   constructor(private imageUtils: ImageUtilsService) {}
 

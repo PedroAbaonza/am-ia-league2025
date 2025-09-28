@@ -1,6 +1,8 @@
 .important-dates {
   padding: 4rem 2rem;
   background: linear-gradient(180deg, rgba(255, 45, 130, 0.03) 0%, transparent 100%);
+  position: relative;
+  z-index: 2;
 }
 
 .container {

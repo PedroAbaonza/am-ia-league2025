@@ -83,6 +83,30 @@ src/app/
 - `/404` - Error page aeronáutica
 - `/**` - Redirect a 404
 
+## 🔐 Panel de Administración
+
+### Acceso
+- **URL**: `http://localhost:4200/admin`
+- **Contraseña**: `aeromexico2025`
+- **Acceso discreto**: Icono ⚙️ en el footer
+
+### Funcionalidades
+- **Subida de CSV**: Actualizar datos de leaderboards dinámicamente
+- **Gestión de datos**: Alternar entre datos estáticos y subidos
+- **Monitoreo**: Estado actual y estadísticas de datos
+- **Reset**: Volver a datos estáticos en cualquier momento
+
+### Formatos CSV Soportados
+```csv
+# Squads
+squadName,scrumMaster,name,points
+
+# Individuales  
+name,squadName,position,points,missions,challenges,level
+```
+
+Ver `ADMIN-PANEL.md` para documentación completa.
+
 ## 🛠️ Instalación y Desarrollo
 
 ### Prerrequisitos

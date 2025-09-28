@@ -1,6 +1,8 @@
 .squads-overview {
   padding: 4rem 2rem;
   background: linear-gradient(180deg, transparent 0%, rgba(0, 174, 239, 0.03) 50%, transparent 100%);
+  position: relative;
+  z-index: 2;
 }
 
 .container {

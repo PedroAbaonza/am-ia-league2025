@@ -1,0 +1,16 @@
+name,squadName,position,points,missions,challenges,level
+Carlos Rodríguez,Alpha Squadron,Senior Developer,520,8,2,Expert
+Ana Martínez,Alpha Squadron,Full Stack Developer,495,7,2,Advanced
+Elena Vargas,Beta Flight,Frontend Developer,485,8,1,Advanced
+Fernando Ortega,Gamma Wings,Backend Developer,470,7,2,Advanced
+Miguel Torres,Beta Flight,DevOps Engineer,465,6,2,Advanced
+Luis Hernández,Alpha Squadron,AI Specialist,460,7,1,Advanced
+Valeria Mendoza,Gamma Wings,Data Scientist,455,6,2,Advanced
+Gabriela Soto,Delta Force,ML Engineer,450,7,1,Advanced
+Sofia López,Alpha Squadron,Frontend Developer,445,6,2,Intermediate
+Carmen Jiménez,Beta Flight,UX Developer,440,6,1,Intermediate
+Javier Peña,Gamma Wings,Cloud Architect,435,5,2,Intermediate
+Ricardo Flores,Delta Force,Software Engineer,430,6,1,Intermediate
+Diego Ramírez,Alpha Squadron,Junior Developer,425,5,2,Intermediate
+Andrés Morales,Beta Flight,Backend Developer,420,5,1,Intermediate
+Isabella Cruz,Gamma Wings,QA Engineer,415,5,1,Intermediate

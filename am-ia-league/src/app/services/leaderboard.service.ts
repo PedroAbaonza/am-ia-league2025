@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { AdminService } from './admin.service';
 
 export interface Squad {
   id: number;
@@ -29,13 +30,30 @@ export interface Individual {
 })
 export class LeaderboardService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private adminService: AdminService
+  ) { }
 
   getSquads(): Observable<Squad[]> {
+    // Verificar si hay datos subidos por admin
+    const uploadedData = this.adminService.getSquadsData();
+    if (uploadedData && uploadedData.length > 0) {
+      return of(uploadedData);
+    }
+    
+    // Fallback a datos estáticos
     return this.http.get<Squad[]>('/assets/data/squads.json');
   }
 
   getIndividuals(): Observable<Individual[]> {
+    // Verificar si hay datos subidos por admin
+    const uploadedData = this.adminService.getIndividualsData();
+    if (uploadedData && uploadedData.length > 0) {
+      return of(uploadedData);
+    }
+    
+    // Fallback a datos estáticos
     return this.http.get<Individual[]>('/assets/data/individuals.json');
   }
 }
