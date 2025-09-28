@@ -1,44 +1,75 @@
 <section class="hero-section">
+  <div class="hero-background">
+    <div class="animated-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+  
   <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-logo-container">
-        <app-logo 
-          type="ai-league" 
-          size="large" 
-          [showText]="true"
-          [animated]="true">
-        </app-logo>
-      </div>
+    <!-- Badge Primera Edición -->
+    <div class="edition-badge" [@fadeInUp]>
+      Primera Edición
+    </div>
+    
+    <!-- Título Principal -->
+    <div class="hero-title-section" [@fadeInUp]>
+      <h1 class="hero-main-title">
+        <span class="title-aeromexico">Aeroméxico</span>
+        <span class="title-ai">AI League 2025</span>
+      </h1>
       
-      <p class="hero-subtitle">
-        Una travesía donde la innovación, la inteligencia artificial y el trabajo en equipo 
-        impulsan el futuro digital de Aeroméxico.
+      <p class="hero-subtitle" [@fadeInUp]>
+        Una travesía donde la innovación, la inteligencia artificial y el trabajo en 
+        equipo impulsan el futuro digital de Aeroméxico
       </p>
     </div>
     
-    <div class="stats-grid">
-      <div class="stat-card glow-blue">
+    <!-- Stats Cards Horizontal -->
+    <div class="stats-horizontal" [@slideInUp]>
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
         <div class="stat-number font-mono">14</div>
         <div class="stat-label">Semanas</div>
       </div>
-      <div class="stat-card glow-pink">
+      
+      <div class="stat-card">
+        <div class="stat-icon">✈️</div>
         <div class="stat-number font-mono">6</div>
         <div class="stat-label">Rutas</div>
       </div>
-      <div class="stat-card glow-blue">
+      
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
         <div class="stat-number font-mono">6</div>
         <div class="stat-label">Squads</div>
       </div>
-      <div class="stat-card glow-pink">
+      
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
         <div class="stat-number font-mono">28</div>
         <div class="stat-label">Desafíos</div>
       </div>
     </div>
     
-    <div class="cta-buttons">
-      <button class="cta-btn primary glow-blue">Explorar Rutas</button>
-      <button class="cta-btn secondary glow-pink">Ver Squads</button>
-      <button class="cta-btn tertiary">Ranking Individual</button>
+    <!-- Fechas del Evento -->
+    <div class="event-dates" [@fadeInUp]>
+      <h3>Fechas del Evento</h3>
+      <p class="dates-text">26 de Septiembre – 12 de Diciembre, 2024</p>
+    </div>
+    
+    <!-- CTA Buttons -->
+    <div class="cta-section" [@fadeInUp]>
+      <button class="cta-btn primary" routerLink="/leaderboard">
+        Explorar Rutas
+      </button>
+      <button class="cta-btn secondary" routerLink="/leaderboard">
+        Ver Squads
+      </button>
+      <button class="cta-btn tertiary" routerLink="/individual">
+        Ranking Individual
+      </button>
     </div>
   </div>
 </section>
