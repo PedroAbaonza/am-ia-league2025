@@ -1,6 +1,11 @@
 <section class="squads-overview">
   <div class="container">
-    <h2 class="section-title gradient-text">Estructura de Squads</h2>
+    <div class="section-header">
+      <h2 class="section-title gradient-text">Estructura de Squads</h2>
+      <button class="details-toggle-btn" (click)="toggleSquadsDetails()">
+        {{ showSquadsDetails ? 'Ocultar' : 'Ver' }} Equipos Aeroméxico
+      </button>
+    </div>
     
     <!-- Stats Generales -->
     <div class="squad-stats">
@@ -18,8 +23,17 @@
       </div>
     </div>
     
-    <!-- Grid de Squads -->
-    <div class="squads-grid">
+    <!-- Mensaje cuando está oculto -->
+    <div class="teams-preview" *ngIf="!showSquadsDetails">
+      <div class="preview-content">
+        <p class="preview-description">
+          Haz clic en "Ver Equipos Aeroméxico" para conocer los detalles de cada squad y sus integrantes.
+        </p>
+      </div>
+    </div>
+
+    <!-- Grid de Squads cuando está visible -->
+    <div class="squads-grid" *ngIf="showSquadsDetails">
       <div class="squad-card" 
            *ngFor="let squad of squads; let i = index"
            [style.border-color]="squad.color"

@@ -11,6 +11,9 @@ import { LeaderboardService, Squad } from '../../services/leaderboard.service';
 export class SquadsOverviewComponent implements OnInit {
   squads: Squad[] = [];
   maxPoints = 3000; // Objetivo máximo de puntos
+  
+  // Control de visibilidad de detalles
+  showSquadsDetails = false;
 
   constructor(private leaderboardService: LeaderboardService) {}
 
@@ -40,5 +43,10 @@ export class SquadsOverviewComponent implements OnInit {
       3: 'linear-gradient(135deg, #CD7F32, #B8860B)'  // Bronce
     };
     return colors[position as keyof typeof colors] || 'var(--card-bg)';
+  }
+  
+  // Método para controlar visibilidad de detalles
+  toggleSquadsDetails() {
+    this.showSquadsDetails = !this.showSquadsDetails;
   }
 }
