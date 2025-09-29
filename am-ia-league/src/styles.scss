@@ -494,8 +494,249 @@ body::after {
 
 .shooting-star:nth-child(12) {
   top: 20%;
-  left: --200px;
+  left: -200px;
   animation: shootingStarDiagonal 6s linear infinite;
   animation-delay: 33s;
   transform: scale(0.7);
+}
+
+// Additional pink shooting stars with #fc168c color
+.shooting-star:nth-child(13) {
+  top: 5%;
+  left: -160px;
+  animation: shootingStarFast 2.8s linear infinite;
+  animation-delay: 1s;
+  transform: scale(0.6);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.8),
+      rgba(252, 22, 140, 0.6),
+      rgba(252, 22, 140, 0.3),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.9),
+      rgba(252, 22, 140, 0.7)
+    );
+    box-shadow: 0 0 12px rgba(252, 22, 140, 0.6),
+      0 0 24px rgba(252, 22, 140, 0.4), 0 0 36px rgba(252, 22, 140, 0.2);
+  }
+}
+
+.shooting-star:nth-child(14) {
+  top: 40%;
+  left: -180px;
+  animation: shootingStar 3.5s linear infinite;
+  animation-delay: 4s;
+  transform: scale(0.8);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.7),
+      rgba(252, 22, 140, 0.5),
+      rgba(252, 22, 140, 0.25),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.8),
+      rgba(252, 22, 140, 0.6)
+    );
+    box-shadow: 0 0 10px rgba(252, 22, 140, 0.5),
+      0 0 20px rgba(252, 22, 140, 0.3), 0 0 30px rgba(252, 22, 140, 0.15);
+  }
+}
+
+.shooting-star:nth-child(15) {
+  top: 70%;
+  left: -140px;
+  animation: shootingStarSuperFast 1.5s linear infinite;
+  animation-delay: 7s;
+  transform: scale(0.4);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.6),
+      rgba(252, 22, 140, 0.4),
+      rgba(252, 22, 140, 0.2),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.7),
+      rgba(252, 22, 140, 0.5)
+    );
+    box-shadow: 0 0 8px rgba(252, 22, 140, 0.4),
+      0 0 16px rgba(252, 22, 140, 0.25), 0 0 24px rgba(252, 22, 140, 0.1);
+  }
+}
+
+.shooting-star:nth-child(16) {
+  top: 90%;
+  left: -220px;
+  animation: shootingStarMedium 4.8s linear infinite;
+  animation-delay: 10s;
+  transform: scale(1.2);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.9),
+      rgba(252, 22, 140, 0.7),
+      rgba(252, 22, 140, 0.4),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1),
+      rgba(252, 22, 140, 0.8)
+    );
+    box-shadow: 0 0 15px rgba(252, 22, 140, 0.7),
+      0 0 30px rgba(252, 22, 140, 0.5), 0 0 45px rgba(252, 22, 140, 0.3);
+  }
+}
+
+.shooting-star:nth-child(17) {
+  top: 12%;
+  left: -190px;
+  animation: shootingStarSlow 6.8s linear infinite;
+  animation-delay: 13s;
+  transform: scale(0.5);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.5),
+      rgba(252, 22, 140, 0.35),
+      rgba(252, 22, 140, 0.18),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.6),
+      rgba(252, 22, 140, 0.4)
+    );
+    box-shadow: 0 0 7px rgba(252, 22, 140, 0.3),
+      0 0 14px rgba(252, 22, 140, 0.2), 0 0 21px rgba(252, 22, 140, 0.1);
+  }
+}
+
+.shooting-star:nth-child(18) {
+  top: 50%;
+  left: -150px;
+  animation: shootingStarDiagonal 5.2s linear infinite;
+  animation-delay: 16s;
+  transform: scale(0.9);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.75),
+      rgba(252, 22, 140, 0.55),
+      rgba(252, 22, 140, 0.28),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.85),
+      rgba(252, 22, 140, 0.65)
+    );
+    box-shadow: 0 0 11px rgba(252, 22, 140, 0.55),
+      0 0 22px rgba(252, 22, 140, 0.35), 0 0 33px rgba(252, 22, 140, 0.18);
+  }
+}
+
+.shooting-star:nth-child(19) {
+  top: 80%;
+  left: -170px;
+  animation: shootingStarFast 2.2s linear infinite;
+  animation-delay: 19s;
+  transform: scale(0.7);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.65),
+      rgba(252, 22, 140, 0.45),
+      rgba(252, 22, 140, 0.22),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.75),
+      rgba(252, 22, 140, 0.55)
+    );
+    box-shadow: 0 0 9px rgba(252, 22, 140, 0.45),
+      0 0 18px rgba(252, 22, 140, 0.28), 0 0 27px rgba(252, 22, 140, 0.12);
+  }
+}
+
+.shooting-star:nth-child(20) {
+  top: 35%;
+  left: -210px;
+  animation: shootingStar 4.3s linear infinite;
+  animation-delay: 22s;
+  transform: scale(1.1);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 22, 140, 0.85),
+      rgba(252, 22, 140, 0.65),
+      rgba(252, 22, 140, 0.32),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.95),
+      rgba(252, 22, 140, 0.75)
+    );
+    box-shadow: 0 0 13px rgba(252, 22, 140, 0.65),
+      0 0 26px rgba(252, 22, 140, 0.45), 0 0 39px rgba(252, 22, 140, 0.25);
+  }
 }
