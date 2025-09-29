@@ -1,8 +1,8 @@
 <section class="points-system">
   <div class="container">
-    <div class="header-section">
-      <h2 class="section-title">Sistema de Puntos</h2>
-      <p class="section-subtitle">Acumula puntos completando misiones y participando en retos especiales</p>
+    <div class="header-section" *ngIf="config">
+      <h2 class="section-title">{{ config.pointsSystem.title }}</h2>
+      <p class="section-subtitle">{{ config.pointsSystem.subtitle }}</p>
     </div>
     
     <div class="points-grid">
@@ -55,29 +55,29 @@
     </div>
     
     <!-- Ejemplo de Squad -->
-    <div class="squad-example">
+    <div class="squad-example" *ngIf="config">
       <div class="squad-header">
         <div class="squad-icon">⭐</div>
         <div class="squad-info">
-          <h3 class="squad-title">Game Day Challenge</h3>
-          <p class="squad-subtitle">El reto de mayor puntuación en la etapa final</p>
+          <h3 class="squad-title">{{ config.pointsSystem.squadExample.title }}</h3>
+          <p class="squad-subtitle">{{ config.pointsSystem.squadExample.subtitle }}</p>
         </div>
       </div>
     </div>
     
     <!-- Ejemplo de Cálculo -->
-    <div class="calculation-example">
+    <div class="calculation-example" *ngIf="config">
       <div class="calc-header">
         <h3 class="calc-title">Ejemplo de Squad</h3>
-        <div class="calc-members">5 miembros</div>
+        <div class="calc-members">{{ config.pointsSystem.squadExample.members }} miembros</div>
       </div>
       <div class="calc-content">
-        <p class="calc-description">Si los 5 integrantes completan Amazon Q Adoption:</p>
+        <p class="calc-description">{{ config.pointsSystem.squadExample.calculation.description }}</p>
         <div class="calc-formula">
-          <span class="calc-points">20 pts</span>
-          <span class="calc-multiply">× 5 participantes</span>
+          <span class="calc-points">{{ config.pointsSystem.squadExample.calculation.points }} pts</span>
+          <span class="calc-multiply">× {{ config.pointsSystem.squadExample.calculation.multiplier }} participantes</span>
           <span class="calc-equals">=</span>
-          <span class="calc-total">100 puntos para el squad</span>
+          <span class="calc-total">{{ config.pointsSystem.squadExample.calculation.total }} puntos para el squad</span>
         </div>
       </div>
     </div>

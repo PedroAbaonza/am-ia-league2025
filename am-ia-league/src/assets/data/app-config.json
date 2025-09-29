@@ -1,0 +1,88 @@
+{
+  "event": {
+    "title": "Aeroméxico AI League 2025",
+    "subtitle": "Una travesía donde la innovación, la inteligencia artificial y el trabajo en equipo impulsan el futuro digital de Aeroméxico",
+    "edition": "Primera Edición",
+    "startDate": "2024-09-26",
+    "endDate": "2024-12-12",
+    "description": "14 semanas de desafíos, aprendizaje y competencia"
+  },
+  "stats": {
+    "weeks": 14,
+    "routes": 6,
+    "squads": 6,
+    "challenges": 28
+  },
+  "pointsSystem": {
+    "title": "Sistema de Puntos",
+    "subtitle": "Acumula puntos completando misiones y participando en retos especiales",
+    "missions": [
+      {
+        "id": 1,
+        "name": "Amazon Q Adoption",
+        "type": "amazon-q",
+        "points": 20,
+        "description": "Adoptar Amazon Q en cada ruta",
+        "progress": 90
+      },
+      {
+        "id": 2,
+        "name": "AI Flight Tips",
+        "type": "ai-flight-tips",
+        "points": 30,
+        "description": "Participar en entrenamientos AWS",
+        "progress": 0
+      },
+      {
+        "id": 3,
+        "name": "Incremento de Código",
+        "type": "code-increment",
+        "points": 50,
+        "description": "Incrementar líneas de código por ruta",
+        "progress": 5
+      },
+      {
+        "id": 4,
+        "name": "Gestión Jira (Tier 0 & 1)",
+        "type": "jira",
+        "points": 75,
+        "description": "Mantener operaciones críticas",
+        "progress": 0
+      }
+    ],
+    "specialChallenges": [
+      {
+        "id": 1,
+        "name": "Rules Documentation",
+        "bonusPoints": 50
+      },
+      {
+        "id": 2,
+        "name": "Liderar un Demo",
+        "bonusPoints": 100
+      },
+      {
+        "id": 3,
+        "name": "Construir un Use Case",
+        "bonusPoints": 120
+      },
+      {
+        "id": 4,
+        "name": "Game Day Challenge",
+        "bonusPoints": 300,
+        "highlighted": true
+      }
+    ],
+    "squadExample": {
+      "title": "Game Day Challenge",
+      "subtitle": "El reto de mayor puntuación en la etapa final",
+      "members": 5,
+      "calculation": {
+        "description": "Si los 5 integrantes completan Amazon Q Adoption:",
+        "points": 20,
+        "multiplier": 5,
+        "total": 100
+      }
+    }
+  }
+}

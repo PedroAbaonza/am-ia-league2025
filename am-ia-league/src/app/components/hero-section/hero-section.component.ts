@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
+import { ConfigService, AppConfig } from '../../services/config.service';
 
 @Component({
   selector: 'app-hero-section',
@@ -35,6 +36,33 @@ import { trigger, style, transition, animate } from '@angular/animations';
     ])
   ]
 })
-export class HeroSectionComponent {
+export class HeroSectionComponent implements OnInit {
+  config: AppConfig | null = null;
 
+  constructor(private configService: ConfigService) {}
+
+  ngOnInit() {
+    this.configService.getAppConfig().subscribe(config => {
+      this.config = config;
+    });
+  }
+
+  formatDateRange(): string {
+    if (!this.config) return '';
+    
+    const startDate = new Date(this.config.event.startDate);
+    const endDate = new Date(this.config.event.endDate);
+    
+    const startFormatted = startDate.toLocaleDateString('es-ES', { 
+      day: '2-digit', 
+      month: 'long' 
+    });
+    const endFormatted = endDate.toLocaleDateString('es-ES', { 
+      day: '2-digit', 
+      month: 'long',
+      year: 'numeric'
+    });
+    
+    return `${startFormatted} – ${endFormatted}`;
+  }
 }

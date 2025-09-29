@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeaderboardService, Squad } from '../../services/leaderboard.service';
+import { RouteService } from '../../services/route.service';
+import { ConfigService } from '../../services/config.service';
 
 interface Route {
   name: string;
@@ -27,39 +29,68 @@ export class SquadsOverviewComponent implements OnInit {
   // Control de visibilidad de detalles
   showSquadsDetails = false;
 
-  // Datos para Progreso por Ruta
-  completedRoutes: Route[] = [
-    { name: 'Cancún', averagePoints: 143, status: 'completed' },
-    { name: 'Bogotá', averagePoints: 118, status: 'completed' }
-  ];
+  // Datos para Progreso por Ruta - Estos se pueden cargar desde RouteService
+  completedRoutes: Route[] = [];
+  inProgressRoutes: Route[] = [];
+  pendingRoutes: Route[] = [];
 
-  inProgressRoutes: Route[] = [
-    { name: 'Michoacán', averagePoints: 0, status: 'in-progress' }
-  ];
+  // Datos para Retos Especiales - Estos se pueden cargar desde ConfigService
+  totalDocumentations = 0;
+  totalDemos = 0;
+  specialChallenges: SpecialChallenge[] = [];
 
-  pendingRoutes: Route[] = [
-    { name: 'Amsterdam', averagePoints: 0, status: 'pending' },
-    { name: 'Tokio', averagePoints: 0, status: 'pending' },
-    { name: 'CDMX', averagePoints: 0, status: 'pending' }
-  ];
-
-  // Datos para Retos Especiales
-  totalDocumentations = 8;
-  totalDemos = 3;
-
-  specialChallenges: SpecialChallenge[] = [
-    { name: 'Rules Documentation', points: 50, status: 'Aceptado' },
-    { name: 'Liderar Demo', points: 100, status: 'Aceptado' },
-    { name: 'Use Case', points: 120, status: 'Aceptado' },
-    { name: 'Game Day Challenge', points: 0, status: 'Aceptado' }
-  ];
-
-  constructor(private leaderboardService: LeaderboardService) {}
+  constructor(
+    private leaderboardService: LeaderboardService,
+    private routeService: RouteService,
+    private configService: ConfigService
+  ) {}
 
   ngOnInit() {
+    // Cargar squads
     this.leaderboardService.getSquads().subscribe(squads => {
-      // Ordenar por puntos descendente
       this.squads = squads.sort((a, b) => b.totalPoints - a.totalPoints);
+    });
+
+    // Cargar rutas y organizarlas por estado
+    this.routeService.getRoutes().subscribe(routes => {
+      this.completedRoutes = routes
+        .filter(route => route.status === 'completed')
+        .map(route => ({
+          name: route.name.replace('Ruta ', ''),
+          averagePoints: Math.floor(Math.random() * 200) + 100, // Simulado
+          status: route.status as 'completed' | 'in-progress' | 'pending'
+        }));
+
+      this.inProgressRoutes = routes
+        .filter(route => route.status === 'in-progress')
+        .map(route => ({
+          name: route.name.replace('Ruta ', ''),
+          averagePoints: 0,
+          status: route.status as 'completed' | 'in-progress' | 'pending'
+        }));
+
+      this.pendingRoutes = routes
+        .filter(route => route.status === 'upcoming')
+        .map(route => ({
+          name: route.name.replace('Ruta ', '').replace('Game Day Final - ', ''),
+          averagePoints: 0,
+          status: 'pending' as 'completed' | 'in-progress' | 'pending'
+        }));
+    });
+
+    // Cargar configuración para retos especiales
+    this.configService.getAppConfig().subscribe(config => {
+      this.specialChallenges = config.pointsSystem.specialChallenges.map(challenge => ({
+        name: challenge.name,
+        points: challenge.bonusPoints,
+        status: 'Aceptado' as 'Aceptado' | 'Pendiente'
+      }));
+      
+      // Calcular totales
+      this.totalDocumentations = this.specialChallenges.filter(c => 
+        c.name.toLowerCase().includes('documentation')).length;
+      this.totalDemos = this.specialChallenges.filter(c => 
+        c.name.toLowerCase().includes('demo')).length;
     });
   }
 

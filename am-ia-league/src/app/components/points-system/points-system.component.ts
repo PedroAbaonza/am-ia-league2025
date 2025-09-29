@@ -1,21 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface Mission {
-  id: number;
-  name: string;
-  type: string;
-  points: number;
-  description: string;
-  progress: number;
-}
-
-interface SpecialChallenge {
-  id: number;
-  name: string;
-  bonusPoints: number;
-  highlighted?: boolean;
-}
+import { ConfigService, AppConfig, Mission, SpecialChallenge } from '../../services/config.service';
 
 @Component({
   selector: 'app-points-system',
@@ -24,69 +9,18 @@ interface SpecialChallenge {
   styleUrls: ['./points-system.component.scss'],
 })
 export class PointsSystemComponent implements OnInit {
-  missions: Mission[] = [
-    {
-      id: 1,
-      name: 'Amazon Q Adoption',
-      type: 'amazon-q',
-      points: 20,
-      description: 'Adoptar Amazon Q en cada ruta',
-      progress: 90,
-    },
-    {
-      id: 2,
-      name: 'AI Flight Tips',
-      type: 'ai-flight-tips',
-      points: 30,
-      description: 'Participar en entrenamientos AWS',
-      progress: 0,
-    },
-    {
-      id: 3,
-      name: 'Incremento de Código',
-      type: 'code-increment',
-      points: 50,
-      description: 'Incrementar líneas de código por ruta',
-      progress: 5,
-    },
-    {
-      id: 4,
-      name: 'Gestión Jira (Tier 0 & 1)',
-      type: 'jira',
-      points: 75,
-      description: 'Mantener operaciones críticas',
-      progress: 0,
-    },
-  ];
+  config: AppConfig | null = null;
+  missions: Mission[] = [];
+  specialChallenges: SpecialChallenge[] = [];
 
-  specialChallenges: SpecialChallenge[] = [
-    {
-      id: 1,
-      name: 'Rules Documentation',
-      bonusPoints: 50,
-    },
-    {
-      id: 2,
-      name: 'Liderar un Demo',
-      bonusPoints: 100,
-    },
-    {
-      id: 3,
-      name: 'Construir un Use Case',
-      bonusPoints: 120,
-    },
-    {
-      id: 4,
-      name: 'Game Day Challenge',
-      bonusPoints: 300,
-      highlighted: true,
-    },
-  ];
-
-  constructor() {}
+  constructor(private configService: ConfigService) {}
 
   ngOnInit() {
-    // Los datos ya están definidos arriba
+    this.configService.getAppConfig().subscribe(config => {
+      this.config = config;
+      this.missions = config.pointsSystem.missions;
+      this.specialChallenges = config.pointsSystem.specialChallenges;
+    });
   }
 
   getMissionIcon(type: string): string {

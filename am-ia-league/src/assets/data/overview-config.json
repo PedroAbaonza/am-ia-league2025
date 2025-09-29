@@ -1,0 +1,27 @@
+{
+  "routeProgress": {
+    "completed": [
+      { "name": "Cancún", "averagePoints": 143 },
+      { "name": "Bogotá", "averagePoints": 118 },
+      { "name": "Michoacán", "averagePoints": 95 },
+      { "name": "Ámsterdam", "averagePoints": 87 },
+      { "name": "Tokio", "averagePoints": 102 }
+    ],
+    "inProgress": [],
+    "pending": [{ "name": "CDMX", "averagePoints": 0 }]
+  },
+  "specialChallenges": {
+    "totalDocumentations": 8,
+    "totalDemos": 3,
+    "challenges": [
+      { "name": "Rules Documentation", "points": 50, "status": "Aceptado" },
+      { "name": "Liderar Demo", "points": 100, "status": "Aceptado" },
+      { "name": "Use Case", "points": 120, "status": "Aceptado" },
+      { "name": "Game Day Challenge", "points": 300, "status": "Pendiente" }
+    ]
+  },
+  "settings": {
+    "maxPoints": 3000,
+    "showSquadsDetails": false
+  }
+}

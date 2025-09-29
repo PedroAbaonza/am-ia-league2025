@@ -9,54 +9,53 @@
   
   <div class="hero-content">
     <!-- Badge Primera Edición -->
-    <div class="edition-badge" [@fadeInUp]>
-      Primera Edición
+    <div class="edition-badge" [@fadeInUp] *ngIf="config">
+      {{ config.event.edition }}
     </div>
     
     <!-- Título Principal -->
-    <div class="hero-title-section" [@fadeInUp]>
+    <div class="hero-title-section" [@fadeInUp] *ngIf="config">
       <h1 class="hero-main-title">
-        <span class="title-aeromexico">Aeroméxico</span>
-        <span class="title-ai">AI League 2025</span>
+        <span class="title-aeromexico">{{ config.event.title.split(' ')[0] }}</span>
+        <span class="title-ai">{{ config.event.title.split(' ').slice(1).join(' ') }}</span>
       </h1>
       
       <p class="hero-subtitle" [@fadeInUp]>
-        Una travesía donde la innovación, la inteligencia artificial y el trabajo en 
-        equipo impulsan el futuro digital de Aeroméxico
+        {{ config.event.subtitle }}
       </p>
     </div>
     
     <!-- Stats Cards Horizontal -->
-    <div class="stats-horizontal" [@slideInUp]>
+    <div class="stats-horizontal" [@slideInUp] *ngIf="config">
       <div class="stat-card">
         <div class="stat-icon">📅</div>
-        <div class="stat-number font-mono">14</div>
+        <div class="stat-number font-mono">{{ config.stats.weeks }}</div>
         <div class="stat-label">Semanas</div>
       </div>
       
       <div class="stat-card">
         <div class="stat-icon">✈️</div>
-        <div class="stat-number font-mono">6</div>
+        <div class="stat-number font-mono">{{ config.stats.routes }}</div>
         <div class="stat-label">Rutas</div>
       </div>
       
       <div class="stat-card">
         <div class="stat-icon">👥</div>
-        <div class="stat-number font-mono">6</div>
+        <div class="stat-number font-mono">{{ config.stats.squads }}</div>
         <div class="stat-label">Squads</div>
       </div>
       
       <div class="stat-card">
         <div class="stat-icon">🏆</div>
-        <div class="stat-number font-mono">28</div>
+        <div class="stat-number font-mono">{{ config.stats.challenges }}</div>
         <div class="stat-label">Desafíos</div>
       </div>
     </div>
     
     <!-- Fechas del Evento -->
-    <div class="event-dates" [@fadeInUp]>
+    <div class="event-dates" [@fadeInUp] *ngIf="config">
       <h3>Fechas del Evento</h3>
-      <p class="dates-text">26 de Septiembre – 12 de Diciembre, 2024</p>
+      <p class="dates-text">{{ formatDateRange() }}</p>
     </div>
     
     <!-- CTA Buttons -->

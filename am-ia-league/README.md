@@ -1,6 +1,11 @@
 # Aeroméxico AI League 2025 🛩️
 
-Portal estático de visualización para la competencia interna de inteligencia artificial de Aeroméxico.
+Una aplicación web interactiva para gestionar la competencia interna de inteligencia artificial de Aeroméxico. Desarrollada con Angular 19 y diseñada con un enfoque futurista inspirado en la aviación.
+
+![Angular](https://img.shields.io/badge/Angular-19.2-red?style=flat-square&logo=angular)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript)
+![SCSS](https://img.shields.io/badge/SCSS-Latest-pink?style=flat-square&logo=sass)
+![License](https://img.shields.io/badge/License-Private-yellow?style=flat-square)
 
 ## 🚀 Características
 
@@ -350,3 +355,61 @@ Este proyecto es propiedad de Aeroméxico y está destinado para uso interno en 
 **Desarrollado con ❤️ para Aeroméxico AI League 2025**
 
 *Una travesía donde la innovación, la inteligencia artificial y el trabajo en equipo impulsan el futuro digital de Aeroméxico.*
+## 📚 D
+ocumentación Técnica Completa
+
+Para desarrolladores que trabajen en este proyecto, consultar la documentación técnica detallada:
+
+- **[📖 Documentación Técnica](./TECHNICAL_DOCUMENTATION.md)**: Arquitectura completa, componentes, servicios y mejores prácticas
+- **[🎨 Guía de Estilos](./STYLE_GUIDE.md)**: Sistema de diseño, componentes UI y patrones visuales
+- **[🏗️ Guía de Arquitectura](./ARCHITECTURE_GUIDE.md)**: Patrones de diseño, flujo de datos y escalabilidad
+- **[⚙️ Resumen de Parametrización](./PARAMETRIZATION_SUMMARY.md)**: Configuración de datos y archivos JSON
+
+### Guías Específicas
+- **[🔧 Panel de Administración](./ADMIN-PANEL.md)**: Funcionalidades administrativas
+- **[🖼️ Gestión de Imágenes](./INSTRUCCIONES-IMAGENES.md)**: Assets y recursos gráficos
+- **[🔒 Mejoras de Seguridad](./ADMIN-SECURITY-IMPROVEMENTS.md)**: Seguridad del panel admin
+
+### Stack Tecnológico Detallado
+- **Framework**: Angular 19.2.x con Standalone Components
+- **Lenguaje**: TypeScript 5.7.x con strict mode
+- **Estilos**: SCSS con variables CSS y metodología BEM
+- **Animaciones**: Angular Animations con efectos personalizados
+- **HTTP**: Angular HttpClient con interceptors
+- **Routing**: Angular Router con lazy loading
+- **Testing**: Jasmine + Karma con coverage reports
+- **Build**: Angular CLI + Webpack con optimizaciones
+
+### Arquitectura de Alto Nivel
+```
+┌─────────────────────────────────────────────────────────┐
+│                    PRESENTATION LAYER                   │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
+│  │   Pages     │  │ Components  │  │   Guards    │     │
+│  └─────────────┘  └─────────────┘  └─────────────┘     │
+├─────────────────────────────────────────────────────────┤
+│                     BUSINESS LAYER                      │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
+│  │  Services   │  │ Interfaces  │  │   Models    │     │
+│  └─────────────┘  └─────────────┘  └─────────────┘     │
+├─────────────────────────────────────────────────────────┤
+│                      DATA LAYER                         │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
+│  │ HTTP Client │  │ JSON Files  │  │ Local State │     │
+│  └─────────────┘  └─────────────┘  └─────────────┘     │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Principios de Desarrollo
+- **Separation of Concerns**: Separación clara entre presentación, lógica y datos
+- **Single Responsibility**: Cada componente y servicio tiene una responsabilidad específica
+- **Reactive Programming**: Uso extensivo de RxJS para manejo de datos asíncronos
+- **Component Composition**: Componentes reutilizables y modulares
+- **Performance First**: Optimizaciones de rendimiento desde el diseño
+
+### Para Nuevos Desarrolladores
+1. **Leer la documentación técnica completa** antes de comenzar
+2. **Seguir las convenciones de código** establecidas en las guías
+3. **Usar los patrones arquitectónicos** documentados
+4. **Implementar tests** para nuevas funcionalidades
+5. **Consultar las guías de estilo** para mantener consistencia visual
