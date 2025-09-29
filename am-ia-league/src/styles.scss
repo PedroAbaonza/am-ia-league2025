@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap");
 
 // Paleta de colores Aeroméxico AI League
 :root {
-  --deep-space-blue: #0A1033;
-  --aviation-blue: #00AEEF;
-  --sky-blue-neon: #00D4FF;
-  --squadron-pink: #FF2D82;
-  --aviation-pink: #FF2D82;
-  --text-primary: #FFFFFF;
-  --text-secondary: #F3F4F6;
-  --text-muted: #9CA3AF;
+  --deep-space-blue: #0a1033;
+  --aviation-blue: #00aeef;
+  --sky-blue-neon: #00d4ff;
+  --squadron-pink: #ff2d82;
+  --aviation-pink: #ff2d82;
+  --text-primary: #ffffff;
+  --text-secondary: #f3f4f6;
+  --text-muted: #9ca3af;
   --card-bg: rgba(255, 255, 255, 0.05);
   --card-border: rgba(255, 255, 255, 0.1);
   --glow-blue: 0 0 20px rgba(0, 174, 239, 0.3);
@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: var(--deep-space-blue);
   color: var(--text-primary);
   line-height: 1.6;
@@ -41,16 +41,15 @@ body {
 
 // Fondo con estrellas optimizado
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(1px 1px at 20px 30px, #fff, transparent),
-    radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.8), transparent);
+  background: radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.8), transparent);
   background-repeat: repeat;
   background-size: 150px 80px;
   z-index: -10;
@@ -60,18 +59,350 @@ body::before {
   transform: translateZ(0);
 }
 
+// Shooting stars container
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -9;
+  pointer-events: none;
+  background: transparent;
+}
+
+// Video game style shooting star animations
+@keyframes shootingStar {
+  0% {
+    transform: translateX(-200px) translateY(-100px) rotate(130deg);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  5% {
+    opacity: 0.8;
+    filter: blur(0px);
+  }
+  95% {
+    opacity: 0.8;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 200px)) translateY(calc(100vh + 100px))
+      rotate(130deg);
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes shootingStarFast {
+  0% {
+    transform: translateX(-150px) translateY(-80px) rotate(130deg);
+    opacity: 0;
+    filter: blur(1px);
+  }
+  3% {
+    opacity: 0.5;
+    filter: blur(0px);
+  }
+  97% {
+    opacity: 0.5;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 150px)) translateY(calc(100vh + 80px))
+      rotate(130deg);
+    opacity: 0;
+    filter: blur(1px);
+  }
+}
+
+@keyframes shootingStarSuperFast {
+  0% {
+    transform: translateX(-120px) translateY(-60px) rotate(130deg);
+    opacity: 0;
+    filter: blur(1px);
+  }
+  2% {
+    opacity: 0.3;
+    filter: blur(0px);
+  }
+  98% {
+    opacity: 0.3;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 120px)) translateY(calc(100vh + 60px))
+      rotate(130deg);
+    opacity: 0;
+    filter: blur(1px);
+  }
+}
+
+@keyframes shootingStarSlow {
+  0% {
+    transform: translateX(-250px) translateY(-120px) rotate(130deg);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  8% {
+    opacity: 0.6;
+    filter: blur(0px);
+  }
+  92% {
+    opacity: 0.6;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 250px)) translateY(calc(100vh + 120px))
+      rotate(130deg);
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+@keyframes shootingStarDiagonal {
+  0% {
+    transform: translateX(-180px) translateY(-60px) rotate(130deg);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  4% {
+    opacity: 0.4;
+    filter: blur(0px);
+  }
+  96% {
+    opacity: 0.4;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 180px)) translateY(calc(100vh + 60px))
+      rotate(130deg);
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes shootingStarMedium {
+  0% {
+    transform: translateX(-170px) translateY(-90px) rotate(130deg);
+    opacity: 0;
+    filter: blur(1.5px);
+  }
+  6% {
+    opacity: 0.45;
+    filter: blur(0px);
+  }
+  94% {
+    opacity: 0.45;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 170px)) translateY(calc(100vh + 90px))
+      rotate(130deg);
+    opacity: 0;
+    filter: blur(1.5px);
+  }
+}
+
+// Video game style shooting stars
+.shooting-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 4px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 212, 255, 0.8),
+    rgba(0, 212, 255, 0.6),
+    rgba(0, 212, 255, 0.3),
+    transparent
+  );
+  border-radius: 2px;
+  transform-origin: top center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.9),
+      rgba(0, 212, 255, 0.7)
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.6), 0 0 24px rgba(0, 212, 255, 0.4),
+      0 0 36px rgba(0, 212, 255, 0.2);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4),
+      rgba(0, 212, 255, 0.3),
+      rgba(0, 212, 255, 0.15),
+      transparent
+    );
+    border-radius: 1px;
+  }
+}
+
+// Individual shooting star styles
+.shooting-star:nth-child(1) {
+  top: 15%;
+  left: -200px;
+  animation: shootingStar 4s linear infinite;
+  animation-delay: 0.5s;
+  transform: scale(1);
+}
+
+.shooting-star:nth-child(2) {
+  top: 35%;
+  left: -150px;
+  animation: shootingStarFast 2.5s linear infinite;
+  animation-delay: 3s;
+  transform: scale(0.7);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 174, 239, 0.35),
+      rgba(0, 174, 239, 0.25),
+      rgba(0, 174, 239, 0.12),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.5),
+      rgba(0, 174, 239, 0.35)
+    );
+    box-shadow: 0 0 6px rgba(0, 174, 239, 0.25),
+      0 0 12px rgba(0, 174, 239, 0.15), 0 0 18px rgba(0, 174, 239, 0.08);
+  }
+}
+
+.shooting-star:nth-child(3) {
+  top: 55%;
+  left: -250px;
+  animation: shootingStarSlow 7s linear infinite;
+  animation-delay: 6s;
+  transform: scale(1.3);
+}
+
+.shooting-star:nth-child(4) {
+  top: 75%;
+  left: -180px;
+  animation: shootingStarMedium 4.5s linear infinite;
+  animation-delay: 9s;
+  transform: scale(0.8);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 45, 130, 0.3),
+      rgba(255, 45, 130, 0.2),
+      rgba(255, 45, 130, 0.1),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 45, 130, 0.3)
+    );
+    box-shadow: 0 0 7px rgba(255, 45, 130, 0.2),
+      0 0 14px rgba(255, 45, 130, 0.15), 0 0 21px rgba(255, 45, 130, 0.1);
+  }
+}
+
+.shooting-star:nth-child(5) {
+  top: 25%;
+  left: -220px;
+  animation: shootingStarSuperFast 2s linear infinite;
+  animation-delay: 12s;
+  transform: scale(0.5);
+}
+
+.shooting-star:nth-child(6) {
+  top: 65%;
+  left: -160px;
+  animation: shootingStarDiagonal 5.5s linear infinite;
+  animation-delay: 15s;
+  transform: scale(0.9);
+}
+
+.shooting-star:nth-child(7) {
+  top: 45%;
+  left: -190px;
+  animation: shootingStarSlow 6.5s linear infinite;
+  animation-delay: 18s;
+  transform: scale(0.6);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      var(--aviation-blue),
+      rgba(0, 174, 239, 0.8),
+      rgba(0, 174, 239, 0.4),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(circle, #ffffff, var(--aviation-blue));
+    box-shadow: 0 0 6px var(--aviation-blue), 0 0 12px var(--aviation-blue),
+      0 0 18px rgba(0, 174, 239, 0.5);
+  }
+}
+
 // Tipografías
 .font-primary {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .font-mono {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 // Utilidades
 .gradient-text {
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -83,4 +414,88 @@ body::before {
 
 .glow-pink {
   box-shadow: var(--glow-pink);
+}
+
+.shooting-star:nth-child(8) {
+  top: 10%;
+  left: -140px;
+  animation: shootingStarFast 3s linear infinite;
+  animation-delay: 21s;
+  transform: scale(0.4);
+}
+
+.shooting-star:nth-child(9) {
+  top: 85%;
+  left: -210px;
+  animation: shootingStar 4.2s linear infinite;
+  animation-delay: 24s;
+  transform: scale(1.1);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 174, 239, 0.4),
+      rgba(0, 174, 239, 0.3),
+      rgba(0, 174, 239, 0.15),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.5),
+      rgba(0, 174, 239, 0.4)
+    );
+    box-shadow: 0 0 8px rgba(0, 174, 239, 0.3), 0 0 16px rgba(0, 174, 239, 0.2),
+      0 0 24px rgba(0, 174, 239, 0.1);
+  }
+}
+
+.shooting-star:nth-child(10) {
+  top: 30%;
+  left: -170px;
+  animation: shootingStarSuperFast 1.8s linear infinite;
+  animation-delay: 27s;
+  transform: scale(0.3);
+}
+
+.shooting-star:nth-child(11) {
+  top: 60%;
+  left: -230px;
+  animation: shootingStarMedium 5s linear infinite;
+  animation-delay: 30s;
+  transform: scale(0.8);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 45, 130, 0.25),
+      rgba(255, 45, 130, 0.18),
+      rgba(255, 45, 130, 0.08),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 45, 130, 0.25)
+    );
+    box-shadow: 0 0 6px rgba(255, 45, 130, 0.18),
+      0 0 12px rgba(255, 45, 130, 0.12), 0 0 18px rgba(255, 45, 130, 0.06);
+  }
+}
+
+.shooting-star:nth-child(12) {
+  top: 20%;
+  left: --200px;
+  animation: shootingStarDiagonal 6s linear infinite;
+  animation-delay: 33s;
+  transform: scale(0.7);
 }
