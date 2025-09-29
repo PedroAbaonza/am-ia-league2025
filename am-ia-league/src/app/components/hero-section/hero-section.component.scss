@@ -155,12 +155,13 @@
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.98);
-  border: 2px solid rgba(255, 20, 147, 0.2);
+  background: linear-gradient(to bottom, #2d48f7, #c10b6e);
+  border: none;
   border-radius: 16px;
   padding: 1.5rem 0.8rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 25px rgba(45, 72, 247, 0.3),
+    0 4px 15px rgba(193, 11, 110, 0.2);
   will-change: transform;
   transform: translateZ(0);
   position: relative;
@@ -204,8 +205,8 @@
 
   &:hover {
     transform: translate3d(0, -4px, 0) scale(1.02);
-    border-color: #ff1493;
-    box-shadow: 0 8px 30px rgba(255, 20, 147, 0.15);
+    box-shadow: 0 12px 40px rgba(45, 72, 247, 0.4),
+      0 8px 25px rgba(193, 11, 110, 0.3);
 
     &::before {
       left: 100%;
@@ -225,12 +226,13 @@
     margin-bottom: 0.8rem;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    color: white;
   }
 
   .stat-number {
     font-size: 2.2rem;
     font-weight: 800;
-    color: #ff1493;
+    color: white;
     margin-bottom: 0.4rem;
     font-family: "Montserrat", sans-serif;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -239,7 +241,7 @@
 
   .stat-label {
     font-size: 0.85rem;
-    color: #1e2a5e;
+    color: rgba(255, 255, 255, 0.9);
     text-transform: capitalize;
     font-weight: 600;
     letter-spacing: 0.3px;
@@ -277,18 +279,19 @@
 
 // Fechas del Evento
 .event-dates {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgba(0, 191, 255, 0.4);
+  background: linear-gradient(to bottom, #2d48f7, #c10b6e);
+  border: none;
   border-radius: 20px;
   padding: 2rem 2.5rem;
   margin: 3rem auto;
   max-width: 650px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(45, 72, 247, 0.3),
+    0 4px 15px rgba(193, 11, 110, 0.2);
   will-change: transform;
   transform: translateZ(0);
 
   h3 {
-    color: #1e2a5e;
+    color: white;
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
@@ -298,7 +301,7 @@
   }
 
   .dates-text {
-    color: #ff1493;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0;
