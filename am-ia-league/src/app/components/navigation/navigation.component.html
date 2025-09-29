@@ -3,20 +3,22 @@
     <!-- Logo y Branding -->
     <div class="nav-brand">
       <a routerLink="/" class="brand-logo">
-        <app-logo 
-          type="aeromexico" 
-          size="medium" 
-          [showText]="false">
+        <app-logo type="aeromexico" size="medium" [showText]="false">
         </app-logo>
         <div class="brand-text">
           <span class="brand-subtitle">AI League 2025</span>
         </div>
       </a>
     </div>
-    
+
     <!-- Menu Desktop -->
     <div class="nav-menu" [class.active]="isMenuOpen">
-      <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a
+        routerLink="/"
+        class="nav-link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <span class="nav-icon">🏠</span>
         Home
       </a>
@@ -28,16 +30,14 @@
         <span class="nav-icon">👤</span>
         Individual
       </a>
-      
-      <!-- CTA Button -->
-      <button class="nav-cta glow-pink">
-        <span class="cta-icon">🚀</span>
-        Unirse
-      </button>
     </div>
-    
+
     <!-- Mobile Menu Toggle -->
-    <button class="mobile-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+    <button
+      class="mobile-toggle"
+      (click)="toggleMenu()"
+      [class.active]="isMenuOpen"
+    >
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>

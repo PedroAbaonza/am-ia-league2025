@@ -1,17 +1,28 @@
 .points-system {
   padding: 4rem 2rem;
-  background: linear-gradient(180deg, rgba(255, 45, 130, 0.15) 0%, rgba(0, 174, 239, 0.08) 50%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 174, 239, 0.05) 0%,
+    rgba(100, 130, 200, 0.08) 15%,
+    rgba(255, 45, 130, 0.15) 35%,
+    rgba(0, 174, 239, 0.08) 75%,
+    transparent 100%
+  );
   position: relative;
   z-index: 2;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(0, 174, 239, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 174, 239, 0.1) 0%,
+      transparent 70%
+    );
     pointer-events: none;
     z-index: -1;
   }
@@ -30,7 +41,11 @@
 .section-title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -60,14 +75,13 @@
   padding: 2rem;
   backdrop-filter: blur(15px);
   transition: all 0.3s ease;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(0, 174, 239, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 174, 239, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-color: rgba(0, 174, 239, 0.5);
   }
 }
@@ -87,15 +101,19 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  
+
   &.missions-icon {
-    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    background: linear-gradient(
+      135deg,
+      var(--aviation-blue),
+      var(--sky-blue-neon)
+    );
     color: white;
     box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
   }
-  
+
   &.challenges-icon {
-    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    background: linear-gradient(135deg, var(--squadron-pink), #ff6b9d);
     color: white;
     box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
   }
@@ -131,14 +149,13 @@
   border-radius: 12px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
-              inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
   &:hover {
     transform: translateY(-4px);
     border-color: var(--aviation-blue);
     box-shadow: 0 8px 25px rgba(0, 174, 239, 0.4),
-                0 0 20px rgba(0, 174, 239, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 0 20px rgba(0, 174, 239, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     background: rgba(0, 174, 239, 0.08);
   }
 }
@@ -152,27 +169,31 @@
   justify-content: center;
   font-weight: 600;
   font-size: 1.2rem;
-  
+
   &.icon-amazon-q {
-    background: linear-gradient(135deg, #FF9500, #FFB84D);
+    background: linear-gradient(135deg, #ff9500, #ffb84d);
     color: white;
     box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
   }
-  
+
   &.icon-ai-flight-tips {
-    background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+    background: linear-gradient(
+      135deg,
+      var(--aviation-blue),
+      var(--sky-blue-neon)
+    );
     color: white;
     box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
   }
-  
+
   &.icon-code-increment {
-    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    background: linear-gradient(135deg, var(--squadron-pink), #ff6b9d);
     color: white;
     box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
   }
-  
+
   &.icon-jira {
-    background: linear-gradient(135deg, #0052CC, #2684FF);
+    background: linear-gradient(135deg, #0052cc, #2684ff);
     color: white;
     box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);
   }
@@ -201,7 +222,11 @@
 }
 
 .points-badge {
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -210,9 +235,9 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
-  
+
   &.bonus {
-    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    background: linear-gradient(135deg, var(--squadron-pink), #ff6b9d);
     box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
   }
 }
@@ -230,23 +255,21 @@
   border-radius: 12px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
-              inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
   &:hover {
     transform: translateY(-4px);
     border-color: var(--squadron-pink);
     box-shadow: 0 8px 25px rgba(255, 45, 130, 0.4),
-                0 0 20px rgba(255, 45, 130, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 0 20px rgba(255, 45, 130, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     background: rgba(255, 45, 130, 0.08);
   }
-  
+
   &.highlighted {
     background: rgba(255, 45, 130, 0.15);
     border: 2px solid var(--squadron-pink);
     box-shadow: 0 0 30px rgba(255, 45, 130, 0.5),
-                0 8px 25px rgba(255, 45, 130, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      0 8px 25px rgba(255, 45, 130, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     animation: glow-pulse 2s ease-in-out infinite alternate;
   }
 }
@@ -286,19 +309,22 @@
   padding: 2rem;
   margin-bottom: 3rem;
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 40px rgba(255, 45, 130, 0.4),
-              0 8px 32px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(255, 45, 130, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 45, 130, 0.1) 0%, transparent 50%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 45, 130, 0.1) 0%,
+      transparent 50%
+    );
     border-radius: 16px;
     pointer-events: none;
   }
@@ -313,7 +339,7 @@
 .squad-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+  background: linear-gradient(135deg, var(--squadron-pink), #ff6b9d);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -346,19 +372,22 @@
   border-radius: 16px;
   padding: 2rem;
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 40px rgba(0, 174, 239, 0.4),
-              0 8px 32px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(0, 174, 239, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 174, 239, 0.1) 0%, transparent 50%);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 174, 239, 0.1) 0%,
+      transparent 50%
+    );
     border-radius: 16px;
     pointer-events: none;
   }
@@ -379,7 +408,11 @@
 }
 
 .calc-members {
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -414,7 +447,7 @@
 .calc-points {
   font-size: 1.25rem;
   color: var(--aviation-blue);
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 .calc-multiply {
@@ -429,44 +462,48 @@
 
 .calc-total {
   font-size: 1.25rem;
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 @media (max-width: 768px) {
   .points-system {
     padding: 2rem 1rem;
   }
-  
+
   .points-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .mission-card {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
-  
+
   .challenge-card {
     padding: 1rem;
   }
-  
+
   .calc-formula {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .calc-header {
     flex-direction: column;
     align-items: flex-start;
