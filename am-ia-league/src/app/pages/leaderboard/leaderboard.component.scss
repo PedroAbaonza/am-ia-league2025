@@ -1,7 +1,11 @@
 .leaderboard-page {
   min-height: 100vh;
   padding: 6rem 2rem 4rem;
-  background: linear-gradient(180deg, var(--deep-space-blue) 0%, rgba(0, 46, 109, 0.3) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 51, 0.8) 0%,
+    rgba(0, 46, 109, 0.2) 100%
+  );
 }
 
 .page-header {
@@ -39,17 +43,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   &.first {
     order: 2;
     z-index: 3;
   }
-  
+
   &.second {
     order: 1;
     z-index: 2;
   }
-  
+
   &.third {
     order: 3;
     z-index: 1;
@@ -67,11 +71,11 @@
   margin-bottom: 1rem;
   min-width: 200px;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
-  
+
   &.winner {
     border-color: var(--squadron-pink);
     background: rgba(255, 45, 130, 0.1);
@@ -84,7 +88,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 2rem;
-  filter: drop-shadow(0 0 10px #FFD700);
+  filter: drop-shadow(0 0 10px #ffd700);
 }
 
 .position-badge {
@@ -98,19 +102,19 @@
   font-size: 1.2rem;
   margin: 0 auto 1rem;
   color: white;
-  
+
   &.gold {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: linear-gradient(135deg, #ffd700, #ffa500);
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   }
-  
+
   &.silver {
-    background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+    background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
     box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
   }
-  
+
   &.bronze {
-    background: linear-gradient(135deg, #CD7F32, #B8860B);
+    background: linear-gradient(135deg, #cd7f32, #b8860b);
     box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
   }
 }
@@ -136,23 +140,27 @@
 
 .podium-base {
   border-radius: 8px 8px 0 0;
-  
+
   &.first-base {
     width: 120px;
     height: 100px;
-    background: linear-gradient(180deg, var(--squadron-pink), #FF6B9D);
+    background: linear-gradient(180deg, var(--squadron-pink), #ff6b9d);
   }
-  
+
   &.second-base {
     width: 100px;
     height: 70px;
-    background: linear-gradient(180deg, var(--aviation-blue), var(--sky-blue-neon));
+    background: linear-gradient(
+      180deg,
+      var(--aviation-blue),
+      var(--sky-blue-neon)
+    );
   }
-  
+
   &.third-base {
     width: 80px;
     height: 50px;
-    background: linear-gradient(180deg, #CD7F32, #B8860B);
+    background: linear-gradient(180deg, #cd7f32, #b8860b);
   }
 }
 
@@ -170,7 +178,7 @@
 }
 
 .table-container {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.01);
   border: 1px solid var(--card-border);
   border-radius: 16px;
   backdrop-filter: blur(10px);
@@ -203,15 +211,15 @@
   grid-template-columns: 80px 1fr 200px 120px 150px;
   border-bottom: 1px solid var(--card-border);
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.03);
   }
-  
+
   &:last-child {
     border-bottom: none;
   }
-  
+
   &.position-1,
   &.position-2,
   &.position-3 {
@@ -244,7 +252,7 @@
     color: var(--text-primary);
     margin-bottom: 0.25rem;
   }
-  
+
   .scrum-master {
     font-size: 0.875rem;
     color: var(--text-muted);
@@ -318,36 +326,36 @@
   .leaderboard-page {
     padding: 5rem 1rem 2rem;
   }
-  
+
   .podium {
     flex-direction: column;
     height: auto;
     gap: 1rem;
-    
+
     .podium-place {
       order: initial !important;
       width: 100%;
       max-width: 300px;
     }
   }
-  
+
   .podium-card {
     min-width: auto;
     width: 100%;
   }
-  
+
   .table-header,
   .table-row {
     grid-template-columns: 60px 1fr 100px;
   }
-  
+
   .header-cell.members,
   .header-cell.progress,
   .table-cell.members,
   .table-cell.progress {
     display: none;
   }
-  
+
   .table-cell {
     padding: 1rem 0.5rem;
   }
