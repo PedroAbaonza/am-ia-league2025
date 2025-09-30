@@ -284,16 +284,16 @@ body::before {
 .shooting-star:nth-child(1) {
   top: 15%;
   left: -200px;
-  animation: shootingStar 4s linear infinite;
-  animation-delay: 0.5s;
+  animation: shootingStar 8s linear infinite;
+  animation-delay: 2s;
   transform: scale(1);
 }
 
 .shooting-star:nth-child(2) {
   top: 35%;
   left: -150px;
-  animation: shootingStarFast 2.5s linear infinite;
-  animation-delay: 3s;
+  animation: shootingStarFast 6s linear infinite;
+  animation-delay: 8s;
   transform: scale(0.7);
 
   &,
@@ -301,9 +301,9 @@ body::before {
   &::after {
     background: linear-gradient(
       to bottom,
-      rgba(0, 174, 239, 0.35),
-      rgba(0, 174, 239, 0.25),
-      rgba(0, 174, 239, 0.12),
+      rgba(255, 45, 130, 0.35),
+      rgba(255, 45, 130, 0.25),
+      rgba(255, 45, 130, 0.12),
       transparent
     );
   }
@@ -312,26 +312,26 @@ body::before {
     background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0.5),
-      rgba(0, 174, 239, 0.35)
+      rgba(255, 45, 130, 0.35)
     );
-    box-shadow: 0 0 6px rgba(0, 174, 239, 0.25),
-      0 0 12px rgba(0, 174, 239, 0.15), 0 0 18px rgba(0, 174, 239, 0.08);
+    box-shadow: 0 0 6px rgba(255, 45, 130, 0.25),
+      0 0 12px rgba(255, 45, 130, 0.15), 0 0 18px rgba(255, 45, 130, 0.08);
   }
 }
 
 .shooting-star:nth-child(3) {
   top: 55%;
   left: -250px;
-  animation: shootingStarSlow 7s linear infinite;
-  animation-delay: 6s;
+  animation: shootingStarSlow 12s linear infinite;
+  animation-delay: 15s;
   transform: scale(1.3);
 }
 
 .shooting-star:nth-child(4) {
   top: 75%;
   left: -180px;
-  animation: shootingStarMedium 4.5s linear infinite;
-  animation-delay: 9s;
+  animation: shootingStarMedium 10s linear infinite;
+  animation-delay: 22s;
   transform: scale(0.8);
 
   &,
@@ -360,24 +360,46 @@ body::before {
 .shooting-star:nth-child(5) {
   top: 25%;
   left: -220px;
-  animation: shootingStarSuperFast 2s linear infinite;
-  animation-delay: 12s;
+  animation: shootingStarSuperFast 7s linear infinite;
+  animation-delay: 30s;
   transform: scale(0.5);
 }
 
 .shooting-star:nth-child(6) {
   top: 65%;
   left: -160px;
-  animation: shootingStarDiagonal 5.5s linear infinite;
-  animation-delay: 15s;
+  animation: shootingStarDiagonal 9s linear infinite;
+  animation-delay: 40s;
   transform: scale(0.9);
+
+  &,
+  &::before,
+  &::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 45, 130, 0.4),
+      rgba(255, 45, 130, 0.3),
+      rgba(255, 45, 130, 0.15),
+      transparent
+    );
+  }
+
+  &::before {
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 45, 130, 0.4)
+    );
+    box-shadow: 0 0 8px rgba(255, 45, 130, 0.3),
+      0 0 16px rgba(255, 45, 130, 0.2), 0 0 24px rgba(255, 45, 130, 0.1);
+  }
 }
 
 .shooting-star:nth-child(7) {
   top: 45%;
   left: -190px;
-  animation: shootingStarSlow 6.5s linear infinite;
-  animation-delay: 18s;
+  animation: shootingStarSlow 11s linear infinite;
+  animation-delay: 50s;
   transform: scale(0.6);
 
   &,
@@ -431,8 +453,8 @@ body::before {
 .shooting-star:nth-child(8) {
   top: 10%;
   left: -140px;
-  animation: shootingStarFast 3s linear infinite;
-  animation-delay: 21s;
+  animation: shootingStarFast 8s linear infinite;
+  animation-delay: 60s;
   transform: scale(0.4);
 }
 
