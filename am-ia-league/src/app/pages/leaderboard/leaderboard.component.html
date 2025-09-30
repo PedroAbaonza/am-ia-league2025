@@ -9,15 +9,29 @@
     <div class="podium">
       <!-- Segundo Lugar -->
       <div class="podium-place second" *ngIf="topSquads[1]">
-        <div class="podium-card glow-blue">
-          <div class="position-badge silver">2</div>
-          <h3 class="squad-name">{{ topSquads[1].name }}</h3>
-          <div class="squad-points font-mono">
-            {{ topSquads[1].totalPoints.toLocaleString() }}pts
-          </div>
-          <div class="squad-members">
-            <div class="member-count">
-              {{ topSquads[1].developers.length + 1 }} miembros
+        <div class="shield-card silver-shield">
+          <div class="shield-background">
+            <div class="shield-header">
+              <div class="squad-role-container">
+                <div class="squad-name">
+                  {{ getShortSquadName(topSquads[1].name) }}
+                </div>
+                <div class="role-badge">TEAM</div>
+              </div>
+            </div>
+            <div class="squad-logo">
+              <div class="squad-avatar" [style.background]="topSquads[1].color">
+                {{ getSquadInitials(topSquads[1].name) }}
+              </div>
+            </div>
+            <div class="squad-name-banner">
+              <h3 class="squad-name">{{ topSquads[1].name }}</h3>
+            </div>
+            <div class="points-section">
+              <div class="points-value">
+                {{ formatPoints(topSquads[1].totalPoints) }}
+              </div>
+              <div class="points-label">SQUAD POINTS</div>
             </div>
           </div>
         </div>
@@ -26,16 +40,29 @@
 
       <!-- Primer Lugar -->
       <div class="podium-place first" *ngIf="topSquads[0]">
-        <div class="podium-card glow-pink winner">
-          <div class="crown">👑</div>
-          <div class="position-badge gold">1</div>
-          <h3 class="squad-name">{{ topSquads[0].name }}</h3>
-          <div class="squad-points font-mono">
-            {{ topSquads[0].totalPoints.toLocaleString() }}pts
-          </div>
-          <div class="squad-members">
-            <div class="member-count">
-              {{ topSquads[0].developers.length + 1 }} miembros
+        <div class="shield-card gold-shield winner">
+          <div class="shield-background">
+            <div class="shield-header">
+              <div class="squad-role-container">
+                <div class="squad-name">
+                  {{ getShortSquadName(topSquads[0].name) }}
+                </div>
+                <div class="role-badge">TEAM</div>
+              </div>
+            </div>
+            <div class="squad-logo">
+              <div class="squad-avatar" [style.background]="topSquads[0].color">
+                {{ getSquadInitials(topSquads[0].name) }}
+              </div>
+            </div>
+            <div class="squad-name-banner">
+              <h3 class="squad-name">{{ topSquads[0].name }}</h3>
+            </div>
+            <div class="points-section">
+              <div class="points-value">
+                {{ formatPoints(topSquads[0].totalPoints) }}
+              </div>
+              <div class="points-label">SQUAD POINTS</div>
             </div>
           </div>
         </div>
@@ -44,15 +71,29 @@
 
       <!-- Tercer Lugar -->
       <div class="podium-place third" *ngIf="topSquads[2]">
-        <div class="podium-card glow-blue">
-          <div class="position-badge bronze">3</div>
-          <h3 class="squad-name">{{ topSquads[2].name }}</h3>
-          <div class="squad-points font-mono">
-            {{ topSquads[2].totalPoints.toLocaleString() }}pts
-          </div>
-          <div class="squad-members">
-            <div class="member-count">
-              {{ topSquads[2].developers.length + 1 }} miembros
+        <div class="shield-card bronze-shield">
+          <div class="shield-background">
+            <div class="shield-header">
+              <div class="squad-role-container">
+                <div class="squad-name">
+                  {{ getShortSquadName(topSquads[2].name) }}
+                </div>
+                <div class="role-badge">TEAM</div>
+              </div>
+            </div>
+            <div class="squad-logo">
+              <div class="squad-avatar" [style.background]="topSquads[2].color">
+                {{ getSquadInitials(topSquads[2].name) }}
+              </div>
+            </div>
+            <div class="squad-name-banner">
+              <h3 class="squad-name">{{ topSquads[2].name }}</h3>
+            </div>
+            <div class="points-section">
+              <div class="points-value">
+                {{ formatPoints(topSquads[2].totalPoints) }}
+              </div>
+              <div class="points-label">SQUAD POINTS</div>
             </div>
           </div>
         </div>
@@ -63,7 +104,7 @@
 
   <!-- Tabla Completa -->
   <div class="leaderboard-table">
-    <h2 class="table-title">Ranking Completo</h2>
+    <h2 class="table-title gradient-text">Ranking Completo</h2>
 
     <div class="table-container">
       <div class="table-header">

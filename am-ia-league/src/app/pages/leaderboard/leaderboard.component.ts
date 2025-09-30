@@ -6,7 +6,7 @@ import { LeaderboardService, Squad } from '../../services/leaderboard.service';
   selector: 'app-leaderboard',
   imports: [CommonModule],
   templateUrl: './leaderboard.component.html',
-  styleUrl: './leaderboard.component.scss'
+  styleUrl: './leaderboard.component.scss',
 })
 export class LeaderboardComponent implements OnInit {
   squads: Squad[] = [];
@@ -16,15 +16,16 @@ export class LeaderboardComponent implements OnInit {
   constructor(private leaderboardService: LeaderboardService) {}
 
   ngOnInit() {
-    this.leaderboardService.getSquads().subscribe(squads => {
+    this.leaderboardService.getSquads().subscribe((squads) => {
       this.squads = squads.sort((a, b) => b.totalPoints - a.totalPoints);
       this.topSquads = this.squads.slice(0, 3);
     });
   }
 
   getInitials(name: string): string {
-    return name.split(' ')
-      .map(word => word.charAt(0))
+    return name
+      .split(' ')
+      .map((word) => word.charAt(0))
       .join('')
       .toUpperCase()
       .substring(0, 2);
@@ -38,8 +39,31 @@ export class LeaderboardComponent implements OnInit {
     const colors = {
       1: 'linear-gradient(135deg, #FFD700, #FFA500)',
       2: 'linear-gradient(135deg, #C0C0C0, #A8A8A8)',
-      3: 'linear-gradient(135deg, #CD7F32, #B8860B)'
+      3: 'linear-gradient(135deg, #CD7F32, #B8860B)',
     };
     return colors[position as keyof typeof colors] || 'var(--card-bg)';
+  }
+
+  formatPoints(points: number): string {
+    if (points >= 1000) {
+      return (points / 1000).toFixed(1) + 'K';
+    }
+    return points.toString();
+  }
+
+  getShortSquadName(squadName: string): string {
+    const squadMap: { [key: string]: string } = {
+      Alpha: 'ALP',
+      Beta: 'BET',
+      Gamma: 'GAM',
+      Delta: 'DEL',
+      Echo: 'ECH',
+      Foxtrot: 'FOX',
+    };
+    return squadMap[squadName] || squadName.substring(0, 3).toUpperCase();
+  }
+
+  getSquadInitials(squadName: string): string {
+    return squadName.substring(0, 2).toUpperCase();
   }
 }

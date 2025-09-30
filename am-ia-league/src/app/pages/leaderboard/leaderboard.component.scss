@@ -36,7 +36,29 @@
   align-items: end;
   justify-content: center;
   gap: 2rem;
-  height: 400px;
+  height: 450px;
+  position: relative;
+
+  // Large shadow pool for all three podium bases
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 100px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 20%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(0, 0, 0, 0.2) 70%,
+      transparent 100%
+    );
+    border-radius: 50%;
+    z-index: 0;
+  }
 }
 
 .podium-place {
@@ -60,86 +82,178 @@
   }
 }
 
-.podium-card {
-  background: var(--card-bg);
-  border: 2px solid var(--card-border);
-  border-radius: 20px;
-  padding: 2rem;
-  text-align: center;
-  backdrop-filter: blur(10px);
+// Shield Card Styles
+.shield-card {
   position: relative;
   margin-bottom: 1rem;
-  min-width: 200px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
+  min-width: 280px;
 
   &.winner {
-    border-color: var(--squadron-pink);
-    background: rgba(255, 45, 130, 0.1);
+    transform: scale(1.05);
   }
 }
 
-.crown {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  filter: drop-shadow(0 0 10px #ffd700);
+.shield-background {
+  background-image: url("/assets/images/avatars/individual-shield.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px;
+  height: 380px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.position-badge {
-  width: 40px;
-  height: 40px;
+.gold-shield .shield-background {
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+}
+
+.silver-shield .shield-background {
+  filter: drop-shadow(0 0 15px rgba(192, 192, 192, 0.6));
+}
+
+.bronze-shield .shield-background {
+  filter: drop-shadow(0 0 15px rgba(205, 127, 50, 0.6));
+}
+
+.shield-header {
+  position: absolute;
+  top: 95px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.squad-role-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  border-radius: 4px;
+  margin: 0 40px;
+}
+
+.squad-name {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.role-badge {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.squad-logo {
+  position: absolute;
+  top: 115px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.squad-avatar {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin: 0 auto 1rem;
   color: white;
+  font-weight: 700;
+  font-size: 1.8rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
 
-  &.gold {
-    background: linear-gradient(135deg, #ffd700, #ffa500);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-  }
-
-  &.silver {
-    background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
-    box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
-  }
-
-  &.bronze {
-    background: linear-gradient(135deg, #cd7f32, #b8860b);
-    box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
-  }
+.squad-name-banner {
+  position: absolute;
+  bottom: 100px;
+  left: 30px;
+  right: 30px;
+  background: linear-gradient(
+    90deg,
+    rgba(206, 10, 111, 0.3) 0%,
+    rgba(206, 10, 111, 0.95) 50%,
+    rgba(206, 10, 111, 0.3) 100%
+  );
+  padding: 10px 16px;
+  border-radius: 4px;
+  z-index: 2;
 }
 
 .squad-name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.squad-points {
+.points-section {
+  position: absolute;
+  bottom: 50px;
+  left: 30px;
+  right: 30px;
+  text-align: center;
+  z-index: 2;
+}
+
+.points-value {
+  color: white;
   font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--aviation-blue);
-  margin-bottom: 1rem;
+  font-weight: 900;
+  margin-bottom: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1;
 }
 
-.member-count {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
+.points-label {
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .podium-base {
   border-radius: 8px 8px 0 0;
+  position: relative;
+  z-index: 2;
+
+  // Shadow emergence effect overlay
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    z-index: 1;
+  }
 
   &.first-base {
     width: 120px;
@@ -172,7 +286,6 @@
 .table-title {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--text-primary);
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -202,8 +315,7 @@
 }
 
 .table-body {
-  max-height: 600px;
-  overflow-y: auto;
+  // Removed max-height and overflow to show all squads without scrolling
 }
 
 .table-row {
@@ -339,9 +451,60 @@
     }
   }
 
-  .podium-card {
+  .shield-card {
     min-width: auto;
     width: 100%;
+    max-width: 280px;
+  }
+
+  .shield-background {
+    width: 280px;
+    height: 350px;
+  }
+
+  .shield-header {
+    top: 80px;
+  }
+
+  .squad-role-container {
+    padding: 0 30px;
+  }
+
+  .squad-name,
+  .role-badge {
+    font-size: 0.75rem;
+  }
+
+  .squad-logo {
+    top: 120px;
+  }
+
+  .squad-avatar {
+    width: 90px;
+    height: 90px;
+    font-size: 1.6rem;
+  }
+
+  .squad-name-banner {
+    bottom: 80px;
+    left: 25px;
+    right: 25px;
+  }
+
+  .squad-name {
+    font-size: 0.9rem;
+  }
+
+  .points-section {
+    bottom: 30px;
+  }
+
+  .points-value {
+    font-size: 1.6rem;
+  }
+
+  .points-label {
+    font-size: 0.5rem;
   }
 
   .table-header,

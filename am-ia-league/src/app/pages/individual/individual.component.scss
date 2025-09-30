@@ -37,6 +37,28 @@
   justify-content: center;
   gap: 2rem;
   height: 450px;
+  position: relative;
+
+  // Large shadow pool for all three podium bases
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 100px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 20%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(0, 0, 0, 0.2) 70%,
+      transparent 100%
+    );
+    border-radius: 50%;
+    z-index: 0;
+  }
 }
 
 .podium-place {
@@ -222,6 +244,24 @@
 
 .podium-base {
   border-radius: 8px 8px 0 0;
+  position: relative;
+  z-index: 2;
+
+  // Shadow emergence effect overlay
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    z-index: 1;
+  }
 
   &.first-base {
     width: 120px;
