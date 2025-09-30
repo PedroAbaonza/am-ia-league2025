@@ -16,6 +16,8 @@
         class="hero-logo"
       />
 
+      <p class="hero-dates" [@fadeInUp]>25 de septiembre – 11 de diciembre</p>
+
       <p class="hero-subtitle" [@fadeInUp] *ngIf="config">
         {{ config.event.subtitle }}
       </p>
@@ -46,12 +48,6 @@
         <div class="stat-number font-mono">{{ config.stats.challenges }}</div>
         <div class="stat-label">Desafíos</div>
       </div>
-    </div>
-
-    <!-- Fechas del Evento -->
-    <div class="event-dates" [@fadeInUp] *ngIf="config">
-      <h3>Fechas del Evento</h3>
-      <p class="dates-text">{{ formatDateRange() }}</p>
     </div>
 
     <!-- CTA Buttons -->

@@ -1,10 +1,10 @@
 .hero-section {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem;
-  padding-top: calc(2rem + 86px);
+  padding: 1rem 2rem;
+  padding-top: calc(86px + 0.5rem);
   text-align: center;
   position: relative;
   z-index: 2;
@@ -100,6 +100,16 @@
   }
 }
 
+// Animación de brillo que solo va en una dirección
+@keyframes shineEffect {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 .hero-content {
   max-width: 1200px;
   width: 100%;
@@ -108,11 +118,12 @@
 
 // Logo Principal
 .hero-logo-section {
-  margin-bottom: 3rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .hero-logo {
@@ -130,15 +141,25 @@
   }
 }
 
+.hero-dates {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(0, 191, 255, 0.9);
+  margin-bottom: 0;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+}
+
 .hero-subtitle {
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
   color: rgba(255, 255, 255, 0.95);
   margin-bottom: 0;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.7;
-  font-weight: 400;
+  font-weight: 700;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   font-family: "Inter", sans-serif;
 }
@@ -159,7 +180,7 @@
   border: none;
   border-radius: 16px;
   padding: 1.5rem 0.8rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.15s ease;
   box-shadow: 0 8px 25px rgba(45, 72, 247, 0.3),
     0 4px 15px rgba(193, 11, 110, 0.2);
   will-change: transform;
@@ -200,53 +221,53 @@
       rgba(255, 255, 255, 0.4),
       transparent
     );
-    transition: left 0.6s ease;
+    z-index: 1;
+    pointer-events: none;
   }
 
   &:hover {
-    transform: translate3d(0, -4px, 0) scale(1.02);
     box-shadow: 0 12px 40px rgba(45, 72, 247, 0.4),
       0 8px 25px rgba(193, 11, 110, 0.3);
+  }
 
-    &::before {
-      left: 100%;
-    }
-
-    .stat-icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    .stat-number {
-      transform: scale(1.05);
-    }
+  &:hover::before {
+    animation: shineEffect 0.4s ease-out forwards;
   }
 
   .stat-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-    color: white;
+    transform: scale(1.1) rotate(5deg);
   }
 
   .stat-number {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 0.4rem;
-    font-family: "Montserrat", sans-serif;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    line-height: 1;
+    transform: scale(1.05);
   }
+}
 
-  .stat-label {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.9);
-    text-transform: capitalize;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    line-height: 1.2;
-  }
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  color: white;
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.4rem;
+  font-family: "Montserrat", sans-serif;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: capitalize;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
 }
 
 // Animación de entrada mejorada
@@ -347,20 +368,22 @@
   }
 
   &.secondary {
-    background: white;
-    color: #ff1493;
-    border: 2px solid #ff1493;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 2px solid rgba(0, 191, 255, 0.8);
 
     &:hover {
-      background: #ff1493;
+      background: #00bfff;
       color: white;
       transform: translate3d(0, -2px, 0);
-      box-shadow: 0 6px 20px rgba(255, 20, 147, 0.25);
+      box-shadow: 0 6px 20px rgba(0, 191, 255, 0.3);
     }
   }
 
   &.tertiary {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     color: white;
     border: 2px solid rgba(0, 191, 255, 0.8);
 
@@ -479,20 +502,7 @@
   }
 }
 
-// Aplicar animaciones sutiles solo después de la carga
-.stat-card {
-  // Animación de glow sutil
-  &:hover {
-    animation: cardGlow 0.6s ease-in-out;
-  }
-
-  .stat-icon {
-    // Animación de flotación sutil
-    &:hover {
-      animation: iconFloat 0.8s ease-in-out;
-    }
-  }
-}
+// Removed conflicting animations that were causing unwanted movement
 
 // Variables CSS para índices de cards (para futuras mejoras)
 .stat-card:nth-child(1) {
