@@ -45,7 +45,7 @@
   border-radius: 30px;
   border: 1px solid rgba(26, 32, 44, 0.3);
   backdrop-filter: blur(5px);
-  
+
   // Máscara para difuminar los extremos
   mask: linear-gradient(
     to bottom,
@@ -83,7 +83,7 @@
     transform: translateX(-50%);
     border-radius: 1px;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-    
+
     // Máscara para difuminar los extremos
     mask: linear-gradient(
       to bottom,
@@ -126,7 +126,7 @@
     );
     border-radius: 2px;
     animation: runway-lights-left 2s ease-in-out infinite;
-    
+
     // Máscara para difuminar los extremos
     mask: linear-gradient(
       to bottom,
@@ -170,7 +170,7 @@
   border-radius: 2px;
   animation: runway-lights-right 2s ease-in-out infinite;
   animation-delay: 1s;
-  
+
   // Máscara para difuminar los extremos
   mask: linear-gradient(
     to bottom,
@@ -225,7 +225,7 @@
     text-align: right;
 
     .timeline-marker {
-      right: -2.5rem;
+      right: -3.45rem;
     }
   }
 
@@ -234,7 +234,7 @@
     text-align: left;
 
     .timeline-marker {
-      left: -2.5rem;
+      left: -3.55rem;
     }
   }
 }
@@ -262,6 +262,10 @@
     background: rgba(0, 174, 239, 0.1);
   }
 
+  &.status-active {
+    border-color: #22c55e;
+  }
+
   &.status-upcoming {
     border-color: var(--text-muted);
     background: rgba(156, 163, 175, 0.1);
@@ -271,31 +275,19 @@
 .timeline-marker {
   position: absolute;
   top: 50%;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 48px;
+  height: 48px;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 3px var(--deep-space-blue), 0 4px 12px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
 
-  &:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 0 0 3px var(--deep-space-blue), 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .marker-inner {
-    width: 12px;
-    height: 12px;
-    background: var(--text-primary);
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
-    position: relative;
-    z-index: 1;
+  .airplane-icon {
+    width: 40px;
+    height: 40px;
+    color: white;
+    transform: rotate(180deg);
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
   }
 }
 
@@ -310,6 +302,17 @@
   margin-bottom: 1rem;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+// Override header alignment for left-aligned cards (right side of timeline)
+.timeline-item.right .timeline-content .route-header {
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+// Override header alignment for right-aligned cards (left side of timeline)
+.timeline-item.left .timeline-content .route-header {
+  justify-content: flex-end;
 }
 
 .route-name {
@@ -335,6 +338,13 @@
   &.status-in-progress {
     background: rgba(0, 174, 239, 0.2);
     color: var(--aviation-blue);
+  }
+
+  &.status-active {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
   }
 
   &.status-upcoming {

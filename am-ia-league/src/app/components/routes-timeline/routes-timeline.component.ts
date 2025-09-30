@@ -6,7 +6,7 @@ import { RouteService, Route } from '../../services/route.service';
   selector: 'app-routes-timeline',
   imports: [CommonModule],
   templateUrl: './routes-timeline.component.html',
-  styleUrl: './routes-timeline.component.scss'
+  styleUrl: './routes-timeline.component.scss',
 })
 export class RoutesTimelineComponent implements OnInit {
   routes: Route[] = [];
@@ -14,25 +14,26 @@ export class RoutesTimelineComponent implements OnInit {
   constructor(private routeService: RouteService) {}
 
   ngOnInit() {
-    this.routeService.getRoutes().subscribe(routes => {
+    this.routeService.getRoutes().subscribe((routes) => {
       this.routes = routes;
     });
   }
 
   getStatusText(status: string): string {
     const statusMap: { [key: string]: string } = {
-      'completed': 'Completada',
+      completed: 'Completada',
       'in-progress': 'En Progreso',
-      'upcoming': 'Próxima'
+      active: 'Activo',
+      upcoming: 'Próxima',
     };
     return statusMap[status] || status;
   }
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', { 
-      day: '2-digit', 
-      month: 'short' 
+    return date.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: 'short',
     });
   }
 }

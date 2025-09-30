@@ -9,7 +9,7 @@ $white: #ffffff;
 .app-footer {
   background: var(--deep-space-blue, #0a1033);
   color: $white;
-  margin-top: 3rem;
+  margin-top: 0;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -111,8 +111,8 @@ $white: #ffffff;
 // Contenido de sección
 .section-content {
   .section-subtitle {
-    font-weight: 600;
-    color: $white;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 0.4rem;
     display: block;
     font-size: 0.9rem;
@@ -145,7 +145,7 @@ $white: #ffffff;
   &::before {
     content: "→";
     position: absolute;
-    left: -16px;
+    left: -20px;
     opacity: 0;
     transition: all 0.3s ease;
     color: $aeromexico-cyan;
@@ -153,11 +153,11 @@ $white: #ffffff;
 
   &:hover {
     color: $aeromexico-cyan;
-    transform: translateX(8px);
+    transform: translateX(12px);
 
     &::before {
       opacity: 1;
-      left: -12px;
+      left: -18px;
     }
   }
 }
@@ -259,7 +259,7 @@ $white: #ffffff;
 
 @media (max-width: 768px) {
   .app-footer {
-    margin-top: 2rem;
+    margin-top: 0;
   }
 
   .footer-content {

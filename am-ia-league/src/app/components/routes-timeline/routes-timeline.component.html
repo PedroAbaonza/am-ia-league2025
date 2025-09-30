@@ -1,29 +1,38 @@
 <section class="routes-timeline">
   <div class="container">
     <h2 class="section-title gradient-text">Rutas de la Liga</h2>
-    
+
     <div class="timeline">
       <div class="timeline-line">
         <div class="timeline-line-lights-right"></div>
       </div>
-      
-      <div class="timeline-item" 
-           *ngFor="let route of routes; let i = index; let last = last"
-           [class.left]="i % 2 === 0"
-           [class.right]="i % 2 === 1"
-           [class.final-destination]="last">
-        
-        <div class="timeline-content" 
-             [style.border-color]="route.color"
-             [class]="'status-' + route.status"
-             [class.game-day-final]="route.name.includes('Game Day Final')">
-          
-          <div class="timeline-marker" [style.background-color]="route.color">
-            <div class="marker-inner"></div>
+
+      <div
+        class="timeline-item"
+        *ngFor="let route of routes; let i = index; let last = last"
+        [class.left]="i % 2 === 0"
+        [class.right]="i % 2 === 1"
+        [class.final-destination]="last"
+      >
+        <div
+          class="timeline-content"
+          [style.border-color]="route.color"
+          [class]="'status-' + route.status"
+          [class.game-day-final]="route.name.includes('Game Day Final')"
+        >
+          <div class="timeline-marker">
+            <svg class="airplane-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+              />
+            </svg>
           </div>
-          
+
           <!-- Torre de Control para Game Day Final -->
-          <div class="control-tower" *ngIf="route.name.includes('Game Day Final')">
+          <div
+            class="control-tower"
+            *ngIf="route.name.includes('Game Day Final')"
+          >
             <div class="tower-structure">
               <div class="tower-base"></div>
               <div class="tower-middle"></div>
@@ -34,7 +43,7 @@
               <div class="tower-beacon"></div>
             </div>
           </div>
-          
+
           <div class="route-card">
             <div class="route-header">
               <h3 class="route-name">{{ route.name }}</h3>
@@ -42,12 +51,13 @@
                 {{ getStatusText(route.status) }}
               </span>
             </div>
-            
+
             <p class="route-description">{{ route.description }}</p>
-            
+
             <div class="route-dates font-mono">
               <span class="date-range">
-                {{ formatDate(route.startDate) }} - {{ formatDate(route.endDate) }}
+                {{ formatDate(route.startDate) }} -
+                {{ formatDate(route.endDate) }}
               </span>
             </div>
           </div>
