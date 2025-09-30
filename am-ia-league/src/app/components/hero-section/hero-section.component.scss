@@ -244,11 +244,23 @@
 }
 
 .stat-icon {
-  font-size: 1.8rem;
+  width: 2rem;
+  height: 2rem;
   margin-bottom: 0.8rem;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+  }
 }
 
 .stat-number {

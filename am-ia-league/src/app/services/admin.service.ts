@@ -74,15 +74,16 @@ export class AdminService {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     // Inicializar después de la construcción para evitar problemas con SSR
     if (isPlatformBrowser(this.platformId)) {
-      setTimeout(() => {
+      // Usar requestAnimationFrame para asegurar que el DOM esté listo
+      requestAnimationFrame(() => {
         this.initializeSession();
         this.configSubject.next(this.getConfig());
-      }, 0);
 
-      // Verificar sesión cada minuto
-      setInterval(() => {
-        this.validateSession();
-      }, 60000);
+        // Verificar sesión cada minuto solo después de la inicialización
+        setInterval(() => {
+          this.validateSession();
+        }, 60000);
+      });
     }
   }
 

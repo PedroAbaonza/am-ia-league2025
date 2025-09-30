@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConfigService, AppConfig, Mission, SpecialChallenge } from '../../services/config.service';
+import {
+  ConfigService,
+  AppConfig,
+  Mission,
+  SpecialChallenge,
+} from '../../services/config.service';
 
 @Component({
   selector: 'app-points-system',
@@ -16,7 +21,7 @@ export class PointsSystemComponent implements OnInit {
   constructor(private configService: ConfigService) {}
 
   ngOnInit() {
-    this.configService.getAppConfig().subscribe(config => {
+    this.configService.getAppConfig().subscribe((config) => {
       this.config = config;
       this.missions = config.pointsSystem.missions;
       this.specialChallenges = config.pointsSystem.specialChallenges;
@@ -26,10 +31,10 @@ export class PointsSystemComponent implements OnInit {
   getMissionIcon(type: string): string {
     const iconMap: { [key: string]: string } = {
       'amazon-q': 'Q',
-      'ai-flight-tips': '✈️',
-      'code-increment': '⚡',
+      'ai-flight-tips': 'F',
+      'code-increment': 'C',
       jira: 'J',
     };
-    return iconMap[type] || '🎯';
+    return iconMap[type] || 'T';
   }
 }

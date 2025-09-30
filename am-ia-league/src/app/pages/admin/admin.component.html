@@ -25,10 +25,7 @@
           {{ loginError }}
         </div>
 
-        <button type="submit" class="login-btn glow-blue">
-          <span class="btn-icon">🔐</span>
-          Acceder
-        </button>
+        <button type="submit" class="login-btn glow-blue">Acceder</button>
       </form>
     </div>
   </div>
@@ -57,10 +54,7 @@
             </span>
           </div>
         </div>
-        <button class="logout-btn" (click)="logout()">
-          <span class="btn-icon">🚪</span>
-          Cerrar Sesión
-        </button>
+        <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
       </div>
     </div>
 
@@ -70,7 +64,7 @@
 
       <div class="metrics-grid">
         <div class="metric-card">
-          <div class="metric-icon">👥</div>
+          
           <div class="metric-content">
             <div class="metric-value">{{ systemMetrics.totalUsers }}</div>
             <div class="metric-label">Desarrolladores</div>
@@ -78,7 +72,7 @@
         </div>
 
         <div class="metric-card">
-          <div class="metric-icon">🚁</div>
+          
           <div class="metric-content">
             <div class="metric-value">{{ systemMetrics.totalSquads }}</div>
             <div class="metric-label">Squads Activos</div>
@@ -86,7 +80,7 @@
         </div>
 
         <div class="metric-card">
-          <div class="metric-icon">⭐</div>
+          
           <div class="metric-content">
             <div class="metric-value">{{ systemMetrics.averagePoints }}</div>
             <div class="metric-label">Promedio de Puntos</div>
@@ -94,7 +88,7 @@
         </div>
 
         <div class="metric-card">
-          <div class="metric-icon">🏆</div>
+          
           <div class="metric-content">
             <div class="metric-value">
               {{ systemMetrics.topPerformer || "N/A" }}
@@ -104,7 +98,7 @@
         </div>
 
         <div class="metric-card">
-          <div class="metric-icon">💚</div>
+          
           <div class="metric-content">
             <div class="metric-value" [style.color]="getSystemHealthColor()">
               {{ systemMetrics.systemHealth | titlecase }}
@@ -114,7 +108,7 @@
         </div>
 
         <div class="metric-card">
-          <div class="metric-icon">🔍</div>
+          
           <div class="metric-content">
             <div class="metric-value" [style.color]="getDataIntegrityColor()">
               {{ systemMetrics.dataIntegrity }}%
@@ -130,7 +124,6 @@
           (click)="refreshData()"
           [disabled]="isLoadingMetrics"
         >
-          <span class="btn-icon">🔄</span>
           {{ isLoadingMetrics ? "Actualizando..." : "Actualizar Métricas" }}
         </button>
 
@@ -139,12 +132,11 @@
           (click)="validateDataIntegrity()"
           [disabled]="isLoadingMetrics"
         >
-          <span class="btn-icon">🔍</span>
+          
           Validar Integridad
         </button>
 
         <button class="action-btn" (click)="toggleAdvancedOptions()">
-          <span class="btn-icon">⚙️</span>
           {{ showAdvancedOptions ? "Ocultar" : "Mostrar" }} Opciones Avanzadas
         </button>
       </div>
@@ -163,14 +155,14 @@
 
           <div class="backup-actions">
             <button class="backup-btn" (click)="restoreFromBackup('squads')">
-              <span class="btn-icon">📊</span>
+              
               Restaurar Squads
             </button>
             <button
               class="backup-btn"
               (click)="restoreFromBackup('individuals')"
             >
-              <span class="btn-icon">👤</span>
+              
               Restaurar Individuales
             </button>
           </div>
@@ -184,11 +176,11 @@
 
           <div class="audit-actions">
             <button class="audit-btn glow-blue" (click)="exportAuditLogs()">
-              <span class="btn-icon">📥</span>
+              
               Exportar Logs
             </button>
             <button class="audit-btn danger" (click)="clearAuditLogs()">
-              <span class="btn-icon">🗑️</span>
+              
               Limpiar Logs
             </button>
           </div>
@@ -213,7 +205,7 @@
           Mostrando 10 de {{ auditLogs.length }} registros
         </p>
         <button class="view-all-btn" (click)="exportAuditLogs()">
-          <span class="btn-icon">📋</span>
+          
           Ver Todos los Logs
         </button>
       </div>
@@ -244,7 +236,7 @@
               class="upload-btn primary glow-blue"
               (click)="squadFileInput.click()"
             >
-              <span class="btn-icon">📊</span>
+              
               Seleccionar Archivo CSV
             </button>
           </div>
@@ -273,7 +265,7 @@
             *ngIf="fileValidationErrors.length > 0"
           >
             <div class="error-item" *ngFor="let error of fileValidationErrors">
-              <span class="error-icon">❌</span>
+              
               {{ error }}
             </div>
           </div>
@@ -299,7 +291,7 @@
               class="upload-btn primary glow-blue"
               (click)="individualFileInput.click()"
             >
-              <span class="btn-icon">👤</span>
+              
               Seleccionar Archivo CSV
             </button>
           </div>
@@ -328,7 +320,7 @@
             *ngIf="fileValidationErrors.length > 0"
           >
             <div class="error-item" *ngFor="let error of fileValidationErrors">
-              <span class="error-icon">❌</span>
+              
               {{ error }}
             </div>
           </div>
@@ -385,7 +377,7 @@
             class="download-btn glow-blue"
             (click)="downloadCurrentSquadsData()"
           >
-            <span class="btn-icon">📊</span>
+            
             Descargar Squads CSV
           </button>
         </div>
@@ -400,7 +392,7 @@
             class="download-btn glow-blue"
             (click)="downloadCurrentIndividualsData()"
           >
-            <span class="btn-icon">👤</span>
+            
             Descargar Individuales CSV
           </button>
         </div>
@@ -440,12 +432,12 @@
             (click)="resetToStatic()"
             *ngIf="config.dataSource === 'uploaded'"
           >
-            <span class="btn-icon">🔄</span>
+            
             Volver a Datos Estáticos
           </button>
 
           <button class="refresh-btn glow-blue" (click)="refreshData()">
-            <span class="btn-icon">🔄</span>
+            
             Actualizar Vista
           </button>
         </div>
@@ -465,20 +457,18 @@
         <div class="visualization-card">
           <div class="card-header">
             <h3 class="card-title">
-              <span class="card-icon">🚁</span>
+              
               Datos de Squads ({{ getSquadsCount() }})
             </h3>
             <button class="toggle-btn" (click)="toggleSquadsDetails()">
-              <span class="btn-icon">{{
-                showSquadsDetails ? "👁️" : "🔒"
-              }}</span>
+              
               {{ showSquadsDetails ? "Ocultar" : "Mostrar" }} Detalles
             </button>
           </div>
 
           <div class="card-content" *ngIf="!showSquadsDetails">
             <div class="privacy-notice">
-              <span class="privacy-icon">🔒</span>
+              
               <p>Los detalles de los squads están ocultos por seguridad.</p>
               <p class="privacy-subtitle">
                 Haz clic en "Mostrar Detalles" para visualizar la información.
@@ -529,7 +519,7 @@
 
             <ng-template #noSquadsData>
               <div class="no-data">
-                <span class="no-data-icon">📊</span>
+                
                 <p>No hay datos de squads disponibles</p>
               </div>
             </ng-template>
@@ -540,20 +530,18 @@
         <div class="visualization-card">
           <div class="card-header">
             <h3 class="card-title">
-              <span class="card-icon">👥</span>
+              
               Datos Individuales ({{ getIndividualsCount() }})
             </h3>
             <button class="toggle-btn" (click)="toggleIndividualsDetails()">
-              <span class="btn-icon">{{
-                showIndividualsDetails ? "👁️" : "🔒"
-              }}</span>
+              
               {{ showIndividualsDetails ? "Ocultar" : "Mostrar" }} Detalles
             </button>
           </div>
 
           <div class="card-content" *ngIf="!showIndividualsDetails">
             <div class="privacy-notice">
-              <span class="privacy-icon">🔒</span>
+              
               <p>Los detalles individuales están ocultos por privacidad.</p>
               <p class="privacy-subtitle">
                 Haz clic en "Mostrar Detalles" para visualizar la información.
@@ -603,13 +591,13 @@
                   "
                 >
                   <div class="detail-item" *ngIf="individual.completedMissions">
-                    <span class="detail-icon">🎯</span>
+                    
                     <span class="detail-text"
                       >{{ individual.completedMissions }} misiones</span
                     >
                   </div>
                   <div class="detail-item" *ngIf="individual.specialChallenges">
-                    <span class="detail-icon">⭐</span>
+                    
                     <span class="detail-text"
                       >{{ individual.specialChallenges }} desafíos</span
                     >
@@ -620,7 +608,7 @@
 
             <ng-template #noIndividualsData>
               <div class="no-data">
-                <span class="no-data-icon">👤</span>
+                
                 <p>No hay datos individuales disponibles</p>
               </div>
             </ng-template>
@@ -631,12 +619,12 @@
 
     <!-- Messages -->
     <div class="message success" *ngIf="successMessage">
-      <span class="message-icon">✅</span>
+      
       {{ successMessage }}
     </div>
 
     <div class="message error" *ngIf="errorMessage">
-      <span class="message-icon">❌</span>
+      
       {{ errorMessage }}
     </div>
   </div>

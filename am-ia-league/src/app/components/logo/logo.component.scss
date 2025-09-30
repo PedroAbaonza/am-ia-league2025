@@ -6,15 +6,15 @@
 
 .logo-image {
   transition: all 0.3s ease;
-  
+
   &.logo-aeromexico {
     filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 174, 239, 0.3));
-    
+
     &:hover {
       filter: brightness(1.2) drop-shadow(0 0 15px rgba(0, 174, 239, 0.5));
     }
   }
-  
+
   &.logo-ai-league {
     filter: drop-shadow(0 0 20px rgba(0, 174, 239, 0.4));
     animation: logoGlow 3s ease-in-out infinite alternate;
@@ -36,11 +36,12 @@
     height: 30px;
     width: auto;
   }
-  
+
   .fallback-icon {
-    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
-  
+
   .brand-name {
     font-size: 1rem;
   }
@@ -51,11 +52,12 @@
     height: 40px;
     width: auto;
   }
-  
+
   .fallback-icon {
-    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
   }
-  
+
   .brand-name {
     font-size: 1.25rem;
   }
@@ -67,11 +69,12 @@
     width: auto;
     max-width: 100%;
   }
-  
+
   .fallback-icon {
-    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
   }
-  
+
   .brand-name {
     font-size: 2rem;
   }
@@ -86,6 +89,15 @@
 
 .fallback-icon {
   filter: drop-shadow(0 0 10px var(--aviation-blue));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+  }
 }
 
 .fallback-text {
@@ -94,7 +106,7 @@
 }
 
 .brand-name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -105,18 +117,18 @@
     .logo-image {
       max-height: 200px;
     }
-    
+
     .brand-name {
       font-size: 1.5rem;
     }
   }
-  
+
   .logo-medium {
     .logo-image {
       height: 35px;
     }
   }
-  
+
   .logo-small {
     .logo-image {
       height: 25px;
