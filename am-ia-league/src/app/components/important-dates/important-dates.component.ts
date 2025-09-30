@@ -152,4 +152,11 @@ export class ImportantDatesComponent implements OnInit {
       this.filteredEvents = this.events.filter((event) => event.type === type);
     }
   }
+
+  isEventHighlighted(event: Event): boolean {
+    if (this.selectedFilter === 'all') {
+      return true; // All events are highlighted when no filter is active
+    }
+    return event.type === this.selectedFilter;
+  }
 }

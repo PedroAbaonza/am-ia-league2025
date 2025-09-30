@@ -15,7 +15,6 @@
         [class.active]="selectedFilter === 'all'"
         (click)="filterEvents('all')"
       >
-        <span class="filter-icon">📅</span>
         Todos
       </button>
       <button
@@ -23,7 +22,6 @@
         [class.active]="selectedFilter === 'aws-training'"
         (click)="filterEvents('aws-training')"
       >
-        <span class="filter-icon">☁️</span>
         Entrenamientos
       </button>
       <button
@@ -31,7 +29,6 @@
         [class.active]="selectedFilter === 'demo'"
         (click)="filterEvents('demo')"
       >
-        <span class="filter-icon">📊</span>
         Demos
       </button>
       <button
@@ -39,7 +36,6 @@
         [class.active]="selectedFilter === 'working-hours'"
         (click)="filterEvents('working-hours')"
       >
-        <span class="filter-icon">💻</span>
         Working Hours
       </button>
     </div>
@@ -71,6 +67,8 @@
             class="event-card-mini"
             *ngFor="let event of routeData.events"
             [class]="'event-status-' + getEventStatus(event.date)"
+            [class.event-highlighted]="isEventHighlighted(event)"
+            [class.event-dimmed]="!isEventHighlighted(event)"
           >
             <div class="event-badge-container">
               <div class="event-type-badge-mini" [class]="'type-' + event.type">

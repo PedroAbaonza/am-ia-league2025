@@ -166,6 +166,19 @@
   }
 
   // Future events - Keep current colors (no additional styling needed)
+
+  // Filter highlighting states
+  &.event-highlighted {
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
+
+  &.event-dimmed {
+    opacity: 0.4;
+    filter: grayscale(50%) brightness(0.8);
+    transform: scale(0.98);
+    transition: all 0.3s ease;
+  }
 }
 
 // Route Status Styling
