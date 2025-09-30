@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LeaderboardService, Individual } from '../../services/leaderboard.service';
+import {
+  LeaderboardService,
+  Individual,
+} from '../../services/leaderboard.service';
 
 @Component({
   selector: 'app-individual',
   imports: [CommonModule],
   templateUrl: './individual.component.html',
-  styleUrl: './individual.component.scss'
+  styleUrl: './individual.component.scss',
 })
 export class IndividualComponent implements OnInit {
   individuals: Individual[] = [];
@@ -21,14 +24,16 @@ export class IndividualComponent implements OnInit {
     3: '#00AEEF',
     4: '#FF2D82',
     5: '#00AEEF',
-    6: '#FF2D82'
+    6: '#FF2D82',
   };
 
   constructor(private leaderboardService: LeaderboardService) {}
 
   ngOnInit() {
-    this.leaderboardService.getIndividuals().subscribe(individuals => {
-      this.individuals = individuals.sort((a, b) => b.totalPoints - a.totalPoints);
+    this.leaderboardService.getIndividuals().subscribe((individuals) => {
+      this.individuals = individuals.sort(
+        (a, b) => b.totalPoints - a.totalPoints
+      );
       this.filteredIndividuals = [...this.individuals];
       this.topIndividuals = this.individuals.slice(0, 3);
       this.maxPoints = this.individuals[0]?.totalPoints || 520;
@@ -40,7 +45,9 @@ export class IndividualComponent implements OnInit {
     if (level === 'all') {
       this.filteredIndividuals = [...this.individuals];
     } else {
-      this.filteredIndividuals = this.individuals.filter(dev => dev.level === level);
+      this.filteredIndividuals = this.individuals.filter(
+        (dev) => dev.level === level
+      );
     }
   }
 
@@ -49,7 +56,7 @@ export class IndividualComponent implements OnInit {
   }
 
   getOriginalPosition(dev: Individual): number {
-    return this.individuals.findIndex(d => d.id === dev.id) + 1;
+    return this.individuals.findIndex((d) => d.id === dev.id) + 1;
   }
 
   getProgressPercentage(points: number): number {
@@ -60,8 +67,41 @@ export class IndividualComponent implements OnInit {
     const colors = {
       1: 'linear-gradient(135deg, #FFD700, #FFA500)',
       2: 'linear-gradient(135deg, #C0C0C0, #A8A8A8)',
-      3: 'linear-gradient(135deg, #CD7F32, #B8860B)'
+      3: 'linear-gradient(135deg, #CD7F32, #B8860B)',
     };
     return colors[position as keyof typeof colors] || 'var(--card-bg)';
+  }
+
+  formatPoints(points: number): string {
+    if (points >= 1000) {
+      return (points / 1000).toFixed(1) + 'K';
+    }
+    return points.toString();
+  }
+
+  getShortSquadName(squadName: string): string {
+    const squadMap: { [key: string]: string } = {
+      Alpha: 'ALP',
+      Beta: 'BET',
+      Gamma: 'GAM',
+      Delta: 'DEL',
+      Echo: 'ECH',
+      Foxtrot: 'FOX',
+    };
+    return squadMap[squadName] || squadName.substring(0, 3).toUpperCase();
+  }
+
+  getShortRole(position: string): string {
+    const roleMap: { [key: string]: string } = {
+      Developer: 'DEV',
+      'Senior Developer': 'SDEV',
+      'Lead Developer': 'LEAD',
+      DevOps: 'DVPS',
+      Architect: 'ARCH',
+      Manager: 'MGR',
+      'Scrum Master': 'SM',
+      'Product Owner': 'PO',
+    };
+    return roleMap[position] || position.substring(0, 4).toUpperCase();
   }
 }
