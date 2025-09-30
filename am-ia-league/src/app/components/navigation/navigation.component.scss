@@ -1,13 +1,15 @@
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(10, 16, 51, 0.95);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+  background: rgba(10, 16, 51, 0.95) !important;
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--card-border);
   padding: 1rem 0;
+  box-sizing: border-box;
 }
 
 .nav-container {
@@ -30,7 +32,7 @@
   gap: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-1px);
   }
@@ -44,7 +46,7 @@
 .brand-name {
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .brand-subtitle {
@@ -72,18 +74,18 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
-  
+
   &:hover {
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.05);
   }
-  
+
   &.active {
     color: var(--aviation-blue);
     background: rgba(0, 174, 239, 0.1);
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -1rem;
       left: 50%;
@@ -106,15 +108,15 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+  background: linear-gradient(135deg, var(--squadron-pink), #ff6b9d);
   color: white;
   border: none;
   border-radius: 25px;
   font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--glow-pink);
@@ -133,7 +135,7 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  
+
   .hamburger-line {
     width: 24px;
     height: 2px;
@@ -141,16 +143,16 @@
     border-radius: 2px;
     transition: all 0.3s ease;
   }
-  
+
   &.active {
     .hamburger-line:nth-child(1) {
       transform: rotate(45deg) translate(6px, 6px);
     }
-    
+
     .hamburger-line:nth-child(2) {
       opacity: 0;
     }
-    
+
     .hamburger-line:nth-child(3) {
       transform: rotate(-45deg) translate(6px, -6px);
     }
@@ -161,19 +163,19 @@
   .nav-container {
     padding: 0 1rem;
   }
-  
+
   .brand-name {
     font-size: 1.25rem;
   }
-  
+
   .brand-subtitle {
     font-size: 0.625rem;
   }
-  
+
   .mobile-toggle {
     display: flex;
   }
-  
+
   .nav-menu {
     position: absolute;
     top: 100%;
@@ -189,25 +191,25 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    
+
     &.active {
       transform: translateY(0);
       opacity: 1;
       visibility: visible;
     }
   }
-  
+
   .nav-link {
     width: 100%;
     padding: 1rem 2rem;
     border-radius: 0;
     justify-content: flex-start;
-    
+
     &.active::after {
       display: none;
     }
   }
-  
+
   .nav-cta {
     margin: 1rem 2rem;
     justify-content: center;
@@ -218,11 +220,11 @@
   .logo-icon {
     font-size: 1.5rem;
   }
-  
+
   .brand-name {
     font-size: 1rem;
   }
-  
+
   .brand-subtitle {
     font-size: 0.5rem;
   }

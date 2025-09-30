@@ -1,4 +1,6 @@
 .main-content {
   position: relative;
   z-index: 1;
+  margin-top: 100px !important; // Account for fixed header height
+  min-height: 100vh;
 }
