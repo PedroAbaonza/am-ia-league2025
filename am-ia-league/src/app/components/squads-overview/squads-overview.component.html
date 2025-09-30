@@ -2,11 +2,8 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title gradient-text">Estructura de Squads</h2>
-      <button class="details-toggle-btn" (click)="toggleSquadsDetails()">
-        {{ showSquadsDetails ? 'Ocultar' : 'Ver' }} Equipos Aeroméxico
-      </button>
     </div>
-    
+
     <!-- Stats Generales -->
     <div class="squad-stats">
       <div class="stat-circle glow-blue">
@@ -17,49 +14,50 @@
         <div class="stat-number font-mono">5</div>
         <div class="stat-label">Desarrolladores por Squad</div>
       </div>
-      <div class="stat-circle glow-blue">
+      <div class="stat-circle glow-gradient">
         <div class="stat-number font-mono">1</div>
         <div class="stat-label">Scrum Master</div>
       </div>
     </div>
-    
-    <!-- Mensaje cuando está oculto -->
-    <div class="teams-preview" *ngIf="!showSquadsDetails">
-      <div class="preview-content">
-        <p class="preview-description">
-          Haz clic en "Ver Equipos Aeroméxico" para conocer los detalles de cada squad y sus integrantes.
-        </p>
-      </div>
+
+    <!-- Button to toggle squads visibility -->
+    <div class="cta-section">
+      <button class="cta-btn primary" (click)="toggleSquadsDetails()">
+        {{ showSquadsDetails ? "Ocultar Equipos" : "Ver Equipos Aeroméxico" }}
+      </button>
     </div>
 
     <!-- Grid de Squads cuando está visible -->
     <div class="squads-grid" *ngIf="showSquadsDetails">
-      <div class="squad-card" 
-           *ngFor="let squad of squads; let i = index"
-           [style.border-color]="squad.color"
-           [class.glow-blue]="squad.color === '#00AEEF'"
-           [class.glow-pink]="squad.color === '#FF2D82'">
-        
+      <div
+        class="squad-card"
+        *ngFor="let squad of squads; let i = index"
+        [style.border-color]="squad.color"
+        [class.glow-blue]="squad.color === '#00AEEF'"
+        [class.glow-pink]="squad.color === '#FF2D82'"
+      >
         <div class="squad-header">
           <h3 class="squad-name">{{ squad.name }}</h3>
           <div class="squad-points font-mono" [style.color]="squad.color">
             {{ squad.totalPoints.toLocaleString() }}pts
           </div>
         </div>
-        
+
         <div class="squad-position">
-          <span class="position-badge" 
-                [class]="'position-' + (i + 1)"
-                [style.background]="getPositionColor(i + 1)">
+          <span
+            class="position-badge"
+            [class]="'position-' + (i + 1)"
+            [style.background]="getPositionColor(i + 1)"
+          >
             #{{ i + 1 }}
           </span>
         </div>
-        
+
         <div class="scrum-master">
           <div class="role-label">Scrum Master</div>
           <div class="member-name">{{ squad.scrumMaster }}</div>
         </div>
-        
+
         <div class="developers">
           <div class="role-label">Desarrolladores</div>
           <div class="developers-list">
@@ -71,13 +69,14 @@
             </div>
           </div>
         </div>
-        
+
         <div class="squad-progress">
           <div class="progress-bar">
-            <div class="progress-fill" 
-                 [style.width]="getProgressPercentage(squad.totalPoints) + '%'"
-                 [style.background]="squad.color">
-            </div>
+            <div
+              class="progress-fill"
+              [style.width]="getProgressPercentage(squad.totalPoints) + '%'"
+              [style.background]="squad.color"
+            ></div>
           </div>
           <div class="progress-text">
             {{ getProgressPercentage(squad.totalPoints) }}% del objetivo
@@ -89,35 +88,46 @@
     <!-- Progreso por Ruta y Retos Especiales -->
     <div class="progress-challenges-section" *ngIf="showSquadsDetails">
       <div class="progress-challenges-grid">
-        
         <!-- Progreso por Ruta -->
         <div class="progress-routes-card">
           <div class="card-header">
             <div class="header-icon progress-icon">🎯</div>
             <h3 class="card-title">Progreso por Ruta</h3>
           </div>
-          
+
           <div class="routes-list">
-            <div class="route-item completed" *ngFor="let route of completedRoutes">
+            <div
+              class="route-item completed"
+              *ngFor="let route of completedRoutes"
+            >
               <div class="route-info">
                 <div class="route-name">{{ route.name }}</div>
-                <div class="route-progress">Promedio: {{ route.averagePoints }} pts</div>
+                <div class="route-progress">
+                  Promedio: {{ route.averagePoints }} pts
+                </div>
               </div>
               <div class="route-status completed-status">Completada</div>
             </div>
-            
-            <div class="route-item in-progress" *ngFor="let route of inProgressRoutes">
+
+            <div
+              class="route-item in-progress"
+              *ngFor="let route of inProgressRoutes"
+            >
               <div class="route-info">
                 <div class="route-name">{{ route.name }}</div>
-                <div class="route-progress">Promedio: {{ route.averagePoints }} pts</div>
+                <div class="route-progress">
+                  Promedio: {{ route.averagePoints }} pts
+                </div>
               </div>
               <div class="route-status progress-status">En progreso</div>
             </div>
-            
+
             <div class="route-item pending" *ngFor="let route of pendingRoutes">
               <div class="route-info">
                 <div class="route-name">{{ route.name }}</div>
-                <div class="route-progress">Promedio: {{ route.averagePoints }} pts</div>
+                <div class="route-progress">
+                  Promedio: {{ route.averagePoints }} pts
+                </div>
               </div>
               <div class="route-status pending-status">Pendiente</div>
             </div>
@@ -130,7 +140,7 @@
             <div class="header-icon challenge-icon">🏆</div>
             <h3 class="card-title">Retos Especiales</h3>
           </div>
-          
+
           <div class="challenges-stats">
             <div class="challenge-stat">
               <div class="stat-number-large">{{ totalDocumentations }}</div>
@@ -141,21 +151,29 @@
               <div class="stat-description">Demos Liderados</div>
             </div>
           </div>
-          
+
           <div class="challenges-list">
-            <div class="challenge-item" *ngFor="let challenge of specialChallenges">
+            <div
+              class="challenge-item"
+              *ngFor="let challenge of specialChallenges"
+            >
               <div class="challenge-info">
                 <div class="challenge-name">{{ challenge.name }}</div>
                 <div class="challenge-points">+{{ challenge.points }} pts</div>
               </div>
-              <div class="challenge-status" 
-                   [class]="challenge.status === 'Aceptado' ? 'accepted-status' : 'pending-challenge-status'">
+              <div
+                class="challenge-status"
+                [class]="
+                  challenge.status === 'Aceptado'
+                    ? 'accepted-status'
+                    : 'pending-challenge-status'
+                "
+              >
                 {{ challenge.status }}
               </div>
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </div>

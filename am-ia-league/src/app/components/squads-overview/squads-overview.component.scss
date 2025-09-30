@@ -16,77 +16,183 @@
 }
 
 .section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
   margin-bottom: 4rem;
-  flex-wrap: wrap;
-  gap: 2rem;
 }
 
 .section-title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
 }
 
-.details-toggle-btn {
-  padding: 0.5rem 1rem;
-  background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--card-border);
-  border-radius: 20px;
+// CTA Button (similar to hero section)
+.cta-btn {
+  padding: 1.2rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 0.875rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  min-width: 180px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  will-change: transform;
+  transform: translateZ(0);
 
-  &:hover {
-    color: var(--aviation-blue);
-    border-color: var(--aviation-blue);
-    background: rgba(0, 174, 239, 0.05);
+  &.primary {
+    background: linear-gradient(135deg, #ff1493, #e91e63);
+    color: white;
+    border: 2px solid transparent;
+
+    &:hover {
+      transform: translate3d(0, -2px, 0);
+      box-shadow: 0 6px 20px rgba(255, 20, 147, 0.3);
+    }
+  }
+
+  &.secondary {
+    background: white;
+    color: #ff1493;
+    border: 2px solid #ff1493;
+
+    &:hover {
+      background: #ff1493;
+      color: white;
+      transform: translate3d(0, -2px, 0);
+      box-shadow: 0 6px 20px rgba(255, 20, 147, 0.25);
+    }
+  }
+
+  &.tertiary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(0, 191, 255, 0.8);
+
+    &:hover {
+      background: #00bfff;
+      color: white;
+      transform: translate3d(0, -2px, 0);
+      box-shadow: 0 6px 20px rgba(0, 191, 255, 0.3);
+    }
   }
 }
 
 .squad-stats {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   margin-bottom: 4rem;
   flex-wrap: wrap;
 }
 
 .stat-circle {
-  width: 180px;
-  height: 180px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  background: var(--card-bg);
-  border: 2px solid var(--card-border);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  // Badge-like styling similar to points-badge
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.05);
+  }
+
+  // Specific colors for each stat (badge-like styling)
+  &.glow-blue {
+    background: linear-gradient(
+      135deg,
+      var(--aviation-blue),
+      var(--sky-blue-neon)
+    );
+    box-shadow: 0 8px 32px rgba(0, 174, 239, 0.4), 0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 174, 239, 0.6),
+        0 8px 25px rgba(0, 174, 239, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &.glow-pink {
+    background: linear-gradient(135deg, var(--squadron-pink), #ff6b9d);
+    box-shadow: 0 8px 32px rgba(255, 45, 130, 0.4),
+      0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(255, 45, 130, 0.6),
+        0 8px 25px rgba(255, 45, 130, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &.glow-gradient {
+    background: linear-gradient(135deg, #2d48f7, #c10b6e);
+    box-shadow: 0 8px 32px rgba(45, 72, 247, 0.4), 0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(45, 72, 247, 0.6),
+        0 8px 25px rgba(193, 11, 110, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
   }
 }
 
 .stat-number {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
   margin-bottom: 0.5rem;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+  .stat-circle:hover & {
+    transform: scale(1.1);
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.5);
+  }
 }
 
 .stat-label {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+  display: block;
 }
 
 .squads-grid {
@@ -231,28 +337,6 @@
   font-size: 0.875rem;
   color: var(--text-muted);
   text-align: center;
-}
-
-// Teams Preview Styles
-.teams-preview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-  margin: 2rem 0;
-}
-
-.preview-content {
-  text-align: center;
-  max-width: 400px;
-  padding: 2rem;
-}
-
-.preview-description {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.6;
 }
 
 // Progress and Challenges Section
@@ -486,8 +570,10 @@
     text-align: center;
   }
 
-  .details-toggle-btn {
-    font-size: 0.8rem;
+  .cta-btn {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    min-width: 160px;
   }
 
   .squad-stats {
@@ -495,12 +581,18 @@
   }
 
   .stat-circle {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 
   .stat-number {
     font-size: 2.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    max-width: 140px;
   }
 
   .squads-grid {
@@ -518,10 +610,6 @@
     margin-bottom: 1rem;
   }
 
-  .preview-content {
-    padding: 1.5rem 1rem;
-  }
-
   .progress-challenges-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -535,4 +623,11 @@
   .stat-number-large {
     font-size: 2rem;
   }
+}
+
+// CTA Section for button positioning
+.cta-section {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
 }
