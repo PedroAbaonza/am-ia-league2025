@@ -25,7 +25,7 @@
   position: relative;
   height: 100px;
   margin-bottom: 3rem;
-  overflow: hidden;
+  padding: 0 100px;
 }
 
 .airplane {
@@ -35,6 +35,13 @@
   transform: translateY(-50%);
   animation: fly 8s linear infinite;
   filter: drop-shadow(0 0 10px var(--aviation-blue));
+  color: var(--aviation-blue);
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+    fill: currentColor;
+  }
 }
 
 .flight-path {
@@ -56,21 +63,32 @@
 
 @keyframes fly {
   0% {
-    left: -100px;
+    left: -50px;
     transform: translateY(-50%) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
   }
   25% {
     transform: translateY(-60%) rotate(-5deg);
+    opacity: 1;
   }
   50% {
     transform: translateY(-40%) rotate(5deg);
+    opacity: 1;
   }
   75% {
     transform: translateY(-55%) rotate(-3deg);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
   }
   100% {
-    left: calc(100% + 100px);
+    left: calc(100% - 50px);
     transform: translateY(-50%) rotate(0deg);
+    opacity: 0;
   }
 }
 
@@ -224,6 +242,12 @@
 
 .btn-icon {
   font-size: 1.2rem;
+
+  svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: currentColor;
+  }
 }
 
 .suggested-routes {
@@ -269,6 +293,13 @@
   font-size: 1.5rem;
   width: 40px;
   text-align: center;
+  color: var(--aviation-blue);
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+  }
 }
 
 .route-name {
@@ -297,6 +328,13 @@
   font-size: 2rem;
   opacity: 0.3;
   animation: float 6s ease-in-out infinite;
+  color: var(--text-secondary);
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+  }
 
   &.cloud-1 {
     top: 20%;

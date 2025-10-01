@@ -133,21 +133,29 @@
           <div class="table-cell squad">
             <div class="squad-info">
               <h4 class="squad-name">{{ squad.name }}</h4>
-              <div class="scrum-master">SM: {{ squad.scrumMaster }}</div>
             </div>
           </div>
 
           <div class="table-cell members">
-            <div class="members-avatars">
-              <div
-                class="avatar"
-                *ngFor="let dev of squad.developers.slice(0, 3)"
-                [style.background]="squad.color"
-              >
-                {{ getInitials(dev) }}
+            <div class="members-grid">
+              <div class="members-column">
+                <div class="member-badge">
+                  {{ squad.scrumMaster }}
+                </div>
+                <div
+                  class="member-badge"
+                  *ngFor="let dev of getFirstColumnDevs(squad.developers)"
+                >
+                  {{ dev }}
+                </div>
               </div>
-              <div class="more-members" *ngIf="squad.developers.length > 3">
-                +{{ squad.developers.length - 3 }}
+              <div class="members-column">
+                <div
+                  class="member-badge"
+                  *ngFor="let dev of getSecondColumnDevs(squad.developers)"
+                >
+                  {{ dev }}
+                </div>
               </div>
             </div>
           </div>

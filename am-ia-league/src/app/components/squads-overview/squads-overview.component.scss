@@ -359,12 +359,6 @@
   border-radius: 20px;
   padding: 2rem;
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 174, 239, 0.1);
-  }
 }
 
 .card-header {
@@ -392,10 +386,20 @@
     var(--aviation-blue),
     var(--aviation-pink)
   );
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .challenge-icon {
   background: linear-gradient(135deg, #ffd700, #ffa500);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .card-title {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { ConfigService, AppConfig } from '../../services/config.service';
 
@@ -51,7 +51,7 @@ import { ConfigService, AppConfig } from '../../services/config.service';
 export class HeroSectionComponent implements OnInit {
   config: AppConfig | null = null;
 
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService, private router: Router) {}
 
   ngOnInit() {
     this.configService.getAppConfig().subscribe((config) => {
@@ -86,5 +86,13 @@ export class HeroSectionComponent implements OnInit {
         block: 'start',
       });
     }
+  }
+
+  navigateToLeaderboard(): void {
+    this.router.navigate(['/leaderboard']);
+  }
+
+  navigateToIndividual(): void {
+    this.router.navigate(['/individual']);
   }
 }

@@ -300,7 +300,7 @@
 
 .table-header {
   display: grid;
-  grid-template-columns: 80px 1fr 200px 120px 150px;
+  grid-template-columns: 80px 1fr 300px 120px 150px;
   background: rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid var(--card-border);
 }
@@ -312,6 +312,10 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.875rem;
+
+  &.members {
+    text-align: center;
+  }
 }
 
 .table-body {
@@ -320,7 +324,7 @@
 
 .table-row {
   display: grid;
-  grid-template-columns: 80px 1fr 200px 120px 150px;
+  grid-template-columns: 80px 1fr 300px 120px 150px;
   border-bottom: 1px solid var(--card-border);
   transition: all 0.3s ease;
 
@@ -371,35 +375,34 @@
   }
 }
 
-.members-avatars {
-  display: flex;
-  align-items: center;
+.members-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
+  width: 100%;
 }
 
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+.members-column {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 0.75rem;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.more-members {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.member-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
   font-size: 0.75rem;
-  color: var(--text-muted);
+  font-weight: 500;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: var(--card-border);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .points-value {
@@ -509,14 +512,29 @@
 
   .table-header,
   .table-row {
-    grid-template-columns: 60px 1fr 100px;
+    grid-template-columns: 60px 1fr 160px 100px;
   }
 
-  .header-cell.members,
   .header-cell.progress,
-  .table-cell.members,
   .table-cell.progress {
     display: none;
+  }
+
+  .members-grid {
+    grid-template-columns: 1fr;
+
+    .members-column:not(:first-child) {
+      display: none;
+    }
+
+    .members-column:first-child .member-badge:not(:first-child) {
+      display: none;
+    }
+
+    .member-badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+    }
   }
 
   .table-cell {

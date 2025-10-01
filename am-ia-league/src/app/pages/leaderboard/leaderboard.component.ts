@@ -22,15 +22,6 @@ export class LeaderboardComponent implements OnInit {
     });
   }
 
-  getInitials(name: string): string {
-    return name
-      .split(' ')
-      .map((word) => word.charAt(0))
-      .join('')
-      .toUpperCase()
-      .substring(0, 2);
-  }
-
   getProgressPercentage(points: number): number {
     return Math.round((points / this.maxPoints) * 100);
   }
@@ -65,5 +56,23 @@ export class LeaderboardComponent implements OnInit {
 
   getSquadInitials(squadName: string): string {
     return squadName.substring(0, 2).toUpperCase();
+  }
+
+  getMidpoint(length: number): number {
+    return Math.ceil(length / 2);
+  }
+
+  getFirstColumnDevs(developers: string[]): string[] {
+    const totalMembers = developers.length + 1; // +1 for SM
+    const firstColumnTotal = Math.ceil(totalMembers / 2);
+    const devsInFirstColumn = firstColumnTotal - 1; // -1 for SM
+    return developers.slice(0, Math.max(0, devsInFirstColumn));
+  }
+
+  getSecondColumnDevs(developers: string[]): string[] {
+    const totalMembers = developers.length + 1; // +1 for SM
+    const firstColumnTotal = Math.ceil(totalMembers / 2);
+    const devsInFirstColumn = firstColumnTotal - 1; // -1 for SM
+    return developers.slice(Math.max(0, devsInFirstColumn));
   }
 }

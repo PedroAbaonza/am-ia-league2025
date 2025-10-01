@@ -2,7 +2,7 @@
   <div class="nav-container">
     <!-- Logo y Branding -->
     <div class="nav-brand">
-      <a routerLink="/" class="brand-logo">
+      <a (click)="navigateToHome()" class="brand-logo" style="cursor: pointer">
         <app-logo type="aeromexico" size="medium" [showText]="false">
         </app-logo>
         <div class="brand-text">
@@ -14,17 +14,28 @@
     <!-- Menu Desktop -->
     <div class="nav-menu" [class.active]="isMenuOpen">
       <a
-        routerLink="/"
+        (click)="navigateToHome()"
         class="nav-link"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
+        style="cursor: pointer"
       >
         Home
       </a>
-      <a routerLink="/leaderboard" class="nav-link" routerLinkActive="active">
+      <a
+        (click)="navigateToLeaderboard()"
+        class="nav-link"
+        routerLinkActive="active"
+        style="cursor: pointer"
+      >
         Leaderboard
       </a>
-      <a routerLink="/individual" class="nav-link" routerLinkActive="active">
+      <a
+        (click)="navigateToIndividual()"
+        class="nav-link"
+        routerLinkActive="active"
+        style="cursor: pointer"
+      >
         Individual
       </a>
     </div>

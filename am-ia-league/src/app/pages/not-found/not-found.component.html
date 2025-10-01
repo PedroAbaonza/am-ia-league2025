@@ -2,19 +2,29 @@
   <div class="error-container">
     <!-- Avión animado -->
     <div class="airplane-animation">
-      <div class="airplane">✈️</div>
+      <div class="airplane">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+          />
+        </svg>
+      </div>
       <div class="flight-path"></div>
     </div>
-    
+
     <!-- Contenido del error -->
     <div class="error-content">
       <div class="error-code gradient-text">404</div>
       <h1 class="error-title">Vuelo No Encontrado</h1>
       <p class="error-message">
-        Lo sentimos, la ruta que buscas no está en nuestro mapa de vuelos. 
+        Lo sentimos, la ruta que buscas no está en nuestro mapa de vuelos.
         Parece que este destino no existe en el Aeroméxico AI League.
       </p>
-      
+
       <!-- Información de vuelo estilo aerolínea -->
       <div class="flight-info">
         <div class="flight-card">
@@ -35,47 +45,125 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Botones de navegación -->
       <div class="navigation-buttons">
         <button class="nav-btn primary glow-blue" routerLink="/">
-          <span class="btn-icon">🏠</span>
+          <span class="btn-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg>
+          </span>
           Volver al Home
         </button>
         <button class="nav-btn secondary glow-pink" routerLink="/leaderboard">
-          <span class="btn-icon">🏆</span>
+          <span class="btn-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+          </span>
           Ver Leaderboard
         </button>
       </div>
-      
+
       <!-- Sugerencias de rutas -->
       <div class="suggested-routes">
         <h3 class="suggestions-title">Rutas Disponibles</h3>
         <div class="routes-list">
           <a routerLink="/" class="route-link">
-            <span class="route-icon">🏠</span>
+            <span class="route-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg>
+            </span>
             <span class="route-name">Home</span>
-            <span class="route-description">Portal principal con todas las secciones</span>
+            <span class="route-description"
+              >Portal principal con todas las secciones</span
+            >
           </a>
           <a routerLink="/leaderboard" class="route-link">
-            <span class="route-icon">🏆</span>
+            <span class="route-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+              </svg>
+            </span>
             <span class="route-name">Squad Leaderboard</span>
             <span class="route-description">Ranking de equipos por puntos</span>
           </a>
           <a routerLink="/individual" class="route-link">
-            <span class="route-icon">👤</span>
+            <span class="route-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
+              </svg>
+            </span>
             <span class="route-name">Individual Ranking</span>
             <span class="route-description">Top 30 desarrolladores</span>
           </a>
         </div>
       </div>
     </div>
-    
+
     <!-- Elementos decorativos -->
     <div class="floating-elements">
-      <div class="cloud cloud-1">☁️</div>
-      <div class="cloud cloud-2">☁️</div>
-      <div class="cloud cloud-3">☁️</div>
+      <div class="cloud cloud-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"
+          />
+        </svg>
+      </div>
+      <div class="cloud cloud-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"
+          />
+        </svg>
+      </div>
+      <div class="cloud cloud-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"
+          />
+        </svg>
+      </div>
     </div>
   </div>
 </div>
