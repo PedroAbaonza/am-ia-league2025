@@ -1,5 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap");
 
+// Garnet Font Definitions
+@font-face {
+  font-family: "Garnett";
+  src: url("./assets/fonts/Garnett-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Garnett";
+  src: url("./assets/fonts/Garnett-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 // Paleta de colores Aeroméxico AI League
 :root {
   --deep-space-blue: #0a1033;
@@ -28,7 +45,8 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Garnett", "Montserrat", sans-serif;
+  font-weight: 400;
   background: var(--deep-space-blue);
   color: var(--text-primary);
   line-height: 1.6;
@@ -424,11 +442,46 @@ body::before {
 
 // Tipografías
 .font-primary {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Garnett", "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 .font-mono {
   font-family: "Roboto Mono", monospace;
+}
+
+// Heading styles with Garnet Semibold
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Garnett", "Montserrat", sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+// Body text with Garnet Regular
+p,
+span,
+div,
+a,
+li,
+td,
+th,
+label,
+input,
+textarea,
+select {
+  font-family: "Garnett", "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 // Utilidades
