@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { LogoComponent } from '../logo/logo.component';
@@ -9,10 +9,12 @@ import { LogoComponent } from '../logo/logo.component';
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
   isMenuOpen = false;
 
   constructor(private router: Router) {}
+
+  ngOnInit() {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
