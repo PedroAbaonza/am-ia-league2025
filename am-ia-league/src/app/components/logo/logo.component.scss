@@ -16,17 +16,7 @@
   }
 
   &.logo-ai-league {
-    filter: drop-shadow(0 0 20px rgba(0, 174, 239, 0.4));
-    animation: logoGlow 3s ease-in-out infinite alternate;
-  }
-}
-
-@keyframes logoGlow {
-  from {
-    filter: drop-shadow(0 0 20px rgba(0, 174, 239, 0.4));
-  }
-  to {
-    filter: drop-shadow(0 0 30px rgba(255, 45, 130, 0.4));
+    // No glow effects
   }
 }
 
@@ -49,13 +39,13 @@
 
 .logo-medium {
   .logo-image {
-    height: 40px;
+    height: 56px;
     width: auto;
   }
 
   .fallback-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 2.8rem;
+    height: 2.8rem;
   }
 
   .brand-name {
@@ -88,7 +78,6 @@
 }
 
 .fallback-icon {
-  filter: drop-shadow(0 0 10px var(--aviation-blue));
   display: inline-flex;
   align-items: center;
   justify-content: center;
