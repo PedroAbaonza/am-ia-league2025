@@ -169,7 +169,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 12px;
+  padding: 6px 16px;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.1) 0%,
@@ -178,6 +178,7 @@
   );
   border-radius: 4px;
   margin: 0 40px;
+  text-align: center;
 }
 
 .squad-name {
@@ -645,12 +646,23 @@
     justify-content: center !important;
 
     .podium-place {
-      order: initial !important;
       width: 100% !important;
       max-width: 300px !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
+
+      &.first {
+        order: 1 !important; // Show first place first
+      }
+
+      &.second {
+        order: 2 !important; // Show second place second
+      }
+
+      &.third {
+        order: 3 !important; // Show third place third
+      }
     }
   }
 
@@ -670,11 +682,13 @@
   }
 
   .shield-header {
-    top: 80px;
+    top: 100px; // Moved down for better positioning on mobile
   }
 
   .squad-role-container {
-    padding: 0 30px;
+    padding: 6px 16px; // Better padding for mobile
+    margin: 0 35px; // Better centering
+    text-align: center; // Ensure text is centered
   }
 
   .squad-name,

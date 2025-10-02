@@ -135,13 +135,13 @@
             </div>
           </div>
 
-          <div class="table-cell squad">
+          <div class="table-cell squad" data-label="Squad">
             <div class="squad-info">
               <h4 class="squad-name">{{ squad.name }}</h4>
             </div>
           </div>
 
-          <div class="table-cell members">
+          <div class="table-cell members" data-label="Miembros">
             <div class="members-grid">
               <div class="members-column">
                 <div class="member-badge">
@@ -165,13 +165,13 @@
             </div>
           </div>
 
-          <div class="table-cell points">
+          <div class="table-cell points" data-label="Puntos">
             <div class="points-value font-mono" [style.color]="squad.color">
               {{ squad.totalPoints.toLocaleString() }}
             </div>
           </div>
 
-          <div class="table-cell progress">
+          <div class="table-cell progress" data-label="Progreso">
             <div class="progress-container">
               <div class="progress-bar">
                 <div
