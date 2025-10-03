@@ -304,15 +304,33 @@
   }
 
   &.type-demo {
-    background: rgba(255, 149, 0, 0.2);
-    color: #ff9500;
-    border: 1px solid rgba(255, 149, 0, 0.4);
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.4);
   }
 
   &.type-working-hours {
     background: rgba(255, 45, 130, 0.2);
     color: #e54185;
     border: 1px solid rgba(255, 45, 130, 0.4);
+  }
+
+  &.type-kickoff {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+  }
+
+  &.type-gameday {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+  }
+
+  &.type-awards {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
   }
 }
 
@@ -399,10 +417,10 @@
   }
 
   &.type-demo {
-    background: rgba(255, 149, 0, 0.2);
-    color: #ff9500;
-    border: 1px solid rgba(255, 149, 0, 0.4);
-    box-shadow: 0 2px 8px rgba(255, 149, 0, 0.15);
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
   }
 
   &.type-working-hours {
@@ -410,6 +428,27 @@
     color: var(--squadron-pink);
     border: 1px solid rgba(255, 45, 130, 0.4);
     box-shadow: 0 2px 8px rgba(255, 45, 130, 0.15);
+  }
+
+  &.type-kickoff {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+  }
+
+  &.type-gameday {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+  }
+
+  &.type-awards {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
   }
 }
 

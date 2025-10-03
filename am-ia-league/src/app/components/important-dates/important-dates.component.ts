@@ -54,6 +54,9 @@ export class ImportantDatesComponent implements OnInit {
       'aws-training': 'IA Flight Tips',
       demo: 'IA Demo Show',
       'working-hours': 'Hangar de preguntas',
+      kickoff: 'Kick Off',
+      gameday: 'Game Day',
+      awards: 'Premiación',
     };
     return typeMap[type] || type;
   }
@@ -105,8 +108,26 @@ export class ImportantDatesComponent implements OnInit {
   }
 
   organizeEventsByRoutes() {
-    this.routesWithEvents = this.routes.map((route) => {
-      // Find events that fall within this route's date range
+    // Find events before the first route to include with the first route
+    const firstRouteStart = new Date(this.routes[0]?.startDate || '2025-10-09');
+    const preRouteEvents = this.events.filter((event) => {
+      const eventDate = new Date(event.date);
+      return eventDate < firstRouteStart;
+    });
+
+    // Find events after the last route
+    const lastRouteEnd = new Date(
+      this.routes[this.routes.length - 1]?.endDate || '2025-12-12'
+    );
+    const postRouteEvents = this.events.filter((event) => {
+      const eventDate = new Date(event.date);
+      return eventDate > lastRouteEnd;
+    });
+
+    this.routesWithEvents = [];
+
+    // Add regular routes with their events
+    this.routes.forEach((route, index) => {
       const routeEvents = this.events.filter((event) => {
         const eventDate = new Date(event.date);
         const routeStart = new Date(route.startDate);
@@ -114,12 +135,41 @@ export class ImportantDatesComponent implements OnInit {
         return eventDate >= routeStart && eventDate <= routeEnd;
       });
 
-      return {
+      // For the first route, also include any pre-route events (like Kick off)
+      if (index === 0) {
+        routeEvents.unshift(...preRouteEvents);
+        // Sort all events by date
+        routeEvents.sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        );
+      }
+
+      this.routesWithEvents.push({
         route,
         events: routeEvents,
         status: this.getRouteStatus(route.startDate, route.endDate),
-      };
+      });
     });
+
+    // Add post-route events if any exist
+    if (postRouteEvents.length > 0) {
+      this.routesWithEvents.push({
+        route: {
+          id: 999,
+          name: 'Eventos Finales',
+          startDate: postRouteEvents[0].date,
+          endDate: postRouteEvents[postRouteEvents.length - 1].date,
+          status: 'upcoming',
+          description: 'Eventos de cierre y premiación',
+          color: '#f59e0b',
+        },
+        events: postRouteEvents,
+        status: this.getRouteStatus(
+          postRouteEvents[0].date,
+          postRouteEvents[postRouteEvents.length - 1].date
+        ),
+      });
+    }
   }
 
   getRouteStatus(

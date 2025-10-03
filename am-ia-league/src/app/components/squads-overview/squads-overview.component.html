@@ -20,15 +20,8 @@
       </div>
     </div>
 
-    <!-- Button to toggle squads visibility -->
-    <div class="cta-section">
-      <button class="cta-btn primary" (click)="toggleSquadsDetails()">
-        {{ showSquadsDetails ? "Ocultar Equipos" : "Ver Equipos Aeroméxico" }}
-      </button>
-    </div>
-
     <!-- Grid de Squads cuando está visible -->
-    <div class="squads-grid" *ngIf="showSquadsDetails">
+    <div class="squads-grid" style="display: none">
       <div
         class="squad-card"
         *ngFor="let squad of squads; let i = index"
@@ -86,7 +79,7 @@
     </div>
 
     <!-- Progreso por Ruta y Retos Especiales -->
-    <div class="progress-challenges-section" *ngIf="showSquadsDetails">
+    <div class="progress-challenges-section" style="display: none">
       <div class="progress-challenges-grid">
         <!-- Progreso por Ruta -->
         <div class="progress-routes-card">
