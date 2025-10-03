@@ -1,8 +1,9 @@
-# 🚀 Guía de Deployment - Aeroméxico AI League 2025
+# 🚀 Guía de Deployment - Aeromexico AI League 2025
 
 ## 📋 Estrategias de Deployment
 
 ### Tipos de Deployment Soportados
+
 1. **Static Site**: Aplicación de página única (SPA)
 2. **Server-Side Rendering**: Con Angular Universal
 3. **Hybrid**: Combinación de SSR y SPA
@@ -11,6 +12,7 @@
 ## 🏗️ Build de Producción
 
 ### Configuración de Build
+
 ```bash
 # Build básico de producción
 npm run build
@@ -24,6 +26,7 @@ npx webpack-bundle-analyzer dist/am-ia-league/stats.json
 ```
 
 ### Configuraciones de Build
+
 ```json
 // angular.json
 {
@@ -64,6 +67,7 @@ npx webpack-bundle-analyzer dist/am-ia-league/stats.json
 ## 🌐 Deployment Estático (SPA)
 
 ### Netlify
+
 ```bash
 # Build command
 npm run build
@@ -76,6 +80,7 @@ dist/am-ia-league/browser
 ```
 
 ### Vercel
+
 ```json
 // vercel.json
 {
@@ -100,13 +105,14 @@ dist/am-ia-league/browser
 ```
 
 ### GitHub Pages
+
 ```yaml
 # .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
@@ -115,7 +121,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
       - run: npm ci
       - run: npm run build -- --base-href=/am-ia-league/
       - uses: peaceiris/actions-gh-pages@v3
@@ -125,6 +131,7 @@ jobs:
 ```
 
 ### AWS S3 + CloudFront
+
 ```bash
 # Instalar AWS CLI
 aws configure
@@ -139,31 +146,35 @@ aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --path
 ## 🖥️ Deployment con SSR
 
 ### Configuración SSR
+
 ```typescript
 // server.ts
-import { ngExpressEngine } from '@nguniversal/express-engine';
-import { APP_BASE_HREF } from '@angular/common';
-import { existsSync } from 'fs';
-import express from 'express';
+import { ngExpressEngine } from "@nguniversal/express-engine";
+import { APP_BASE_HREF } from "@angular/common";
+import { existsSync } from "fs";
+import express from "express";
 
 const app = express();
-const PORT = process.env['PORT'] || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist');
+const PORT = process.env["PORT"] || 4000;
+const DIST_FOLDER = join(process.cwd(), "dist");
 
 // Engine de renderizado
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModule,
-}));
+app.engine(
+  "html",
+  ngExpressEngine({
+    bootstrap: AppServerModule,
+  })
+);
 
-app.set('view engine', 'html');
-app.set('views', DIST_FOLDER);
+app.set("view engine", "html");
+app.set("views", DIST_FOLDER);
 
 // Servir archivos estáticos
-app.get('*.*', express.static(DIST_FOLDER));
+app.get("*.*", express.static(DIST_FOLDER));
 
 // Todas las rutas regulares usan Universal engine
-app.get('*', (req, res) => {
-  res.render('index', { req });
+app.get("*", (req, res) => {
+  res.render("index", { req });
 });
 
 app.listen(PORT, () => {
@@ -172,6 +183,7 @@ app.listen(PORT, () => {
 ```
 
 ### Build SSR
+
 ```bash
 # Build con SSR
 npm run build:ssr
@@ -183,6 +195,7 @@ npm run serve:ssr
 ## 🐳 Deployment con Docker
 
 ### Dockerfile Multi-stage
+
 ```dockerfile
 # Dockerfile
 # Stage 1: Build
@@ -210,6 +223,7 @@ CMD ["nginx", "-g", "daemon off;"]
 ```
 
 ### Configuración Nginx
+
 ```nginx
 # nginx.conf
 events {
@@ -250,9 +264,10 @@ http {
 ```
 
 ### Docker Compose para Desarrollo
+
 ```yaml
 # docker-compose.yml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -282,6 +297,7 @@ services:
 ## ☁️ Deployment en Cloud
 
 ### AWS Amplify
+
 ```yaml
 # amplify.yml
 version: 1
@@ -296,13 +312,14 @@ frontend:
   artifacts:
     baseDirectory: dist/am-ia-league/browser
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
       - node_modules/**/*
 ```
 
 ### Azure Static Web Apps
+
 ```yaml
 # .github/workflows/azure-static-web-apps.yml
 name: Azure Static Web Apps CI/CD
@@ -333,6 +350,7 @@ jobs:
 ```
 
 ### Google Cloud Platform
+
 ```yaml
 # app.yaml (App Engine)
 runtime: nodejs20
@@ -350,39 +368,41 @@ handlers:
 ## 🔧 Configuración por Entornos
 
 ### Variables de Entorno
+
 ```typescript
 // environment.prod.ts
 export const environment = {
   production: true,
-  apiUrl: 'https://api.aeromexico-league.com',
+  apiUrl: "https://api.aeromexico-league.com",
   enableAnalytics: true,
   enableSSR: true,
   cacheTimeout: 300000,
-  logLevel: 'error'
+  logLevel: "error",
 };
 
 // environment.staging.ts
 export const environment = {
   production: false,
-  apiUrl: 'https://staging-api.aeromexico-league.com',
+  apiUrl: "https://staging-api.aeromexico-league.com",
   enableAnalytics: false,
   enableSSR: false,
   cacheTimeout: 60000,
-  logLevel: 'debug'
+  logLevel: "debug",
 };
 
 // environment.ts (development)
 export const environment = {
   production: false,
-  apiUrl: '/assets/data',
+  apiUrl: "/assets/data",
   enableAnalytics: false,
   enableSSR: false,
   cacheTimeout: 0,
-  logLevel: 'debug'
+  logLevel: "debug",
 };
 ```
 
 ### Configuración de Build por Entorno
+
 ```json
 // angular.json
 {
@@ -410,20 +430,22 @@ export const environment = {
 ## 🔍 Monitoreo Post-Deployment
 
 ### Health Checks
+
 ```typescript
 // health-check.service.ts
 @Injectable()
 export class HealthCheckService {
   checkHealth(): Observable<HealthStatus> {
-    return this.http.get<HealthStatus>('/api/health').pipe(
+    return this.http.get<HealthStatus>("/api/health").pipe(
       timeout(5000),
-      catchError(() => of({ status: 'unhealthy', timestamp: new Date() }))
+      catchError(() => of({ status: "unhealthy", timestamp: new Date() }))
     );
   }
 }
 ```
 
 ### Logging y Monitoreo
+
 ```typescript
 // logging.service.ts
 @Injectable()
@@ -431,19 +453,19 @@ export class LoggingService {
   logError(error: Error, context?: string): void {
     const logEntry = {
       timestamp: new Date().toISOString(),
-      level: 'error',
+      level: "error",
       message: error.message,
       stack: error.stack,
       context,
       userAgent: navigator.userAgent,
-      url: window.location.href
+      url: window.location.href,
     };
-    
+
     if (environment.production) {
       // Enviar a servicio de logging externo
       this.sendToExternalLogger(logEntry);
     } else {
-      console.error('Error logged:', logEntry);
+      console.error("Error logged:", logEntry);
     }
   }
 }
@@ -452,6 +474,7 @@ export class LoggingService {
 ## 🚨 Rollback y Recovery
 
 ### Estrategia de Rollback
+
 ```bash
 # Mantener versiones anteriores
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
@@ -473,6 +496,7 @@ echo "Rollback completed"
 ```
 
 ### Blue-Green Deployment
+
 ```bash
 # Script para blue-green deployment
 #!/bin/bash
@@ -506,6 +530,7 @@ fi
 ## 📊 Métricas de Deployment
 
 ### Performance Budgets
+
 ```json
 // angular.json
 {
@@ -531,13 +556,14 @@ fi
 ```
 
 ### Lighthouse CI
+
 ```yaml
 # .github/workflows/lighthouse.yml
 name: Lighthouse CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   lighthouse:
@@ -546,7 +572,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
       - run: npm ci
       - run: npm run build
       - run: npm install -g @lhci/cli@0.12.x
@@ -556,6 +582,7 @@ jobs:
 ```
 
 ### Configuración Lighthouse
+
 ```json
 // lighthouserc.js
 module.exports = {
@@ -586,6 +613,7 @@ module.exports = {
 ## 🔐 Seguridad en Deployment
 
 ### Headers de Seguridad
+
 ```nginx
 # nginx.conf
 server {
@@ -595,13 +623,14 @@ server {
     add_header X-XSS-Protection "1; mode=block" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https:;" always;
-    
+
     # HSTS (opcional para HTTPS)
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 }
 ```
 
 ### Variables de Entorno Seguras
+
 ```bash
 # .env (no commitear)
 API_KEY=your-secret-api-key
@@ -619,18 +648,19 @@ export const environment = {
 ## 🔄 CI/CD Pipeline Completo
 
 ### GitHub Actions Pipeline
+
 ```yaml
 # .github/workflows/ci-cd.yml
 name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: "20"
 
 jobs:
   test:
@@ -640,17 +670,17 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run linting
         run: npm run lint
-      
+
       - name: Run tests
         run: npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage
-      
+
       - name: Upload coverage
         uses: codecov/codecov-action@v3
         with:
@@ -664,14 +694,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build application
         run: npm run build
-      
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -689,7 +719,7 @@ jobs:
         with:
           name: build-files
           path: dist/
-      
+
       - name: Deploy to staging
         run: |
           # Deploy logic here
@@ -706,17 +736,17 @@ jobs:
         with:
           name: build-files
           path: dist/
-      
+
       - name: Deploy to production
         run: |
           # Deploy logic here
           echo "Deploying to production..."
-      
+
       - name: Notify team
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
-          channel: '#deployments'
+          channel: "#deployments"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 ```
@@ -724,6 +754,7 @@ jobs:
 ## 📋 Checklist de Deployment
 
 ### Pre-Deployment
+
 - [ ] Tests unitarios pasan
 - [ ] Tests de integración pasan
 - [ ] Build de producción exitoso
@@ -734,6 +765,7 @@ jobs:
 - [ ] Backup de versión anterior
 
 ### Durante Deployment
+
 - [ ] Monitorear logs de build
 - [ ] Verificar health checks
 - [ ] Probar rutas principales
@@ -742,6 +774,7 @@ jobs:
 - [ ] Validar funcionalidades críticas
 
 ### Post-Deployment
+
 - [ ] Verificar métricas de performance
 - [ ] Monitorear errores en logs
 - [ ] Probar flujos de usuario
@@ -754,6 +787,7 @@ jobs:
 ### Problemas Comunes
 
 #### Build Failures
+
 ```bash
 # Error de memoria
 export NODE_OPTIONS="--max-old-space-size=8192"
@@ -770,6 +804,7 @@ npm run build
 ```
 
 #### Runtime Errors
+
 ```bash
 # Verificar assets
 npm run check-assets
@@ -784,6 +819,7 @@ echo $API_URL
 ```
 
 #### Performance Issues
+
 ```bash
 # Analizar bundle
 npx webpack-bundle-analyzer dist/am-ia-league/stats.json
@@ -799,4 +835,4 @@ npm run optimize:images
 ---
 
 **Última actualización**: Diciembre 2024
-**Autor**: Equipo de DevOps Aeroméxico AI League
+**Autor**: Equipo de DevOps Aeromexico AI League

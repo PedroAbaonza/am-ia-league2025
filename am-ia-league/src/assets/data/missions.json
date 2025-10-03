@@ -36,10 +36,10 @@
   "specialChallenges": [
     {
       "id": 1,
-      "name": "Hackathon IA Aeroméxico",
+      "name": "Hackathon IA Aeromexico",
       "bonusPoints": 500,
       "deadline": "2025-03-15",
-      "description": "Desarrollar solución IA innovadora para Aeroméxico"
+      "description": "Desarrollar solución IA innovadora para Aeromexico"
     },
     {
       "id": 2,

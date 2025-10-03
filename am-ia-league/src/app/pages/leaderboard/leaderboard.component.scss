@@ -384,9 +384,16 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.squad {
+    justify-content: flex-start;
+  }
 
   &.members {
-    text-align: center;
+    padding-left: 1.5rem;
   }
 }
 
@@ -419,6 +426,12 @@
   padding: 1.5rem 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  &.squad,
+  &.members {
+    justify-content: flex-start;
+  }
 }
 
 .position-number {

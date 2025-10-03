@@ -100,7 +100,7 @@ export class MyComponent {
 
 ```html
 <!-- Logo responsive -->
-<img src="/assets/images/logos/aeromexico-logo.svg" alt="Aeroméxico AI League" class="logo-responsive" />
+<img src="/assets/images/logos/aeromexico-logo.svg" alt="Aeromexico AI League" class="logo-responsive" />
 
 <!-- Background con CSS -->
 <div class="hero-section" [style.background-image]="'url(/assets/images/backgrounds/hero-background.jpg)'"></div>
@@ -133,7 +133,7 @@ export class MyComponent {
 ### Implementación con srcset
 
 ```html
-<img src="/assets/images/logos/aeromexico-logo.svg" srcset="/assets/images/logos/aeromexico-logo.svg 1x, /assets/images/logos/aeromexico-logo@2x.svg 2x" alt="Aeroméxico AI League" />
+<img src="/assets/images/logos/aeromexico-logo.svg" srcset="/assets/images/logos/aeromexico-logo.svg 1x, /assets/images/logos/aeromexico-logo@2x.svg 2x" alt="Aeromexico AI League" />
 ```
 
 ### CSS Media Queries
@@ -173,7 +173,7 @@ export class MyComponent {
 
 ### ✅ Logos
 
-- [ ] Logo Aeroméxico oficial
+- [ ] Logo Aeromexico oficial
 - [ ] Logo AI League 2025
 - [ ] Versión combinada
 - [ ] Versiones monocromáticas

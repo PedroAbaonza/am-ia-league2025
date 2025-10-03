@@ -7,23 +7,27 @@ Se ha agregado un control sutil para mostrar/ocultar los detalles de los equipos
 ## 🎯 Características Principales
 
 ### 📊 Vista Simplificada por Defecto
+
 - **Detalles Ocultos**: Los equipos están ocultos inicialmente para una vista más limpia
 - **Solo Estadísticas**: Se muestran únicamente las métricas generales (6 squads, 5 desarrolladores por squad, 1 scrum master)
 - **Mensaje Sutil**: Invitación simple para ver más detalles
 
 ### 👁️ Control Discreto
-- **Botón Sutil**: "Ver Equipos Aeroméxico" / "Ocultar Equipos Aeroméxico"
+
+- **Botón Sutil**: "Ver Equipos Aeromexico" / "Ocultar Equipos Aeromexico"
 - **Diseño Minimalista**: Botón pequeño y discreto sin iconos llamativos
 - **Posición Estratégica**: Ubicado junto al título sin ser intrusivo
 
 ### 📊 Información Mostrada
 
 Cuando está **oculto** se muestra:
+
 - ✅ Estadísticas generales (círculos con números)
 - ✅ Título de la sección
 - ✅ Mensaje sutil invitando a ver más detalles
 
 Cuando está **visible** se muestra:
+
 - ✅ Nombres de los squads
 - ✅ Puntos totales de cada equipo
 - ✅ Posiciones en el ranking (#1, #2, #3...)
@@ -35,20 +39,23 @@ Cuando está **visible** se muestra:
 ## 🎨 Diseño y UX
 
 ### Mensaje de Invitación
+
 - **Diseño Minimalista**: Mensaje simple y centrado
 - **Sin Iconos Llamativos**: Enfoque limpio y profesional
 - **Texto Claro**: Invitación directa a ver los equipos
 - **Espacio Reducido**: Ocupa menos espacio visual
 
 ### Botón de Control
+
 - **Diseño Sutil**: Borde simple con fondo transparente
 - **Efectos Hover**: Cambio de color suave al pasar el mouse
-- **Texto Descriptivo**: "Ver/Ocultar Equipos Aeroméxico"
+- **Texto Descriptivo**: "Ver/Ocultar Equipos Aeromexico"
 - **Tamaño Pequeño**: Discreto y no intrusivo
 
 ## 📱 Responsive Design
 
 ### Adaptaciones Móviles
+
 - **Header Apilado**: Título y botón en columna
 - **Botón Reducido**: Tamaño de fuente más pequeño en móviles
 - **Mensaje Centrado**: Invitación optimizada para pantallas pequeñas
@@ -57,14 +64,15 @@ Cuando está **visible** se muestra:
 ## 🔧 Implementación Técnica
 
 ### Componente TypeScript
+
 ```typescript
 export class SquadsOverviewComponent implements OnInit {
   squads: Squad[] = [];
   maxPoints = 3000;
-  
+
   // Control de visibilidad
   showSquadsDetails = false;
-  
+
   // Método toggle
   toggleSquadsDetails() {
     this.showSquadsDetails = !this.showSquadsDetails;
@@ -73,13 +81,12 @@ export class SquadsOverviewComponent implements OnInit {
 ```
 
 ### Template HTML
+
 ```html
 <!-- Header con control sutil -->
 <div class="section-header">
   <h2 class="section-title gradient-text">Estructura de Squads</h2>
-  <button class="details-toggle-btn" (click)="toggleSquadsDetails()">
-    {{ showSquadsDetails ? 'Ocultar' : 'Ver' }} Equipos Aeroméxico
-  </button>
+  <button class="details-toggle-btn" (click)="toggleSquadsDetails()">{{ showSquadsDetails ? 'Ocultar' : 'Ver' }} Equipos Aeromexico</button>
 </div>
 
 <!-- Contenido condicional -->
@@ -93,6 +100,7 @@ export class SquadsOverviewComponent implements OnInit {
 ```
 
 ### Estilos SCSS
+
 ```scss
 .details-toggle-btn {
   background: transparent;
@@ -113,11 +121,13 @@ export class SquadsOverviewComponent implements OnInit {
 ## 🛡️ Beneficios de Privacidad
 
 ### Para Usuarios
+
 1. **Experiencia Limpia**: Vista simplificada sin sobrecarga de información
 2. **Control de Detalles**: Pueden elegir cuándo ver más información
 3. **Navegación Intuitiva**: Interfaz clara y fácil de usar
 
 ### Para la Organización
+
 1. **Presentación Profesional**: Vista inicial limpia y organizada
 2. **Flexibilidad**: Detalles disponibles cuando se necesiten
 3. **Mejor UX**: Reduce la complejidad visual inicial
@@ -125,20 +135,23 @@ export class SquadsOverviewComponent implements OnInit {
 ## 🎯 Casos de Uso
 
 ### Escenarios Típicos
+
 1. **Vista Inicial**: Usuarios ven estadísticas generales de forma limpia
 2. **Exploración Detallada**: Activar detalles para conocer los equipos
 3. **Presentaciones**: Vista simplificada para enfocarse en métricas
 4. **Navegación Rápida**: Información condensada por defecto
 
 ### Flujo de Usuario
+
 1. **Acceso Inicial**: Usuario ve estadísticas y mensaje de invitación
-2. **Interés en Equipos**: Hace clic en "Ver Equipos Aeroméxico"
+2. **Interés en Equipos**: Hace clic en "Ver Equipos Aeromexico"
 3. **Visualización Completa**: Ve toda la información de squads
-4. **Ocultación**: Puede volver a ocultar con "Ocultar Equipos Aeroméxico"
+4. **Ocultación**: Puede volver a ocultar con "Ocultar Equipos Aeromexico"
 
 ## 🔮 Consideraciones Futuras
 
 ### Posibles Mejoras
+
 - [ ] **Persistencia**: Recordar preferencia del usuario
 - [ ] **Animaciones**: Transiciones suaves entre estados
 - [ ] **Filtros**: Mostrar solo ciertos squads
@@ -147,13 +160,13 @@ export class SquadsOverviewComponent implements OnInit {
 
 ## 📊 Comparación: Antes vs Después
 
-| Aspecto | Antes | Después |
-|---------|-------|---------|
+| Aspecto         | Antes                       | Después                        |
+| --------------- | --------------------------- | ------------------------------ |
 | **Simplicidad** | Toda la información visible | Vista simplificada por defecto |
-| **Control** | Sin opciones | Control sutil de visibilidad |
-| **UX** | Información abrumadora | Vista limpia y organizada |
-| **Diseño** | Estático | Interactivo y elegante |
-| **Responsive** | Limitado | Completamente adaptativo |
+| **Control**     | Sin opciones                | Control sutil de visibilidad   |
+| **UX**          | Información abrumadora      | Vista limpia y organizada      |
+| **Diseño**      | Estático                    | Interactivo y elegante         |
+| **Responsive**  | Limitado                    | Completamente adaptativo       |
 
 ## ✅ Estado de Implementación
 

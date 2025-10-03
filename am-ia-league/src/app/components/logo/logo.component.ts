@@ -33,8 +33,8 @@ export class LogoComponent implements OnInit {
 
   getLogoAlt(): string {
     const altMap = {
-      aeromexico: 'Aeroméxico',
-      'ai-league': 'Aeroméxico AI League 2025',
+      aeromexico: 'Aeromexico',
+      'ai-league': 'Aeromexico AI League 2025',
     };
     return altMap[this.type];
   }

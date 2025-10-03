@@ -11,7 +11,7 @@ import { ScrollService } from './services/scroll.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'Aeroméxico AI League 2025';
+  title = 'Aeromexico AI League 2025';
 
   constructor(private scrollService: ScrollService) {
     // ScrollService is automatically initialized

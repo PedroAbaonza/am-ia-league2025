@@ -1,29 +1,31 @@
 <!-- Ejemplo de uso del servicio de imágenes -->
 <div class="image-examples">
-  
   <!-- Logo con servicio -->
   <div class="example-section">
     <h3>Logo Principal</h3>
-    <img 
+    <img
       [src]="imageUtils.getLogo('aeromexico-logo.svg')"
-      alt="Aeroméxico AI League"
+      alt="Aeromexico AI League"
       class="logo-example"
-      (error)="imageUtils.handleImageError($event, '/assets/favicon.ico')">
+      (error)="imageUtils.handleImageError($event, '/assets/favicon.ico')"
+    />
   </div>
 
   <!-- Avatar con fallback -->
   <div class="example-section">
     <h3>Avatar con Fallback</h3>
     <div class="avatar-container">
-      <img 
+      <img
         [src]="avatarData.src"
         [alt]="developerName"
         class="avatar-image"
-        (error)="showInitials = true; $event.target.style.display = 'none'">
-      
-      <div 
+        (error)="showInitials = true; $event.target.style.display = 'none'"
+      />
+
+      <div
         class="avatar-fallback"
-        [style.display]="showInitials ? 'flex' : 'none'">
+        [style.display]="showInitials ? 'flex' : 'none'"
+      >
         {{ avatarData.fallback }}
       </div>
     </div>
@@ -32,9 +34,14 @@
   <!-- Background con CSS -->
   <div class="example-section">
     <h3>Background Dinámico</h3>
-    <div 
+    <div
       class="background-example"
-      [style.background-image]="imageUtils.getCssBackgroundUrl(imageUtils.getBackground('hero-background.jpg'))">
+      [style.background-image]="
+        imageUtils.getCssBackgroundUrl(
+          imageUtils.getBackground('hero-background.jpg')
+        )
+      "
+    >
       <p>Contenido sobre background</p>
     </div>
   </div>
@@ -43,10 +50,15 @@
   <div class="example-section">
     <h3>Iconos de Misiones</h3>
     <div class="mission-icons">
-      <div 
-        *ngFor="let mission of missionTypes" 
+      <div
+        *ngFor="let mission of missionTypes"
         class="mission-icon"
-        [style.background-image]="imageUtils.getCssBackgroundUrl(imageUtils.getMissionIcon(mission.type))">
+        [style.background-image]="
+          imageUtils.getCssBackgroundUrl(
+            imageUtils.getMissionIcon(mission.type)
+          )
+        "
+      >
         <span>{{ mission.name }}</span>
       </div>
     </div>
@@ -55,12 +67,14 @@
   <!-- Imagen responsive con srcset -->
   <div class="example-section">
     <h3>Imagen Responsive</h3>
-    <img 
+    <img
       [src]="imageUtils.getIllustration('team-collaboration.svg')"
-      [srcset]="imageUtils.generateSrcSet('team-collaboration.svg', 'illustrations')"
+      [srcset]="
+        imageUtils.generateSrcSet('team-collaboration.svg', 'illustrations')
+      "
       alt="Team Collaboration"
       class="responsive-image"
-      loading="lazy">
+      loading="lazy"
+    />
   </div>
-
 </div>

@@ -10,7 +10,7 @@
 :root {
   // Colores Corporativos Aeromexico
   --deep-space-blue: #0a1033; // Fondo principal oscuro
-  --aviation-blue: #00aeef; // Azul corporativo Aeroméxico
+  --aviation-blue: #00aeef; // Azul corporativo Aeromexico
   --sky-blue-neon: #00d4ff; // Azul neón para acentos
   --squadron-pink: #ff2d82; // Rosa para elementos destacados
 

@@ -76,7 +76,7 @@
   }
 }
 
-// Animación de pulso para elementos Aeroméxico
+// Animación de pulso para elementos Aeromexico
 @keyframes aeromexicoPulse {
   0%,
   100% {
@@ -87,7 +87,7 @@
   }
 }
 
-// Gradiente de texto Aeroméxico
+// Gradiente de texto Aeromexico
 @keyframes aeromexicoGradient {
   0% {
     background-position: 0% 50%;
@@ -142,28 +142,26 @@
 }
 
 .hero-dates {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: clamp(1.2rem, 3.2vw, 1.4rem);
   color: rgba(0, 191, 255, 0.9);
   margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 700;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   font-family: "Garnett", "Montserrat", sans-serif;
-  font-weight: 400;
   letter-spacing: 0.5px;
 }
 
 .hero-subtitle {
-  font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
   color: rgba(255, 255, 255, 0.95);
   margin-bottom: 0;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.7;
-  font-weight: 700;
+  font-weight: 400;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   font-family: "Garnett", "Montserrat", sans-serif;
-  font-weight: 600;
 }
 
 // Stats Cards Horizontal - Diseño Profesional Compacto
@@ -237,7 +235,7 @@
   }
 
   .stat-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1);
   }
 
   .stat-number {

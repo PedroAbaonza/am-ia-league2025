@@ -191,6 +191,6 @@ background:
 
 ---
 
-**Portal Aeroméxico AI League 2025**: ✅ **Rendimiento Optimizado**
+**Portal Aeromexico AI League 2025**: ✅ **Rendimiento Optimizado**
 **Fecha**: 28/09/2025
 **Estado**: ✅ Scroll Fluido Implementado

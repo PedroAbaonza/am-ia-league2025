@@ -1,4 +1,4 @@
-# ❓ Preguntas Frecuentes (FAQ) - Aeroméxico AI League 2025
+# ❓ Preguntas Frecuentes (FAQ) - Aeromexico AI League 2025
 
 Esta sección contiene respuestas a las preguntas más comunes sobre el desarrollo, configuración y uso del sistema.
 
@@ -37,8 +37,10 @@ npm --version
 ### ¿Cómo configuro mi IDE para el proyecto?
 
 **Visual Studio Code (Recomendado)**:
+
 1. Instalar extensiones requeridas (ver `.vscode/extensions.json`)
 2. Configurar settings.json:
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -76,16 +78,19 @@ npm run test:coverage
 ### ¿Cómo agrego una nueva funcionalidad?
 
 1. **Crear rama de feature**:
+
 ```bash
 git checkout -b feature/nueva-funcionalidad
 ```
 
 2. **Generar componente**:
+
 ```bash
 ng generate component features/nueva-funcionalidad
 ```
 
 3. **Seguir estructura**:
+
 ```
 src/app/features/nueva-funcionalidad/
 ├── components/
@@ -98,6 +103,7 @@ src/app/features/nueva-funcionalidad/
 ### ¿Cómo manejo el estado de la aplicación?
 
 **Para estado local**: Usar propiedades del componente
+
 ```typescript
 export class MyComponent {
   isLoading = false;
@@ -106,12 +112,13 @@ export class MyComponent {
 ```
 
 **Para estado compartido**: Usar servicios con BehaviorSubject
+
 ```typescript
 @Injectable()
 export class StateService {
   private dataSubject = new BehaviorSubject<any[]>([]);
   data$ = this.dataSubject.asObservable();
-  
+
   updateData(data: any[]): void {
     this.dataSubject.next(data);
   }
@@ -123,6 +130,7 @@ export class StateService {
 ### ¿Cómo uso el sistema de diseño?
 
 **Colores**:
+
 ```scss
 .my-component {
   background-color: var(--primary-color);
@@ -132,6 +140,7 @@ export class StateService {
 ```
 
 **Espaciado**:
+
 ```scss
 .card {
   padding: var(--spacing-md);
@@ -140,6 +149,7 @@ export class StateService {
 ```
 
 **Tipografía**:
+
 ```scss
 .title {
   font-size: var(--font-size-xl);
@@ -153,15 +163,15 @@ export class StateService {
 .grid {
   display: grid;
   gap: var(--spacing-md);
-  
+
   // Mobile first
   grid-template-columns: 1fr;
-  
+
   // Tablet
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   // Desktop
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
@@ -184,13 +194,13 @@ export class StateService {
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
-  
+
   canActivate(): boolean {
     if (this.auth.isAuthenticated()) {
       return true;
     }
-    
-    this.router.navigate(['/login']);
+
+    this.router.navigate(["/login"]);
     return false;
   }
 }
@@ -206,7 +216,7 @@ export class AuthorizationService {
     const user = this.auth.getCurrentUser();
     return user?.role === role;
   }
-  
+
   hasPermission(permission: string): boolean {
     const user = this.auth.getCurrentUser();
     return user?.permissions?.includes(permission) ?? false;
@@ -216,7 +226,7 @@ export class AuthorizationService {
 // Uso en componente
 export class AdminComponent {
   canViewAdminPanel = this.authz.hasRole(UserRole.ADMIN);
-  canEditUsers = this.authz.hasPermission('users:edit');
+  canEditUsers = this.authz.hasPermission("users:edit");
 }
 ```
 
@@ -228,17 +238,14 @@ export class AdminComponent {
 @Injectable()
 export class DataService {
   constructor(private http: HttpClient) {}
-  
+
   getData(): Observable<any[]> {
-    return this.http.get<any[]>('/api/data').pipe(
-      retry(3),
-      catchError(this.handleError)
-    );
+    return this.http.get<any[]>("/api/data").pipe(retry(3), catchError(this.handleError));
   }
-  
+
   private handleError(error: HttpErrorResponse): Observable<never> {
-    console.error('API Error:', error);
-    return throwError(() => new Error('Something went wrong'));
+    console.error("API Error:", error);
+    return throwError(() => new Error("Something went wrong"));
   }
 }
 ```
@@ -254,12 +261,12 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           // Redirect to login
-          this.router.navigate(['/login']);
+          this.router.navigate(["/login"]);
         } else if (error.status === 500) {
           // Show error message
-          this.notification.error('Server error occurred');
+          this.notification.error("Server error occurred");
         }
-        
+
         return throwError(() => error);
       })
     );
@@ -272,53 +279,55 @@ export class ErrorInterceptor implements HttpInterceptor {
 ### ¿Cómo escribo tests efectivos?
 
 **Componente**:
+
 ```typescript
-describe('UserCardComponent', () => {
+describe("UserCardComponent", () => {
   let component: UserCardComponent;
   let fixture: ComponentFixture<UserCardComponent>;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UserCardComponent]
+      declarations: [UserCardComponent],
     });
-    
+
     fixture = TestBed.createComponent(UserCardComponent);
     component = fixture.componentInstance;
   });
-  
-  it('should display user name', () => {
-    component.user = { name: 'John Doe' };
+
+  it("should display user name", () => {
+    component.user = { name: "John Doe" };
     fixture.detectChanges();
-    
+
     const element = fixture.nativeElement;
-    expect(element.textContent).toContain('John Doe');
+    expect(element.textContent).toContain("John Doe");
   });
 });
 ```
 
 **Servicio**:
+
 ```typescript
-describe('UserService', () => {
+describe("UserService", () => {
   let service: UserService;
   let httpMock: HttpTestingController;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
     });
-    
+
     service = TestBed.inject(UserService);
     httpMock = TestBed.inject(HttpTestingController);
   });
-  
-  it('should fetch users', () => {
-    const mockUsers = [{ id: 1, name: 'John' }];
-    
-    service.getUsers().subscribe(users => {
+
+  it("should fetch users", () => {
+    const mockUsers = [{ id: 1, name: "John" }];
+
+    service.getUsers().subscribe((users) => {
       expect(users).toEqual(mockUsers);
     });
-    
-    const req = httpMock.expectOne('/api/users');
+
+    const req = httpMock.expectOne("/api/users");
     req.flush(mockUsers);
   });
 });
@@ -345,11 +354,13 @@ npm run test:coverage
 ### ¿Cómo hago deploy a producción?
 
 **Build para producción**:
+
 ```bash
 npm run build:prod
 ```
 
 **Deploy a servidor**:
+
 ```bash
 # Copiar archivos dist/ al servidor
 scp -r dist/ user@server:/var/www/html/
@@ -361,17 +372,19 @@ git push origin main  # Trigger automático
 ### ¿Cómo configuro variables de entorno?
 
 **Desarrollo** (`.env`):
+
 ```
 API_URL=http://localhost:3000/api
 DEBUG=true
 ```
 
 **Producción** (`environment.prod.ts`):
+
 ```typescript
 export const environment = {
   production: true,
-  apiUrl: 'https://api.example.com',
-  debug: false
+  apiUrl: "https://api.example.com",
+  debug: false,
 };
 ```
 
@@ -382,6 +395,7 @@ export const environment = {
 **Causa**: Dependencia no instalada o path incorrecto
 
 **Solución**:
+
 ```bash
 # Reinstalar dependencias
 rm -rf node_modules package-lock.json
@@ -395,6 +409,7 @@ import { Component } from 'angular/core';   // ❌ Incorrecto
 ### Error: "Port 4200 is already in use"
 
 **Solución**:
+
 ```bash
 # Usar puerto diferente
 ng serve --port 4201
@@ -406,6 +421,7 @@ lsof -ti:4200 | xargs kill -9
 ### Error de CORS en desarrollo
 
 **Solución**: Configurar proxy en `proxy.conf.json`:
+
 ```json
 {
   "/api/*": {
@@ -423,6 +439,7 @@ ng serve --proxy-config proxy.conf.json
 ### Build falla por errores de TypeScript
 
 **Solución**:
+
 ```bash
 # Verificar errores
 npm run lint
@@ -437,7 +454,9 @@ npm run build -- --verbose
 ### Performance lenta en desarrollo
 
 **Soluciones**:
+
 1. **Usar OnPush change detection**:
+
 ```typescript
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -445,16 +464,18 @@ npm run build -- --verbose
 ```
 
 2. **Lazy loading de módulos**:
+
 ```typescript
 const routes: Routes = [
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  }
+    path: "admin",
+    loadChildren: () => import("./admin/admin.module").then((m) => m.AdminModule),
+  },
 ];
 ```
 
 3. **TrackBy functions**:
+
 ```typescript
 trackByFn(index: number, item: any): any {
   return item.id;
@@ -466,26 +487,24 @@ trackByFn(index: number, item: any): any {
 ### ¿Cómo optimizo para móviles?
 
 **Viewport meta tag**:
+
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 ```
 
 **Touch-friendly interactions**:
+
 ```scss
 .button {
-  min-height: 44px;  // Minimum touch target
+  min-height: 44px; // Minimum touch target
   min-width: 44px;
 }
 ```
 
 **Responsive images**:
+
 ```html
-<img 
-  src="image-small.jpg" 
-  srcset="image-small.jpg 480w, image-large.jpg 800w"
-  sizes="(max-width: 600px) 480px, 800px"
-  alt="Description"
->
+<img src="image-small.jpg" srcset="image-small.jpg 480w, image-large.jpg 800w" sizes="(max-width: 600px) 480px, 800px" alt="Description" />
 ```
 
 ## 🔍 Debugging
@@ -493,23 +512,26 @@ trackByFn(index: number, item: any): any {
 ### ¿Cómo debuggeo la aplicación?
 
 **Chrome DevTools**:
+
 1. Abrir DevTools (F12)
 2. Sources tab → Webpack → src
 3. Colocar breakpoints
 4. Recargar página
 
 **Angular DevTools**:
+
 1. Instalar extensión Angular DevTools
 2. Inspeccionar componentes
 3. Ver change detection
 4. Profiler para performance
 
 **Console debugging**:
+
 ```typescript
 // Temporal para debugging
-console.log('Debug:', data);
+console.log("Debug:", data);
 console.table(array);
-console.group('Group name');
+console.group("Group name");
 console.groupEnd();
 ```
 

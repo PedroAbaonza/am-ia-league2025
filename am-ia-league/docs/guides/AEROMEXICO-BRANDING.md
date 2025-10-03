@@ -33,7 +33,7 @@ background: linear-gradient(135deg, #ff1493, #00bfff, #ff1493);
 
 ### **Título Principal**
 
-- ✅ "Aeroméxico" en blanco puro con sombra
+- ✅ "Aeromexico" en blanco puro con sombra
 - ✅ "AI League 2025" en gradiente animado rosa-cyan
 - ✅ Tipografía Montserrat (corporativa)
 - ✅ Animación de gradiente continua
@@ -126,7 +126,7 @@ $glass-cyan: rgba(0, 191, 255, 0.12);
 
 ### ✅ **Identidad Corporativa**
 
-- Colores oficiales Aeroméxico aplicados
+- Colores oficiales Aeromexico aplicados
 - Tipografías corporativas implementadas
 - Elementos visuales consistentes con la marca
 
