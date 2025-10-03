@@ -203,6 +203,76 @@
     <div class="upload-section">
       <h2 class="section-title">Subir Datos del Leaderboard</h2>
 
+      <!-- Master File Upload (Recommended) -->
+      <div class="master-upload-section">
+        <div class="upload-card master-card">
+          <div class="master-badge">Recomendado</div>
+          <h3 class="card-title">📊 Archivo Master (Todo en Uno)</h3>
+          <p class="card-description">
+            Sube un único archivo CSV que actualiza automáticamente tanto el
+            leaderboard de squads como el ranking individual.
+          </p>
+
+          <div class="file-upload">
+            <input
+              type="file"
+              #masterFileInput
+              accept=".csv"
+              (change)="onMasterFileSelected($event)"
+              class="file-input"
+            />
+
+            <button
+              class="upload-btn primary glow-blue"
+              (click)="masterFileInput.click()"
+            >
+              Seleccionar Archivo Master CSV
+            </button>
+          </div>
+
+          <div class="file-info" *ngIf="masterFileName">
+            <span class="file-name">{{ masterFileName }}</span>
+            <button
+              class="process-btn glow-pink"
+              (click)="processMasterFile()"
+              [disabled]="fileValidationErrors.length > 0"
+            >
+              Procesar Datos
+            </button>
+          </div>
+
+          <!-- File Validation Status -->
+          <div class="validation-status" *ngIf="isValidatingFile">
+            <div class="validation-loading">
+              <span class="loading-icon">⏳</span>
+              Validando archivo...
+            </div>
+          </div>
+
+          <div
+            class="validation-errors"
+            *ngIf="fileValidationErrors.length > 0"
+          >
+            <div class="error-item" *ngFor="let error of fileValidationErrors">
+              {{ error }}
+            </div>
+          </div>
+
+          <div class="format-preview">
+            <strong>Formato requerido:</strong>
+            <code class="format-code">
+              name,squadName,position,points,missions,squadChallenges,scrumMaster
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <div class="separator">
+        <span class="separator-text"
+          >O sube archivos por separado (legacy)</span
+        >
+      </div>
+
       <div class="upload-grid">
         <!-- Squad Data Upload -->
         <div class="upload-card">
@@ -317,8 +387,49 @@
       <h2 class="section-title">Formato de Archivos CSV</h2>
 
       <div class="format-grid">
+        <div class="format-card master-format">
+          <h3 class="format-title">✨ Master CSV (Recomendado)</h3>
+          <p class="format-description">
+            Un solo archivo actualiza ambas vistas. Los puntos de squad se
+            calculan sumando los puntos individuales. Los retos
+            (squadChallenges) son por squad, se repiten para todos los miembros.
+          </p>
+          <div class="format-example">
+            <code>
+              name,squadName,position,points,missions,squadChallenges,scrumMaster<br />
+              Carlos Rodríguez,Alpha Squadron,Senior Developer,520,8,5,María
+              González<br />
+              Ana Martínez,Alpha Squadron,Developer,495,7,5,María González<br />
+              Elena Vargas,Beta Flight,Frontend Developer,485,8,3,Roberto Silva
+            </code>
+          </div>
+          <div class="format-notes">
+            <strong>Campos:</strong>
+            <ul>
+              <li><strong>name</strong> - Nombre del desarrollador</li>
+              <li><strong>squadName</strong> - Nombre del squad</li>
+              <li><strong>position</strong> - Rol del desarrollador</li>
+              <li>
+                <strong>points</strong> - Puntos individuales (se suman para el
+                squad)
+              </li>
+              <li>
+                <strong>missions</strong> - Misiones completadas (individual)
+              </li>
+              <li>
+                <strong>squadChallenges</strong> - Retos del squad (mismo valor
+                para todos los miembros)
+              </li>
+              <li>
+                <strong>scrumMaster</strong> - Scrum Master del squad (mismo
+                para todos los miembros)
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div class="format-card">
-          <h3 class="format-title">Squads CSV</h3>
+          <h3 class="format-title">Squads CSV (Legacy)</h3>
           <div class="format-example">
             <code>
               squadName,scrumMaster,name,points<br />
@@ -330,7 +441,7 @@
         </div>
 
         <div class="format-card">
-          <h3 class="format-title">Individuales CSV</h3>
+          <h3 class="format-title">Individuales CSV (Legacy)</h3>
           <div class="format-example">
             <code>
               name,squadName,position,points,missions,challenges,level<br />

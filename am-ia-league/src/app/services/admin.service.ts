@@ -370,7 +370,7 @@ export class AdminService {
     return data;
   }
 
-  // Convertir CSV a formato Squad
+  // Convertir CSV a formato Squad (desde master file)
   convertToSquads(csvData: any[]): Squad[] {
     // Agrupar por squad
     const squadMap = new Map<string, any>();
@@ -397,7 +397,9 @@ export class AdminService {
           scrumMaster: row.scrumMaster || row['Scrum Master'] || '',
           developers: [],
           totalPoints: 0,
-          specialChallenges: 0,
+          specialChallenges: parseInt(
+            row.squadChallenges || row.challenges || '0'
+          ),
           color: existingSquad
             ? existingSquad.color
             : this.getSquadColor(squadMap.size + 1),
@@ -407,9 +409,6 @@ export class AdminService {
       const squad = squadMap.get(squadName);
       const developerName = row.name || row.developer || row['Developer Name'];
       const points = parseInt(row.points || row.totalPoints || '0');
-      const challenges = parseInt(
-        row.challenges || row.specialChallenges || row.retos || '0'
-      );
 
       // Update scrum master if provided and not already set
       if ((row.scrumMaster || row['Scrum Master']) && !squad.scrumMaster) {
@@ -421,7 +420,7 @@ export class AdminService {
       }
 
       squad.totalPoints += points;
-      squad.specialChallenges += challenges;
+      // squadChallenges is set once per squad, not summed per developer
     });
 
     // Sort squads by ID for consistent ordering
@@ -445,7 +444,7 @@ export class AdminService {
     return nextId;
   }
 
-  // Convertir CSV a formato Individual
+  // Convertir CSV a formato Individual (desde master file)
   convertToIndividuals(csvData: any[]): Individual[] {
     return csvData.map((row, index) => ({
       id: index + 1,
@@ -457,9 +456,7 @@ export class AdminService {
       position: row.position || row.role || 'Developer',
       totalPoints: parseInt(row.points || row.totalPoints || '0'),
       completedMissions: parseInt(row.missions || row.completedMissions || '0'),
-      specialChallenges: parseInt(
-        row.challenges || row.specialChallenges || '0'
-      ),
+      specialChallenges: 0, // Individual challenges not tracked, only squad challenges
       avatar: this.getInitials(
         row.name || row['Developer Name'] || row.developer || ''
       ),

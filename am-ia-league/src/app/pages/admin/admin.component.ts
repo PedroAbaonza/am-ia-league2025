@@ -32,6 +32,10 @@ export class AdminComponent implements OnInit, OnDestroy {
     dataSource: 'static',
   };
 
+  masterFileName = '';
+  masterFileContent = '';
+
+  // Legacy support for separate files (deprecated)
   squadFileName = '';
   individualFileName = '';
   squadFileContent = '';
@@ -150,6 +154,21 @@ export class AdminComponent implements OnInit, OnDestroy {
     return this.adminService.getSessionInfo();
   }
 
+  onMasterFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.validateFile(file, 'master').then((isValid) => {
+        if (isValid) {
+          this.masterFileName = file.name;
+          this.readFile(file, (content) => {
+            this.masterFileContent = content;
+            this.validateCSVContent(content, 'master');
+          });
+        }
+      });
+    }
+  }
+
   onSquadFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -182,7 +201,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   private async validateFile(
     file: File,
-    type: 'squad' | 'individual'
+    type: 'squad' | 'individual' | 'master'
   ): Promise<boolean> {
     this.fileValidationErrors = [];
     this.isValidatingFile = true;
@@ -229,13 +248,29 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
   }
 
-  private validateCSVContent(content: string, type: 'squad' | 'individual') {
+  private validateCSVContent(
+    content: string,
+    type: 'squad' | 'individual' | 'master'
+  ) {
     try {
       const csvData = this.adminService.parseCSV(content);
-      const requiredFields =
-        type === 'squad'
-          ? ['squadName', 'name', 'points']
-          : ['name', 'squadName', 'points'];
+
+      let requiredFields: string[];
+      if (type === 'master') {
+        requiredFields = [
+          'name',
+          'squadName',
+          'position',
+          'points',
+          'missions',
+          'squadChallenges',
+          'scrumMaster',
+        ];
+      } else if (type === 'squad') {
+        requiredFields = ['squadName', 'name', 'points'];
+      } else {
+        requiredFields = ['name', 'squadName', 'points'];
+      }
 
       if (csvData.length === 0) {
         this.showError('El archivo CSV no contiene datos válidos');
@@ -269,6 +304,55 @@ export class AdminComponent implements OnInit, OnDestroy {
       reader.onerror = (e) => reject(e);
       reader.readAsText(file);
     });
+  }
+
+  processMasterFile() {
+    if (!this.masterFileContent) {
+      this.showError('No hay archivo seleccionado');
+      return;
+    }
+
+    try {
+      const csvData = this.adminService.parseCSV(this.masterFileContent);
+
+      // Process both squads and individuals from the same file
+      const squads = this.adminService.convertToSquads(csvData);
+      const individuals = this.adminService.convertToIndividuals(csvData);
+
+      if (squads.length === 0 || individuals.length === 0) {
+        this.showError('No se pudieron procesar los datos del archivo');
+        return;
+      }
+
+      // Crear backups antes de procesar
+      this.adminService.createBackup('squads');
+      this.adminService.createBackup('individuals');
+
+      // Upload both datasets
+      this.adminService.uploadSquadsData(squads);
+      this.adminService.uploadIndividualsData(individuals);
+
+      this.adminService.logAction(
+        'upload_master',
+        `${squads.length} squads y ${individuals.length} desarrolladores procesados desde ${this.masterFileName}`
+      );
+
+      this.showSuccess(
+        `Datos procesados correctamente: ${squads.length} squads, ${individuals.length} desarrolladores`
+      );
+      this.masterFileName = '';
+      this.masterFileContent = '';
+
+      // Actualizar métricas
+      this.loadSystemMetrics();
+      this.loadAuditLogs();
+    } catch (error) {
+      this.adminService.logAction(
+        'upload_error',
+        `Error procesando archivo master: ${error}`
+      );
+      this.showError('Error procesando el archivo: ' + error);
+    }
   }
 
   processSquadFile() {

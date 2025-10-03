@@ -114,6 +114,14 @@ src/app/
 
 ### Formatos CSV Soportados
 
+**Archivo Master (Recomendado)** - Un solo archivo actualiza ambas vistas:
+
+```csv
+name,squadName,position,points,missions,squadChallenges,scrumMaster
+```
+
+**Archivos Separados (Legacy)**:
+
 ```csv
 # Squads
 squadName,scrumMaster,name,points
@@ -122,7 +130,8 @@ squadName,scrumMaster,name,points
 name,squadName,position,points,missions,challenges,level
 ```
 
-Ver `ADMIN-PANEL.md` para documentación completa.
+Ver `MASTER-FILE-GUIDE.md` para la guía completa del archivo master.
+Ver `ADMIN-PANEL.md` para documentación del panel de administración.
 
 ## 🛠️ Instalación y Desarrollo
 

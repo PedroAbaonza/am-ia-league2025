@@ -383,7 +383,7 @@
   backdrop-filter: blur(10px);
   text-align: center;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: var(--glow-blue);
@@ -397,7 +397,11 @@
   gap: 0.75rem;
   width: 100%;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   color: white;
   border: none;
   border-radius: 12px;
@@ -405,7 +409,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 1rem;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--glow-blue);
@@ -506,7 +510,7 @@
   align-items: center;
   gap: 1rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--glow-blue);
@@ -554,12 +558,12 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
-  
+
   &:hover:not(:disabled) {
     border-color: var(--aviation-blue);
     color: var(--aviation-blue);
   }
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -599,22 +603,26 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--glow-blue);
   }
-  
+
   &.danger {
     background: linear-gradient(135deg, #ef4444, #dc2626);
-    
+
     &:hover {
       box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
     }
@@ -642,11 +650,11 @@
   padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--card-border);
   align-items: center;
-  
+
   &:last-child {
     border-bottom: none;
   }
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.02);
   }
@@ -697,7 +705,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.875rem;
-  
+
   &:hover {
     background: var(--aviation-blue);
     color: white;
@@ -726,8 +734,12 @@
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .validation-errors {
@@ -745,7 +757,7 @@
   color: #ef4444;
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -802,7 +814,11 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   color: white;
   border: none;
   border-radius: 20px;
@@ -810,7 +826,7 @@
   transition: all 0.3s ease;
   font-weight: 500;
   font-size: 0.875rem;
-  
+
   &:hover {
     transform: translateY(-1px);
     box-shadow: var(--glow-blue);
@@ -858,7 +874,7 @@
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.04);
     border-color: var(--aviation-blue);
@@ -950,7 +966,7 @@
   border-radius: 8px;
   padding: 1rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.04);
     border-color: var(--squadron-pink);
@@ -1090,43 +1106,43 @@
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .metrics-actions {
     flex-direction: column;
   }
-  
+
   .action-btn {
     justify-content: center;
   }
-  
+
   .log-item {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
-  
+
   .logs-footer {
     flex-direction: column;
     gap: 1rem;
     align-items: stretch;
   }
-  
+
   .card-header {
     flex-direction: column;
     gap: 1rem;
     align-items: stretch;
   }
-  
+
   .squad-header,
   .individual-header {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
   }
-  
+
   .individual-stats {
     align-self: flex-start;
   }
-  
+
   .developers-list {
     justify-content: flex-start;
   }
@@ -1150,10 +1166,10 @@
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
-    border-color: #EF4444;
-    color: #EF4444;
+    border-color: #ef4444;
+    color: #ef4444;
   }
 }
 
@@ -1162,15 +1178,162 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--sky-blue-neon)
+  );
   color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--glow-blue);
+  }
+}
+// Mas
+ter Upload Section .master-upload-section {
+  margin-bottom: 2rem;
+}
+
+.master-card {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 174, 239, 0.1),
+    rgba(255, 45, 130, 0.1)
+  );
+  border: 2px solid var(--aviation-blue);
+  box-shadow: 0 0 30px rgba(0, 174, 239, 0.2);
+}
+
+.master-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--aviation-blue),
+    var(--squadron-pink)
+  );
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 174, 239, 0.4);
+}
+
+.format-preview {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border-left: 3px solid var(--aviation-blue);
+}
+
+.format-code {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--sky-blue-neon);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.separator {
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--card-border),
+      transparent
+    );
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+}
+
+.separator-text {
+  display: inline-block;
+  padding: 0 1rem;
+  background: var(--deep-space-blue);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+// Master Format Card
+.master-format {
+  grid-column: 1 / -1;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 174, 239, 0.05),
+    rgba(255, 45, 130, 0.05)
+  );
+  border: 2px solid var(--aviation-blue);
+}
+
+.format-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.format-notes {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  font-size: 0.9rem;
+
+  strong {
+    color: var(--aviation-blue);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 0.3rem 0;
+    color: var(--text-secondary);
+
+    strong {
+      display: inline;
+      color: var(--sky-blue-neon);
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.85rem;
+    }
   }
 }
