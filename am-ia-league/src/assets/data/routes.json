@@ -2,50 +2,41 @@
   {
     "id": 1,
     "name": "Innovation Taking Off From Cancún",
-    "startDate": "2025-09-26",
-    "endDate": "2025-10-10",
+    "startDate": "2025-10-09",
+    "endDate": "2025-10-24",
     "status": "active",
     "description": "Primera etapa de la liga - Fundamentos y preparación",
     "color": "#00AEEF"
   },
   {
     "id": 2,
-    "name": "Bogotá The Creative Boost of AI",
-    "startDate": "2025-10-10",
-    "endDate": "2025-10-24",
-    "status": "upcoming",
-    "description": "Segunda etapa - Desarrollo de habilidades intermedias",
-    "color": "#FF2D82"
-  },
-  {
-    "id": 3,
     "name": "Michoacán Illuminating The AI Journey",
     "startDate": "2025-10-24",
     "endDate": "2025-11-07",
     "status": "upcoming",
-    "description": "Tercera etapa - Especialización y proyectos avanzados",
-    "color": "#00AEEF"
+    "description": "Segunda etapa - Especialización y proyectos avanzados",
+    "color": "#FF2D82"
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "Amsterdam Connecting Culture With AI",
     "startDate": "2025-11-07",
     "endDate": "2025-11-21",
     "status": "upcoming",
-    "description": "Cuarta etapa - Innovación y tecnologías emergentes",
-    "color": "#FF2D82"
+    "description": "Tercera etapa - Innovación y tecnologías emergentes",
+    "color": "#00AEEF"
   },
   {
-    "id": 5,
+    "id": 4,
     "name": "Tokyo Precision Driving The AI Journey",
     "startDate": "2025-11-21",
     "endDate": "2025-12-05",
     "status": "upcoming",
-    "description": "Quinta etapa - Perfeccionamiento y optimización",
-    "color": "#00AEEF"
+    "description": "Cuarta etapa - Perfeccionamiento y optimización",
+    "color": "#FF2D82"
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "Mexico City Epicenter of The Game Day",
     "startDate": "2025-12-05",
     "endDate": "2025-12-12",

@@ -51,9 +51,9 @@ export class ImportantDatesComponent implements OnInit {
 
   getEventTypeText(type: string): string {
     const typeMap: { [key: string]: string } = {
-      'aws-training': 'AWS Training',
-      demo: 'Demo Session',
-      'working-hours': 'Working Hours',
+      'aws-training': 'IA Flight Tips',
+      demo: 'IA Demo Show',
+      'working-hours': 'Hangar de preguntas',
     };
     return typeMap[type] || type;
   }
