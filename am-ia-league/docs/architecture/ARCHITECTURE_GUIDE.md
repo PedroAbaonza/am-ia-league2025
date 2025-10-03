@@ -1,8 +1,9 @@
-# Guía de Arquitectura - Aeroméxico AI League 2025
+# Guía de Arquitectura - Aeromexico AI League 2025
 
 ## 🏗️ Visión General de la Arquitectura
 
 ### Patrón Arquitectónico Principal
+
 La aplicación implementa una **arquitectura por capas** basada en los principios de Angular, siguiendo el patrón **Component-Service-Data**:
 
 ```
@@ -30,21 +31,25 @@ La aplicación implementa una **arquitectura por capas** basada en los principio
 ### Principios Arquitectónicos
 
 #### 1. Separation of Concerns (SoC)
+
 - **Presentación**: Componentes se enfocan únicamente en la UI
 - **Lógica de Negocio**: Servicios manejan la lógica y transformaciones
 - **Datos**: Capa de datos abstrae el origen de la información
 
 #### 2. Single Responsibility Principle (SRP)
+
 - Cada componente tiene una responsabilidad específica
 - Servicios especializados por dominio de negocio
 - Interfaces claras entre capas
 
 #### 3. Dependency Injection (DI)
+
 - Servicios inyectados como dependencias
 - Facilita testing y mantenibilidad
 - Permite intercambio de implementaciones
 
 #### 4. Reactive Programming
+
 - Uso extensivo de RxJS Observables
 - Flujo de datos unidireccional
 - Gestión de estado reactiva
@@ -52,6 +57,7 @@ La aplicación implementa una **arquitectura por capas** basada en los principio
 ## 📦 Estructura de Módulos
 
 ### Organización por Características
+
 ```
 src/app/
 ├── components/          # Componentes reutilizables
@@ -79,6 +85,7 @@ src/app/
 ```
 
 ### Ventajas de esta Organización
+
 - **Escalabilidad**: Fácil agregar nuevas características
 - **Mantenibilidad**: Código organizado por funcionalidad
 - **Reutilización**: Componentes y servicios compartidos
@@ -87,6 +94,7 @@ src/app/
 ## 🔄 Flujo de Datos
 
 ### Patrón de Comunicación
+
 ```
 ┌─────────────┐    HTTP Request    ┌─────────────┐
 │   Service   │ ──────────────────► │ JSON Files  │
@@ -102,6 +110,7 @@ src/app/
 ```
 
 ### Ejemplo de Flujo Completo
+
 ```typescript
 // 1. Servicio obtiene datos
 @Injectable()
@@ -119,7 +128,7 @@ export class LeaderboardService {
 @Component({...})
 export class SquadsOverviewComponent implements OnInit {
   squads$ = this.leaderboardService.getSquads();
-  
+
   constructor(private leaderboardService: LeaderboardService) {}
 }
 
@@ -132,17 +141,18 @@ export class SquadsOverviewComponent implements OnInit {
 ## 🧩 Patrones de Diseño Implementados
 
 ### 1. Observer Pattern (RxJS)
+
 ```typescript
 // Servicio como Subject
 @Injectable()
 export class StateService {
   private squadState$ = new BehaviorSubject<Squad[]>([]);
-  
+
   // Múltiples componentes pueden suscribirse
   getSquads(): Observable<Squad[]> {
     return this.squadState$.asObservable();
   }
-  
+
   updateSquads(squads: Squad[]): void {
     this.squadState$.next(squads); // Notifica a todos los observadores
   }
@@ -150,6 +160,7 @@ export class StateService {
 ```
 
 ### 2. Strategy Pattern (Configuración)
+
 ```typescript
 // Diferentes estrategias de configuración
 interface ConfigStrategy {
@@ -158,57 +169,51 @@ interface ConfigStrategy {
 
 class JsonConfigStrategy implements ConfigStrategy {
   loadConfig(): Observable<AppConfig> {
-    return this.http.get<AppConfig>('/assets/data/app-config.json');
+    return this.http.get<AppConfig>("/assets/data/app-config.json");
   }
 }
 
 class ApiConfigStrategy implements ConfigStrategy {
   loadConfig(): Observable<AppConfig> {
-    return this.http.get<AppConfig>('/api/config');
+    return this.http.get<AppConfig>("/api/config");
   }
 }
 ```
 
 ### 3. Factory Pattern (Servicios)
+
 ```typescript
 // Factory para crear servicios específicos
 @Injectable()
 export class ServiceFactory {
-  createLeaderboardService(type: 'json' | 'api'): LeaderboardService {
+  createLeaderboardService(type: "json" | "api"): LeaderboardService {
     switch (type) {
-      case 'json':
+      case "json":
         return new JsonLeaderboardService(this.http);
-      case 'api':
+      case "api":
         return new ApiLeaderboardService(this.http);
       default:
-        throw new Error('Unknown service type');
+        throw new Error("Unknown service type");
     }
   }
 }
 ```
 
 ### 4. Facade Pattern (Servicios Complejos)
+
 ```typescript
 // Facade que simplifica múltiples servicios
 @Injectable()
 export class DashboardFacade {
-  constructor(
-    private leaderboardService: LeaderboardService,
-    private routeService: RouteService,
-    private eventService: EventService
-  ) {}
-  
+  constructor(private leaderboardService: LeaderboardService, private routeService: RouteService, private eventService: EventService) {}
+
   getDashboardData(): Observable<DashboardData> {
-    return combineLatest([
-      this.leaderboardService.getSquads(),
-      this.routeService.getRoutes(),
-      this.eventService.getEvents()
-    ]).pipe(
+    return combineLatest([this.leaderboardService.getSquads(), this.routeService.getRoutes(), this.eventService.getEvents()]).pipe(
       map(([squads, routes, events]) => ({
         squads,
         routes,
         events,
-        summary: this.calculateSummary(squads, routes, events)
+        summary: this.calculateSummary(squads, routes, events),
       }))
     );
   }
@@ -220,13 +225,14 @@ export class DashboardFacade {
 ### Estado Local vs Global
 
 #### Estado Local (Componente)
+
 ```typescript
 @Component({...})
 export class ComponentWithLocalState {
   // Estado específico del componente
   private isLoading = false;
   private selectedItem: Item | null = null;
-  
+
   // Métodos para manejar estado local
   selectItem(item: Item): void {
     this.selectedItem = item;
@@ -235,18 +241,19 @@ export class ComponentWithLocalState {
 ```
 
 #### Estado Compartido (Servicio)
+
 ```typescript
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class SharedStateService {
   // Estado compartido entre componentes
   private currentUser$ = new BehaviorSubject<User | null>(null);
   private notifications$ = new BehaviorSubject<Notification[]>([]);
-  
+
   // Getters para acceso reactivo
   getCurrentUser(): Observable<User | null> {
     return this.currentUser$.asObservable();
   }
-  
+
   getNotifications(): Observable<Notification[]> {
     return this.notifications$.asObservable();
   }
@@ -254,6 +261,7 @@ export class SharedStateService {
 ```
 
 ### Patrón de Estado Inmutable
+
 ```typescript
 interface AppState {
   readonly squads: Squad[];
@@ -264,12 +272,12 @@ interface AppState {
 @Injectable()
 export class StateManager {
   private state$ = new BehaviorSubject<AppState>(initialState);
-  
+
   updateSquads(squads: Squad[]): void {
     const currentState = this.state$.value;
     const newState: AppState = {
       ...currentState,
-      squads: [...squads] // Nueva referencia
+      squads: [...squads], // Nueva referencia
     };
     this.state$.next(newState);
   }
@@ -279,6 +287,7 @@ export class StateManager {
 ## 🚦 Gestión de Errores
 
 ### Estrategia de Manejo de Errores
+
 ```typescript
 // Interceptor global para errores HTTP
 @Injectable()
@@ -287,14 +296,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         // Log del error
-        console.error('HTTP Error:', error);
-        
+        console.error("HTTP Error:", error);
+
         // Transformar error para la UI
         const userError = this.transformError(error);
-        
+
         // Notificar al usuario
         this.notificationService.showError(userError.message);
-        
+
         return throwError(() => userError);
       })
     );
@@ -305,9 +314,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 @Injectable()
 export class DataService {
   getData(): Observable<Data[]> {
-    return this.http.get<Data[]>('/api/data').pipe(
+    return this.http.get<Data[]>("/api/data").pipe(
       retry(3), // Reintentar 3 veces
-      catchError(error => {
+      catchError((error) => {
         // Fallback a datos locales
         return this.getLocalData();
       })
@@ -319,19 +328,17 @@ export class DataService {
 ## 🔒 Seguridad y Guards
 
 ### Guards de Autenticación
+
 ```typescript
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
-  
+  constructor(private authService: AuthService, private router: Router) {}
+
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.authService.isAuthenticated().pipe(
-      map(isAuth => {
+      map((isAuth) => {
         if (!isAuth) {
-          this.router.navigate(['/login']);
+          this.router.navigate(["/login"]);
           return false;
         }
         return true;
@@ -343,21 +350,22 @@ export class AuthGuard implements CanActivate {
 // Aplicación en rutas
 const routes: Routes = [
   {
-    path: 'admin',
+    path: "admin",
     component: AdminComponent,
-    canActivate: [AuthGuard]
-  }
+    canActivate: [AuthGuard],
+  },
 ];
 ```
 
 ### Validación de Datos
+
 ```typescript
 // Validadores personalizados
 export class CustomValidators {
   static squadName(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
     if (!value) return null;
-    
+
     const isValid = /^[A-Za-z\s]{3,50}$/.test(value);
     return isValid ? null : { invalidSquadName: true };
   }
@@ -378,15 +386,16 @@ export class SquadFormComponent {
 ### Estrategias de Optimización
 
 #### 1. OnPush Change Detection
+
 ```typescript
 @Component({
-  selector: 'app-optimized-component',
+  selector: "app-optimized-component",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `...`
+  template: `...`,
 })
 export class OptimizedComponent {
   @Input() data: Data[] = [];
-  
+
   // Solo se ejecuta cuando cambian las referencias de input
   trackByFn(index: number, item: Data): number {
     return item.id;
@@ -395,33 +404,34 @@ export class OptimizedComponent {
 ```
 
 #### 2. Lazy Loading
+
 ```typescript
 // Rutas con carga diferida
 const routes: Routes = [
   {
-    path: 'admin',
-    loadComponent: () => import('./pages/admin/admin.component')
-      .then(m => m.AdminComponent)
-  }
+    path: "admin",
+    loadComponent: () => import("./pages/admin/admin.component").then((m) => m.AdminComponent),
+  },
 ];
 ```
 
 #### 3. Memoización de Cálculos
+
 ```typescript
 @Injectable()
 export class CalculationService {
   private cache = new Map<string, any>();
-  
+
   calculateRanking(squads: Squad[]): Squad[] {
     const cacheKey = this.generateCacheKey(squads);
-    
+
     if (this.cache.has(cacheKey)) {
       return this.cache.get(cacheKey);
     }
-    
+
     const result = this.performCalculation(squads);
     this.cache.set(cacheKey, result);
-    
+
     return result;
   }
 }
@@ -430,60 +440,59 @@ export class CalculationService {
 ## 🧪 Testing Architecture
 
 ### Estrategia de Testing
+
 ```typescript
 // Test de componente
-describe('SquadsOverviewComponent', () => {
+describe("SquadsOverviewComponent", () => {
   let component: SquadsOverviewComponent;
   let mockService: jasmine.SpyObj<LeaderboardService>;
-  
+
   beforeEach(() => {
-    const spy = jasmine.createSpyObj('LeaderboardService', ['getSquads']);
-    
+    const spy = jasmine.createSpyObj("LeaderboardService", ["getSquads"]);
+
     TestBed.configureTestingModule({
       imports: [SquadsOverviewComponent],
-      providers: [
-        { provide: LeaderboardService, useValue: spy }
-      ]
+      providers: [{ provide: LeaderboardService, useValue: spy }],
     });
-    
+
     mockService = TestBed.inject(LeaderboardService) as jasmine.SpyObj<LeaderboardService>;
   });
-  
-  it('should display squads', () => {
-    const mockSquads = [{ id: 1, name: 'Test Squad', totalPoints: 100 }];
+
+  it("should display squads", () => {
+    const mockSquads = [{ id: 1, name: "Test Squad", totalPoints: 100 }];
     mockService.getSquads.and.returnValue(of(mockSquads));
-    
+
     component.ngOnInit();
-    
+
     expect(component.squads$).toBeDefined();
     // Más assertions...
   });
 });
 
 // Test de servicio
-describe('LeaderboardService', () => {
+describe("LeaderboardService", () => {
   let service: LeaderboardService;
   let httpMock: HttpTestingController;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [LeaderboardService]
+      providers: [LeaderboardService],
     });
-    
+
     service = TestBed.inject(LeaderboardService);
     httpMock = TestBed.inject(HttpTestingController);
   });
-  
-  it('should fetch squads', () => {
-    const mockSquads = [{ id: 1, name: 'Test', totalPoints: 100 }];
-    
-    service.getSquads().subscribe(squads => {
+
+  it("should fetch squads", () => {
+    const mockSquads = [{ id: 1, name: "Test", totalPoints: 100 }];
+
+    service.getSquads().subscribe((squads) => {
       expect(squads).toEqual(mockSquads);
     });
-    
-    const req = httpMock.expectOne('/assets/data/squads.json');
-    expect(req.request.method).toBe('GET');
+
+    const req = httpMock.expectOne("/assets/data/squads.json");
+    expect(req.request.method).toBe("GET");
     req.flush(mockSquads);
   });
 });
@@ -492,27 +501,28 @@ describe('LeaderboardService', () => {
 ## 🔄 Ciclo de Vida y Hooks
 
 ### Gestión del Ciclo de Vida
+
 ```typescript
 @Component({...})
 export class LifecycleAwareComponent implements OnInit, OnDestroy, AfterViewInit {
   private destroy$ = new Subject<void>();
-  
+
   ngOnInit(): void {
     // Inicialización de datos
     this.loadData();
   }
-  
+
   ngAfterViewInit(): void {
     // Inicialización de elementos del DOM
     this.initializeCharts();
   }
-  
+
   ngOnDestroy(): void {
     // Limpieza de suscripciones
     this.destroy$.next();
     this.destroy$.complete();
   }
-  
+
   private loadData(): void {
     this.dataService.getData()
       .pipe(takeUntil(this.destroy$))
@@ -526,45 +536,39 @@ export class LifecycleAwareComponent implements OnInit, OnDestroy, AfterViewInit
 ### Preparación para Crecimiento
 
 #### 1. Modularización
+
 ```typescript
 // Módulo de características
 @NgModule({
-  declarations: [
-    LeaderboardComponent,
-    SquadCardComponent,
-    RankingTableComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
-  providers: [
-    LeaderboardService
-  ]
+  declarations: [LeaderboardComponent, SquadCardComponent, RankingTableComponent],
+  imports: [CommonModule, SharedModule],
+  providers: [LeaderboardService],
 })
 export class LeaderboardModule {}
 ```
 
 #### 2. Configuración por Ambiente
+
 ```typescript
 // environment.prod.ts
 export const environment = {
   production: true,
-  apiUrl: 'https://api.aeromexico-league.com',
+  apiUrl: "https://api.aeromexico-league.com",
   enableAnalytics: true,
-  cacheTimeout: 300000
+  cacheTimeout: 300000,
 };
 
 // environment.dev.ts
 export const environment = {
   production: false,
-  apiUrl: '/assets/data',
+  apiUrl: "/assets/data",
   enableAnalytics: false,
-  cacheTimeout: 0
+  cacheTimeout: 0,
 };
 ```
 
 #### 3. Abstracción de Datos
+
 ```typescript
 // Interfaz para diferentes fuentes de datos
 interface DataProvider {
@@ -575,14 +579,14 @@ interface DataProvider {
 // Implementación para JSON
 class JsonDataProvider implements DataProvider {
   getSquads(): Observable<Squad[]> {
-    return this.http.get<Squad[]>('/assets/data/squads.json');
+    return this.http.get<Squad[]>("/assets/data/squads.json");
   }
 }
 
 // Implementación para API
 class ApiDataProvider implements DataProvider {
   getSquads(): Observable<Squad[]> {
-    return this.http.get<Squad[]>('/api/squads');
+    return this.http.get<Squad[]>("/api/squads");
   }
 }
 ```
@@ -590,23 +594,27 @@ class ApiDataProvider implements DataProvider {
 ## 🎯 Mejores Prácticas Arquitectónicas
 
 ### 1. Principio DRY (Don't Repeat Yourself)
+
 - Componentes reutilizables
 - Servicios compartidos
 - Utilidades comunes
 
 ### 2. Principio KISS (Keep It Simple, Stupid)
+
 - Componentes con responsabilidad única
 - Lógica simple y clara
 - Evitar over-engineering
 
 ### 3. Principio YAGNI (You Aren't Gonna Need It)
+
 - Implementar solo lo necesario
 - Evitar funcionalidades especulativas
 - Refactorizar cuando sea necesario
 
 ### 4. Composición sobre Herencia
+
 - Usar servicios inyectados
 - Composición de componentes
 - Mixins cuando sea apropiado
 
-Esta arquitectura proporciona una base sólida, escalable y mantenible para el proyecto Aeroméxico AI League 2025.
+Esta arquitectura proporciona una base sólida, escalable y mantenible para el proyecto Aeromexico AI League 2025.

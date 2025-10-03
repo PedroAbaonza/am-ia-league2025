@@ -1,8 +1,9 @@
-# 🔧 Configuración del Entorno - Aeroméxico AI League 2025
+# 🔧 Configuración del Entorno - Aeromexico AI League 2025
 
 ## 📋 Requisitos del Sistema
 
 ### Requisitos Mínimos
+
 - **Sistema Operativo**: Windows 10+, macOS 10.15+, Ubuntu 18.04+
 - **Node.js**: 18.x LTS o superior
 - **npm**: 9.x o superior
@@ -10,6 +11,7 @@
 - **Espacio en Disco**: 2GB libres mínimo
 
 ### Requisitos Recomendados
+
 - **Node.js**: 20.x LTS (última versión estable)
 - **npm**: 10.x (última versión)
 - **RAM**: 16GB o superior
@@ -21,6 +23,7 @@
 ### 1. Instalación de Node.js
 
 #### Opción A: Descarga Directa
+
 ```bash
 # Verificar si Node.js ya está instalado
 node --version
@@ -31,6 +34,7 @@ npm --version
 ```
 
 #### Opción B: Usando Node Version Manager (Recomendado)
+
 ```bash
 # macOS/Linux - Instalar nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -45,6 +49,7 @@ nvm alias default 20
 ```
 
 #### Opción C: Usando Package Managers
+
 ```bash
 # macOS con Homebrew
 brew install node
@@ -58,6 +63,7 @@ choco install nodejs
 ```
 
 ### 2. Verificación de Instalación
+
 ```bash
 # Verificar versiones instaladas
 node --version  # Debería mostrar v20.x.x o superior
@@ -69,6 +75,7 @@ npm config get registry  # Debería mostrar https://registry.npmjs.org/
 ```
 
 ### 3. Instalación de Angular CLI
+
 ```bash
 # Instalar Angular CLI globalmente
 npm install -g @angular/cli@19
@@ -83,6 +90,7 @@ ng version
 ```
 
 ### 4. Configuración de Git (Si no está configurado)
+
 ```bash
 # Configurar usuario global
 git config --global user.name "Tu Nombre"
@@ -95,6 +103,7 @@ git config --list
 ## 📁 Setup del Proyecto
 
 ### 1. Clonar el Repositorio
+
 ```bash
 # Clonar el proyecto
 git clone [repository-url]
@@ -106,6 +115,7 @@ git status
 ```
 
 ### 2. Instalación de Dependencias
+
 ```bash
 # Instalar dependencias del proyecto
 npm install
@@ -119,6 +129,7 @@ npm ci  # Usa package-lock.json exacto
 ```
 
 ### 3. Verificación de Assets
+
 ```bash
 # Ejecutar script de verificación
 npm run check-assets
@@ -128,6 +139,7 @@ npm run check-assets
 ```
 
 ### 4. Primera Ejecución
+
 ```bash
 # Iniciar servidor de desarrollo
 npm run dev
@@ -144,22 +156,15 @@ npm start
 ### Visual Studio Code (Recomendado)
 
 #### Extensiones Esenciales
+
 ```json
 {
-  "recommendations": [
-    "angular.ng-template",
-    "ms-vscode.vscode-typescript-next",
-    "bradlc.vscode-tailwindcss",
-    "esbenp.prettier-vscode",
-    "ms-vscode.vscode-eslint",
-    "formulahendry.auto-rename-tag",
-    "christian-kohler.path-intellisense",
-    "ms-vscode.vscode-json"
-  ]
+  "recommendations": ["angular.ng-template", "ms-vscode.vscode-typescript-next", "bradlc.vscode-tailwindcss", "esbenp.prettier-vscode", "ms-vscode.vscode-eslint", "formulahendry.auto-rename-tag", "christian-kohler.path-intellisense", "ms-vscode.vscode-json"]
 }
 ```
 
 #### Configuración de Workspace
+
 ```json
 // .vscode/settings.json
 {
@@ -181,31 +186,13 @@ npm start
 ```
 
 #### Snippets Personalizados
+
 ```json
 // .vscode/angular.code-snippets
 {
   "Angular Component": {
     "prefix": "ng-component",
-    "body": [
-      "import { Component, OnInit } from '@angular/core';",
-      "import { CommonModule } from '@angular/common';",
-      "",
-      "@Component({",
-      "  selector: 'app-${1:component-name}',",
-      "  imports: [CommonModule],",
-      "  templateUrl: './${1:component-name}.component.html',",
-      "  styleUrls: ['./${1:component-name}.component.scss']",
-      "})",
-      "export class ${2:ComponentName}Component implements OnInit {",
-      "",
-      "  constructor() { }",
-      "",
-      "  ngOnInit(): void {",
-      "    ${3}",
-      "  }",
-      "",
-      "}"
-    ],
+    "body": ["import { Component, OnInit } from '@angular/core';", "import { CommonModule } from '@angular/common';", "", "@Component({", "  selector: 'app-${1:component-name}',", "  imports: [CommonModule],", "  templateUrl: './${1:component-name}.component.html',", "  styleUrls: ['./${1:component-name}.component.scss']", "})", "export class ${2:ComponentName}Component implements OnInit {", "", "  constructor() { }", "", "  ngOnInit(): void {", "    ${3}", "  }", "", "}"],
     "description": "Create Angular component"
   }
 }
@@ -214,11 +201,14 @@ npm start
 ### WebStorm/IntelliJ IDEA
 
 #### Configuración Recomendada
+
 1. **File > Settings > Languages & Frameworks > TypeScript**
+
    - Enable TypeScript service
    - Use TypeScript service for: "For both editing and error highlighting"
 
 2. **File > Settings > Editor > Code Style > TypeScript**
+
    - Set indent: 2 spaces
    - Enable "Use single quotes always"
 
@@ -229,6 +219,7 @@ npm start
 ## 🔧 Configuración de Herramientas
 
 ### Prettier Configuration
+
 ```json
 // .prettierrc
 {
@@ -244,6 +235,7 @@ npm start
 ```
 
 ### ESLint Configuration
+
 ```json
 // .eslintrc.json
 {
@@ -252,12 +244,7 @@ npm start
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": [
-        "eslint:recommended",
-        "@typescript-eslint/recommended",
-        "@angular-eslint/recommended",
-        "@angular-eslint/template/process-inline-templates"
-      ],
+      "extends": ["eslint:recommended", "@typescript-eslint/recommended", "@angular-eslint/recommended", "@angular-eslint/template/process-inline-templates"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -287,6 +274,7 @@ npm start
 ```
 
 ### EditorConfig
+
 ```ini
 # .editorconfig
 root = true
@@ -306,6 +294,7 @@ trim_trailing_whitespace = false
 ## 🌐 Configuración de Proxy (Si es necesario)
 
 ### Proxy para Desarrollo
+
 ```json
 // proxy.conf.json
 {
@@ -319,6 +308,7 @@ trim_trailing_whitespace = false
 ```
 
 ### Configuración de npm para Proxy Corporativo
+
 ```bash
 # Si estás detrás de un proxy corporativo
 npm config set proxy http://proxy.company.com:8080
@@ -332,6 +322,7 @@ npm config list
 ## 🔍 Verificación del Setup
 
 ### Checklist de Verificación
+
 ```bash
 # 1. Verificar Node.js y npm
 node --version  # ✅ v20.x.x
@@ -354,6 +345,7 @@ npm start       # ✅ Servidor corriendo en http://localhost:4200
 ```
 
 ### Script de Verificación Automática
+
 ```bash
 #!/bin/bash
 # verify-setup.sh
@@ -407,6 +399,7 @@ echo "🎉 Configuración del entorno verificada exitosamente!"
 ## 🚨 Solución de Problemas Comunes
 
 ### Error: "ng: command not found"
+
 ```bash
 # Solución 1: Instalar Angular CLI globalmente
 npm install -g @angular/cli@19
@@ -420,6 +413,7 @@ which ng
 ```
 
 ### Error: "Cannot resolve dependency"
+
 ```bash
 # Limpiar cache y reinstalar
 rm -rf node_modules package-lock.json
@@ -428,6 +422,7 @@ npm install
 ```
 
 ### Error: "Port 4200 is already in use"
+
 ```bash
 # Opción 1: Usar otro puerto
 ng serve --port 4201
@@ -442,6 +437,7 @@ taskkill /PID <PID> /F
 ```
 
 ### Error: "Insufficient memory"
+
 ```bash
 # Aumentar memoria para Node.js
 export NODE_OPTIONS="--max-old-space-size=8192"
@@ -453,6 +449,7 @@ npm start
 ```
 
 ### Error: "EACCES: permission denied"
+
 ```bash
 # Cambiar directorio global de npm (recomendado)
 mkdir ~/.npm-global
@@ -467,16 +464,19 @@ sudo npm install -g @angular/cli@19
 ## 📚 Recursos Adicionales
 
 ### Documentación Oficial
+
 - [Node.js Documentation](https://nodejs.org/docs/)
 - [Angular Documentation](https://angular.dev/)
 - [npm Documentation](https://docs.npmjs.com/)
 
 ### Herramientas Útiles
+
 - [Node Version Manager](https://github.com/nvm-sh/nvm)
 - [Angular DevTools](https://angular.dev/tools/devtools)
 - [VS Code Angular Snippets](https://marketplace.visualstudio.com/items?itemName=johnpapa.Angular2)
 
 ### Comunidad y Soporte
+
 - [Angular Community](https://angular.dev/community)
 - [Stack Overflow - Angular](https://stackoverflow.com/questions/tagged/angular)
 - [Angular GitHub](https://github.com/angular/angular)
@@ -484,4 +484,4 @@ sudo npm install -g @angular/cli@19
 ---
 
 **Última actualización**: Diciembre 2024
-**Autor**: Equipo de Desarrollo Aeroméxico AI League
+**Autor**: Equipo de Desarrollo Aeromexico AI League

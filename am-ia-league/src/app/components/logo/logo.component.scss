@@ -53,6 +53,22 @@
   }
 }
 
+.logo-medium-large {
+  .logo-image {
+    height: 90px;
+    width: auto;
+  }
+
+  .fallback-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .brand-name {
+    font-size: 1.5rem;
+  }
+}
+
 .logo-large {
   .logo-image {
     max-height: 300px;

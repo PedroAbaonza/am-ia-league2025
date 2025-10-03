@@ -68,13 +68,14 @@ $white: #ffffff;
   &:first-child {
     .footer-brand {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       gap: 0.75rem;
       margin-bottom: 0.75rem;
     }
 
     .brand-description {
-      margin-top: 0.5rem;
+      margin-top: 0;
 
       p {
         font-size: 0.8rem;

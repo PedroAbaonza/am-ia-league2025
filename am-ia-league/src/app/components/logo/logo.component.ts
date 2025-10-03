@@ -6,11 +6,11 @@ import { ImageUtilsService } from '../../services/image-utils.service';
   selector: 'app-logo',
   imports: [CommonModule],
   templateUrl: './logo.component.html',
-  styleUrl: './logo.component.scss'
+  styleUrl: './logo.component.scss',
 })
 export class LogoComponent implements OnInit {
   @Input() type: 'aeromexico' | 'ai-league' = 'aeromexico';
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() size: 'small' | 'medium' | 'medium-large' | 'large' = 'medium';
   @Input() showText: boolean = false;
   @Input() animated: boolean = false;
 
@@ -25,16 +25,16 @@ export class LogoComponent implements OnInit {
 
   getLogoSrc(): string {
     const logoMap = {
-      'aeromexico': 'aeromexico-logo.png',
-      'ai-league': 'ai-league-logo.png'
+      aeromexico: 'aeromexico-logo.png',
+      'ai-league': 'ai-league-logo.png',
     };
     return this.imageUtils.getLogo(logoMap[this.type]);
   }
 
   getLogoAlt(): string {
     const altMap = {
-      'aeromexico': 'Aeroméxico',
-      'ai-league': 'Aeroméxico AI League 2025'
+      aeromexico: 'Aeroméxico',
+      'ai-league': 'Aeroméxico AI League 2025',
     };
     return altMap[this.type];
   }
@@ -49,9 +49,8 @@ export class LogoComponent implements OnInit {
   }
 
   private preloadImage() {
-    this.imageUtils.preloadImage(this.getLogoSrc())
-      .catch(() => {
-        this.showFallback = true;
-      });
+    this.imageUtils.preloadImage(this.getLogoSrc()).catch(() => {
+      this.showFallback = true;
+    });
   }
 }

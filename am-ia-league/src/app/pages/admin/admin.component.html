@@ -4,7 +4,7 @@
     <div class="login-card">
       <div class="login-header">
         <h1 class="login-title gradient-text">Panel de Administración</h1>
-        <p class="login-subtitle">Aeroméxico AI League 2025</p>
+        <p class="login-subtitle">Aeromexico AI League 2025</p>
       </div>
 
       <form (ngSubmit)="login()" class="login-form">
@@ -64,7 +64,6 @@
 
       <div class="metrics-grid">
         <div class="metric-card">
-          
           <div class="metric-content">
             <div class="metric-value">{{ systemMetrics.totalUsers }}</div>
             <div class="metric-label">Desarrolladores</div>
@@ -72,7 +71,6 @@
         </div>
 
         <div class="metric-card">
-          
           <div class="metric-content">
             <div class="metric-value">{{ systemMetrics.totalSquads }}</div>
             <div class="metric-label">Squads Activos</div>
@@ -80,7 +78,6 @@
         </div>
 
         <div class="metric-card">
-          
           <div class="metric-content">
             <div class="metric-value">{{ systemMetrics.averagePoints }}</div>
             <div class="metric-label">Promedio de Puntos</div>
@@ -88,7 +85,6 @@
         </div>
 
         <div class="metric-card">
-          
           <div class="metric-content">
             <div class="metric-value">
               {{ systemMetrics.topPerformer || "N/A" }}
@@ -98,7 +94,6 @@
         </div>
 
         <div class="metric-card">
-          
           <div class="metric-content">
             <div class="metric-value" [style.color]="getSystemHealthColor()">
               {{ systemMetrics.systemHealth | titlecase }}
@@ -108,7 +103,6 @@
         </div>
 
         <div class="metric-card">
-          
           <div class="metric-content">
             <div class="metric-value" [style.color]="getDataIntegrityColor()">
               {{ systemMetrics.dataIntegrity }}%
@@ -132,7 +126,6 @@
           (click)="validateDataIntegrity()"
           [disabled]="isLoadingMetrics"
         >
-          
           Validar Integridad
         </button>
 
@@ -155,14 +148,12 @@
 
           <div class="backup-actions">
             <button class="backup-btn" (click)="restoreFromBackup('squads')">
-              
               Restaurar Squads
             </button>
             <button
               class="backup-btn"
               (click)="restoreFromBackup('individuals')"
             >
-              
               Restaurar Individuales
             </button>
           </div>
@@ -176,11 +167,9 @@
 
           <div class="audit-actions">
             <button class="audit-btn glow-blue" (click)="exportAuditLogs()">
-              
               Exportar Logs
             </button>
             <button class="audit-btn danger" (click)="clearAuditLogs()">
-              
               Limpiar Logs
             </button>
           </div>
@@ -205,7 +194,6 @@
           Mostrando 10 de {{ auditLogs.length }} registros
         </p>
         <button class="view-all-btn" (click)="exportAuditLogs()">
-          
           Ver Todos los Logs
         </button>
       </div>
@@ -236,7 +224,6 @@
               class="upload-btn primary glow-blue"
               (click)="squadFileInput.click()"
             >
-              
               Seleccionar Archivo CSV
             </button>
           </div>
@@ -265,7 +252,6 @@
             *ngIf="fileValidationErrors.length > 0"
           >
             <div class="error-item" *ngFor="let error of fileValidationErrors">
-              
               {{ error }}
             </div>
           </div>
@@ -291,7 +277,6 @@
               class="upload-btn primary glow-blue"
               (click)="individualFileInput.click()"
             >
-              
               Seleccionar Archivo CSV
             </button>
           </div>
@@ -320,7 +305,6 @@
             *ngIf="fileValidationErrors.length > 0"
           >
             <div class="error-item" *ngFor="let error of fileValidationErrors">
-              
               {{ error }}
             </div>
           </div>
@@ -377,7 +361,6 @@
             class="download-btn glow-blue"
             (click)="downloadCurrentSquadsData()"
           >
-            
             Descargar Squads CSV
           </button>
         </div>
@@ -392,7 +375,6 @@
             class="download-btn glow-blue"
             (click)="downloadCurrentIndividualsData()"
           >
-            
             Descargar Individuales CSV
           </button>
         </div>
@@ -432,12 +414,10 @@
             (click)="resetToStatic()"
             *ngIf="config.dataSource === 'uploaded'"
           >
-            
             Volver a Datos Estáticos
           </button>
 
           <button class="refresh-btn glow-blue" (click)="refreshData()">
-            
             Actualizar Vista
           </button>
         </div>
@@ -456,19 +436,14 @@
         <!-- Squads Data -->
         <div class="visualization-card">
           <div class="card-header">
-            <h3 class="card-title">
-              
-              Datos de Squads ({{ getSquadsCount() }})
-            </h3>
+            <h3 class="card-title">Datos de Squads ({{ getSquadsCount() }})</h3>
             <button class="toggle-btn" (click)="toggleSquadsDetails()">
-              
               {{ showSquadsDetails ? "Ocultar" : "Mostrar" }} Detalles
             </button>
           </div>
 
           <div class="card-content" *ngIf="!showSquadsDetails">
             <div class="privacy-notice">
-              
               <p>Los detalles de los squads están ocultos por seguridad.</p>
               <p class="privacy-subtitle">
                 Haz clic en "Mostrar Detalles" para visualizar la información.
@@ -519,7 +494,6 @@
 
             <ng-template #noSquadsData>
               <div class="no-data">
-                
                 <p>No hay datos de squads disponibles</p>
               </div>
             </ng-template>
@@ -530,18 +504,15 @@
         <div class="visualization-card">
           <div class="card-header">
             <h3 class="card-title">
-              
               Datos Individuales ({{ getIndividualsCount() }})
             </h3>
             <button class="toggle-btn" (click)="toggleIndividualsDetails()">
-              
               {{ showIndividualsDetails ? "Ocultar" : "Mostrar" }} Detalles
             </button>
           </div>
 
           <div class="card-content" *ngIf="!showIndividualsDetails">
             <div class="privacy-notice">
-              
               <p>Los detalles individuales están ocultos por privacidad.</p>
               <p class="privacy-subtitle">
                 Haz clic en "Mostrar Detalles" para visualizar la información.
@@ -591,13 +562,11 @@
                   "
                 >
                   <div class="detail-item" *ngIf="individual.completedMissions">
-                    
                     <span class="detail-text"
                       >{{ individual.completedMissions }} misiones</span
                     >
                   </div>
                   <div class="detail-item" *ngIf="individual.specialChallenges">
-                    
                     <span class="detail-text"
                       >{{ individual.specialChallenges }} desafíos</span
                     >
@@ -608,7 +577,6 @@
 
             <ng-template #noIndividualsData>
               <div class="no-data">
-                
                 <p>No hay datos individuales disponibles</p>
               </div>
             </ng-template>
@@ -619,12 +587,10 @@
 
     <!-- Messages -->
     <div class="message success" *ngIf="successMessage">
-      
       {{ successMessage }}
     </div>
 
     <div class="message error" *ngIf="errorMessage">
-      
       {{ errorMessage }}
     </div>
   </div>

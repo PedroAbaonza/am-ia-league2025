@@ -1,8 +1,9 @@
-# 📦 Gestión de Dependencias - Aeroméxico AI League 2025
+# 📦 Gestión de Dependencias - Aeromexico AI League 2025
 
 ## 📋 Estrategia de Dependencias
 
 ### Filosofía de Gestión
+
 - **Minimalismo**: Solo dependencias necesarias
 - **Estabilidad**: Preferir versiones LTS y estables
 - **Seguridad**: Auditorías regulares y actualizaciones de seguridad
@@ -12,6 +13,7 @@
 ## 📊 Inventario de Dependencias
 
 ### Dependencias de Producción
+
 ```json
 {
   "@angular/animations": "^19.2.15",
@@ -32,6 +34,7 @@
 ```
 
 ### Dependencias de Desarrollo
+
 ```json
 {
   "@angular-devkit/build-angular": "^19.2.17",
@@ -53,6 +56,7 @@
 ## 🔄 Proceso de Actualización
 
 ### Auditoría Regular
+
 ```bash
 # Verificar dependencias desactualizadas
 npm outdated
@@ -70,6 +74,7 @@ npm audit fix --force
 ### Estrategia de Actualización por Tipo
 
 #### 1. Actualizaciones de Seguridad (Inmediatas)
+
 ```bash
 # Identificar vulnerabilidades críticas
 npm audit --audit-level critical
@@ -83,6 +88,7 @@ npm run build
 ```
 
 #### 2. Actualizaciones Menores (Semanales)
+
 ```bash
 # Ver actualizaciones menores disponibles
 npm outdated --depth=0
@@ -96,6 +102,7 @@ npm run e2e
 ```
 
 #### 3. Actualizaciones Mayores (Mensuales/Trimestrales)
+
 ```bash
 # Usar herramienta especializada
 npm install -g npm-check-updates
@@ -116,6 +123,7 @@ npm run build
 ```
 
 ### Proceso de Actualización de Angular
+
 ```bash
 # Usar Angular Update Guide
 # https://update.angular.io/
@@ -138,6 +146,7 @@ npm test
 ## 🔒 Gestión de Seguridad
 
 ### Auditorías Automatizadas
+
 ```json
 // package.json scripts
 {
@@ -151,6 +160,7 @@ npm test
 ```
 
 ### Configuración de Dependabot (GitHub)
+
 ```yaml
 # .github/dependabot.yml
 version: 2
@@ -172,6 +182,7 @@ updates:
 ```
 
 ### Políticas de Seguridad
+
 ```json
 // .npmrc
 audit-level=moderate
@@ -183,6 +194,7 @@ package-lock=true
 ## 📈 Monitoreo de Dependencias
 
 ### Herramientas de Análisis
+
 ```bash
 # Analizar tamaño del bundle
 npm install -g webpack-bundle-analyzer
@@ -199,6 +211,7 @@ license-checker --summary
 ```
 
 ### Métricas de Dependencias
+
 ```bash
 # Script para generar reporte de dependencias
 #!/bin/bash
@@ -224,18 +237,20 @@ license-checker --summary --json | jq 'keys'
 ## 🎯 Optimización de Dependencias
 
 ### Tree Shaking
+
 ```typescript
 // Importaciones específicas para mejor tree shaking
 // ✅ Bueno
-import { map, filter } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, filter } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 // ❌ Malo
-import * as rxjs from 'rxjs';
-import { operators } from 'rxjs';
+import * as rxjs from "rxjs";
+import { operators } from "rxjs";
 ```
 
 ### Lazy Loading de Dependencias
+
 ```typescript
 // Carga diferida de librerías pesadas
 async loadChartLibrary() {
@@ -254,6 +269,7 @@ const routes: Routes = [
 ```
 
 ### Bundle Analysis
+
 ```json
 // angular.json - configuración para análisis
 {
@@ -273,6 +289,7 @@ const routes: Routes = [
 ## 🔧 Herramientas de Gestión
 
 ### npm-check-updates
+
 ```bash
 # Instalar globalmente
 npm install -g npm-check-updates
@@ -292,6 +309,7 @@ ncu --target patch
 ```
 
 ### Yarn (Alternativa)
+
 ```bash
 # Migrar de npm a yarn
 yarn import
@@ -307,6 +325,7 @@ yarn audit --level moderate
 ```
 
 ### pnpm (Alternativa eficiente)
+
 ```bash
 # Instalar pnpm
 npm install -g pnpm
@@ -325,17 +344,21 @@ pnpm update
 ## 📋 Políticas de Dependencias
 
 ### Criterios de Selección
+
 1. **Mantenimiento Activo**
+
    - Commits recientes (< 6 meses)
    - Issues respondidos
    - Releases regulares
 
 2. **Popularidad y Adopción**
+
    - Downloads semanales > 10k
    - GitHub stars > 1k
    - Usado por proyectos conocidos
 
 3. **Calidad del Código**
+
    - Tests comprehensivos
    - Documentación clara
    - TypeScript support
@@ -346,6 +369,7 @@ pnpm update
    - Sin conflictos con otras deps
 
 ### Proceso de Aprobación
+
 ```mermaid
 graph TD
     A[Propuesta de Dependencia] --> B[Evaluación Técnica]
@@ -362,6 +386,7 @@ graph TD
 ## 🚨 Resolución de Conflictos
 
 ### Conflictos de Versiones
+
 ```bash
 # Identificar conflictos
 npm ls
@@ -382,6 +407,7 @@ npm ls
 ```
 
 ### Dependencias Peer
+
 ```bash
 # Instalar peer dependencies manualmente
 npm install --save-dev @types/node
@@ -391,6 +417,7 @@ npm ls --depth=0 2>&1 | grep "UNMET PEER DEPENDENCY"
 ```
 
 ### Lock File Conflicts
+
 ```bash
 # Regenerar package-lock.json
 rm package-lock.json node_modules -rf
@@ -403,6 +430,7 @@ npm ci
 ## 📊 Reportes y Métricas
 
 ### Reporte Semanal de Dependencias
+
 ```bash
 #!/bin/bash
 # weekly-deps-report.sh
@@ -429,6 +457,7 @@ echo "Reporte generado: $REPORT_FILE"
 ```
 
 ### Dashboard de Dependencias
+
 ```json
 // scripts/dependency-dashboard.js
 const fs = require('fs');
@@ -437,7 +466,7 @@ const { execSync } = require('child_process');
 function generateDashboard() {
   const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
   const audit = JSON.parse(execSync('npm audit --json', { encoding: 'utf8' }));
-  
+
   const dashboard = {
     timestamp: new Date().toISOString(),
     totalDependencies: Object.keys(packageJson.dependencies || {}).length,
@@ -445,7 +474,7 @@ function generateDashboard() {
     vulnerabilities: audit.metadata.vulnerabilities,
     outdated: JSON.parse(execSync('npm outdated --json', { encoding: 'utf8' }))
   };
-  
+
   fs.writeFileSync('dependency-dashboard.json', JSON.stringify(dashboard, null, 2));
   console.log('Dashboard generado: dependency-dashboard.json');
 }
@@ -456,13 +485,14 @@ generateDashboard();
 ## 🔄 Automatización
 
 ### GitHub Actions para Dependencias
+
 ```yaml
 # .github/workflows/dependencies.yml
 name: Dependency Management
 
 on:
   schedule:
-    - cron: '0 9 * * 1'  # Lunes a las 9 AM
+    - cron: "0 9 * * 1" # Lunes a las 9 AM
   workflow_dispatch:
 
 jobs:
@@ -472,29 +502,30 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
       - run: npm ci
       - run: npm audit
       - run: npm outdated
-      
+
   update-minor:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
       - run: npm ci
       - run: npm update
       - run: npm test
       - name: Create PR
         uses: peter-evans/create-pull-request@v5
         with:
-          title: 'chore: update minor dependencies'
-          body: 'Automated minor dependency updates'
+          title: "chore: update minor dependencies"
+          body: "Automated minor dependency updates"
 ```
 
 ### Pre-commit Hooks
+
 ```json
 // package.json
 {
@@ -509,4 +540,4 @@ jobs:
 ---
 
 **Última actualización**: Diciembre 2024
-**Autor**: Equipo de Desarrollo Aeroméxico AI League
+**Autor**: Equipo de Desarrollo Aeromexico AI League

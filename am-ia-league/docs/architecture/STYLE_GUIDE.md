@@ -1,27 +1,28 @@
-# Guía de Estilos - Aeroméxico AI League 2025
+# Guía de Estilos - Aeromexico AI League 2025
 
 ## 🎨 Sistema de Diseño
 
 ### Paleta de Colores
 
 #### Colores Principales
+
 ```scss
 :root {
-  // Colores Corporativos Aeroméxico
-  --deep-space-blue: #0A1033;      // Fondo principal oscuro
-  --aviation-blue: #00AEEF;        // Azul corporativo Aeroméxico
-  --sky-blue-neon: #00D4FF;        // Azul neón para acentos
-  --squadron-pink: #FF2D82;        // Rosa para elementos destacados
-  
+  // Colores Corporativos Aeromexico
+  --deep-space-blue: #0a1033; // Fondo principal oscuro
+  --aviation-blue: #00aeef; // Azul corporativo Aeroméxico
+  --sky-blue-neon: #00d4ff; // Azul neón para acentos
+  --squadron-pink: #ff2d82; // Rosa para elementos destacados
+
   // Colores de Texto
-  --text-primary: #FFFFFF;         // Texto principal (blanco)
-  --text-secondary: #F3F4F6;       // Texto secundario (gris claro)
-  --text-muted: #9CA3AF;           // Texto atenuado (gris medio)
-  
+  --text-primary: #ffffff; // Texto principal (blanco)
+  --text-secondary: #f3f4f6; // Texto secundario (gris claro)
+  --text-muted: #9ca3af; // Texto atenuado (gris medio)
+
   // Colores de Interfaz
-  --card-bg: rgba(255, 255, 255, 0.05);     // Fondo de tarjetas
-  --card-border: rgba(255, 255, 255, 0.1);  // Bordes de tarjetas
-  
+  --card-bg: rgba(255, 255, 255, 0.05); // Fondo de tarjetas
+  --card-border: rgba(255, 255, 255, 0.1); // Bordes de tarjetas
+
   // Efectos de Resplandor
   --glow-blue: 0 0 20px rgba(0, 174, 239, 0.3);
   --glow-pink: 0 0 20px rgba(255, 45, 130, 0.3);
@@ -29,6 +30,7 @@
 ```
 
 #### Uso de Colores
+
 - **Deep Space Blue**: Fondo principal, navegación
 - **Aviation Blue**: Enlaces, botones primarios, elementos interactivos
 - **Sky Blue Neon**: Acentos, hover states, elementos destacados
@@ -38,21 +40,23 @@
 ### Tipografías
 
 #### Fuentes Principales
+
 ```scss
 // Importación desde Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap");
 
 // Clases de utilidad
 .font-primary {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .font-mono {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 }
 ```
 
 #### Jerarquía Tipográfica
+
 ```scss
 // Títulos principales
 .title-xl {
@@ -93,33 +97,39 @@
 ### Espaciado y Layout
 
 #### Sistema de Espaciado
+
 ```scss
 // Escala de espaciado basada en 0.25rem (4px)
-$spacing-xs: 0.25rem;   // 4px
-$spacing-sm: 0.5rem;    // 8px
-$spacing-md: 1rem;      // 16px
-$spacing-lg: 1.5rem;    // 24px
-$spacing-xl: 2rem;      // 32px
-$spacing-2xl: 3rem;     // 48px
-$spacing-3xl: 4rem;     // 64px
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+$spacing-2xl: 3rem; // 48px
+$spacing-3xl: 4rem; // 64px
 ```
 
 #### Breakpoints Responsive
+
 ```scss
 $breakpoints: (
-  'mobile': 320px,
-  'tablet': 768px,
-  'desktop': 1024px,
-  'wide': 1440px
+  "mobile": 320px,
+  "tablet": 768px,
+  "desktop": 1024px,
+  "wide": 1440px,
 );
 
 // Mixins para media queries
 @mixin mobile-up {
-  @media (min-width: 768px) { @content; }
+  @media (min-width: 768px) {
+    @content;
+  }
 }
 
 @mixin desktop-up {
-  @media (min-width: 1024px) { @content; }
+  @media (min-width: 1024px) {
+    @content;
+  }
 }
 ```
 
@@ -128,6 +138,7 @@ $breakpoints: (
 ### Botones
 
 #### Botón Primario
+
 ```scss
 .btn-primary {
   background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
@@ -142,12 +153,12 @@ $breakpoints: (
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 174, 239, 0.5);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
@@ -155,6 +166,7 @@ $breakpoints: (
 ```
 
 #### Botón Secundario
+
 ```scss
 .btn-secondary {
   background: transparent;
@@ -168,7 +180,7 @@ $breakpoints: (
   letter-spacing: 0.5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: var(--aviation-blue);
     color: white;
@@ -180,6 +192,7 @@ $breakpoints: (
 ### Tarjetas (Cards)
 
 #### Tarjeta Base
+
 ```scss
 .card {
   background: rgba(255, 255, 255, 0.08);
@@ -188,27 +201,23 @@ $breakpoints: (
   padding: 1.5rem;
   backdrop-filter: blur(15px);
   transition: all 0.3s ease;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(0, 174, 239, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 174, 239, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-color: rgba(0, 174, 239, 0.5);
   }
 }
 ```
 
 #### Tarjeta Destacada
+
 ```scss
 .card--highlighted {
   background: rgba(255, 45, 130, 0.15);
   border: 2px solid var(--squadron-pink);
-  box-shadow: 0 0 30px rgba(255, 45, 130, 0.5),
-              0 8px 25px rgba(255, 45, 130, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255, 45, 130, 0.5), 0 8px 25px rgba(255, 45, 130, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   animation: glow-pulse 2s ease-in-out infinite alternate;
 }
 ```
@@ -216,6 +225,7 @@ $breakpoints: (
 ### Badges y Etiquetas
 
 #### Badge de Puntos
+
 ```scss
 .points-badge {
   background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
@@ -229,9 +239,9 @@ $breakpoints: (
   box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
   position: relative;
   overflow: hidden;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -240,9 +250,9 @@ $breakpoints: (
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     animation: badge-shine 2s ease-in-out infinite;
   }
-  
+
   &.bonus {
-    background: linear-gradient(135deg, var(--squadron-pink), #FF6B9D);
+    background: linear-gradient(135deg, var(--squadron-pink), #ff6b9d);
     box-shadow: 0 4px 15px rgba(255, 45, 130, 0.3);
   }
 }
@@ -251,6 +261,7 @@ $breakpoints: (
 ### Iconos
 
 #### Iconos de Misión
+
 ```scss
 .mission-icon {
   width: 48px;
@@ -262,9 +273,9 @@ $breakpoints: (
   font-weight: 600;
   font-size: 1.2rem;
   position: relative;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -275,18 +286,18 @@ $breakpoints: (
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover::after {
     opacity: 1;
   }
-  
+
   // Variantes por tipo
   &.icon-amazon-q {
-    background: linear-gradient(135deg, #FF9500, #FFB84D);
+    background: linear-gradient(135deg, #ff9500, #ffb84d);
     color: white;
     box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
   }
-  
+
   &.icon-ai-flight-tips {
     background: linear-gradient(135deg, var(--aviation-blue), var(--sky-blue-neon));
     color: white;
@@ -298,6 +309,7 @@ $breakpoints: (
 ## ✨ Efectos y Animaciones
 
 ### Animaciones de Entrada
+
 ```scss
 // Fade in desde abajo
 @keyframes fadeInUp {
@@ -325,10 +337,11 @@ $breakpoints: (
 ```
 
 ### Efectos de Hover
+
 ```scss
 .interactive-element {
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 174, 239, 0.4);
@@ -337,6 +350,7 @@ $breakpoints: (
 ```
 
 ### Efectos de Resplandor
+
 ```scss
 @keyframes glow-pulse {
   0% {
@@ -355,18 +369,19 @@ $breakpoints: (
 ## 📱 Responsive Design
 
 ### Estrategia Mobile-First
+
 ```scss
 // Base: Mobile (320px+)
 .component {
   padding: 1rem;
   font-size: 0.875rem;
-  
+
   // Tablet (768px+)
   @include mobile-up {
     padding: 1.5rem;
     font-size: 1rem;
   }
-  
+
   // Desktop (1024px+)
   @include desktop-up {
     padding: 2rem;
@@ -376,17 +391,18 @@ $breakpoints: (
 ```
 
 ### Grid Responsive
+
 ```scss
 .grid-responsive {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  
+
   @include mobile-up {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
+
   @include desktop-up {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
@@ -397,6 +413,7 @@ $breakpoints: (
 ## 🎯 Patrones de Uso
 
 ### Estados de Componentes
+
 ```scss
 // Estado normal
 .component {
@@ -408,9 +425,9 @@ $breakpoints: (
 .component--loading {
   opacity: 0.6;
   pointer-events: none;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -438,6 +455,7 @@ $breakpoints: (
 ```
 
 ### Utilidades Comunes
+
 ```scss
 // Texto con gradiente
 .gradient-text {
@@ -479,6 +497,7 @@ $breakpoints: (
 ## 🔧 Herramientas y Mixins
 
 ### Mixins Útiles
+
 ```scss
 // Glassmorphism effect
 @mixin glassmorphism($opacity: 0.08) {
@@ -490,7 +509,7 @@ $breakpoints: (
 // Hover lift effect
 @mixin hover-lift($distance: 4px) {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-#{$distance});
     box-shadow: 0 #{$distance * 2} #{$distance * 6} rgba(0, 0, 0, 0.2);
@@ -501,9 +520,9 @@ $breakpoints: (
 @mixin gradient-border($width: 2px) {
   position: relative;
   background: var(--card-bg);
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     padding: $width;
@@ -516,6 +535,7 @@ $breakpoints: (
 ```
 
 ### Variables SCSS
+
 ```scss
 // Duraciones de animación
 $duration-fast: 0.15s;
@@ -539,6 +559,7 @@ $z-tooltip: 1070;
 ## 📋 Checklist de Implementación
 
 ### Antes de Crear un Componente
+
 - [ ] Revisar si existe un componente similar
 - [ ] Definir estados (normal, hover, active, disabled)
 - [ ] Considerar variantes (tamaños, colores, tipos)
@@ -546,6 +567,7 @@ $z-tooltip: 1070;
 - [ ] Definir animaciones necesarias
 
 ### Durante el Desarrollo
+
 - [ ] Usar variables CSS para colores y espaciado
 - [ ] Implementar estados de hover y focus
 - [ ] Añadir transiciones suaves
@@ -553,6 +575,7 @@ $z-tooltip: 1070;
 - [ ] Verificar contraste de colores
 
 ### Después de la Implementación
+
 - [ ] Documentar el componente
 - [ ] Crear ejemplos de uso
 - [ ] Probar accesibilidad

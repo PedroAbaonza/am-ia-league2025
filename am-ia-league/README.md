@@ -1,6 +1,6 @@
-# Aeroméxico AI League 2025 🛩️
+# Aeromexico AI League 2025 🛩️
 
-Una aplicación web interactiva para gestionar la competencia interna de inteligencia artificial de Aeroméxico. Desarrollada con Angular 19 y diseñada con un enfoque futurista inspirado en la aviación.
+Una aplicación web interactiva para gestionar la competencia interna de inteligencia artificial de Aeromexico. Desarrollada con Angular 19 y diseñada con un enfoque futurista inspirado en la aviación.
 
 ![Angular](https://img.shields.io/badge/Angular-19.2-red?style=flat-square&logo=angular)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript)
@@ -51,7 +51,7 @@ Una aplicación web interactiva para gestionar la competencia interna de intelig
 
 #### Assets de Imágenes
 
-- `assets/images/logos/` - Logotipos oficiales de Aeroméxico y AI League
+- `assets/images/logos/` - Logotipos oficiales de Aeromexico y AI League
 - `assets/images/backgrounds/` - Fondos y texturas para secciones
 - `assets/images/icons/` - Iconografía temática y funcional
 - `assets/images/avatars/` - Fotos de perfil de desarrolladores
@@ -273,7 +273,7 @@ avatarData = this.imageUtils.getAvatarWithFallback('Carlos Rodríguez');
 
 ```html
 <!-- Logo responsive -->
-<img [src]="imageUtils.getLogo('aeromexico-logo.svg')" alt="Aeroméxico AI League" />
+<img [src]="imageUtils.getLogo('aeromexico-logo.svg')" alt="Aeromexico AI League" />
 
 <!-- Avatar con fallback -->
 <img [src]="avatarData.src" (error)="showInitials = true" class="avatar" />
@@ -378,13 +378,13 @@ chore: tareas de mantenimiento
 
 ## 📄 Licencia
 
-Este proyecto es propiedad de Aeroméxico y está destinado para uso interno en la competencia AI League 2025.
+Este proyecto es propiedad de Aeromexico y está destinado para uso interno en la competencia AI League 2025.
 
 ---
 
-**Desarrollado con ❤️ para Aeroméxico AI League 2025**
+**Desarrollado con ❤️ para Aeromexico AI League 2025**
 
-_Una travesía donde la innovación, la inteligencia artificial y el trabajo en equipo impulsan el futuro digital de Aeroméxico._
+_Una travesía donde la innovación, la inteligencia artificial y el trabajo en equipo impulsan el futuro digital de Aeromexico._
 
 ## 📚 D
 

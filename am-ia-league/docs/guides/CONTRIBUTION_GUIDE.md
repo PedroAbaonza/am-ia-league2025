@@ -1,10 +1,11 @@
-# 🤝 Guía de Contribución - Aeroméxico AI League 2025
+# 🤝 Guía de Contribución - Aeromexico AI League 2025
 
 Esta guía establece el proceso y las mejores prácticas para contribuir al proyecto de manera efectiva y colaborativa.
 
 ## 🎯 Proceso de Desarrollo
 
 ### 1. Configuración Inicial
+
 ```bash
 # Clonar el repositorio
 git clone [repository-url]
@@ -20,6 +21,7 @@ npm run setup:dev
 ### 2. Flujo de Trabajo con Git
 
 #### Estructura de Branches
+
 - `main` - Rama principal (producción)
 - `develop` - Rama de desarrollo
 - `feature/[nombre]` - Nuevas funcionalidades
@@ -27,6 +29,7 @@ npm run setup:dev
 - `hotfix/[nombre]` - Correcciones urgentes
 
 #### Proceso de Contribución
+
 ```bash
 # 1. Crear nueva rama desde develop
 git checkout develop
@@ -44,6 +47,7 @@ git push origin feature/nueva-funcionalidad
 ## 📝 Convenciones de Commits
 
 ### Formato
+
 ```
 tipo(scope): descripción breve
 
@@ -53,6 +57,7 @@ Closes #123
 ```
 
 ### Tipos de Commit
+
 - `feat` - Nueva funcionalidad
 - `fix` - Corrección de errores
 - `docs` - Documentación
@@ -62,6 +67,7 @@ Closes #123
 - `chore` - Tareas de mantenimiento
 
 ### Ejemplos
+
 ```bash
 feat(admin): agregar panel de configuración
 fix(leaderboard): corregir ordenamiento de rankings
@@ -72,6 +78,7 @@ style(ui): mejorar espaciado en cards de estadísticas
 ## 🔍 Proceso de Code Review
 
 ### Antes de Crear PR
+
 - [ ] Código sigue los estándares establecidos
 - [ ] Tests pasan correctamente
 - [ ] Documentación actualizada
@@ -79,30 +86,37 @@ style(ui): mejorar espaciado en cards de estadísticas
 - [ ] Funcionalidad probada localmente
 
 ### Template de Pull Request
+
 ```markdown
 ## 📋 Descripción
+
 Breve descripción de los cambios realizados.
 
 ## 🔄 Tipo de Cambio
+
 - [ ] Bug fix
 - [ ] Nueva funcionalidad
 - [ ] Breaking change
 - [ ] Documentación
 
 ## ✅ Checklist
+
 - [ ] Tests agregados/actualizados
 - [ ] Documentación actualizada
 - [ ] Código revisado por el autor
 - [ ] No hay warnings en consola
 
 ## 📸 Screenshots (si aplica)
+
 [Agregar capturas de pantalla]
 
 ## 🧪 Testing
+
 Describe cómo se probó la funcionalidad.
 ```
 
 ### Criterios de Aprobación
+
 - Mínimo 1 aprobación de reviewer
 - Todos los tests deben pasar
 - No conflictos de merge
@@ -111,6 +125,7 @@ Describe cómo se probó la funcionalidad.
 ## 🧪 Testing y Calidad
 
 ### Antes de Commit
+
 ```bash
 # Ejecutar tests
 npm run test
@@ -123,6 +138,7 @@ npm run build
 ```
 
 ### Cobertura de Tests
+
 - Funcionalidades nuevas: 80% mínimo
 - Componentes críticos: 90% mínimo
 - Utilidades: 95% mínimo
@@ -130,12 +146,14 @@ npm run build
 ## 📚 Documentación
 
 ### Actualizar Documentación
+
 - Nuevas funcionalidades requieren documentación
 - Cambios en API deben documentarse
 - Actualizar README si es necesario
 - Mantener changelog actualizado
 
 ### Comentarios en Código
+
 ```typescript
 /**
  * Calcula el ranking de un squad basado en métricas
@@ -151,12 +169,14 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ## 🚀 Deployment y Release
 
 ### Proceso de Release
+
 1. Merge de develop a main
 2. Crear tag de versión
 3. Generar changelog
 4. Deploy automático via CI/CD
 
 ### Versionado Semántico
+
 - `MAJOR.MINOR.PATCH`
 - MAJOR: Breaking changes
 - MINOR: Nuevas funcionalidades
@@ -165,10 +185,12 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ## 🛠️ Herramientas de Desarrollo
 
 ### IDE Recomendado
+
 - Visual Studio Code
 - Extensiones requeridas (ver .vscode/extensions.json)
 
 ### Configuración de Desarrollo
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -181,12 +203,14 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ## 🔒 Seguridad
 
 ### Buenas Prácticas
+
 - No commitear credenciales
 - Usar variables de entorno
 - Validar inputs del usuario
 - Sanitizar datos sensibles
 
 ### Reporte de Vulnerabilidades
+
 - Crear issue privado
 - Contactar al equipo de seguridad
 - No divulgar públicamente
@@ -194,12 +218,14 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ## 📞 Comunicación
 
 ### Canales
+
 - Issues de GitHub para bugs
 - Discussions para propuestas
 - Slack para comunicación diaria
 - Email para temas urgentes
 
 ### Meetings
+
 - Daily standup: 9:00 AM
 - Sprint planning: Lunes
 - Retrospective: Viernes
@@ -207,18 +233,21 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ## 🎯 Mejores Prácticas
 
 ### Código
+
 - Seguir principios SOLID
 - Usar TypeScript estricto
 - Implementar error handling
 - Optimizar performance
 
 ### UI/UX
+
 - Seguir design system
 - Implementar responsive design
 - Considerar accesibilidad
 - Mantener consistencia visual
 
 ### Performance
+
 - Lazy loading para rutas
 - Optimización de imágenes
 - Minimizar bundle size
@@ -227,17 +256,20 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ## 📋 Checklist de Contribución
 
 ### Antes de Empezar
+
 - [ ] Issue asignado y entendido
 - [ ] Rama creada desde develop
 - [ ] Entorno configurado correctamente
 
 ### Durante el Desarrollo
+
 - [ ] Seguir estándares de código
 - [ ] Escribir tests apropiados
 - [ ] Documentar cambios importantes
 - [ ] Probar funcionalidad localmente
 
 ### Antes del PR
+
 - [ ] Tests pasan
 - [ ] Linting sin errores
 - [ ] Build exitoso
@@ -245,6 +277,7 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 - [ ] Commits bien formateados
 
 ### Después del Merge
+
 - [ ] Verificar deploy
 - [ ] Monitorear errores
 - [ ] Actualizar issues relacionados
@@ -252,12 +285,14 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ## 🆘 Soporte
 
 ### Problemas Técnicos
+
 1. Revisar documentación existente
 2. Buscar en issues cerrados
 3. Crear nuevo issue con template
 4. Contactar al equipo si es urgente
 
 ### Dudas sobre Proceso
+
 - Revisar esta guía
 - Preguntar en Slack #dev-help
 - Contactar tech lead
@@ -265,4 +300,4 @@ function calculateRanking(squad: Squad, metrics: Metrics): number {
 ---
 
 **Última actualización**: Diciembre 2024  
-**Mantenido por**: Equipo de Desarrollo Aeroméxico AI League
+**Mantenido por**: Equipo de Desarrollo Aeromexico AI League

@@ -1,22 +1,25 @@
-# 📝 Estándares de Código - Aeroméxico AI League 2025
+# 📝 Estándares de Código - Aeromexico AI League 2025
 
 Esta guía establece las convenciones y mejores prácticas de código para mantener consistencia y calidad en el proyecto.
 
 ## 🎯 Principios Generales
 
 ### Legibilidad
+
 - Código autodocumentado
 - Nombres descriptivos
 - Estructura clara y lógica
 - Comentarios cuando sea necesario
 
 ### Mantenibilidad
+
 - Funciones pequeñas y enfocadas
 - Bajo acoplamiento
 - Alta cohesión
 - Principios SOLID
 
 ### Performance
+
 - Optimización consciente
 - Lazy loading apropiado
 - Gestión eficiente de memoria
@@ -25,6 +28,7 @@ Esta guía establece las convenciones y mejores prácticas de código para mante
 ## 🔧 TypeScript
 
 ### Configuración Estricta
+
 ```json
 {
   "compilerOptions": {
@@ -38,6 +42,7 @@ Esta guía establece las convenciones y mejores prácticas de código para mante
 ```
 
 ### Tipos y Interfaces
+
 ```typescript
 // ✅ Bueno - Interfaces descriptivas
 interface UserProfile {
@@ -51,9 +56,9 @@ interface UserProfile {
 
 // ✅ Bueno - Enums para constantes
 enum UserRole {
-  ADMIN = 'admin',
-  PARTICIPANT = 'participant',
-  VIEWER = 'viewer'
+  ADMIN = "admin",
+  PARTICIPANT = "participant",
+  VIEWER = "viewer",
 }
 
 // ❌ Malo - Tipos any
@@ -65,12 +70,13 @@ function processData(data: any): any {
 function processUserData(data: UserProfile): ProcessedUser {
   return {
     displayName: data.name,
-    isActive: true
+    isActive: true,
   };
 }
 ```
 
 ### Generics
+
 ```typescript
 // ✅ Bueno - Generics para reutilización
 interface ApiResponse<T> {
@@ -81,11 +87,11 @@ interface ApiResponse<T> {
 
 class DataService<T> {
   private items: T[] = [];
-  
+
   add(item: T): void {
     this.items.push(item);
   }
-  
+
   getAll(): T[] {
     return [...this.items];
   }
@@ -95,34 +101,32 @@ class DataService<T> {
 ## 🅰️ Angular
 
 ### Estructura de Componentes
+
 ```typescript
 // ✅ Bueno - Estructura clara
 @Component({
-  selector: 'app-user-card',
-  templateUrl: './user-card.component.html',
-  styleUrls: ['./user-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "app-user-card",
+  templateUrl: "./user-card.component.html",
+  styleUrls: ["./user-card.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserCardComponent implements OnInit, OnDestroy {
   @Input() user!: UserProfile;
   @Output() userSelected = new EventEmitter<string>();
-  
+
   private destroy$ = new Subject<void>();
-  
-  constructor(
-    private userService: UserService,
-    private cdr: ChangeDetectorRef
-  ) {}
-  
+
+  constructor(private userService: UserService, private cdr: ChangeDetectorRef) {}
+
   ngOnInit(): void {
     this.initializeComponent();
   }
-  
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
-  
+
   private initializeComponent(): void {
     // Lógica de inicialización
   }
@@ -130,24 +134,22 @@ export class UserCardComponent implements OnInit, OnDestroy {
 ```
 
 ### Servicios
+
 ```typescript
 // ✅ Bueno - Servicio con manejo de errores
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UserService {
   private readonly apiUrl = environment.apiUrl;
-  
+
   constructor(private http: HttpClient) {}
-  
+
   getUsers(): Observable<UserProfile[]> {
-    return this.http.get<UserProfile[]>(`${this.apiUrl}/users`).pipe(
-      retry(3),
-      catchError(this.handleError<UserProfile[]>('getUsers', []))
-    );
+    return this.http.get<UserProfile[]>(`${this.apiUrl}/users`).pipe(retry(3), catchError(this.handleError<UserProfile[]>("getUsers", [])));
   }
-  
-  private handleError<T>(operation = 'operation', result?: T) {
+
+  private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed:`, error);
       return of(result as T);
@@ -157,6 +159,7 @@ export class UserService {
 ```
 
 ### Reactive Forms
+
 ```typescript
 // ✅ Bueno - Formularios tipados
 interface UserFormValue {
@@ -167,20 +170,20 @@ interface UserFormValue {
 
 export class UserFormComponent {
   userForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required, Validators.email]],
-    role: [UserRole.PARTICIPANT, Validators.required]
+    name: ["", [Validators.required, Validators.minLength(2)]],
+    email: ["", [Validators.required, Validators.email]],
+    role: [UserRole.PARTICIPANT, Validators.required],
   });
-  
+
   constructor(private fb: FormBuilder) {}
-  
+
   onSubmit(): void {
     if (this.userForm.valid) {
       const formValue = this.userForm.value as UserFormValue;
       this.processForm(formValue);
     }
   }
-  
+
   private processForm(value: UserFormValue): void {
     // Procesar formulario
   }
@@ -190,32 +193,33 @@ export class UserFormComponent {
 ## 🎨 SCSS/CSS
 
 ### Arquitectura BEM
+
 ```scss
 // ✅ Bueno - Metodología BEM
 .user-card {
   padding: 1rem;
   border-radius: 8px;
-  
+
   &__header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
   }
-  
+
   &__title {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--primary-color);
   }
-  
+
   &__content {
     line-height: 1.5;
   }
-  
+
   &--highlighted {
     border: 2px solid var(--accent-color);
   }
-  
+
   &--disabled {
     opacity: 0.6;
     pointer-events: none;
@@ -224,6 +228,7 @@ export class UserFormComponent {
 ```
 
 ### Variables CSS
+
 ```scss
 // ✅ Bueno - Variables semánticas
 :root {
@@ -231,19 +236,19 @@ export class UserFormComponent {
   --primary-color: #1e40af;
   --primary-light: #3b82f6;
   --primary-dark: #1e3a8a;
-  
+
   // Colores semánticos
   --success-color: #10b981;
   --warning-color: #f59e0b;
   --error-color: #ef4444;
-  
+
   // Espaciado
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
-  
+
   // Tipografía
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -253,6 +258,7 @@ export class UserFormComponent {
 ```
 
 ### Responsive Design
+
 ```scss
 // ✅ Bueno - Mixins para breakpoints
 @mixin mobile {
@@ -278,11 +284,11 @@ export class UserFormComponent {
   display: grid;
   gap: var(--spacing-md);
   grid-template-columns: 1fr;
-  
+
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @include desktop {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -292,6 +298,7 @@ export class UserFormComponent {
 ## 📁 Estructura de Archivos
 
 ### Organización por Feature
+
 ```
 src/
 ├── app/
@@ -314,6 +321,7 @@ src/
 ```
 
 ### Nomenclatura de Archivos
+
 ```
 // ✅ Bueno - Nombres descriptivos
 user-profile.component.ts
@@ -329,80 +337,80 @@ date-format.pipe.ts
 ## 🧪 Testing
 
 ### Unit Tests
+
 ```typescript
 // ✅ Bueno - Tests descriptivos
-describe('UserService', () => {
+describe("UserService", () => {
   let service: UserService;
   let httpMock: HttpTestingController;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [UserService]
+      providers: [UserService],
     });
-    
+
     service = TestBed.inject(UserService);
     httpMock = TestBed.inject(HttpTestingController);
   });
-  
-  describe('getUsers', () => {
-    it('should return users when API call is successful', () => {
-      const mockUsers: UserProfile[] = [
-        { id: '1', name: 'John Doe', email: 'john@example.com', role: UserRole.PARTICIPANT }
-      ];
-      
-      service.getUsers().subscribe(users => {
+
+  describe("getUsers", () => {
+    it("should return users when API call is successful", () => {
+      const mockUsers: UserProfile[] = [{ id: "1", name: "John Doe", email: "john@example.com", role: UserRole.PARTICIPANT }];
+
+      service.getUsers().subscribe((users) => {
         expect(users).toEqual(mockUsers);
       });
-      
+
       const req = httpMock.expectOne(`${environment.apiUrl}/users`);
-      expect(req.request.method).toBe('GET');
+      expect(req.request.method).toBe("GET");
       req.flush(mockUsers);
     });
-    
-    it('should handle errors gracefully', () => {
-      service.getUsers().subscribe(users => {
+
+    it("should handle errors gracefully", () => {
+      service.getUsers().subscribe((users) => {
         expect(users).toEqual([]);
       });
-      
+
       const req = httpMock.expectOne(`${environment.apiUrl}/users`);
-      req.error(new ErrorEvent('Network error'));
+      req.error(new ErrorEvent("Network error"));
     });
   });
 });
 ```
 
 ### Component Tests
+
 ```typescript
 // ✅ Bueno - Tests de componente
-describe('UserCardComponent', () => {
+describe("UserCardComponent", () => {
   let component: UserCardComponent;
   let fixture: ComponentFixture<UserCardComponent>;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [UserCardComponent],
-      imports: [CommonModule]
+      imports: [CommonModule],
     });
-    
+
     fixture = TestBed.createComponent(UserCardComponent);
     component = fixture.componentInstance;
   });
-  
-  it('should display user information correctly', () => {
+
+  it("should display user information correctly", () => {
     const mockUser: UserProfile = {
-      id: '1',
-      name: 'John Doe',
-      email: 'john@example.com',
-      role: UserRole.PARTICIPANT
+      id: "1",
+      name: "John Doe",
+      email: "john@example.com",
+      role: UserRole.PARTICIPANT,
     };
-    
+
     component.user = mockUser;
     fixture.detectChanges();
-    
+
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.user-card__title').textContent).toContain('John Doe');
-    expect(compiled.querySelector('.user-card__email').textContent).toContain('john@example.com');
+    expect(compiled.querySelector(".user-card__title").textContent).toContain("John Doe");
+    expect(compiled.querySelector(".user-card__email").textContent).toContain("john@example.com");
   });
 });
 ```
@@ -410,12 +418,10 @@ describe('UserCardComponent', () => {
 ## 🔍 Linting y Formatting
 
 ### ESLint Configuration
+
 ```json
 {
-  "extends": [
-    "@angular-eslint/recommended",
-    "@typescript-eslint/recommended"
-  ],
+  "extends": ["@angular-eslint/recommended", "@typescript-eslint/recommended"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/explicit-function-return-type": "warn",
@@ -426,6 +432,7 @@ describe('UserCardComponent', () => {
 ```
 
 ### Prettier Configuration
+
 ```json
 {
   "printWidth": 100,
@@ -443,6 +450,7 @@ describe('UserCardComponent', () => {
 ## 📋 Checklist de Código
 
 ### Antes de Commit
+
 - [ ] Código sigue convenciones de nomenclatura
 - [ ] No hay console.log en producción
 - [ ] Tipos TypeScript correctos
@@ -451,6 +459,7 @@ describe('UserCardComponent', () => {
 - [ ] Documentación actualizada
 
 ### Code Review
+
 - [ ] Lógica clara y entendible
 - [ ] Manejo apropiado de errores
 - [ ] Performance optimizada
@@ -460,6 +469,7 @@ describe('UserCardComponent', () => {
 ## 🚫 Anti-patrones
 
 ### Evitar
+
 ```typescript
 // ❌ Malo - Mutación directa
 this.users.push(newUser);
@@ -478,20 +488,30 @@ function processUser(user: UserProfile): string {
 }
 
 // ❌ Malo - Lógica en template
-{{ user.role === 'admin' ? 'Administrator' : user.role === 'participant' ? 'Participant' : 'Viewer' }}
+{
+  {
+    user.role === "admin" ? "Administrator" : user.role === "participant" ? "Participant" : "Viewer";
+  }
+}
 
 // ✅ Bueno - Método en componente
-{{ getRoleDisplayName(user.role) }}
+{
+  {
+    getRoleDisplayName(user.role);
+  }
+}
 ```
 
 ## 📚 Recursos Adicionales
 
 ### Documentación
+
 - [Angular Style Guide](https://angular.io/guide/styleguide)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [SCSS Guidelines](https://sass-guidelin.es/)
 
 ### Herramientas
+
 - ESLint para linting
 - Prettier para formatting
 - Husky para git hooks
@@ -500,4 +520,4 @@ function processUser(user: UserProfile): string {
 ---
 
 **Última actualización**: Diciembre 2024  
-**Mantenido por**: Equipo de Desarrollo Aeroméxico AI League
+**Mantenido por**: Equipo de Desarrollo Aeromexico AI League

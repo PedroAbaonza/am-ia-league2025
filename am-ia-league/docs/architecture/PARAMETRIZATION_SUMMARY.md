@@ -1,9 +1,11 @@
-# Resumen de Parametrización - Aeroméxico AI League
+# Resumen de Parametrización - Aeromexico AI League
 
 ## ✅ Componentes Parametrizados
 
 ### 1. **Hero Section** (`hero-section.component.ts`)
+
 **Estado:** ✅ PARAMETRIZADO
+
 - **Servicio:** `ConfigService`
 - **Archivo de configuración:** `/assets/data/app-config.json`
 - **Datos parametrizados:**
@@ -14,7 +16,9 @@
   - Estadísticas (semanas, rutas, squads, desafíos)
 
 ### 2. **Points System** (`points-system.component.ts`)
+
 **Estado:** ✅ PARAMETRIZADO
+
 - **Servicio:** `ConfigService`
 - **Archivo de configuración:** `/assets/data/app-config.json`
 - **Datos parametrizados:**
@@ -24,7 +28,9 @@
   - Ejemplo de cálculo de squad
 
 ### 3. **Routes Timeline** (`routes-timeline.component.ts`)
+
 **Estado:** ✅ YA PARAMETRIZADO
+
 - **Servicio:** `RouteService`
 - **Archivo de configuración:** `/assets/data/routes.json`
 - **Datos parametrizados:**
@@ -33,9 +39,11 @@
   - Descripciones y colores
 
 ### 4. **Squads Overview** (`squads-overview.component.ts`)
+
 **Estado:** ✅ PARCIALMENTE PARAMETRIZADO
+
 - **Servicios:** `LeaderboardService`, `RouteService`, `ConfigService`
-- **Archivos de configuración:** 
+- **Archivos de configuración:**
   - `/assets/data/squads.json`
   - `/assets/data/routes.json`
   - `/assets/data/app-config.json`
@@ -46,7 +54,9 @@
   - Retos especiales desde configuración
 
 ### 5. **Important Dates** (`important-dates.component.ts`)
+
 **Estado:** ✅ YA PARAMETRIZADO
+
 - **Servicio:** `EventService`
 - **Archivo de configuración:** `/assets/data/events.json`
 - **Datos parametrizados:**
@@ -57,11 +67,13 @@
 ## 📁 Archivos de Configuración Creados
 
 ### `/assets/data/app-config.json`
+
 Configuración principal del evento y sistema de puntos:
+
 ```json
 {
   "event": {
-    "title": "Aeroméxico AI League 2025",
+    "title": "Aeromexico AI League 2025",
     "subtitle": "Una travesía donde la innovación...",
     "edition": "Primera Edición",
     "startDate": "2024-09-26",
@@ -82,7 +94,9 @@ Configuración principal del evento y sistema de puntos:
 ```
 
 ### `/assets/data/overview-config.json`
+
 Configuración específica para el overview de squads:
+
 ```json
 {
   "routeProgress": {
@@ -101,6 +115,7 @@ Configuración específica para el overview de squads:
 ## 🔧 Servicios Creados
 
 ### `ConfigService`
+
 - **Archivo:** `/services/config.service.ts`
 - **Propósito:** Gestionar la configuración principal de la aplicación
 - **Métodos:** `getAppConfig()`
@@ -108,21 +123,25 @@ Configuración específica para el overview de squads:
 ## 🎯 Beneficios de la Parametrización
 
 ### ✅ **Flexibilidad**
+
 - Cambios de contenido sin modificar código
 - Fácil actualización de fechas y estadísticas
 - Personalización por edición del evento
 
 ### ✅ **Mantenibilidad**
+
 - Separación clara entre datos y lógica
 - Configuración centralizada
 - Fácil localización y traducción
 
 ### ✅ **Escalabilidad**
+
 - Soporte para múltiples ediciones
 - Configuración por ambiente (dev/prod)
 - Integración futura con APIs
 
 ### ✅ **Consistencia**
+
 - Datos unificados en toda la aplicación
 - Evita duplicación de información
 - Facilita testing y validación
@@ -137,12 +156,12 @@ Configuración específica para el overview de squads:
 
 ## 📊 Estado Actual
 
-| Componente | Estado | Archivo Config | Servicio |
-|------------|--------|----------------|----------|
-| Hero Section | ✅ Parametrizado | app-config.json | ConfigService |
-| Points System | ✅ Parametrizado | app-config.json | ConfigService |
-| Routes Timeline | ✅ Ya parametrizado | routes.json | RouteService |
-| Squads Overview | ✅ Parcialmente | múltiples | múltiples |
-| Important Dates | ✅ Ya parametrizado | events.json | EventService |
+| Componente      | Estado              | Archivo Config  | Servicio      |
+| --------------- | ------------------- | --------------- | ------------- |
+| Hero Section    | ✅ Parametrizado    | app-config.json | ConfigService |
+| Points System   | ✅ Parametrizado    | app-config.json | ConfigService |
+| Routes Timeline | ✅ Ya parametrizado | routes.json     | RouteService  |
+| Squads Overview | ✅ Parcialmente     | múltiples       | múltiples     |
+| Important Dates | ✅ Ya parametrizado | events.json     | EventService  |
 
 **Resultado:** 🎉 **100% de la información del home está parametrizada y es configurable**

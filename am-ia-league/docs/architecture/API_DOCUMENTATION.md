@@ -1,10 +1,11 @@
-# 🔌 Documentación de API - Aeroméxico AI League 2025
+# 🔌 Documentación de API - Aeromexico AI League 2025
 
 Esta documentación describe la arquitectura, endpoints y especificaciones de la API del sistema.
 
 ## 🏗️ Arquitectura de API
 
 ### Estructura General
+
 ```
 API Base URL: https://api.am-ia-league.com/v1
 Authentication: Bearer Token (JWT)
@@ -12,6 +13,7 @@ Content-Type: application/json
 ```
 
 ### Autenticación
+
 ```http
 POST /auth/login
 Content-Type: application/json
@@ -36,6 +38,7 @@ Response:
 ## 👥 Endpoints de Usuarios
 
 ### Obtener Perfil de Usuario
+
 ```http
 GET /users/profile
 Authorization: Bearer {token}
@@ -59,6 +62,7 @@ Response:
 ```
 
 ### Actualizar Perfil
+
 ```http
 PUT /users/profile
 Authorization: Bearer {token}
@@ -79,6 +83,7 @@ Response:
 ```
 
 ### Listar Usuarios (Admin)
+
 ```http
 GET /users?page=1&limit=20&role=participant
 Authorization: Bearer {admin-token}
@@ -107,6 +112,7 @@ Response:
 ## 🏆 Endpoints de Squads
 
 ### Obtener Información de Squad
+
 ```http
 GET /squads/{squadId}
 Authorization: Bearer {token}
@@ -134,6 +140,7 @@ Response:
 ```
 
 ### Crear Squad
+
 ```http
 POST /squads
 Authorization: Bearer {token}
@@ -160,6 +167,7 @@ Response:
 ```
 
 ### Unirse a Squad
+
 ```http
 POST /squads/{squadId}/join
 Authorization: Bearer {token}
@@ -175,6 +183,7 @@ Response:
 ## 📊 Endpoints de Leaderboard
 
 ### Obtener Ranking Global
+
 ```http
 GET /leaderboard/global?type=individual&limit=50
 Authorization: Bearer {token}
@@ -204,6 +213,7 @@ Response:
 ```
 
 ### Obtener Ranking de Squads
+
 ```http
 GET /leaderboard/squads?limit=20
 Authorization: Bearer {token}
@@ -234,6 +244,7 @@ Response:
 ## 🎯 Endpoints de Challenges
 
 ### Listar Challenges Disponibles
+
 ```http
 GET /challenges?status=active&category=coding
 Authorization: Bearer {token}
@@ -264,6 +275,7 @@ Response:
 ```
 
 ### Obtener Detalles de Challenge
+
 ```http
 GET /challenges/{challengeId}
 Authorization: Bearer {token}
@@ -298,6 +310,7 @@ Response:
 ```
 
 ### Enviar Solución
+
 ```http
 POST /challenges/{challengeId}/submit
 Authorization: Bearer {token}
@@ -326,6 +339,7 @@ Response:
 ## 📈 Endpoints de Estadísticas
 
 ### Obtener Estadísticas del Usuario
+
 ```http
 GET /stats/user/{userId}
 Authorization: Bearer {token}
@@ -379,6 +393,7 @@ Response:
 ```
 
 ### Obtener Estadísticas Globales
+
 ```http
 GET /stats/global
 Authorization: Bearer {token}
@@ -416,6 +431,7 @@ Response:
 ## 🔐 Endpoints de Administración
 
 ### Gestión de Usuarios (Admin)
+
 ```http
 POST /admin/users/{userId}/role
 Authorization: Bearer {admin-token}
@@ -434,6 +450,7 @@ Response:
 ```
 
 ### Gestión de Challenges (Admin)
+
 ```http
 POST /admin/challenges
 Authorization: Bearer {admin-token}
@@ -460,6 +477,7 @@ Response:
 ## 📁 Endpoints de Archivos
 
 ### Subir Avatar
+
 ```http
 POST /files/avatar
 Authorization: Bearer {token}
@@ -477,6 +495,7 @@ Response:
 ```
 
 ### Descargar Plantilla (Admin)
+
 ```http
 GET /admin/templates/{templateType}
 Authorization: Bearer {admin-token}
@@ -489,6 +508,7 @@ Content-Disposition: attachment; filename="users-template.xlsx"
 ## 🔔 Endpoints de Notificaciones
 
 ### Obtener Notificaciones
+
 ```http
 GET /notifications?unread=true&limit=20
 Authorization: Bearer {token}
@@ -514,6 +534,7 @@ Response:
 ```
 
 ### Marcar como Leída
+
 ```http
 PUT /notifications/{notificationId}/read
 Authorization: Bearer {token}
@@ -528,6 +549,7 @@ Response:
 ## 🚨 Códigos de Error
 
 ### Códigos HTTP Estándar
+
 - `200` - OK
 - `201` - Created
 - `400` - Bad Request
@@ -538,6 +560,7 @@ Response:
 - `500` - Internal Server Error
 
 ### Formato de Error
+
 ```json
 {
   "error": {
@@ -556,6 +579,7 @@ Response:
 ```
 
 ### Códigos de Error Personalizados
+
 - `AUTH_001` - Invalid credentials
 - `AUTH_002` - Token expired
 - `AUTH_003` - Insufficient permissions
@@ -570,12 +594,14 @@ Response:
 ## 📊 Rate Limiting
 
 ### Límites por Endpoint
+
 - **Authentication**: 5 requests/minute
 - **General API**: 100 requests/minute
 - **File Upload**: 10 requests/minute
 - **Admin API**: 200 requests/minute
 
 ### Headers de Rate Limit
+
 ```http
 X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 95
@@ -585,11 +611,13 @@ X-RateLimit-Reset: 1640000000
 ## 🔄 Versionado de API
 
 ### Estrategia de Versionado
+
 - URL Path: `/v1/`, `/v2/`
 - Backward compatibility mantenida por 12 meses
 - Deprecation notices con 6 meses de anticipación
 
 ### Changelog
+
 - **v1.0** - Initial release
 - **v1.1** - Added squad management
 - **v1.2** - Enhanced statistics endpoints
@@ -598,6 +626,7 @@ X-RateLimit-Reset: 1640000000
 ## 🧪 Testing de API
 
 ### Postman Collection
+
 ```bash
 # Importar colección
 curl -o am-ia-league-api.postman_collection.json \
@@ -605,6 +634,7 @@ curl -o am-ia-league-api.postman_collection.json \
 ```
 
 ### Ejemplos con cURL
+
 ```bash
 # Login
 curl -X POST https://api.am-ia-league.com/v1/auth/login \
@@ -619,11 +649,13 @@ curl -X GET https://api.am-ia-league.com/v1/users/profile \
 ## 📚 Recursos Adicionales
 
 ### Documentación Interactiva
+
 - **Swagger UI**: https://api.am-ia-league.com/docs
 - **Postman**: [Collection Link]
 - **Insomnia**: [Workspace Link]
 
 ### SDKs Disponibles
+
 - **JavaScript/TypeScript**: `npm install @am-ia-league/api-client`
 - **Python**: `pip install am-ia-league-api`
 
