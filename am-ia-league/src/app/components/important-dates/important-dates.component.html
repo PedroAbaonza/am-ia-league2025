@@ -53,8 +53,15 @@
             <h3 class="route-name">{{ routeData.route.name }}</h3>
             <div class="route-dates">
               <span class="date-range">
-                {{ formatDateShort(routeData.route.startDate) }} -
-                {{ formatDateShort(routeData.route.endDate) }}
+                <ng-container
+                  *ngIf="routeData.route.name === 'Kick Off'; else dateRange"
+                >
+                  {{ formatDateShort(routeData.route.startDate) }}
+                </ng-container>
+                <ng-template #dateRange>
+                  {{ formatDateShort(routeData.route.startDate) }} -
+                  {{ formatDateShort(routeData.route.endDate) }}
+                </ng-template>
               </span>
             </div>
           </div>
@@ -83,6 +90,20 @@
               <div class="event-date-mini">
                 <span class="date-text">{{ formatDateShort(event.date) }}</span>
               </div>
+            </div>
+
+            <!-- Days remaining label for upcoming events -->
+            <div
+              class="days-remaining-label"
+              *ngIf="shouldShowDaysRemaining(event.date)"
+            >
+              <span class="days-text">
+                {{
+                  getDaysRemaining(event.date) === 0
+                    ? "Hoy"
+                    : "en " + getDaysRemaining(event.date) + " días"
+                }}
+              </span>
             </div>
           </div>
 

@@ -9,6 +9,7 @@ export interface Squad {
   scrumMaster: string;
   developers: string[];
   totalPoints: number;
+  specialChallenges: number;
   color: string;
 }
 
@@ -26,14 +27,10 @@ export interface Individual {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LeaderboardService {
-
-  constructor(
-    private http: HttpClient,
-    private adminService: AdminService
-  ) { }
+  constructor(private http: HttpClient, private adminService: AdminService) {}
 
   getSquads(): Observable<Squad[]> {
     // Verificar si hay datos subidos por admin
@@ -41,7 +38,7 @@ export class LeaderboardService {
     if (uploadedData && uploadedData.length > 0) {
       return of(uploadedData);
     }
-    
+
     // Fallback a datos estáticos
     return this.http.get<Squad[]>('/assets/data/squads.json');
   }
@@ -52,7 +49,7 @@ export class LeaderboardService {
     if (uploadedData && uploadedData.length > 0) {
       return of(uploadedData);
     }
-    
+
     // Fallback a datos estáticos
     return this.http.get<Individual[]>('/assets/data/individuals.json');
   }

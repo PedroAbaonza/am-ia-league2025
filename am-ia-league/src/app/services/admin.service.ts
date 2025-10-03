@@ -375,33 +375,74 @@ export class AdminService {
     // Agrupar por squad
     const squadMap = new Map<string, any>();
 
+    // Get existing squads to maintain consistent IDs and colors
+    const existingSquads = this.getSquadsData() || [];
+    const existingSquadMap = new Map(
+      existingSquads.map((squad) => [squad.name, squad])
+    );
+
     csvData.forEach((row) => {
       const squadName = row.squadName || row['Squad Name'] || row.squad;
       if (!squadName) return;
 
       if (!squadMap.has(squadName)) {
+        // Check if squad already exists to maintain ID and color
+        const existingSquad = existingSquadMap.get(squadName);
+
         squadMap.set(squadName, {
-          id: squadMap.size + 1,
+          id: existingSquad
+            ? existingSquad.id
+            : this.getNextSquadId(squadMap, existingSquads),
           name: squadName,
           scrumMaster: row.scrumMaster || row['Scrum Master'] || '',
           developers: [],
           totalPoints: 0,
-          color: this.getSquadColor(squadMap.size + 1),
+          specialChallenges: 0,
+          color: existingSquad
+            ? existingSquad.color
+            : this.getSquadColor(squadMap.size + 1),
         });
       }
 
       const squad = squadMap.get(squadName);
       const developerName = row.name || row.developer || row['Developer Name'];
       const points = parseInt(row.points || row.totalPoints || '0');
+      const challenges = parseInt(
+        row.challenges || row.specialChallenges || row.retos || '0'
+      );
+
+      // Update scrum master if provided and not already set
+      if ((row.scrumMaster || row['Scrum Master']) && !squad.scrumMaster) {
+        squad.scrumMaster = row.scrumMaster || row['Scrum Master'];
+      }
 
       if (developerName && !squad.developers.includes(developerName)) {
         squad.developers.push(developerName);
       }
 
       squad.totalPoints += points;
+      squad.specialChallenges += challenges;
     });
 
-    return Array.from(squadMap.values());
+    // Sort squads by ID for consistent ordering
+    return Array.from(squadMap.values()).sort((a, b) => a.id - b.id);
+  }
+
+  private getNextSquadId(
+    squadMap: Map<string, any>,
+    existingSquads: Squad[]
+  ): number {
+    const usedIds = new Set([
+      ...existingSquads.map((squad) => squad.id),
+      ...Array.from(squadMap.values()).map((squad) => squad.id),
+    ]);
+
+    let nextId = 1;
+    while (usedIds.has(nextId)) {
+      nextId++;
+    }
+
+    return nextId;
   }
 
   // Convertir CSV a formato Individual
@@ -428,30 +469,50 @@ export class AdminService {
 
   private getSquadColor(squadId: number): string {
     const colors = [
-      '#00AEEF',
-      '#FF2D82',
-      '#00AEEF',
-      '#FF2D82',
-      '#00AEEF',
-      '#FF2D82',
+      '#00AEEF', // Aviation Blue
+      '#FF2D82', // Squadron Pink
+      '#10b981', // Emerald Green
+      '#f97316', // Orange
+      '#8b5cf6', // Purple
+      '#eab308', // Gold
+      '#ef4444', // Red
+      '#14b8a6', // Teal
+      '#f59e0b', // Amber
+      '#6366f1', // Indigo
+      '#ec4899', // Pink
+      '#06b6d4', // Cyan
+      '#84cc16', // Lime
+      '#f472b6', // Rose
+      '#22d3ee', // Light Blue
+      '#a78bfa', // Light Purple
+      '#fbbf24', // Yellow
+      '#fb7185', // Light Pink
+      '#34d399', // Light Green
+      '#60a5fa', // Sky Blue
     ];
     return colors[(squadId - 1) % colors.length];
   }
 
   private getSquadIdByName(squadName: string): number {
-    // Mapeo simple basado en nombre
-    const squadNames = [
-      'Alpha Squadron',
-      'Beta Flight',
-      'Gamma Wings',
-      'Delta Force',
-      'Echo Team',
-      'Foxtrot Squad',
-    ];
-    const index = squadNames.findIndex((name) =>
-      name.toLowerCase().includes(squadName.toLowerCase())
+    // Get current squads data to maintain consistent IDs
+    const existingSquads = this.getSquadsData() || [];
+
+    // Check if squad already exists
+    const existingSquad = existingSquads.find(
+      (squad) => squad.name.toLowerCase() === squadName.toLowerCase()
     );
-    return index >= 0 ? index + 1 : 1;
+
+    if (existingSquad) {
+      return existingSquad.id;
+    }
+
+    // For new squads, assign next available ID
+    const maxId =
+      existingSquads.length > 0
+        ? Math.max(...existingSquads.map((squad) => squad.id))
+        : 0;
+
+    return maxId + 1;
   }
 
   private getInitials(name: string): string {

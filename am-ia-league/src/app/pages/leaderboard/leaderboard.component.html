@@ -11,7 +11,13 @@
 
   <!-- Podio Top 3 -->
   <div class="podium-section">
-    <div class="podium">
+    <!-- Message for insufficient squads -->
+    <div class="insufficient-squads-message" *ngIf="!hasMinimumSquads()">
+      <h3>Esperando más equipos...</h3>
+      <p>Se necesitan al menos 2 equipos para mostrar el podio</p>
+    </div>
+
+    <div class="podium" *ngIf="hasMinimumSquads()">
       <!-- Segundo Lugar -->
       <div class="podium-place second" *ngIf="topSquads[1]">
         <div class="shield-card silver-shield">
@@ -117,7 +123,7 @@
         <div class="header-cell squad">Squad</div>
         <div class="header-cell members">Miembros</div>
         <div class="header-cell points">Puntos</div>
-        <div class="header-cell progress">Progreso</div>
+        <div class="header-cell challenges">Retos</div>
       </div>
 
       <div class="table-body">
@@ -171,18 +177,9 @@
             </div>
           </div>
 
-          <div class="table-cell progress" data-label="Progreso">
-            <div class="progress-container">
-              <div class="progress-bar">
-                <div
-                  class="progress-fill"
-                  [style.width]="getProgressPercentage(squad.totalPoints) + '%'"
-                  [style.background]="squad.color"
-                ></div>
-              </div>
-              <span class="progress-text"
-                >{{ getProgressPercentage(squad.totalPoints) }}%</span
-              >
+          <div class="table-cell challenges" data-label="Retos">
+            <div class="challenges-value font-mono">
+              {{ squad.specialChallenges }}
             </div>
           </div>
         </div>

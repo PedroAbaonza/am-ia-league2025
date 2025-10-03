@@ -270,7 +270,7 @@
 
 .event-card-mini {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 140px 1fr auto;
   gap: 1rem;
   padding: 0.75rem;
   background: rgba(255, 255, 255, 0.08);
@@ -357,6 +357,25 @@
     font-size: 0.75rem;
     color: var(--text-secondary);
     font-weight: 500;
+  }
+}
+
+.days-remaining-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: 8px;
+  min-width: 60px;
+
+  .days-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(34, 197, 94, 0.9);
+    text-align: center;
+    white-space: nowrap;
   }
 }
 
@@ -569,9 +588,13 @@
   }
 
   .event-card-mini {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
     gap: 0.5rem;
+
+    .days-remaining-label {
+      justify-self: end;
+      margin-top: 0.5rem;
+    }
   }
 
   .event-title-mini {

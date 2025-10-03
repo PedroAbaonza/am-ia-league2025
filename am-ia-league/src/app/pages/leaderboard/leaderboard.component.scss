@@ -45,6 +45,37 @@
   }
 }
 
+.insufficient-squads-message {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  margin: 2rem auto;
+  max-width: 500px;
+  backdrop-filter: blur(10px);
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    background: linear-gradient(
+      135deg,
+      var(--aviation-blue),
+      var(--sky-blue-neon)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
 .page-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
@@ -341,7 +372,7 @@
 
 .table-header {
   display: grid;
-  grid-template-columns: 80px 1fr 300px 120px 150px;
+  grid-template-columns: 80px 1fr 300px 120px 100px;
   background: rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid var(--card-border);
 }
@@ -365,7 +396,7 @@
 
 .table-row {
   display: grid;
-  grid-template-columns: 80px 1fr 300px 120px 150px;
+  grid-template-columns: 80px 1fr 300px 120px 100px;
   border-bottom: 1px solid var(--card-border);
   transition: all 0.3s ease;
 
@@ -449,33 +480,6 @@
 .points-value {
   font-size: 1.25rem;
   font-weight: 700;
-}
-
-.progress-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.progress-bar {
-  flex: 1;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: 4px;
-  transition: width 0.8s ease;
-}
-
-.progress-text {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  min-width: 40px;
 }
 
 // Ensure desktop layout is preserved
@@ -719,21 +723,6 @@
     font-size: 1.5rem;
     font-weight: 700;
     text-align: left;
-  }
-
-  .progress-container {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: stretch;
-
-    .progress-bar {
-      height: 6px;
-    }
-
-    .progress-text {
-      text-align: center;
-      font-size: 0.875rem;
-    }
   }
 
   // Add mobile labels

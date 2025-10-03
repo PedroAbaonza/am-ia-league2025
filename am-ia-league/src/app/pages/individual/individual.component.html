@@ -122,63 +122,19 @@
     </div>
   </div>
 
-  <!-- Filtros -->
-  <div class="filters-section">
-    <div class="filter-buttons">
-      <button
-        class="filter-btn"
-        [class.active]="selectedFilter === 'all'"
-        (click)="filterByLevel('all')"
-      >
-        Todos
-      </button>
-      <button
-        class="filter-btn"
-        [class.active]="selectedFilter === 'Expert'"
-        (click)="filterByLevel('Expert')"
-      >
-        Expert
-      </button>
-      <button
-        class="filter-btn"
-        [class.active]="selectedFilter === 'Advanced'"
-        (click)="filterByLevel('Advanced')"
-      >
-        Advanced
-      </button>
-      <button
-        class="filter-btn"
-        [class.active]="selectedFilter === 'Intermediate'"
-        (click)="filterByLevel('Intermediate')"
-      >
-        Intermediate
-      </button>
-      <button
-        class="filter-btn"
-        [class.active]="selectedFilter === 'Beginner'"
-        (click)="filterByLevel('Beginner')"
-      >
-        Beginner
-      </button>
-    </div>
-  </div>
-
   <!-- Lista Compacta de Desarrolladores -->
   <div class="developers-list">
     <div class="list-header">
       <div class="header-position">#</div>
       <div class="header-developer">Desarrollador</div>
       <div class="header-squad">Squad</div>
-      <div class="header-level">Nivel</div>
       <div class="header-stats">Puntos</div>
       <div class="header-stats">Misiones</div>
-      <div class="header-stats">Retos</div>
-      <div class="header-progress">Progreso</div>
     </div>
 
     <div
       class="developer-row"
-      *ngFor="let dev of filteredIndividuals; let i = index"
+      *ngFor="let dev of individuals; let i = index"
       [class]="'position-' + getOriginalPosition(dev)"
     >
       <div class="row-position">
@@ -212,38 +168,12 @@
         </span>
       </div>
 
-      <div class="row-level">
-        <div
-          class="level-badge compact"
-          [class]="'level-' + dev.level.toLowerCase()"
-        >
-          {{ dev.level }}
-        </div>
-      </div>
-
       <div class="row-stat">
         <div class="stat-value font-mono">{{ dev.totalPoints }}</div>
       </div>
 
       <div class="row-stat">
         <div class="stat-value font-mono">{{ dev.completedMissions }}</div>
-      </div>
-
-      <div class="row-stat">
-        <div class="stat-value font-mono">{{ dev.specialChallenges }}</div>
-      </div>
-
-      <div class="row-progress">
-        <div class="progress-bar compact">
-          <div
-            class="progress-fill"
-            [style.width]="getProgressPercentage(dev.totalPoints) + '%'"
-            [style.background]="getSquadColor(dev.squadId)"
-          ></div>
-        </div>
-        <div class="progress-text">
-          {{ getProgressPercentage(dev.totalPoints) }}%
-        </div>
       </div>
 
       <!-- Versión móvil con stats agrupadas -->
@@ -255,10 +185,6 @@
         <div class="mobile-stat">
           <div class="stat-value font-mono">{{ dev.completedMissions }}</div>
           <div class="stat-label">Misiones</div>
-        </div>
-        <div class="mobile-stat">
-          <div class="stat-value font-mono">{{ dev.specialChallenges }}</div>
-          <div class="stat-label">Retos</div>
         </div>
       </div>
     </div>

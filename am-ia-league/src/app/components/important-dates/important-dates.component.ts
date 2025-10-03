@@ -62,7 +62,8 @@ export class ImportantDatesComponent implements OnInit {
   }
 
   formatDate(dateString: string): string {
-    const date = new Date(dateString);
+    const [year, month, day] = dateString.split('-').map(Number);
+    const date = new Date(year, month - 1, day); // month is 0-indexed
     return date.toLocaleDateString('es-ES', {
       weekday: 'long',
       day: '2-digit',
@@ -72,7 +73,8 @@ export class ImportantDatesComponent implements OnInit {
   }
 
   formatDateShort(dateString: string): string {
-    const date = new Date(dateString);
+    const [year, month, day] = dateString.split('-').map(Number);
+    const date = new Date(year, month - 1, day); // month is 0-indexed
     return date.toLocaleDateString('es-ES', {
       day: '2-digit',
       month: 'long',
@@ -80,7 +82,8 @@ export class ImportantDatesComponent implements OnInit {
   }
 
   getEventStatus(dateString: string): string {
-    const eventDate = new Date(dateString);
+    const [year, month, day] = dateString.split('-').map(Number);
+    const eventDate = new Date(year, month - 1, day); // month is 0-indexed
     const today = new Date();
 
     // Reset time to compare only dates
@@ -109,40 +112,65 @@ export class ImportantDatesComponent implements OnInit {
 
   organizeEventsByRoutes() {
     // Find events before the first route to include with the first route
-    const firstRouteStart = new Date(this.routes[0]?.startDate || '2025-10-09');
+    const firstRouteStartStr = this.routes[0]?.startDate || '2025-10-09';
+    const [year1, month1, day1] = firstRouteStartStr.split('-').map(Number);
+    const firstRouteStart = new Date(year1, month1 - 1, day1);
+
     const preRouteEvents = this.events.filter((event) => {
-      const eventDate = new Date(event.date);
+      const [year, month, day] = event.date.split('-').map(Number);
+      const eventDate = new Date(year, month - 1, day);
       return eventDate < firstRouteStart;
     });
 
     // Find events after the last route
-    const lastRouteEnd = new Date(
-      this.routes[this.routes.length - 1]?.endDate || '2025-12-12'
-    );
+    const lastRouteEndStr =
+      this.routes[this.routes.length - 1]?.endDate || '2025-12-12';
+    const [year2, month2, day2] = lastRouteEndStr.split('-').map(Number);
+    const lastRouteEnd = new Date(year2, month2 - 1, day2);
+
     const postRouteEvents = this.events.filter((event) => {
-      const eventDate = new Date(event.date);
+      const [year, month, day] = event.date.split('-').map(Number);
+      const eventDate = new Date(year, month - 1, day);
       return eventDate > lastRouteEnd;
     });
 
     this.routesWithEvents = [];
 
+    // Add pre-route events if any exist (like Kick Off)
+    if (preRouteEvents.length > 0) {
+      this.routesWithEvents.push({
+        route: {
+          id: 0,
+          name: 'Kick Off',
+          startDate: preRouteEvents[0].date,
+          endDate: preRouteEvents[preRouteEvents.length - 1].date,
+          status: 'completed',
+          description: 'Evento de inauguración de la liga',
+          color: '#10b981',
+        },
+        events: preRouteEvents,
+        status: this.getRouteStatus(
+          preRouteEvents[0].date,
+          preRouteEvents[preRouteEvents.length - 1].date
+        ),
+      });
+    }
+
     // Add regular routes with their events
-    this.routes.forEach((route, index) => {
+    this.routes.forEach((route) => {
       const routeEvents = this.events.filter((event) => {
-        const eventDate = new Date(event.date);
-        const routeStart = new Date(route.startDate);
-        const routeEnd = new Date(route.endDate);
+        const [year, month, day] = event.date.split('-').map(Number);
+        const eventDate = new Date(year, month - 1, day);
+        const [startYear, startMonth, startDay] = route.startDate
+          .split('-')
+          .map(Number);
+        const routeStart = new Date(startYear, startMonth - 1, startDay);
+        const [endYear, endMonth, endDay] = route.endDate
+          .split('-')
+          .map(Number);
+        const routeEnd = new Date(endYear, endMonth - 1, endDay);
         return eventDate >= routeStart && eventDate <= routeEnd;
       });
-
-      // For the first route, also include any pre-route events (like Kick off)
-      if (index === 0) {
-        routeEvents.unshift(...preRouteEvents);
-        // Sort all events by date
-        routeEvents.sort(
-          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-        );
-      }
 
       this.routesWithEvents.push({
         route,
@@ -177,8 +205,10 @@ export class ImportantDatesComponent implements OnInit {
     endDate: string
   ): 'past' | 'current' | 'upcoming' | 'future' {
     const today = new Date();
-    const start = new Date(startDate);
-    const end = new Date(endDate);
+    const [startYear, startMonth, startDay] = startDate.split('-').map(Number);
+    const start = new Date(startYear, startMonth - 1, startDay);
+    const [endYear, endMonth, endDay] = endDate.split('-').map(Number);
+    const end = new Date(endYear, endMonth - 1, endDay);
 
     today.setHours(0, 0, 0, 0);
     start.setHours(0, 0, 0, 0);
@@ -208,5 +238,25 @@ export class ImportantDatesComponent implements OnInit {
       return true; // All events are highlighted when no filter is active
     }
     return event.type === this.selectedFilter;
+  }
+
+  getDaysRemaining(dateString: string): number {
+    const [year, month, day] = dateString.split('-').map(Number);
+    const eventDate = new Date(year, month - 1, day);
+    const today = new Date();
+
+    // Reset time to compare only dates
+    eventDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    const diffTime = eventDate.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return diffDays;
+  }
+
+  shouldShowDaysRemaining(dateString: string): boolean {
+    const status = this.getEventStatus(dateString);
+    return status === 'today' || status === 'upcoming';
   }
 }

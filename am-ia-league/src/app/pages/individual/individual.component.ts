@@ -13,18 +13,29 @@ import {
 })
 export class IndividualComponent implements OnInit {
   individuals: Individual[] = [];
-  filteredIndividuals: Individual[] = [];
   topIndividuals: Individual[] = [];
-  selectedFilter = 'all';
-  maxPoints = 520; // Puntos del líder
 
   private squadColors: { [key: number]: string } = {
-    1: '#00AEEF',
-    2: '#FF2D82',
-    3: '#00AEEF',
-    4: '#FF2D82',
-    5: '#00AEEF',
-    6: '#FF2D82',
+    1: '#00AEEF', // Aviation Blue
+    2: '#FF2D82', // Squadron Pink
+    3: '#10b981', // Emerald Green
+    4: '#f97316', // Orange
+    5: '#8b5cf6', // Purple
+    6: '#eab308', // Gold
+    7: '#ef4444', // Red
+    8: '#14b8a6', // Teal
+    9: '#f59e0b', // Amber
+    10: '#6366f1', // Indigo
+    11: '#ec4899', // Pink
+    12: '#06b6d4', // Cyan
+    13: '#84cc16', // Lime
+    14: '#f472b6', // Rose
+    15: '#22d3ee', // Light Blue
+    16: '#a78bfa', // Light Purple
+    17: '#fbbf24', // Yellow
+    18: '#fb7185', // Light Pink
+    19: '#34d399', // Light Green
+    20: '#60a5fa', // Sky Blue
   };
 
   constructor(private leaderboardService: LeaderboardService) {}
@@ -34,33 +45,21 @@ export class IndividualComponent implements OnInit {
       this.individuals = individuals.sort(
         (a, b) => b.totalPoints - a.totalPoints
       );
-      this.filteredIndividuals = [...this.individuals];
       this.topIndividuals = this.individuals.slice(0, 3);
-      this.maxPoints = this.individuals[0]?.totalPoints || 520;
     });
   }
 
-  filterByLevel(level: string) {
-    this.selectedFilter = level;
-    if (level === 'all') {
-      this.filteredIndividuals = [...this.individuals];
-    } else {
-      this.filteredIndividuals = this.individuals.filter(
-        (dev) => dev.level === level
-      );
-    }
-  }
-
   getSquadColor(squadId: number): string {
-    return this.squadColors[squadId] || '#00AEEF';
+    // Use modulo to cycle through colors if squadId exceeds available colors
+    const colorKeys = Object.keys(this.squadColors).map(Number);
+    const maxColorId = Math.max(...colorKeys);
+    const effectiveId =
+      squadId > maxColorId ? ((squadId - 1) % maxColorId) + 1 : squadId;
+    return this.squadColors[effectiveId] || '#00AEEF';
   }
 
   getOriginalPosition(dev: Individual): number {
     return this.individuals.findIndex((d) => d.id === dev.id) + 1;
-  }
-
-  getProgressPercentage(points: number): number {
-    return Math.round((points / this.maxPoints) * 100);
   }
 
   getPositionColor(position: number): string {
@@ -80,15 +79,54 @@ export class IndividualComponent implements OnInit {
   }
 
   getShortSquadName(squadName: string): string {
+    // Dynamic mapping for common squad names
     const squadMap: { [key: string]: string } = {
-      Alpha: 'ALP',
-      Beta: 'BET',
-      Gamma: 'GAM',
-      Delta: 'DEL',
-      Echo: 'ECH',
-      Foxtrot: 'FOX',
+      'Alpha Squadron': 'ALP',
+      'Beta Flight': 'BET',
+      'Gamma Wings': 'GAM',
+      'Delta Force': 'DEL',
+      'Echo Team': 'ECH',
+      'Foxtrot Squad': 'FOX',
+      'Golf Unit': 'GOL',
+      'Hotel Division': 'HOT',
+      'India Corps': 'IND',
+      'Juliet Brigade': 'JUL',
+      'Kilo Battalion': 'KIL',
+      'Lima Company': 'LIM',
+      'Mike Platoon': 'MIK',
+      'November Squad': 'NOV',
+      'Oscar Team': 'OSC',
+      'Papa Unit': 'PAP',
+      'Quebec Force': 'QUE',
+      'Romeo Wing': 'ROM',
+      'Sierra Group': 'SIE',
+      'Tango Squad': 'TAN',
     };
-    return squadMap[squadName] || squadName.substring(0, 3).toUpperCase();
+
+    // Check for exact match first
+    if (squadMap[squadName]) {
+      return squadMap[squadName];
+    }
+
+    // Check for partial matches (e.g., "Alpha" in "Alpha Squadron")
+    for (const [key, value] of Object.entries(squadMap)) {
+      if (squadName.toLowerCase().includes(key.toLowerCase().split(' ')[0])) {
+        return value;
+      }
+    }
+
+    // Fallback: create abbreviation from first letters of words
+    const words = squadName.split(' ');
+    if (words.length > 1) {
+      return words
+        .map((word) => word.charAt(0))
+        .join('')
+        .toUpperCase()
+        .substring(0, 3);
+    }
+
+    // Final fallback: first 3 characters
+    return squadName.substring(0, 3).toUpperCase();
   }
 
   getShortRole(position: string): string {
