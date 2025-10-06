@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import {
   LeaderboardService,
   Individual,
@@ -11,9 +12,10 @@ import {
   templateUrl: './individual.component.html',
   styleUrl: './individual.component.scss',
 })
-export class IndividualComponent implements OnInit {
+export class IndividualComponent implements OnInit, AfterViewInit {
   individuals: Individual[] = [];
   topIndividuals: Individual[] = [];
+  highlightedUserId: number | null = null;
 
   private squadColors: { [key: number]: string } = {
     1: '#00AEEF', // Aviation Blue
@@ -38,7 +40,10 @@ export class IndividualComponent implements OnInit {
     20: '#60a5fa', // Sky Blue
   };
 
-  constructor(private leaderboardService: LeaderboardService) {}
+  constructor(
+    private leaderboardService: LeaderboardService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.leaderboardService.getIndividuals().subscribe((individuals) => {
@@ -47,6 +52,32 @@ export class IndividualComponent implements OnInit {
       );
       this.topIndividuals = this.individuals.slice(0, 3);
     });
+
+    // Listen for query parameter changes continuously
+    this.route.queryParams.subscribe((params) => {
+      if (params['userId']) {
+        this.highlightedUserId = +params['userId'];
+        // Scroll after a short delay to ensure DOM is ready
+        setTimeout(() => this.scrollToUser(this.highlightedUserId!), 300);
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    // Initial scroll if userId is present on first load
+    if (this.highlightedUserId) {
+      setTimeout(() => this.scrollToUser(this.highlightedUserId!), 500);
+    }
+  }
+
+  scrollToUser(userId: number) {
+    const element = document.getElementById(`user-${userId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+        this.highlightedUserId = null;
+      }, 3000);
+    }
   }
 
   getSquadColor(squadId: number): string {

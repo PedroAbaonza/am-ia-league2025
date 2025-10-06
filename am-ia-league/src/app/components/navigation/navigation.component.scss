@@ -18,7 +18,7 @@
   padding: 0 2rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 2rem;
   position: relative;
   z-index: 100000;
 }
@@ -26,6 +26,149 @@
 .nav-brand {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-search-desktop {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.nav-search-mobile {
+  display: none;
+  position: relative;
+  width: 100%;
+  padding: 1rem 2rem;
+  gap: 0.5rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+
+  &:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #f5197c;
+    box-shadow: 0 0 0 3px rgba(245, 25, 124, 0.1);
+  }
+
+  &.has-results {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.search-button {
+  padding: 0.75rem 1rem;
+  background: #f5197c;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #d91570;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 25, 124, 0.3);
+  }
+
+  .search-icon {
+    width: 20px;
+    height: 20px;
+    color: white;
+  }
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 52px;
+  background: rgba(10, 16, 51, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.result-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .brand-logo {
@@ -178,6 +321,8 @@
 @media (max-width: 768px) {
   .nav-container {
     padding: 0 1rem;
+    gap: 1rem;
+    justify-content: space-between;
   }
 
   .brand-name {
@@ -188,10 +333,35 @@
     font-size: 0.625rem;
   }
 
+  .nav-search-desktop {
+    display: none;
+  }
+
+  .nav-search-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
+
+    .search-input {
+      width: 100%;
+    }
+
+    .search-results {
+      position: relative;
+      right: auto;
+      left: 0;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+  }
+
   .mobile-toggle {
     display: flex !important;
     z-index: 100001 !important;
     position: relative !important;
+    margin-left: auto;
   }
 
   .nav-menu {
@@ -235,6 +405,21 @@
   }
 }
 
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nav-search-desktop {
+    max-width: 300px;
+  }
+
+  .nav-menu {
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 480px) {
   .logo-icon {
     font-size: 1.5rem;
@@ -246,5 +431,17 @@
 
   .brand-subtitle {
     font-size: 0.5rem;
+  }
+
+  .nav-search-mobile {
+    padding: 1rem 1rem 0;
+  }
+
+  .search-input {
+    font-size: 0.85rem;
+  }
+
+  .search-button {
+    padding: 0.65rem 0.85rem;
   }
 }

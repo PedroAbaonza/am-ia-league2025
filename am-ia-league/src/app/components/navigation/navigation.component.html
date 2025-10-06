@@ -34,6 +34,110 @@
       >
         Individual
       </a>
+
+      <!-- Search Bar in Mobile Menu -->
+      <div class="nav-search-mobile">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Buscar participante..."
+          [(ngModel)]="searchQuery"
+          (keyup)="onSearch()"
+          (keyup.enter)="onSearch()"
+          [class.has-results]="searchResults.length > 0"
+        />
+        <button class="search-button" (click)="onSearch()">
+          <svg
+            class="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+
+        <!-- Search Results Dropdown Mobile -->
+        <div class="search-results" *ngIf="searchResults.length > 0">
+          <div
+            class="search-result-item"
+            *ngFor="let result of searchResults"
+            (click)="selectParticipant(result)"
+          >
+            <div
+              class="result-avatar"
+              [style.background]="getSquadColor(result.squadId)"
+            >
+              {{ result.avatar }}
+            </div>
+            <div class="result-info">
+              <div class="result-name">{{ result.name }}</div>
+              <div class="result-meta">
+                {{ result.squadName }} • {{ result.position }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Bar Desktop -->
+    <div class="nav-search-desktop">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Buscar participante..."
+        [(ngModel)]="searchQuery"
+        (keyup)="onSearch()"
+        (keyup.enter)="onSearch()"
+        [class.has-results]="searchResults.length > 0"
+      />
+      <button class="search-button" (click)="onSearch()">
+        <svg
+          class="search-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+
+      <!-- Search Results Dropdown Desktop -->
+      <div class="search-results" *ngIf="searchResults.length > 0">
+        <div
+          class="search-result-item"
+          *ngFor="let result of searchResults"
+          (click)="selectParticipant(result)"
+        >
+          <div
+            class="result-avatar"
+            [style.background]="getSquadColor(result.squadId)"
+          >
+            {{ result.avatar }}
+          </div>
+          <div class="result-info">
+            <div class="result-name">{{ result.name }}</div>
+            <div class="result-meta">
+              {{ result.squadName }} • {{ result.position }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Mobile Menu Toggle -->

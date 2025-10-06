@@ -136,6 +136,8 @@
       class="developer-row"
       *ngFor="let dev of individuals; let i = index"
       [class]="'position-' + getOriginalPosition(dev)"
+      [class.highlighted]="dev.id === highlightedUserId"
+      [id]="'user-' + dev.id"
     >
       <div class="row-position">
         <div
