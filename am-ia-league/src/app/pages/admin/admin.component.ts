@@ -315,9 +315,14 @@ export class AdminComponent implements OnInit, OnDestroy {
     try {
       const csvData = this.adminService.parseCSV(this.masterFileContent);
 
-      // Process both squads and individuals from the same file
+      // Process squads first to get accurate squad IDs
       const squads = this.adminService.convertToSquads(csvData);
-      const individuals = this.adminService.convertToIndividuals(csvData);
+
+      // Then process individuals using the squad data for accurate IDs
+      const individuals = this.adminService.convertToIndividuals(
+        csvData,
+        squads
+      );
 
       if (squads.length === 0 || individuals.length === 0) {
         this.showError('No se pudieron procesar los datos del archivo');

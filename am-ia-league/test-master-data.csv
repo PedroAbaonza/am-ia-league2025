@@ -1,0 +1,46 @@
+name,squadName,position,points,missions,squadChallenges,scrumMaster
+Carlos Rodríguez,Alpha Squadron,Senior Developer,520,18,5,María González
+Ana Martínez,Alpha Squadron,Full Stack Developer,495,17,5,María González
+Luis Hernández,Alpha Squadron,AI Specialist,460,15,5,María González
+Sofia López,Alpha Squadron,Frontend Developer,445,14,5,María González
+Diego Ramírez,Alpha Squadron,Junior Developer,425,12,5,María González
+Elena Vargas,Beta Flight,Frontend Developer,485,16,4,Roberto Silva
+Miguel Torres,Beta Flight,DevOps Engineer,465,15,4,Roberto Silva
+Carmen Jiménez,Beta Flight,UX Developer,440,13,4,Roberto Silva
+Andrés Morales,Beta Flight,Backend Developer,420,12,4,Roberto Silva
+Lucía Castillo,Beta Flight,Mobile Developer,405,11,4,Roberto Silva
+Fernando Ortega,Gamma Wings,Backend Developer,470,16,6,Patricia Ruiz
+Valeria Mendoza,Gamma Wings,Data Scientist,455,15,6,Patricia Ruiz
+Javier Peña,Gamma Wings,Cloud Architect,435,13,6,Patricia Ruiz
+Isabella Cruz,Gamma Wings,QA Engineer,415,12,6,Patricia Ruiz
+Sebastián Vega,Gamma Wings,Systems Analyst,400,11,6,Patricia Ruiz
+Gabriela Soto,Delta Force,ML Engineer,450,14,3,Jorge Medina
+Ricardo Flores,Delta Force,Software Engineer,430,13,3,Jorge Medina
+Natalia Guerrero,Delta Force,Product Developer,410,11,3,Jorge Medina
+Emilio Ramos,Delta Force,Database Developer,395,10,3,Jorge Medina
+Camila Herrera,Delta Force,API Developer,385,9,3,Jorge Medina
+Arturo Medina,Echo Team,Security Engineer,390,12,4,Laura Vega
+Daniela Aguilar,Echo Team,Frontend Developer,380,11,4,Laura Vega
+Óscar Romero,Echo Team,DevOps Junior,375,10,4,Laura Vega
+Paola Sandoval,Echo Team,UI Developer,370,9,4,Laura Vega
+Rodrigo Espinoza,Echo Team,Junior Developer,365,8,4,Laura Vega
+Alejandra Molina,Foxtrot Squad,Web Developer,360,10,2,Antonio Cruz
+Iván Contreras,Foxtrot Squad,Software Tester,355,9,2,Antonio Cruz
+Mariana Valdez,Foxtrot Squad,Business Analyst,350,8,2,Antonio Cruz
+Nicolás Ibarra,Foxtrot Squad,Junior Backend,345,7,2,Antonio Cruz
+Renata Fuentes,Foxtrot Squad,Trainee Developer,340,6,2,Antonio Cruz
+Pablo Navarro,Golf Unit,Full Stack Developer,480,17,5,Sandra Moreno
+Fernanda Ríos,Golf Unit,Senior Developer,475,16,5,Sandra Moreno
+Héctor Campos,Golf Unit,DevOps Lead,455,15,5,Sandra Moreno
+Mónica Reyes,Golf Unit,Frontend Lead,440,14,5,Sandra Moreno
+Raúl Domínguez,Golf Unit,Backend Developer,420,12,5,Sandra Moreno
+Beatriz Santos,Hotel Division,Data Engineer,465,15,3,Miguel Ángel Torres
+Cristian Paredes,Hotel Division,AI Developer,450,14,3,Miguel Ángel Torres
+Adriana Guzmán,Hotel Division,Software Architect,435,13,3,Miguel Ángel Torres
+Sergio Maldonado,Hotel Division,Cloud Engineer,415,11,3,Miguel Ángel Torres
+Victoria Núñez,Hotel Division,QA Lead,395,10,3,Miguel Ángel Torres
+Eduardo Salazar,India Corps,Senior Backend,490,18,7,Carmen Delgado
+Lorena Pacheco,India Corps,ML Specialist,485,17,7,Carmen Delgado
+Guillermo Estrada,India Corps,DevOps Expert,470,16,7,Carmen Delgado
+Patricia Cabrera,India Corps,Frontend Expert,455,15,7,Carmen Delgado
+Mauricio León,India Corps,Full Stack Lead,445,14,7,Carmen Delgado

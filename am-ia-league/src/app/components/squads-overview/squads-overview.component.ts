@@ -26,6 +26,10 @@ export class SquadsOverviewComponent implements OnInit {
   squads: Squad[] = [];
   maxPoints = 3000; // Objetivo máximo de puntos
 
+  // Dynamic stats
+  totalSquads = 0;
+  averageDevsPerSquad = 0;
+
   // Datos para Progreso por Ruta - Estos se pueden cargar desde RouteService
   completedRoutes: Route[] = [];
   inProgressRoutes: Route[] = [];
@@ -46,6 +50,17 @@ export class SquadsOverviewComponent implements OnInit {
     // Cargar squads
     this.leaderboardService.getSquads().subscribe((squads) => {
       this.squads = squads.sort((a, b) => b.totalPoints - a.totalPoints);
+
+      // Calculate dynamic stats
+      this.totalSquads = squads.length;
+
+      // Calculate average developers per squad
+      const totalDevs = squads.reduce(
+        (sum, squad) => sum + squad.developers.length,
+        0
+      );
+      this.averageDevsPerSquad =
+        squads.length > 0 ? Math.round(totalDevs / squads.length) : 0;
     });
 
     // Cargar rutas y organizarlas por estado

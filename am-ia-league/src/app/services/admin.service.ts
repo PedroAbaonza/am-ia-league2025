@@ -445,23 +445,38 @@ export class AdminService {
   }
 
   // Convertir CSV a formato Individual (desde master file)
-  convertToIndividuals(csvData: any[]): Individual[] {
-    return csvData.map((row, index) => ({
-      id: index + 1,
-      name: row.name || row['Developer Name'] || row.developer || '',
-      squadId: this.getSquadIdByName(
-        row.squadName || row['Squad Name'] || row.squad
-      ),
-      squadName: row.squadName || row['Squad Name'] || row.squad || '',
-      position: row.position || row.role || 'Developer',
-      totalPoints: parseInt(row.points || row.totalPoints || '0'),
-      completedMissions: parseInt(row.missions || row.completedMissions || '0'),
-      specialChallenges: 0, // Individual challenges not tracked, only squad challenges
-      avatar: this.getInitials(
-        row.name || row['Developer Name'] || row.developer || ''
-      ),
-      level: row.level || this.getLevelByPoints(parseInt(row.points || '0')),
-    }));
+  convertToIndividuals(csvData: any[], squads?: Squad[]): Individual[] {
+    // If squads are provided, use them to get accurate squad IDs
+    const squadIdMap = new Map<string, number>();
+    if (squads) {
+      squads.forEach((squad) => {
+        squadIdMap.set(squad.name, squad.id);
+      });
+    }
+
+    return csvData.map((row, index) => {
+      const squadName = row.squadName || row['Squad Name'] || row.squad || '';
+      const squadId = squadIdMap.has(squadName)
+        ? squadIdMap.get(squadName)!
+        : this.getSquadIdByName(squadName);
+
+      return {
+        id: index + 1,
+        name: row.name || row['Developer Name'] || row.developer || '',
+        squadId: squadId,
+        squadName: squadName,
+        position: row.position || row.role || 'Developer',
+        totalPoints: parseInt(row.points || row.totalPoints || '0'),
+        completedMissions: parseInt(
+          row.missions || row.completedMissions || '0'
+        ),
+        specialChallenges: 0, // Individual challenges not tracked, only squad challenges
+        avatar: this.getInitials(
+          row.name || row['Developer Name'] || row.developer || ''
+        ),
+        level: row.level || this.getLevelByPoints(parseInt(row.points || '0')),
+      };
+    });
   }
 
   private getSquadColor(squadId: number): string {

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { LeaderboardService } from './leaderboard.service';
 
 export interface AppConfig {
   event: {
@@ -53,13 +55,27 @@ export interface SpecialChallenge {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConfigService {
-
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private leaderboardService: LeaderboardService
+  ) {}
 
   getAppConfig(): Observable<AppConfig> {
-    return this.http.get<AppConfig>('/assets/data/app-config.json');
+    return this.http.get<AppConfig>('/assets/data/app-config.json').pipe(
+      switchMap((config) =>
+        this.leaderboardService.getSquads().pipe(
+          map((squads) => ({
+            ...config,
+            stats: {
+              ...config.stats,
+              squads: squads.length, // Dynamically set squad count
+            },
+          }))
+        )
+      )
+    );
   }
 }
