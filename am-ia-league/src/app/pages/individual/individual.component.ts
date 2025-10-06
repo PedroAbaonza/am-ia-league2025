@@ -57,20 +57,20 @@ export class IndividualComponent implements OnInit, AfterViewInit {
     this.route.queryParams.subscribe((params) => {
       if (params['userId']) {
         this.highlightedUserId = +params['userId'];
-        // Scroll after a short delay to ensure DOM is ready
-        setTimeout(() => this.scrollToUser(this.highlightedUserId!), 300);
+        // Scroll whenever userId changes, with a delay for DOM update
+        setTimeout(() => this.scrollToUser(this.highlightedUserId!), 100);
       }
     });
   }
 
   ngAfterViewInit() {
-    // Initial scroll if userId is present on first load
-    if (this.highlightedUserId) {
-      setTimeout(() => this.scrollToUser(this.highlightedUserId!), 500);
-    }
+    // Scroll is now handled in ngOnInit after data loads
   }
 
   scrollToUser(userId: number) {
+    if (typeof document === 'undefined') {
+      return;
+    }
     const element = document.getElementById(`user-${userId}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });
