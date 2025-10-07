@@ -156,9 +156,17 @@ export class ImportantDatesComponent implements OnInit {
       });
     }
 
+    // Track which events have been assigned to avoid duplicates
+    const assignedEventIds = new Set<string>();
+
     // Add regular routes with their events
-    this.routes.forEach((route) => {
+    this.routes.forEach((route, routeIndex) => {
       const routeEvents = this.events.filter((event) => {
+        // Skip if event already assigned
+        if (assignedEventIds.has(event.date + event.title)) {
+          return false;
+        }
+
         const [year, month, day] = event.date.split('-').map(Number);
         const eventDate = new Date(year, month - 1, day);
         const [startYear, startMonth, startDay] = route.startDate
@@ -169,7 +177,44 @@ export class ImportantDatesComponent implements OnInit {
           .split('-')
           .map(Number);
         const routeEnd = new Date(endYear, endMonth - 1, endDay);
-        return eventDate >= routeStart && eventDate <= routeEnd;
+
+        // Check if event is within route date range
+        if (eventDate >= routeStart && eventDate <= routeEnd) {
+          // If event date matches the start date of this route, assign it here
+          if (eventDate.getTime() === routeStart.getTime()) {
+            return true;
+          }
+
+          // If event date matches the end date, check if next route starts on same date
+          if (eventDate.getTime() === routeEnd.getTime()) {
+            const nextRoute = this.routes[routeIndex + 1];
+            if (nextRoute) {
+              const [nextStartYear, nextStartMonth, nextStartDay] =
+                nextRoute.startDate.split('-').map(Number);
+              const nextRouteStart = new Date(
+                nextStartYear,
+                nextStartMonth - 1,
+                nextStartDay
+              );
+
+              // If next route starts on same date, don't assign to current route
+              if (eventDate.getTime() === nextRouteStart.getTime()) {
+                return false;
+              }
+            }
+            return true;
+          }
+
+          // Event is within range but not on boundary dates
+          return true;
+        }
+
+        return false;
+      });
+
+      // Mark these events as assigned
+      routeEvents.forEach((event) => {
+        assignedEventIds.add(event.date + event.title);
       });
 
       this.routesWithEvents.push({

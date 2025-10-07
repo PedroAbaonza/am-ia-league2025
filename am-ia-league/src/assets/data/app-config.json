@@ -8,10 +8,10 @@
     "description": "14 semanas de desafíos, aprendizaje y competencia"
   },
   "stats": {
-    "weeks": 14,
-    "routes": 6,
+    "weeks": 13,
+    "routes": 5,
     "squads": 6,
-    "challenges": 28
+    "missions": 21
   },
   "pointsSystem": {
     "title": "Sistema de Puntos",
@@ -19,56 +19,56 @@
     "missions": [
       {
         "id": 1,
-        "name": "Amazon Q Adoption",
+        "name": "90% de adopción de Amazon Q en cada ruta",
         "type": "amazon-q",
         "points": 20,
-        "description": "Adoptar Amazon Q en cada ruta",
+        "description": "Lograr 90% de adopción de Amazon Q en todos los miembros del equipo en cada ruta",
         "progress": 90
       },
       {
         "id": 2,
-        "name": "AI Flight Tips",
+        "name": "Participar en AI Flight Tips (entrenamientos AWS)",
         "type": "ai-flight-tips",
         "points": 30,
-        "description": "Participar en entrenamientos AWS",
+        "description": "Participar en sesiones de entrenamiento AWS para mejorar habilidades de IA",
         "progress": 0
       },
       {
         "id": 3,
-        "name": "Incremento de Código",
+        "name": "5% de incremento de líneas de código por ruta",
         "type": "code-increment",
         "points": 50,
-        "description": "Incrementar líneas de código por ruta",
+        "description": "Incrementar líneas de código en 5% en cada ruta para demostrar productividad",
         "progress": 5
       },
       {
         "id": 4,
-        "name": "Gestión Jira (Tier 0 & 1)",
+        "name": "Usar Jira para mantener la funcionalidad de aplicaciones Tier 0 y Tier 1 en marcha",
         "type": "jira",
         "points": 75,
-        "description": "Mantener operaciones críticas",
+        "description": "Mantener operaciones críticas gestionando efectivamente aplicaciones Tier 0 y 1 en Jira",
         "progress": 0
       }
     ],
     "specialChallenges": [
       {
         "id": 1,
-        "name": "Rules Documentation",
+        "name": "Documentación de reglas",
         "bonusPoints": 50
       },
       {
         "id": 2,
-        "name": "Liderar un Demo",
+        "name": "Liderar un demo",
         "bonusPoints": 100
       },
       {
         "id": 3,
-        "name": "Construir un Use Case",
+        "name": "Construir un caso de uso",
         "bonusPoints": 120
       },
       {
         "id": 4,
-        "name": "Game Day Challenge",
+        "name": "Reto Game Day",
         "bonusPoints": 300,
         "highlighted": true
       }

@@ -252,12 +252,14 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
-  &.status-completed {
+  &.status-completed,
+  &.status-past {
     border-color: #10b981;
     background: rgba(16, 185, 129, 0.1);
   }
 
-  &.status-in-progress {
+  &.status-in-progress,
+  &.status-current {
     border-color: var(--aviation-blue);
     background: rgba(0, 174, 239, 0.1);
   }
@@ -266,7 +268,8 @@
     border-color: #22c55e;
   }
 
-  &.status-upcoming {
+  &.status-upcoming,
+  &.status-future {
     border-color: var(--text-muted);
     background: rgba(156, 163, 175, 0.1);
   }
@@ -330,12 +333,14 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 
-  &.status-completed {
+  &.status-completed,
+  &.status-past {
     background: rgba(16, 185, 129, 0.2);
     color: #10b981;
   }
 
-  &.status-in-progress {
+  &.status-in-progress,
+  &.status-current {
     background: rgba(0, 174, 239, 0.2);
     color: var(--aviation-blue);
   }
@@ -347,7 +352,8 @@
     box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
   }
 
-  &.status-upcoming {
+  &.status-upcoming,
+  &.status-future {
     background: rgba(156, 163, 175, 0.2);
     color: var(--text-muted);
   }
@@ -362,6 +368,39 @@
 .route-dates {
   color: var(--text-muted);
   font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.route-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-date {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  background: rgba(0, 174, 239, 0.15);
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: var(--aviation-blue);
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 174, 239, 0.25);
+    border-color: rgba(0, 174, 239, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+.event-date-text {
+  white-space: nowrap;
 }
 
 // Torre de Control Mejorada para Game Day Final

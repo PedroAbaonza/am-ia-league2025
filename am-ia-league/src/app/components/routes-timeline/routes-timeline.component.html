@@ -9,16 +9,22 @@
 
       <div
         class="timeline-item"
-        *ngFor="let route of routes; let i = index; let last = last"
+        *ngFor="
+          let routeWithEvents of routesWithEvents;
+          let i = index;
+          let last = last
+        "
         [class.left]="i % 2 === 0"
         [class.right]="i % 2 === 1"
         [class.final-destination]="last"
       >
         <div
           class="timeline-content"
-          [style.border-color]="route.color"
-          [class]="'status-' + route.status"
-          [class.game-day-final]="route.name.includes('Game Day Final')"
+          [style.border-color]="routeWithEvents.route.color"
+          [class]="'status-' + routeWithEvents.status"
+          [class.game-day-final]="
+            routeWithEvents.route.name.includes('Game Day Final')
+          "
         >
           <div class="timeline-marker">
             <svg class="airplane-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -31,7 +37,7 @@
           <!-- Torre de Control para Game Day Final -->
           <div
             class="control-tower"
-            *ngIf="route.name.includes('Game Day Final')"
+            *ngIf="routeWithEvents.route.name.includes('Game Day Final')"
           >
             <div class="tower-structure">
               <div class="tower-base"></div>
@@ -46,18 +52,23 @@
 
           <div class="route-card">
             <div class="route-header">
-              <h3 class="route-name">{{ route.name }}</h3>
-              <span class="route-status" [class]="'status-' + route.status">
-                {{ getStatusText(route.status) }}
+              <h3 class="route-name">{{ routeWithEvents.route.name }}</h3>
+              <span
+                class="route-status"
+                [class]="'status-' + routeWithEvents.status"
+              >
+                {{ getStatusText(routeWithEvents.status) }}
               </span>
             </div>
 
-            <p class="route-description">{{ route.description }}</p>
+            <p class="route-description">
+              {{ routeWithEvents.route.description }}
+            </p>
 
             <div class="route-dates font-mono">
               <span class="date-range">
-                {{ formatDate(route.startDate) }} -
-                {{ formatDate(route.endDate) }}
+                {{ formatDate(routeWithEvents.route.startDate) }} -
+                {{ formatDate(routeWithEvents.route.endDate) }}
               </span>
             </div>
           </div>
