@@ -11,7 +11,8 @@
     "weeks": 13,
     "routes": 5,
     "squads": 6,
-    "missions": 21
+    "missions": 20,
+    "challenges": 4
   },
   "pointsSystem": {
     "title": "Sistema de Puntos",

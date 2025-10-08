@@ -295,15 +295,15 @@ $white: #ffffff;
   }
 
   .contact-info .contact-icons {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .footer-section:first-child .footer-brand {
-    justify-content: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .footer-section:first-child .brand-description {
-    text-align: center;
+    text-align: left;
   }
 }

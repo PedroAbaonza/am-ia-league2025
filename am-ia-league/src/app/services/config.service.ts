@@ -18,6 +18,7 @@ export interface AppConfig {
     routes: number;
     squads: number;
     missions: number;
+    challenges: number;
   };
   pointsSystem: {
     title: string;

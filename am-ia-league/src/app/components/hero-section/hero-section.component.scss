@@ -167,10 +167,10 @@
 // Stats Cards Horizontal - Diseño Profesional Compacto
 .stats-horizontal {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   margin: 2.5rem 0;
-  max-width: 700px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -205,6 +205,9 @@
   }
   &:nth-child(4) {
     animation-delay: 0.4s;
+  }
+  &:nth-child(5) {
+    animation-delay: 0.5s;
   }
 
   // Efecto de brillo sutil
@@ -531,6 +534,9 @@
 }
 .stat-card:nth-child(4) {
   --card-index: 4;
+}
+.stat-card:nth-child(5) {
+  --card-index: 5;
 }
 
 // Optimizaciones de rendimiento
